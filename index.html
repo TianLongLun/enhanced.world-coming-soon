@@ -1,67 +1,371 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENHANCED.WORLD - WKRÓTCE</title>
+    <title>ENHANCED.WORLD FOUNDATION | The Execution Pipeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS dla czarnego tła i centrowania */
-        body {
-            background-color: #000000; /* Czarne tło */
-            font-family: Arial, sans-serif;
-            color: #ffffff; /* Biały tekst */
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Centrowanie pionowe */
-            align-items: center; /* Centrowanie poziome */
-            min-height: 100vh; /* Wypełnienie całego ekranu */
-            padding: 20px;
+        /* DEFINICJA NEONOWYCH KOLORÓW */
+        :root {
+            --bg-color: #0A0A0E; /* Poważne, bardzo ciemne tło (Black/Navy) */
+            --text-color: #E0E0E0; /* Jasny tekst */
+            --neon-accent: #FF40BC; /* Neonowy akcent: Fuksja/Magenta */
+            --primary-color: #00A9FF; /* Niebieski/Cyjan: Kolor Kontrastowy */
+            --font-main: 'Montserrat', sans-serif;
+            --font-mono: 'Roboto Mono', monospace; /* Czcionka techniczna */
         }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAGŁÓWEK / NAVIGACJA */
+        .navbar {
+            background-color: transparent;
+            padding: 20px 0;
+            border-bottom: 1px solid #1E1E1E;
+        }
+
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: var(--neon-accent);
+            font-size: 1.6em;
+            font-weight: 900;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 35px;
+            font-weight: 400;
+            transition: color 0.3s;
+            font-family: var(--font-mono);
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-accent);
+            text-shadow: 0 0 5px var(--neon-accent);
+        }
+
+        /* SEKCJA GŁÓWNA / HERO */
+        .hero {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background-size: cover;
+        }
+        
+        /* KOMUNIKAT O WP W TRAKCIE TWORZENIA */
+        .wp-status {
+            display: inline-block;
+            background-color: #FF000020; /* Lekko czerwone tło */
+            border: 1px solid #FF0000;
+            color: #FF0000;
+            padding: 8px 15px;
+            margin-bottom: 30px;
+            font-family: var(--font-mono);
+            font-size: 0.9em;
+            border-radius: 3px;
+            text-shadow: none;
+        }
+
+        .hero-preheader {
+            color: var(--primary-color);
+            font-size: 1em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-family: var(--font-mono);
+        }
+        
+        .hero h1 {
+            color: var(--text-color);
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4em;
+            margin-bottom: 40px;
             max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #AAAAAA;
+        }
+
+        /* PRZYCISK CTA: ROADMAP */
+        .cta-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--neon-accent);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            border: 2px solid var(--neon-accent);
+            border-radius: 5px;
+            transition: all 0.3s;
+            text-shadow: 0 0 5px var(--neon-accent);
+        }
+
+        .cta-button:hover {
+            background-color: var(--neon-accent);
+            color: var(--bg-color);
+            text-shadow: none;
+            box-shadow: 0 0 15px var(--neon-accent);
+        }
+        
+        /* SEKCJA EXECUTION FOCUS */
+        .focus-section {
+            padding: 60px 20px;
+            border-top: 1px solid #1E1E1E;
+        }
+
+        .focus-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .focus-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .focus-item {
+            width: 30%;
+            min-width: 280px;
+            padding: 25px;
+            background-color: #121216; 
+            border-left: 3px solid var(--neon-accent);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+        
+        .focus-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 64, 188, 0.2);
+        }
+
+        .focus-item h3 {
+            color: var(--neon-accent);
+            font-size: 1.4em;
+            margin-top: 0;
+            font-family: var(--font-mono);
+            font-weight: 700;
+        }
+        
+        .focus-item p {
+            font-size: 0.95em;
+            color: #C0C0C0;
+        }
+        
+        /* SEKCJA ROADMAP (NEON PROGRESS) */
+        .roadmap-section {
+            padding: 80px 20px;
+            background-color: #07070A;
             text-align: center;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 30px;
-            /* Możesz dodać max-height, jeśli obrazek jest bardzo wysoki: max-height: 40vh; */
+
+        .roadmap-section h2 {
+            color: var(--neon-accent);
+            margin-bottom: 60px;
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 64, 188, 0.4);
         }
-        h1 {
-            color: #ff9900; /* Kolor nagłówka */
+
+        .roadmap-timeline {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--neon-accent));
+        }
+
+        .roadmap-step {
+            position: relative;
+            width: 30%;
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .roadmap-step-circle {
+            width: 20px;
+            height: 20px;
+            background-color: var(--neon-accent);
+            border: 3px solid var(--bg-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--neon-accent);
+        }
+        
+        .roadmap-step h3 {
+            color: var(--primary-color);
+            font-family: var(--font-mono);
+            font-size: 1.1em;
+            margin-top: 15px;
             margin-bottom: 10px;
         }
-        p {
-            margin-bottom: 40px;
-            line-height: 1.6;
+
+        .roadmap-step p {
+            font-size: 0.9em;
+            color: #B0B0B0;
         }
-        .contact a {
-            color: #4CAF50; /* Kolor linków */
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
+
+        /* STOPKA */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #121216;
+            border-top: 1px solid var(--neon-accent);
+            font-size: 0.9em;
+            color: #888;
         }
-        .contact a:hover {
-            color: #76ff7a;
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .focus-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .focus-item {
+                width: 90%;
+            }
+            .roadmap-timeline {
+                flex-direction: column;
+                align-items: center;
+                gap: 50px;
+            }
+            .roadmap-timeline::before {
+                top: 0;
+                left: 20px;
+                right: auto;
+                width: 2px;
+                height: 100%;
+                background: linear-gradient(180deg, var(--primary-color), var(--neon-accent));
+            }
+            .roadmap-step {
+                width: 90%;
+                text-align: left;
+                padding-top: 0;
+                padding-left: 40px;
+            }
+            .roadmap-step-circle {
+                top: 0;
+                left: 20px;
+                transform: translateX(-50%);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="roadmap.jpg" alt="Enhanced World Foundation Roadmap">
 
-        <h1>ENHANCED.WORLD FOUNDATION</h1>
-        <p>
-            Pracujemy nad etycznymi fundamentami nowej ery cyfrowej (AI / Robotics / XR). 
-            Śledź nasze postępy.
-        </p>
-
-        <div class="contact">
-            <a href="mailto:contact@enhanced.world">contact@enhanced.world</a>
-            
+    <div class="navbar">
+        <div class="navbar-content">
+            <div class="logo"><a href="index.html">ENHANCED.WORLD</a></div>
+            <div class="nav-links">
+                <a href="#roadmap">Roadmap</a>
+                <a href="#about.html">About Us</a>
+                <a href="#locally4me.html">Locally4Me Group</a>
             </div>
+        </div>
     </div>
-</body>
-</html>
+
+    <div class="hero">
+        <div class="container">
+            <p class="wp-status">NOTE: White Paper ("Holistic Threat Assessment") is currently in final review.</p>
+            
+            <p class="hero-preheader">// X-RISK EXECUTION EXPERTS</p>
+            <h1>THE EXECUTION PIPELINE: FROM THEORY TO CERTIFIED PROTOCOLS</h1>
+            <p class="hero-subtitle">We do not just discuss existential risk; we build the legal and technical infrastructure to mitigate it, ensuring human continuity through actionable proposals, governance blueprints, and certified security standards.</p>
+            
+            <a href="#roadmap" class="cta-button">EXPLORE OUR EXECUTION ROADMAP</a>
+        </div>
+    </div>
+
+    <div class="focus-section">
+        <div class="container">
+            <h2>WHAT OUR EXECUTION FOCUS DELIVERS</h2>
+            <div class="focus-grid">
+                
+                <div class="focus-item">
+                    <h3>1. Strategic Frameworks</h3>
+                    <p>The **GEMSTONES Protocol** (Resilience, Skill Packs, Enclaves) and the **GUARDIAN SPIRITS** architecture (Neuro-Security). This includes the **XR-Commitment Proposal** for cross-framework security and legislation.</p>
+                </div>
+                
+                <div class="focus-item">
+                    <h3>2. Global Law & Revenue</h3>
+                    <p>Legislative proposals for the **ITST Framework** and UN Agenda blueprints. Funded by **Digital Copy R&D** as a core activity to ensure financial independence and rapid development.</p>
+                </div>
+                
+                <div class="focus-item">
+                    <h3>3. Local Implementation</h3>
+                    <p>Practical execution and scalability via the **Locally4Me Group** (e.g., the **Food4Me** project), bridging global strategic threats to verifiable local action.</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="roadmap-section" id="roadmap">
+        <div class="container">
+            <h2>// PROTOCOL IMPLEMENTATION ROADMAP //</h2>
+
+            <div class="roadmap-timeline">
+                
+                <div class="roadmap-step">
+                    <div class="roadmap-step-circle"></div>
+                    <h3>Phase 1: Validation & Launch (2025/2026)</h3>
+                    <p>Finalize and publish the **Holistic Threat Assessment** (White Paper). Establish the **Digital Copy R&D** funding stream. Secure initial legal framework analysis and strategic collaborators.</p>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="roadmap-step-circle"></div>
+                    <h3>Phase 2: Blueprints & Legislation (2026/2027)</h3>
+                    <p>Develop **GEMSTONES Skill Packs** and initial **GUARDIAN SPIRITS** technical specs. Formulate the full **ITST** legislative text and the **XR-Commitment** mandate for global lobbying.</p>
+                </div>
+
+                <div class="roadmap-step">
+                    <div class="roadmap-step
