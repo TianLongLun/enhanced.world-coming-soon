@@ -61,11 +61,10 @@
             gap: 15px;
         }
 
-        /* Placeholder na Logo */
+        /* Ścieżka do Logo na GitHubie */
         .logo-img {
             height: 40px; 
             width: auto;
-            /* Usuń filter, gdy wstawisz prawdziwe logo */
             filter: drop-shadow(0 0 5px var(--neon-accent)); 
         }
 
@@ -97,8 +96,8 @@
             position: relative;
             padding: 140px 20px 100px;
             text-align: center;
-            /* Miejsce na mroczne tło technologiczne */
-            background: linear-gradient(to bottom, rgba(5,5,7,0.7), var(--bg-color)), url('https://via.placeholder.com/1920x1080/111/333?text=Cyber+Network+Background'); 
+            /* Użycie ścieżki do Tła z repo */
+            background: linear-gradient(to bottom, rgba(5,5,7,0.7), var(--bg-color)), url('assets/images/network-background.jpg'); 
             background-size: cover;
             background-position: center;
             border-bottom: 2px solid var(--neon-accent);
@@ -356,13 +355,13 @@
     <nav class="navbar">
         <div class="container navbar-content">
             <div class="logo-area">
-                <img src="https://via.placeholder.com/50x50/333/D600FF?text=LOGO" alt="Enhanced World Logo" class="logo-img">
+                <img src="assets/images/logo.png" alt="Enhanced World Logo" class="logo-img">
                 <a href="index.html" class="logo-text">ENHANCED.WORLD</a>
             </div>
             <div class="nav-links">
-                <a href="#pipeline">Pipeline</a>
-                <a href="#locally4me">Locally4Me</a>
-                <a href="collaborate.html" style="color: var(--neon-accent);">Join Us</a>
+                <a href="about.html" style="color: var(--neon-secondary);">About Us</a> 
+                <a href="#pipeline">Roadmap</a>
+                <a href="locally4me.html">Locally4Me Group</a>
             </div>
         </div>
     </nav>
