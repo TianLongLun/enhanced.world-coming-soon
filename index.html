@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENHANCED.WORLD FOUNDATION | The Execution Pipeline</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* DEFINICJA NEONOWYCH KOLORÓW */
+        /* --- DEFINICJA STYLU NEON DEEP TECH --- */
         :root {
-            --bg-color: #0A0A0E; /* Poważne, bardzo ciemne tło (Black/Navy) */
-            --text-color: #E0E0E0; /* Jasny tekst */
-            --neon-accent: #FF40BC; /* Neonowy akcent: Fuksja/Magenta */
-            --primary-color: #00A9FF; /* Niebieski/Cyjan: Kolor Kontrastowy */
+            --bg-color: #050507; /* Ultra ciemne tło */
+            --card-bg: rgba(20, 20, 25, 0.8); /* Półprzezroczyste karty */
+            --text-color: #E0E0E0;
+            --neon-accent: #D600FF; /* Mocna Magenta/Fuksja */
+            --neon-secondary: #FF9900; /* Pomarańcz - kontrast dla Fioletu */
+            --primary-cyan: #00F0FF; /* Cyjan - akcent technologiczny */
             --font-main: 'Montserrat', sans-serif;
-            --font-mono: 'Roboto Mono', monospace; /* Czcionka techniczna */
+            --font-mono: 'Roboto Mono', monospace;
         }
 
         body {
             font-family: var(--font-main);
             background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(214, 0, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 20%);
             color: var(--text-color);
             margin: 0;
             padding: 0;
@@ -27,16 +32,21 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
         }
 
-        /* NAGŁÓWEK / NAVIGACJA */
+        /* --- NAWIGACJA Z MIEJSCEM NA LOGO --- */
         .navbar {
-            background-color: transparent;
-            padding: 20px 0;
-            border-bottom: 1px solid #1E1E1E;
+            background-color: rgba(10, 10, 14, 0.9);
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .navbar-content {
@@ -45,327 +55,404 @@
             align-items: center;
         }
 
-        .logo a {
-            color: var(--neon-accent);
-            font-size: 1.6em;
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Placeholder na Logo */
+        .logo-img {
+            height: 40px; 
+            width: auto;
+            /* Usuń filter, gdy wstawisz prawdziwe logo */
+            filter: drop-shadow(0 0 5px var(--neon-accent)); 
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 1.4em;
             font-weight: 900;
             text-decoration: none;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
         .nav-links a {
-            color: var(--text-color);
+            color: #ccc;
             text-decoration: none;
-            margin-left: 35px;
-            font-weight: 400;
-            transition: color 0.3s;
-            font-family: var(--font-mono);
+            margin-left: 30px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover {
             color: var(--neon-accent);
-            text-shadow: 0 0 5px var(--neon-accent);
         }
 
-        /* SEKCJA GŁÓWNA / HERO */
+        /* --- HERO SECTION Z TŁEM --- */
         .hero {
-            padding: 120px 20px 80px;
+            position: relative;
+            padding: 140px 20px 100px;
             text-align: center;
+            /* Miejsce na mroczne tło technologiczne */
+            background: linear-gradient(to bottom, rgba(5,5,7,0.7), var(--bg-color)), url('https://via.placeholder.com/1920x1080/111/333?text=Cyber+Network+Background'); 
             background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid var(--neon-accent);
         }
-        
-        /* KOMUNIKAT O WP W TRAKCIE TWORZENIA */
+
         .wp-status {
             display: inline-block;
-            background-color: #FF000020; /* Lekko czerwone tło */
-            border: 1px solid #FF0000;
-            color: #FF0000;
-            padding: 8px 15px;
-            margin-bottom: 30px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #FF3333;
+            color: #FF3333;
+            padding: 6px 12px;
+            margin-bottom: 25px;
             font-family: var(--font-mono);
-            font-size: 0.9em;
-            border-radius: 3px;
-            text-shadow: none;
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .hero-preheader {
-            color: var(--primary-color);
-            font-size: 1em;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            font-family: var(--font-mono);
-        }
-        
         .hero h1 {
-            color: var(--text-color);
-            font-size: 3.5em;
-            margin-bottom: 10px;
+            color: #fff;
+            font-size: 3.8em;
+            margin: 0 0 20px 0;
             font-weight: 900;
             line-height: 1.1;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--neon-accent);
         }
 
         .hero-subtitle {
-            font-size: 1.4em;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #AAAAAA;
+            font-size: 1.3em;
+            margin: 0 auto 50px;
+            max-width: 750px;
+            color: #bbb;
+            font-weight: 300;
         }
 
-        /* PRZYCISK CTA: ROADMAP */
-        .cta-button {
+        .btn-main {
             display: inline-block;
-            background-color: transparent;
-            color: var(--neon-accent);
-            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--neon-accent), #9b00cc);
+            color: #fff;
+            padding: 15px 40px;
             text-decoration: none;
-            font-size: 1.1em;
             font-weight: 700;
-            border: 2px solid var(--neon-accent);
-            border-radius: 5px;
-            transition: all 0.3s;
-            text-shadow: 0 0 5px var(--neon-accent);
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(214, 0, 255, 0.4);
+            border: none;
+            cursor: pointer;
         }
 
-        .cta-button:hover {
-            background-color: var(--neon-accent);
-            color: var(--bg-color);
-            text-shadow: none;
-            box-shadow: 0 0 15px var(--neon-accent);
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(214, 0, 255, 0.7);
         }
-        
-        /* SEKCJA EXECUTION FOCUS */
+
+        /* --- FOCUS SECTION (KARTY) --- */
         .focus-section {
-            padding: 60px 20px;
-            border-top: 1px solid #1E1E1E;
+            padding: 80px 20px;
         }
 
-        .focus-section h2 {
-            color: var(--primary-color);
+        .section-title {
+            color: var(--primary-cyan);
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5em;
-            font-weight: 700;
+            margin-bottom: 60px;
+            font-size: 2.2em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .focus-grid {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 40px;
         }
 
         .focus-item {
-            width: 30%;
-            min-width: 280px;
-            padding: 25px;
-            background-color: #121216; 
-            border-left: 3px solid var(--neon-accent);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-top: 3px solid var(--neon-secondary); /* Pomarańczowy akcent */
+            position: relative;
+            transition: 0.3s;
         }
-        
+
         .focus-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 64, 188, 0.2);
+            transform: translateY(-10px);
+            border-color: var(--neon-secondary);
+            box-shadow: 0 10px 30px rgba(255, 153, 0, 0.15);
+        }
+
+        /* Placeholder na ikonę */
+        .focus-icon {
+            font-size: 2.5em;
+            color: var(--neon-secondary);
+            margin-bottom: 20px;
+            display: block;
         }
 
         .focus-item h3 {
-            color: var(--neon-accent);
+            color: #fff;
             font-size: 1.4em;
-            margin-top: 0;
+            margin-bottom: 15px;
             font-family: var(--font-mono);
-            font-weight: 700;
         }
-        
+
         .focus-item p {
-            font-size: 0.95em;
-            color: #C0C0C0;
+            color: #aaa;
+            font-size: 0.9em;
         }
-        
-        /* SEKCJA ROADMAP (NEON PROGRESS) */
+
+        /* --- ROADMAP NEON --- */
         .roadmap-section {
-            padding: 80px 20px;
-            background-color: #07070A;
-            text-align: center;
-        }
-
-        .roadmap-section h2 {
-            color: var(--neon-accent);
-            margin-bottom: 60px;
-            font-size: 2.5em;
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 64, 188, 0.4);
-        }
-
-        .roadmap-timeline {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            padding: 100px 20px;
+            background: #08080a;
             position: relative;
         }
 
-        .roadmap-timeline::before {
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        /* Linia łącząca */
+        .timeline-container::after {
             content: '';
             position: absolute;
-            top: 10px;
-            left: 5%;
-            right: 5%;
+            top: 25px;
+            left: 0;
+            right: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary-color), var(--neon-accent));
+            background: linear-gradient(90deg, var(--primary-cyan), var(--neon-accent));
+            z-index: 1;
         }
 
         .roadmap-step {
             position: relative;
+            z-index: 2;
             width: 30%;
             text-align: center;
-            padding-top: 40px;
+            background: #08080a; /* Przykrywa linię pod tekstem */
+            padding: 0 10px;
         }
 
-        .roadmap-step-circle {
-            width: 20px;
-            height: 20px;
-            background-color: var(--neon-accent);
-            border: 3px solid var(--bg-color);
+        .step-marker {
+            width: 50px;
+            height: 50px;
+            background: #111;
+            border: 2px solid var(--primary-cyan);
             border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px var(--neon-accent);
-        }
-        
-        .roadmap-step h3 {
-            color: var(--primary-color);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-cyan);
+            font-weight: bold;
             font-family: var(--font-mono);
-            font-size: 1.1em;
-            margin-top: 15px;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .roadmap-step:nth-child(2) .step-marker { border-color: #fff; color: #fff; }
+        .roadmap-step:nth-child(3) .step-marker { border-color: var(--neon-accent); color: var(--neon-accent); }
+
+        .roadmap-step h3 {
+            color: #fff;
+            font-size: 1.2em;
             margin-bottom: 10px;
         }
 
         .roadmap-step p {
-            font-size: 0.9em;
-            color: #B0B0B0;
-        }
-
-        /* STOPKA */
-        .footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #121216;
-            border-top: 1px solid var(--neon-accent);
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #888;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 850px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            .focus-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .focus-item {
-                width: 90%;
-            }
-            .roadmap-timeline {
-                flex-direction: column;
-                align-items: center;
-                gap: 50px;
-            }
-            .roadmap-timeline::before {
-                top: 0;
-                left: 20px;
-                right: auto;
-                width: 2px;
-                height: 100%;
-                background: linear-gradient(180deg, var(--primary-color), var(--neon-accent));
-            }
-            .roadmap-step {
-                width: 90%;
-                text-align: left;
-                padding-top: 0;
-                padding-left: 40px;
-            }
-            .roadmap-step-circle {
-                top: 0;
-                left: 20px;
-                transform: translateX(-50%);
-            }
+        /* --- NOWA SEKCJA: COLLABORATION & MOTTO --- */
+        .collab-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #1a0524 100%);
+            border-top: 1px solid #333;
+        }
+
+        .motto {
+            font-family: var(--font-mono);
+            color: var(--neon-accent);
+            font-size: 1.5em;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(214, 0, 255, 0.3);
+        }
+
+        .collab-content h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .collab-content p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1em;
+            color: #ccc;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 2px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-cyan);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background: #000;
+            padding: 40px 20px;
+            text-align: center;
+            color: #555;
+            font-size: 0.8em;
+            border-top: 2px solid var(--neon-secondary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .timeline-container { flex-direction: column; gap: 40px; }
+            .timeline-container::after { width: 2px; height: 100%; left: 50%; top: 0; }
+            .roadmap-step { width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="navbar-content">
-            <div class="logo"><a href="index.html">ENHANCED.WORLD</a></div>
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="logo-area">
+                <img src="https://via.placeholder.com/50x50/333/D600FF?text=LOGO" alt="Enhanced World Logo" class="logo-img">
+                <a href="index.html" class="logo-text">ENHANCED.WORLD</a>
+            </div>
             <div class="nav-links">
-                <a href="#roadmap">Roadmap</a>
-                <a href="about.html">About Us</a>
-                <a href="#locally4me.html">Locally4Me Group</a>
+                <a href="#pipeline">Pipeline</a>
+                <a href="#locally4me">Locally4Me</a>
+                <a href="collaborate.html" style="color: var(--neon-accent);">Join Us</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="hero">
+    <header class="hero">
         <div class="container">
-            <p class="wp-status">NOTE: White Paper for initiating discussion ("Holistic Technological Threat Assessment") is currently in final review.</p>
-            
-            <p class="hero-preheader"></p>
-            <h1>THE EXECUTION PIPELINE: FROM THEORY TO CERTIFIED PROTOCOLS</h1>
-            <p class="hero-subtitle">We do not just discuss existential risk; we build the legal and technical infrastructure to mitigate it, ensuring human continuity through actionable proposals, governance blueprints, and certified security standards.</p>
-            
-            <a href="#roadmap" class="cta-button">EXPLORE OUR EXECUTION ROADMAP</a>
+            <div class="wp-status">Draft Status: Holistic Threat Assessment v1.0</div>
+            <h1>THE EXECUTION <span>PIPELINE</span></h1>
+            <p class="hero-subtitle">
+                We are moving from theoretical risk assessment to certified protocols. 
+                Building the legal, technical, and ethical infrastructure to ensure human continuity.
+            </p>
+            <a href="#pipeline" class="btn-main">View Roadmap</a>
         </div>
-    </div>
+    </header>
 
-    <div class="focus-section">
+    <section class="focus-section">
         <div class="container">
-            <h2>WHAT OUR EXECUTION FOCUS DELIVERS</h2>
+            <h2 class="section-title">Execution Focus</h2>
             <div class="focus-grid">
                 
                 <div class="focus-item">
-                    <h3>1. Strategic Frameworks</h3>
-                    <p>The **GEMSTONES Protocol** (Resilience, Skill Packs, Enclaves) and the **GUARDIANS** architecture (Neuro-Security). This includes the **XR-Commitment Proposal**, cross-framework, security and legislation.</p>
+                    <span class="focus-icon">⬢</span> <h3>GEMSTONES & FENI</h3>
+                    <p>Implementing the **FENI Framework** (Framework for Ethical Neural Integration) and GEMSTONES resilience protocols. From Skill Packs to Neuro-Security architectures.</p>
                 </div>
-                
+
                 <div class="focus-item">
-                    <h3>2. Global Law & Revenue</h3>
-                    <p>Legislative proposals for the X-Rate technologies and UN Agenda blueprints. Funded by **Digital Copy R&D** as a core activity to ensure financial independence and rapid development.</p>
+                    <span class="focus-icon">⚖️</span>
+                    <h3>Global Legislation</h3>
+                    <p>Drafting the **X-Rate Technology** laws and UN Agenda blueprints. Ensuring future tech serves humanity, funded by our Digital Copy R&D.</p>
                 </div>
-                
+
                 <div class="focus-item">
-                    <h3>3. Local Implementation</h3>
-                    <p>Practical execution and scalability via the **Locally4Me Group** (e.g., ecosystem of local related app projects - DAOs, XR, AI, RnD), bridging global strategic threats to verifiable local action.</p>
+                    <span class="focus-icon">🌍</span>
+                    <h3>Locally4Me Group</h3>
+                    <p>The operational arm. A 20-module ecosystem (DAOs, XR, AI) proving that ethical frameworks work in practice. Bridging global threats with local action.</p>
                 </div>
-                
+
             </div>
         </div>
-    </div>
-    
-    <div class="roadmap-section" id="roadmap">
-        <div class="container">
-            <h2>// PROTOCOL IMPLEMENTATION ROADMAP //</h2>
+    </section>
 
-            <div class="roadmap-timeline">
+    <section class="roadmap-section" id="pipeline">
+        <div class="container">
+            <h2 class="section-title" style="color: #fff;">Protocol Implementation</h2>
+            
+            <div class="timeline-container">
                 
                 <div class="roadmap-step">
-                    <div class="roadmap-step-circle"></div>
-                    <h3>Phase 1: Validation & Launch (2025/2026)</h3>
-                    <p>Finalize and publish the **Holistic Threat Assessment** (White Paper). Establish the **DDG** and **Digital Copy R&D** funding stream. Secure initial legal framework analysis and strategic collaborators.</p>
+                    <div class="step-marker">01</div>
+                    <h3>Validation (2025/26)</h3>
+                    <p>Publish "Holistic Threat Assessment". Launch **Project Echo** (Locally4Me MVP). Secure initial Digital Copy R&D funding.</p>
                 </div>
 
                 <div class="roadmap-step">
-                    <div class="roadmap-step-circle"></div>
-                    <h3>Phase 2: Blueprints & Legislation (2026/2027)</h3>
-                    <p>Develop **GEMSTONES Skill Packs** and initial **GUARDIAN SPIRITS** technical specs. Formulate the full **ITST** legislative text and the **XR-Commitment** mandate for global lobbying.</p>
+                    <div class="step-marker">02</div>
+                    <h3>Blueprints (2026/27)</h3>
+                    <p>Develop **GEMSTONES Skill Packs**. Formulate the **FENI Legislative Text** and XR-Commitment mandates for global lobbying.</p>
                 </div>
 
                 <div class="roadmap-step">
-                    <div class="roadmap-step
+                    <div class="step-marker">03</div>
+                    <h3>Enforcement (2028+)</h3>
+                    <p>Ratification of ITST/FENI treaties. Deployment of certified **Human Enclaves**. The Deep Tech Shield is active.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="collab-section">
+        <div class="container collab-content">
+            <div class="motto">"Dream Big. Think Beyond."</div>
+            
+            <h2>WE ARE BUILDING THE COUNCIL</h2>
+            <p>
+                We seek Visionaries, Coders, Biologists, and Polymaths. 
+                Whether you have a PhD or a garage project—if you want to build a world without executioners and victims, we have a place for you.
+            </p>
+            
+            <a href="collaborate.html" class="btn-outline">See Open Roles & Contact</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Enhanced.World Foundation | Locally4Me Group OÜ</p>
+            <p style="opacity: 0.5; margin-top: 10px;">Tallinn, Estonia | Global Operations</p>
+        </div>
+    </footer>
+
+</body>
+</html>
