@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced.World™</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        /* NEON MAGENTA/PURPLE PALETTE - Cyberpunk Optimistic */
+        --bg-black: #000000;
+        --bg-deep: #0a0510;
+        --card-bg: rgba(20, 10, 25, 0.85);
+        
+        --neon-magenta: #FF00FF;
+        --neon-pink: #FF69B4;
+        --neon-purple: #9D00FF;
+        --neon-plum: #C71585;
+        --neon-violet: #A500B5;
+        --neon-hot: #FF1493;
+        --accent-lime: #92CA2C;
+        
+        --text-main: #FFD1F1;
+        --text-bright: #FF00FF;
+        
+        --font-main: 'Plus Jakarta Sans', sans-serif;
+        --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-main);
+        background-color: var(--bg-black);
+        background-image: 
+            radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.08) 0%, transparent 30%),
+            radial-gradient(circle at 90% 80%, rgba(157, 0, 255, 0.08) 0%, transparent 30%);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    .mono { 
+        font-family: var(--font-mono); 
+    }
+
+/* RADIAL RAYS */
+.radial-rays-bg {
+  position: fixed;
+  inset: -50%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255,0,255,0.08) 0deg 6deg,
+      rgba(0,0,0,0) 6deg 18deg
+    );
+  animation: rotate-rays 180s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate-rays {
+  to { transform: rotate(360deg); }
+}
+    /* BACKGROUND LAYERS */
+    #matrix-canvas {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 100%; 
+        height: 100%;
+        z-index: -2;
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    .tiger-stripes {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 200%; 
+        height: 200%;
+        background: repeating-linear-gradient(
+            -30deg,
+            transparent,
+            transparent 150px,
+            rgba(10, 5, 16, 0.95) 150px,
+            rgba(10, 5, 16, 0.95) 300px
+        );
+        z-index: -1;
+        pointer-events: none;
+        animation: move-stripes 50s linear infinite;
+    }
+
+    @keyframes move-stripes {
+        from { transform: translateX(-10%); }
+        to { transform: translateX(0); }
+    }
+
+    .noise-bg {
+        position: fixed;
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.06;
+        pointer-events: none;
+        z-index: 49;
+    }
+
+    /* GLASS EFFECT */
+    .glass {
+        background: var(--card-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 0, 255, 0.15);
+        box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+    }
+
+    /* NAVIGATION */
+    nav.fixed {
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+    }
+
+    .nav-logo-box {
+        border: 1px solid rgba(255, 20, 147, 0.5);
+    }
+
+    .nav-link {
+        transition: all 0.3s;
+        color: var(--text-main);
+    }
+
+    .nav-link:hover {
+        color: var(--neon-pink);
+        text-shadow: 0 0 10px var(--neon-pink);
+    }
+
+    /* BUTTONS */
+    .btn-main {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--neon-magenta), var(--neon-plum));
+        color: var(--bg-black);
+        padding: 15px 40px;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 2px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-main:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+    }
+
+    .btn-industrial {
+        background: linear-gradient(135deg, var(--neon-magenta), var(--neon-hot));
+        color: var(--bg-black);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        transition: all 0.3s ease;
+        display: inline-block;
+        padding: 12px 24px;
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    }
+
+    .btn-industrial:hover { 
+        transform: scale(1.05); 
+        filter: brightness(1.2);
+        box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
+    }
+
+    /* LANGUAGE BUTTONS */
+    .lang-btn { 
+        opacity: 0.5; 
+        transition: opacity 0.3s;
+        color: var(--text-main);
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .lang-btn.active { 
+        opacity: 1; 
+        color: var(--neon-magenta); 
+        border-bottom: 2px solid var(--neon-magenta); 
+        text-shadow: 
+            0 0 5px var(--neon-magenta),
+            0 0 10px var(--neon-magenta),    
+            0 0 15px var(--neon-magenta);                 
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal { 
+        opacity: 0; 
+        transform: translateY(25px); 
+        transition: all 0.8s ease-out; 
+    }
+
+    .reveal.visible { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 40px 80px;
+        position: relative;
+    }
+
+    .hero-section h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 900;
+        line-height: 0.9;
+        margin-bottom: 2rem;
+        color: var(--text-main);
+        text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+    }
+
+    .hero-section h1 .highlight {
+        color: var(--neon-magenta);
+        text-shadow: 0 0 30px var(--neon-magenta);
+    }
+
+    /* FOCUS CARDS */
+    .focus-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .focus-item {
+        padding: 2rem;
+        background: var(--card-bg);
+        border: 1px solid rgba(255, 0, 255, 0.2);
+        border-top: 3px solid var(--neon-magenta);
+        transition: all 0.3s;
+    }
+
+    .focus-item:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon-pink);
+        box-shadow: 0 10px 40px rgba(255, 0, 255, 0.2);
+    }
+
+    .focus-icon {
+        font-size: 2.5em;
+        color: var(--neon-pink);
+        margin-bottom: 1rem;
+        display: block;
+        filter: drop-shadow(0 0 10px var(--neon-pink));
+    }
+
+    .focus-item h3 {
+        color: var(--neon-magenta);
+        font-size: 1.4em;
+        margin-bottom: 1rem;
+        font-family: var(--font-mono);
+    }
+
+    .focus-item p {
+        color: var(--text-main);
+        opacity: 0.8;
+        font-size: 0.9em;
+    }
+
+    /* ROADMAP */
+    .roadmap-section {
+        padding: 100px 20px;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: 2.5em;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--neon-magenta);
+        text-shadow: 0 0 20px var(--neon-magenta);
+    }
+
+    .timeline-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        position: relative;
+        margin-top: 60px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .roadmap-step {
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .step-marker {
+        width: 60px;
+        height: 60px;
+        background: var(--bg-black);
+        border: 3px solid var(--neon-magenta);
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--neon-magenta);
+        font-weight: bold;
+        font-family: var(--font-mono);
+        font-size: 1.2em;
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    }
+
+    .roadmap-step:nth-child(2) .step-marker { 
+        border-color: var(--neon-pink); 
+        color: var(--neon-pink);
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    }
+
+    .roadmap-step:nth-child(3) .step-marker { 
+        border-color: var(--neon-purple); 
+        color: var(--neon-purple);
+        box-shadow: 0 0 20px rgba(157, 0, 255, 0.5);
+    }
+
+    .roadmap-step:nth-child(4) .step-marker { 
+        border-color: var(--neon-hot); 
+        color: var(--neon-hot);
+        box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+    }
+
+    .roadmap-step h3 {
+        color: var(--text-main);
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .roadmap-step p {
+        font-size: 0.85em;
+        color: var(--text-main);
+        opacity: 0.7;
+    }
+.content-wrapper {
+    max-width: 1200px; /* Stała szerokość dla prestiżowego wyglądu */
+    margin: 0 auto;    /* Magia centrowania */
+    padding: 0 40px;   /* Oddech na boki */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrowanie elementów wewnątrz */
+    text-align: center;  /* Centrowanie tekstu */
+}
+    /* TOOLTIPS */
+    .secure-contact-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip-box2 {
+        visibility: hidden;
+        width: 200px;
+        background-color: var(--bg-deep);
+        color: var(--neon-pink);
+        text-align: center;
+        border-radius: 6px;
+        border: 1px solid var(--neon-magenta);
+        padding: 8px 0;
+        position: absolute;
+        z-index: 100;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s;
+        font-size: 0.85rem;
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+    }
+
+    .secure-contact-container:hover .tooltip-box2 {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    /* DETAILS/SUMMARY */
+    details {
+        border: 2px solid rgba(255, 0, 255, 0.3);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+    details:hover {
+        border-color: var(--neon-magenta);
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+    }
+
+    summary {
+        cursor: pointer;
+        padding: 1.5rem;
+        background: rgba(10, 5, 16, 0.6);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s;
+    }
+
+    details[open] summary {
+        background: rgba(10, 5, 16, 0.8);
+    }
+
+    /* WP STATUS */
+    .wp-status {
+        display: inline-block;
+        background: rgba(255, 0, 255, 0.1);
+        border: 1px solid var(--neon-magenta);
+        color: var(--neon-magenta);
+        padding: 8px 16px;
+        margin-bottom: 25px;
+        font-family: var(--font-mono);
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .wp-status:hover {
+        background: rgba(255, 0, 255, 0.2);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+    }
+
+    /* FOOTER */
+    footer {
+        background: var(--bg-black);
+        padding: 40px 20px;
+        text-align: center;
+        color: var(--text-main);
+        opacity: 0.6;
+        font-size: 0.8em;
+        border-top: 2px solid var(--neon-magenta);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 100px 20px 60px;
+        }
+        
+        nav .hidden {
+            display: none !important;
+        }
+    }
+
+    /* CENTER UTILITY */
+    .text-center {
+        text-align: center;
+    }
+
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+</head>
+<body>
+    <!-- BACKGROUND LAYERS -->
+
+    <div class="radial-rays-bg"></div>
+    <canvas id="matrix-canvas"></canvas>
+        <div class="noise-bg"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-[60] glass px-8 py-4 flex items-center border-b border-white/5">
+        <div class="flex items-center gap-6">
+            <div class="flex flex-col nav-logo-box leading-none">
+                <div class="bg-black px-2 py-1">
+                    <div class="text-xl font-bold tracking-tighter text-white">
+                        Enhanced<span style="color: var(--neon-magenta)">.World</span>
+                    </div>
+                </div>
+                <div class="bg-black px-1 py-0.5 text-center">
+                    <span style="color: var(--neon-magenta)" class="text-[10px] font-bold uppercase tracking-[0.2em]">FOUNDATION</span>
+                </div>
+            </div>
+
+            <div class="flex gap-4 text-[11px] mono border-l pl-4" style="border-color: rgba(255, 0, 255, 0.2)">
+                <button onclick="setLanguage('en')" id="en-btn" class="lang-btn active">EN</button>
+            </div>
+        </div>
+
+        <div class="ml-auto flex items-center gap-10">
+            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em]">
+                <a href="#pipeline" class="nav-link">Roadmap</a>
+                <a href="https://locally4me.world" class="nav-link">Locally4Me Group</a>
+                <a href="cooperation.html" class="nav-link">Cooperation & Contact</a>
+            </div>
+            <div class="secure-contact-container">
+                <a href="javascript:void(0)" onclick="openSecureMail()" class="btn-industrial px-8 py-2 text-[10px]">Contact</a>
+                <span class="tooltip-box2">Proton Secure Email</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="max-w-5xl reveal">
+            <div class="mono text-xs mb-6 tracking-[0.6em] font-bold uppercase border-l-4 pl-4" 
+                 style="color: var(--neon-magenta); border-color: var(--neon-magenta)"; align: center; 
+                 data-i18n="hero_label">
+                Technology - Survival - Thrive 
+            </div>
+            <h1 id="hero-title" data-i18n="hero_title" align="center";>
+                Technology for <span class="highlight"><strong>everyone</strong>'s benevolence</span>
+            </h1>
+            <p class="max-w-2xl leading-relaxed mb-4" style="opacity: 0.85" data-i18n="hero_desc">
+                <strong>Ensuring survival</strong> of individual, human kind, earth, alternatives, societies, and communities. We build alternatives. Our goal is: <strong>at least fine life for everyone</strong> - we believe that garden have to be built, it will not appear out of nowhere.<br><br>
+                <strong>Enhanced.World is science and technology</strong> related foundation, divided into three branches:<br><br>
+                1. TECH: For Science, Research, Education, Development, Data,<br>
+                2. IMPACT: Empathy (games, lobbying), Publications, Charity (we want to help orphans and poor children; painfully ill; and torture, sex crime and slavery victims);<br>
+                3. L4M-GOVERNANCE: Functions for our partner company over and related to its DAO systems.<br><br>
+                At this stage we focus on co-organisation of real life scenario cybersecurity event. Shortly will start FENI, finishing translations than documents for GEMSTONES Project and RMCC Platform. We have roadmaps for 14 major projects - that we will want to operate at constant rate if possible - for every time scale possible. We build today and plan for the future.
+            </p>
+            <div class="text-center mt-8">
+                <a href="#pipeline" class="btn-main" data-i18n="hero_button">View Roadmap</a>
+            </div>
+        </div>
+    </section>
+<main class="content-wrapper">
+    <!-- WHITEPAPER SECTION -->
+    <section class="py-10 px-10">
+        <div class="max-w-5xl mx-auto text-center reveal">
+            <div class="wp-status" data-i18n="whitepaper_link">
+                <a href="wh-techdangerspl09.pdf" download>Download: Turn of Cycles and Holistic Technological Threat Assessment #1Introduction PLv0.9PDF (EN soon)</a>
+            </div>
+            <p style="opacity: 0.8" data-i18n="whitepaper_desc">
+                Our first document (EN and other translations soon) - voice about current times, cycles of change and holistic threat assessments - includes experiments references.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOCUS SECTION -->
+    <section class="py-20 px-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title" data-i18n="focus_title">Execution Focus</h2>
+            <div class="focus-grid">
+                <div class="focus-item reveal">
+                    <span class="focus-icon">⚖️</span>
+                    <h3 data-i18n="focus_feni_title">DISCUSSIONS & FENI™</h3>
+                    <p data-i18n="focus_feni_desc">
+                        Frontier Ethical Normative Initiative - discussions, creation, publication and lobbying for legislatives on safe technology. We connect experts and create frameworks, good practices, security standards, safety & hygiene of upcoming technologies. We will publish base documents to initiate discussion - on practical technological threats prevention and publish conclusions & summaries, good practices and hygiene.
+                    </p>
+                    <p style="margin-top: 1rem">
+                        Impactful Research Chain Initiative - all sides beneficial scientific discussion format that will bring each project closer with every small contribution. We will provide platform/connections and topics.
+                    </p>
+                </div>
+
+                <div class="focus-item reveal">
+                    <span class="focus-icon">🌐</span>
+                    <h3 data-i18n="focus_event_title">Impactful Events Format<br>- Cybersecurity Tournament</h3>
+                    <p data-i18n="focus_event_desc">
+                        To accelerate development of safety-related technologies at the dawn of BMI/XR/robots, and to educate and widen awareness, we are preparing a yearly tournament in the form that will promote our goals, development of security software, and be part of founding and cadre connection for our future projects.
+                    </p>
+                </div>
+
+                <div class="focus-item reveal">
+                    <span class="focus-icon">🛡️</span>
+                    <h3 data-i18n="focus_projects_title">Anti-Kidnapp System</h3>
+                    <p data-i18n="focus_projects_desc1">
+                        Software, Set of Hardware and Complete Service. Emergency Monitoring and Reaction, multistage system.
+                    </p>
+                    <h3 style="margin-top: 1.5rem">GEMSTONES™</h3>
+                    <p style="margin-top: 0.5rem">
+                        Skill Packs Initiative (in cooperation), Documents and lobbying.
+                    </p>
+                    <h3 style="margin-top: 1.5rem">Locally4Me Group</h3>
+                    <p style="margin-top: 0.5rem" data-i18n="focus_projects_desc2">
+                        Our main partner, provide plugins and ecosystem for our web3 solutions like: Crisis Alternative App Pack, Shared Computing Power Plugin, Children Games, Data Protection and Cybersecurity Development.
+                    </p>
+                </div>
+
+                <div class="focus-item reveal">
+                    <span class="focus-icon">◆</span>
+                    <h3 data-i18n="focus_immortality_title">The Immortality Found</h3>
+                    <p data-i18n="focus_immortality_desc">
+                        Set of subprojects related to preserving the individual:<br><br>
+                        1. Digital Tombstone: Memory of person, life data, presentation, animated, holographic or robotic impersonation, personality description, achievements and life, videos, pictures, genome - stored in resilient and long-lasting data storage (for example crystals).<br>
+                        2. Digital Copy - neuron web, AI copy, custom tweaked model.<br>
+                        U. Aggregation of research and connecting with science teams - on medicine, extending youth, and possibilities of immortality by technology.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP SECTION -->
+    <section class="roadmap-section" id="pipeline">
+        <div class="max-w-7xl mx-auto" md:grid-cols-2>
+            <h2 class="section-title" data-i18n="roadmap_title">Activity Pipeline</h2>
+            
+            <div class="timeline-container">
+                <div class="roadmap-step reveal">
+                    <div class="step-marker">01</div>
+                    <h3 data-i18n="roadmap_q3_title">World Wide Cybersecurity Event (Q3.2026)</h3>
+                    <p data-i18n="roadmap_q3_desc">
+                        Our format will be entertaining for broad audience, specialists, teams. The real life, mass tests will be beneficial and rich in data for interested parties. The Foundation is preparing website and invitations for participants. Format is ready.
+                    </p>
+                </div>
+
+                <div class="roadmap-step reveal">
+                    <div class="step-marker">02</div>
+                    <h3 data-i18n="roadmap_2026_title">Documents & Networking (2026)</h3>
+                    <p data-i18n="roadmap_2026_desc">
+                        <strong>GEMSTONES: Skill Packs and Enclaves White Paper</strong>.<br>
+                        Start the <strong>Frontier Ethical Normative Initiative</strong> and propose XR-Commitment treaty for global lobbying (sketch in our first paper).
+                    </p>
+                </div>
+
+                <div class="roadmap-step reveal">
+                    <div class="step-marker">03</div>
+                    <h3 data-i18n="roadmap_2027_title">Projects operations and expansion (2027+)</h3>
+                    <p data-i18n="roadmap_2027_desc">
+                        Platform services/plugin packs for Locally4Me.<br><br>
+                        Data / Robots Security and Certification, Digital Copy, web3, blockchain.
+                    </p>
+                </div>
+
+                <div class="roadmap-step reveal">
+                    <div class="step-marker">04</div>
+                    <h3 data-i18n="roadmap_2029_title">DAO's implementation, operation and supervision & Charity Projects (2029+)</h3>
+                    <p data-i18n="roadmap_2029_desc">
+                        We will start other projects from our portfolio in accordance to available financing and situation. Will be involved also in education and research. Still our goals is to be able to operate our charity projects.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLABORATION SECTION -->
+    <section class="py-20 px-10" style="background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(20,5,30,0.5) 100%)">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <div class="mono text-2xl mb-8 tracking-[0.3em] font-bold uppercase" 
+                 style="color: var(--neon-magenta); text-shadow: 0 0 20px var(--neon-magenta)" 
+                 data-i18n="collab_motto">
+                "Dream Big. Think Beyond."
+            </div>
+            <p class="text-lg leading-relaxed mb-8" style="opacity: 0.9" data-i18n="collab_desc">
+                We seek talented, learning individuals and experts for various kind of cooperations, in few projects of interdisciplinary scope. Full list of fields of expertise / skills we want to include in our research and development. Whether you have a PhD or a garage project — if you want to build a better world, without tortures and victims, without hunger and terror - we have a place for you.
+            </p>
+            <div class="secure-contact-container">
+                <a href="javascript:void(0)" onclick="openSecureMail()" class="btn-industrial px-12 py-3 text-sm">Contact Us</a>
+                <span class="tooltip-box2">Proton Secure Email</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DDG SECTION -->
+    <section id="security" class="py-20 px-10" style="background: rgba(0, 0, 0, 0.4)">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal">
+                <h2 class="text-4xl font-black mb-8 uppercase tracking-tighter" 
+                    style="color: var(--neon-magenta); text-shadow: 0 0 20px var(--neon-magenta)" 
+                    data-i18n="ddg_title">
+                    DATA DEFENCE GAMES™ <span style="color: var(--neon-pink)">6DAY RED/BLUE team real life scenario challenge</span>
+                </h2>
+                
+                <div class="glass p-8 rounded border-l-4" style="border-color: var(--neon-magenta)">
+                    <div class="mono text-[10px] mb-2 uppercase font-bold" 
+                         style="color: var(--neon-pink)">
+                        HACKER CHALLENGE ESPORT / DATA GATHERING
+                    </div>
+                    <h4 class="font-bold text-lg mb-2" style="color: var(--text-main)">DATA DEFENCE GAMES™</h4>
+                    <p class="text-sm" style="opacity: 0.8" data-i18n="ddg_desc">
+                        Three tournament rounds (plus 1), CTF, 2+4 days. Min. Team: Server + 2 person (optimum 5-6 or more), possibility to participate in attack in round 3 and bonus round.<br>
+                        EDU: student circles (universities, polytechnics, academies), communities of specialists;<br>
+                        PRO: Company Employees / Sponsored, Governmental / NGO, Professionals.<br><br>
+                        Audience: Esport enthusiasts, Specialists, POP culture/sport audience.<br><br>
+                        The recurring event will influence cybersecurity development and awareness, benefit talents and users. The income will fuel our projects. We have various offer for sponsors and possibilities of cooperation - contact us for more info or participation!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATIONS SECTION -->
+    <section id="ecosystem" class="py-20 px-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal">
+                <h2 class="text-4xl font-black mb-6 uppercase" 
+                    style="color: var(--neon-magenta); text-shadow: 0 0 15px var(--neon-magenta)" 
+                    data-i18n="apps_title">
+                    Applications Sets:
+                </h2>
+                <p class="mb-8" style="opacity: 0.85" data-i18n="apps_desc">
+                    We will gradually offer Packs of individual applications/plugins for Locally4Me ecosystem: <strong>Basic Social Pack</strong> (including free surplus, charity, voluntary);<br>
+                    <strong>Local Community Pack</strong> (life-helping set of digital tools)<br>
+                    <strong>Shared Computing Power Plugin</strong>
+                </p>
+                <p style="opacity: 0.8">
+                    BSP will contain: F4F - platform and plugin where surplus food can be given for free abonements on Food4Me platform.<br>
+                    F4M - plugin for free items. HL - local community help, charity, voluntary.<br>
+                    C4M - local self management, connection, time schedule.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section class="py-10 px-10">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <p class="mb-6 text-sm" style="opacity: 0.7" data-i18n="contact_cta">
+                Direct inquiries for collaborations. Contact via Proton Mail:
+            </p>
+            <div class="flex-center">
+                <a href="javascript:void(0)" onclick="openSecureMail()" class="btn-industrial px-16 py-4 text-sm">
+                    Secure Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION & VALUES -->
+    <div id="mission" class="max-w-4xl mx-auto my-20 px-10 reveal">
+        <details class="group border-2 rounded-sm overflow-hidden transition-all duration-300" 
+                 style="border-color: rgba(255, 0, 255, 0.3)">
+            <summary class="list-none cursor-pointer p-6 flex items-center justify-between transition-all duration-300" 
+                     style="background: rgba(10, 5, 16, 0.6)">
+                <div class="flex flex-col border-l-4 pl-4" style="border-color: var(--neon-magenta)">
+                    <span class="mono text-[10px] uppercase tracking-[0.4em] font-bold" 
+                          style="color: var(--neon-pink)">
+                        Project Core
+                    </span>
+                    <span class="text-xl tracking-tighter" 
+                          style="color: var(--neon-magenta)" 
+                          data-i18n="mission_title">
+                        Mission & Values
+                    </span>
+                </div>
+                <div class="mono text-2xl" style="color: var(--neon-magenta)">+</div>
+            </summary>
+
+            <div class="p-8 border-t leading-relaxed text-sm" 
+                 style="background: rgba(0, 0, 0, 0.5); border-color: rgba(255, 0, 255, 0.2)">
+                <p class="mb-4">All names are TM (and to be registered).</p>
+                
+                <h3 class="font-semibold text-base mb-3 mt-6" style="color: var(--neon-pink)">OPERATIONAL VALUES:</h3>
+                <ul class="list-none space-y-2 mb-6 ml-4">
+                    <li><strong>Efficiency through Synergy</strong> — Every action serves multiple goals</li>
+                    <li><strong>Long-term Resilience</strong> — Shared talent, mutual growth, distributed risk</li>
+                    <li><strong>Local Commitment, Global Technology</strong> — Deep community roots, worldwide impact</li>
+                    <li><strong>Sovereignty by Design</strong> — Stable systems that operate independently of geopolitical volatility</li>
+                </ul>
+                
+                <h3 class="font-semibold text-base mb-3 mt-6" style="color: var(--neon-pink)">ETHICAL VALUES:</h3>
+                <ul class="list-none space-y-2 mb-6 ml-4">
+                    <li><strong>Dignity & Respect</strong> — No cruelty</li>
+                    <li><strong>Sustainability</strong> — We eliminate waste in materials, time, and capital</li>
+                </ul>
+                
+                <h3 class="font-semibold text-base mb-4 mt-8" style="color: var(--neon-pink)">THE OPPORTUNITY AND MISSION</h3>
+                
+                <p class="mb-4">
+                    Our products and services adhere to the highest standards and solve real, current-day and upcoming problems of people and companies.
+                </p>
+                
+                <p class="mb-4">
+                    The world is reshaping. Picture the moment: the first trickles breach the Strait of Gibraltar. Sand shifts. The barrier weakens. Then—the Mediterranean floods back to life. Not overnight, but inevitable.
+                    What follows is a permanent change in the economic, political, and social landscape. <strong>Are YOU ready?</strong>
+                </p>
+                
+                <p class="italic mb-4">Securing a place in the future. We have the blueprints.</p>
+                
+                <p class="mb-4"><strong>This is the tipping point.</strong></p>
+                
+                <p class="font-semibold text-base mt-6" style="color: var(--neon-pink)">
+                    Are you ready to build with us?
+                </p>
+                
+                <p class="mt-4 italic">Let's talk about where our visions align.</p>
+            </div>
+        </details>
+    </div>
+</main>
+    <!-- FOOTER INFO -->
+    <section class="py-10 px-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="pt-4 border-t grid md:grid-cols-2 gap-8 text-left" 
+                 style="border-color: rgba(255, 0, 255, 0.2); opacity: 0.6">
+                <div class="mono text-[10px] uppercase tracking-[0.3em] leading-relaxed">
+                    Netherlands Foundation Enhanced.World<br>
+                    (To be registered) 2026 Non-Profit Entity
+                </div>
+                <div class="mono text-[10px] uppercase tracking-[0.3em] leading-relaxed">
+                    In association of holding company Locally4Me Group OÜ™<br>
+                    Juhkentali 8, Tallinn 10132<br>
+                    Republic of Estonia, EU.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Locally4Me Group OÜ</p>
+        <p style="opacity: 0.5; margin-top: 10px;">Tallinn, Estonia | Global Operations</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+    
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(i18n[lang] && i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+            
+            const heroTitle = document.getElementById('hero-title');
+            if(heroTitle && i18n[lang].hero_title) {
+                heroTitle.innerHTML = i18n[lang].hero_title;
+            }
+            
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`${lang}-btn`).classList.add('active');
+            localStorage.setItem('l4m_pref_lang', lang);
+        }
+
+        // Reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('visible'); 
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Initialize language
+        window.onload = () => {
+            const saved = localStorage.getItem('l4m_pref_lang') || 'en';
+            setLanguage(saved);
+        };
+
+        // MATRIX RAIN with NEON effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01010101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ01010αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ日代码计算机术生命力死禍財前祥發富貴こんにちはᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿðĐĩũơưĂÂÊÔƠƯ';
+        
+        const fontSize = 14;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = [];
+        
+        for(let i = 0; i < columns; i++) {
+            drops[i] = 1 + Math.random() * 100;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = fontSize + 'px JetBrains Mono';
+
+            for(let i = 0; i < drops.length; i++) {
+                const char = chars.charAt(Math.floor(Math.random() * chars.length));
+                
+                // NEON colors - magenta/pink/purple
+                if(Math.random() > 0.97) {
+                    ctx.fillStyle = 'rgba(255, 0, 255, 0.9)'; // bright magenta
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#FF00FF';
+                } else if(Math.random() > 0.95) {
+                    ctx.fillStyle = 'rgba(255, 105, 180, 0.8)'; // hot pink
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#FF69B4';
+                } else {
+                    ctx.fillStyle = 'rgba(157, 0, 255, 0.5)'; // purple
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = '#9D00FF';
+                }
+                
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                
+                // Reset shadow
+                ctx.shadowBlur = 0;
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+    
+        function openSecureMail() {
+            const u = "strategic";
+            const d = "locally4me.org";
+            window.location.href = "mailto:" + u + "@" + d;
+        }
+    </script>
+</body>
+</html>
