@@ -221,11 +221,13 @@
     /* HERO SECTION */
     .hero-section {
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 120px 40px 80px;
-        position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* To trzyma w pionie */
+    align-items: center;    /* TO JEST KLUCZOWE - to wyśrodkuje w poziomie */
+    padding: 120px 40px 80px;
+    position: relative;
+    text-align: center;     /* To zadba o tekst wewnątrz */
     }
 
     .hero-section h1 {
