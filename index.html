@@ -545,6 +545,142 @@ display: grid;
                 <a href="#pipeline" class="btn-main" data-i18n="hero_button">View Roadmap</a>
             </div>
         </div>
+   <section id="commitments" class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-4 mb-10 overflow-x-auto pb-4 scrollbar-hide">
+            <button onclick="updatePanel(0)" class="sel-btn active" data-id="0">AI</button>
+            <button onclick="updatePanel(1)" class="sel-btn" data-id="1">Sustain</button>
+            <button onclick="updatePanel(2)" class="sel-btn" data-id="2">Safety</button>
+            <button onclick="updatePanel(3)" class="sel-btn" data-id="3">XR</button>
+            <button onclick="updatePanel(4)" class="sel-btn" data-id="4">Bio/AM</button>
+            <button onclick="updatePanel(5)" class="sel-btn" data-id="5">Incentives</button>
+        </div>
+
+        <div id="main-panel" class="glass p-10 border-t-4 border-neon-magenta relative overflow-hidden min-h-[400px]">
+            <div id="panel-content" class="reveal visible">
+                </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .sel-btn {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 2px;
+        padding: 12px 24px;
+        background: rgba(255, 0, 255, 0.05);
+        border: 1px solid rgba(255, 0, 255, 0.2);
+        color: var(--text-main);
+        transition: all 0.3s;
+        text-transform: uppercase;
+    }
+    .sel-btn:hover, .sel-btn.active {
+        background: rgba(255, 0, 255, 0.2);
+        border-color: var(--neon-magenta);
+        color: #fff;
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    }
+    
+    .panel-group { margin-bottom: 2rem; }
+    .panel-header { 
+        color: var(--neon-magenta); 
+        font-family: var(--font-mono); 
+        font-weight: 700; 
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .panel-header::before { content: '◆'; font-size: 10px; }
+    
+    .text-dim { color: var(--text-main); opacity: 0.7; font-size: 0.9rem; }
+    .text-bright { color: #fff; font-weight: 600; }
+</style>
+
+<script>
+    const commitmentData = [
+        {
+            title: "AI & Human Operation",
+            groups: [
+                { h: "A.1 Ratio", p: "Human-Artificial Operation Ratio (AI + autonomous machines) – must directly influence taxes and society obligations." },
+                { h: "A.2 Danger Mitigation", p: "Responsibility for usage falls on creators. Requires hardware-level unmodifiable ethical data and verification-release models." },
+                { h: "Reasoning", p: "Economy: Prevents total redundancy of classic labor (75%) vs elite (1%). Defends against psychopathic detachment in corporate systems." }
+            ]
+        },
+        {
+            title: "Sustainability & Resources",
+            groups: [
+                { h: "B.1 Land Priority", p: "Quality landscapes and nature prioritized over data centers and factories. Protect the biological base." },
+                { h: "B.2 Food Security", p: "Quality food production must be economically and lawfully promoted as a fundamental security asset." },
+                { h: "Infrastructure", p: "Investment in tech must be matched by locally enhancing investments open to the community." }
+            ]
+        },
+        {
+            title: "Safety & Off-Switches",
+            groups: [
+                { h: "C.1 Network Protocols", p: "Never allow connected nets of AI without an independent, physical off-switch and verification layer." },
+                { h: "C.2 Strategic Weapons", p: "AI weapons must never be autonomous. Mandatory (double) human link for all kinetic/strategic actions." },
+                { h: "D. Redundancy", p: "Alternative options must be maintained. Never allow full dependency on single-stream long-term systems." }
+            ]
+        },
+        {
+            title: "XR & Virtual Reality",
+            groups: [
+                { h: "Real-World Priority", p: "Do not put virtual assets over real world, or power over food. Artificial stimulation must not override real body health." },
+                { h: "Open Systems", p: "Open sensors and system of 'worlds-layers' with clear regulations and provider responsibilities." },
+                { h: "Enforcement", p: "Implementation of moderation, policing, and clear legal claim paths for virtual interactions." }
+            ]
+        },
+        {
+            title: "Advanced Bio-Science",
+            groups: [
+                { h: "AM & BMI", p: "Restrain autonomous machines and brain-machine interfaces from unverified cross-network activity." },
+                { h: "Bioscience Monitoring", p: "Strict monitoring of human-animal hybrids and biorobots. Mandatory visitation commissions and verification processes." },
+                { h: "Risk Rate", p: "High-risk projects require constant oversight and independent ethical auditing." }
+            ]
+        },
+        {
+            title: "Incentive Systems",
+            groups: [
+                { h: "Environmental Transformation", p: "Transforming environments and conditions so that ethical behavior is the most profitable path." },
+                { h: "Positive Promotion", p: "Systems promoted by the environment must reward long-term stability over short-term exploitation." },
+                { h: "Engagement", p: "Encouraging community-led revision and claim systems to maintain ecosystem balance." }
+            ]
+        }
+    ];
+
+    function updatePanel(index) {
+        // Update Buttons
+        document.querySelectorAll('.sel-btn').forEach((btn, i) => {
+            btn.classList.toggle('active', i === index);
+        });
+
+        // Fade out and update content
+        const content = document.getElementById('panel-content');
+        content.style.opacity = '0';
+        
+        setTimeout(() => {
+            const data = commitmentData[index];
+            let html = `<h2 class="text-2xl font-black mb-8 uppercase tracking-tighter" style="color: #fff">${data.title}</h2>`;
+            
+            data.groups.forEach(g => {
+                html += `
+                    <div class="panel-group">
+                        <div class="panel-header uppercase text-xs tracking-widest">${g.h}</div>
+                        <p class="text-dim"><span class="text-bright">${g.p.split(' – ')[0]}</span> – ${g.p.split(' – ')[1] || ''}</p>
+                    </div>
+                `;
+            });
+            
+            content.innerHTML = html;
+            content.style.opacity = '1';
+        }, 200);
+    }
+
+    // Init first panel
+    window.addEventListener('load', () => updatePanel(0));
+</script>
     </section>
 <main class="content-wrapper">
     <!-- WHITEPAPER SECTION -->
