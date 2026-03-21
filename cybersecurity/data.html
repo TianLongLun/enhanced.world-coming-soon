@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Data, Privacy &amp; Licensing — Essential Cybersecurity Benchmark</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --white:#ffffff; --sky:#eaf3f8; --airport-blue:#dbeaf2; --emerald-cyan:#2aa198; --soft-cyan:#3bb7da; --gray:#6f7a82; --black:#111111; --gold:#d6b35c; --peach:#f3b59a; --royal-burgundy:#7a1f2b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Inter",sans-serif; color:var(--black); background:linear-gradient(to bottom,var(--white),var(--sky)); line-height:1.6; }
+    .mono { font-family:'IBM Plex Mono',monospace; }
+    header { background:var(--white); border-bottom:1px solid #e1e6ea; position:sticky; top:0; z-index:200; }
+    .nav { max-width:1200px; margin:0 auto; padding:18px 24px; display:flex; justify-content:space-between; align-items:center; }
+    .nav-logo { font-weight:600; letter-spacing:0.03em; }
+    .nav-links a { margin-left:24px; font-size:13px; color:var(--black); text-transform:uppercase; letter-spacing:1px; text-decoration:none; }
+    .hero { padding:100px 24px 80px; background:radial-gradient(ellipse at top,var(--airport-blue),var(--white)); }
+    .hero-inner { max-width:1000px; margin:0 auto; }
+    .hero h1 { font-size:42px; font-weight:500; margin-bottom:24px; }
+    .hero p { font-size:18px; color:var(--gray); max-width:820px; }
+    footer { background:#0f2a3a; color:#dce9f2; padding:60px 24px; font-family:'IBM Plex Mono',monospace; font-size:12px; }
+    footer a { color:#9ad0ff; text-decoration:none; margin-right:20px; }
+    .event-subnav { position:sticky; top:57px; z-index:150; background:var(--white); border-bottom:2px solid var(--airport-blue); overflow-x:auto; white-space:nowrap; }
+    .event-subnav-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; align-items:center; }
+    .event-subnav a { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.2px; color:var(--black); text-decoration:none; padding:12px 14px; border-bottom:3px solid transparent; transition:all 0.2s; opacity:0.55; }
+    .event-subnav a:hover { opacity:1; border-bottom-color:var(--emerald-cyan); color:var(--emerald-cyan); }
+    .event-subnav a.active { opacity:1; border-bottom-color:var(--emerald-cyan); }
+    .lang-switch { margin-left:auto; display:flex; gap:6px; flex-shrink:0; padding:8px 0 8px 16px; border-left:1px solid #e1e6ea; }
+    .lang-switch button { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:1px; background:none; border:1px solid #e3e8ec; padding:4px 10px; cursor:pointer; color:var(--black); transition:all 0.2s; }
+    .lang-switch button.active,.lang-switch button:hover { background:var(--black); color:var(--white); border-color:var(--black); }
+    .accordion-section { max-width:1200px; margin:56px auto 80px; padding:0 24px; }
+    .acc-section-label { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--soft-cyan); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--airport-blue); }
+    .acc-group-header { font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gray); padding:20px 0 8px; margin-top:8px; opacity:0.6; border-bottom:1px dashed var(--airport-blue); margin-bottom:4px; }
+    .acc-tab { border:1px solid #e3e8ec; background:var(--white); margin-bottom:4px; transition:border-color 0.2s; }
+    .acc-tab:hover { border-color:#c0cdd6; }
+    .c-emerald { border-left:3px solid var(--emerald-cyan); }
+    .c-cyan    { border-left:3px solid var(--soft-cyan); }
+    .c-gold    { border-left:3px solid var(--gold); }
+    .c-peach   { border-left:3px solid var(--peach); }
+    .c-burgundy{ border-left:3px solid var(--royal-burgundy); }
+    .acc-tab.open.c-emerald  { border-top:2px solid var(--emerald-cyan); }
+    .acc-tab.open.c-cyan     { border-top:2px solid var(--soft-cyan); }
+    .acc-tab.open.c-gold     { border-top:2px solid var(--gold); }
+    .acc-tab.open.c-peach    { border-top:2px solid var(--peach); }
+    .acc-tab.open.c-burgundy { border-top:2px solid var(--royal-burgundy); }
+    .acc-tab.is-sub { margin-left:28px; background:#fafcfd; }
+    .acc-tab.is-sub .acc-header { padding:14px 24px; }
+    .acc-tab.is-sub .acc-title { font-size:14px; }
+    .acc-header { display:flex; align-items:center; justify-content:space-between; padding:20px 28px; cursor:pointer; user-select:none; }
+    .acc-header-left { display:flex; align-items:baseline; gap:16px; flex:1; min-width:0; }
+    .acc-num { font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; letter-spacing:2px; opacity:0.35; flex-shrink:0; }
+    .acc-title { font-size:15px; font-weight:600; letter-spacing:0.01em; }
+    .acc-sub-label { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--gray); opacity:0.7; flex-shrink:0; }
+    .acc-right { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+    .acc-anchor { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1.5px; color:var(--soft-cyan); border:1px solid var(--airport-blue); padding:3px 7px; background:var(--sky); text-decoration:none; }
+    .acc-anchor:hover { border-color:var(--soft-cyan); }
+    .acc-toggle { font-family:'IBM Plex Mono',monospace; font-size:18px; width:28px; text-align:center; transition:transform 0.3s ease; }
+    .acc-tab.open .acc-toggle { transform:rotate(45deg); }
+    .acc-body { display:none; padding:0 28px 28px; animation:fsIn 0.22s ease; }
+    .acc-tab.open .acc-body { display:block; }
+    .acc-tab.is-sub .acc-body { padding:0 24px 22px; }
+    @keyframes fsIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+    .tab-inner { display:grid; grid-template-columns:1fr 260px; gap:36px; }
+    @media(max-width:860px){.tab-inner{grid-template-columns:1fr}}
+    .tab-content p,.tab-content li { font-size:14.5px; line-height:1.75; margin-bottom:10px; }
+    .tab-content h4 { font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin:24px 0 8px; padding-bottom:5px; border-bottom:1px solid var(--airport-blue); }
+    .tab-content ul { margin:0 0 12px; padding-left:18px; }
+    .tab-content ul li { font-size:14px; }
+    .tab-table { width:100%; border-collapse:collapse; font-size:13px; font-family:'IBM Plex Mono',monospace; margin:16px 0; }
+    .tab-table th { background:var(--airport-blue); padding:9px 12px; text-align:left; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; border:1px solid #c8d8e4; }
+    .tab-table td { padding:9px 12px; border:1px solid #e3e8ec; vertical-align:top; line-height:1.5; font-size:12px; }
+    .tab-table tr:nth-child(even) td { background:var(--sky); }
+    .tab-links-box { background:var(--sky); border:1px solid var(--airport-blue); padding:18px; margin-bottom:14px; }
+    .tab-links-title { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-bottom:10px; }
+    .tab-links-box a { display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1px; color:var(--black); text-decoration:none; padding:7px 0; border-bottom:1px solid var(--airport-blue); }
+    .tab-links-box a:last-child { border-bottom:none; }
+    .tab-links-box a:hover { color:var(--emerald-cyan); }
+    .tab-links-box a::after { content:" →"; }
+    .tab-meta { border:1px solid #e3e8ec; padding:14px 18px; background:var(--white); font-family:'IBM Plex Mono',monospace; font-size:11px; }
+    .tab-meta-row { display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid var(--sky); }
+    .tab-meta-row:last-child { border-bottom:none; }
+    .tab-meta-row span:first-child { opacity:0.5; font-size:10px; }
+    .tab-meta-row span:last-child { font-weight:600; color:var(--black); font-size:11px; }
+    .tab-cta { margin-top:28px; padding:22px; background:var(--sky); border-left:4px solid var(--emerald-cyan); }
+    .tab-cta p { margin:0 0 14px; font-weight:600; font-size:14px; }
+    .tab-cta a { border:2px solid var(--black); padding:10px 22px; text-decoration:none; color:var(--black); font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:11px; letter-spacing:2px; text-transform:uppercase; }
+    .tab-cta a:hover { background:var(--black); color:var(--white); }
+    .presale-box { background:var(--black); color:var(--white); padding:28px; margin:24px 0; border-left:6px solid var(--gold); }
+    .presale-box .pb-title { color:var(--gold); font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+    .presale-box p { font-size:14px; line-height:1.7; color:#dce9f2; margin-bottom:14px; }
+    .presale-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+    @media(max-width:720px){.presale-grid{grid-template-columns:1fr}}
+    .presale-card { border:1px solid rgba(255,255,255,0.15); padding:16px; }
+    .presale-card .pc-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; opacity:0.5; margin-bottom:6px; }
+    .presale-card .pc-name { font-size:13px; font-weight:600; margin-bottom:8px; }
+    .presale-card .pc-price { font-family:'IBM Plex Mono',monospace; font-size:18px; color:var(--gold); font-weight:600; }
+    .presale-card .pc-limit { font-family:'IBM Plex Mono',monospace; font-size:10px; opacity:0.5; margin-top:4px; }
+    .btt { position:fixed; bottom:28px; right:20px; z-index:300; background:var(--black); color:var(--white); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:1px; border:none; padding:9px 13px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity 0.3s; }
+    .btt.visible { opacity:1; pointer-events:auto; }
+    .btt:hover { background:var(--emerald-cyan); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav"> 
+    <div class="nav-logo">Essential Cybersecurity Benchmark</div>
+    <div class="nav-links">
+      <a href="er.html#">For Research</a>
+      <a href="com.html">For Enterprise</a>
+      <a href="event.html">Event</a>
+      <a href="data.html">Data</a>
+      <a href="about.html#">About</a>
+
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Data, Privacy &amp; Licensing</h1>
+    <p>Technical and behavioral telemetry gathered under controlled conditions — the only real-infrastructure, multi-day cybersecurity dataset of its kind. Access is time-locked, tiered, and governed by clear licensing rules. Sensitive, non-anonymised data is never sold and remains offline.</p>
+  </div>
+</section>
+
+<nav class="event-subnav">
+  <div class="event-subnav-inner">
+    <a href="#privacy">PRIVACY</a>
+    <a href="#gathered">DATA GATHERED</a>
+    <a href="#release">RELEASE POLICY</a>
+    <a href="#licencing">LICENSING</a>
+    <a href="#security">SECURITY</a>
+    <a href="#observers">OBSERVERS</a>
+    <div class="lang-switch">
+      <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+      <button id="btn-pl" onclick="setLang('pl')">PL</button>
+    </div>
+  </div>
+</nav>
+
+<div class="accordion-section">
+  <div class="acc-section-label mono">▸ DATA POLICY — FULL SPECIFICATION</div>
+<div class="notice-bar">
+</div>
+<p style="background: var(--gold); color: var(--black); padding: 12px 20px; font-size: 13px;">
+<strong>NOTE:</strong> Final data policy specification will be available under NDA from Q2.2026. Current version represents planned framework.
+</p>
+ 
+  <div class="content-body">
+    <p><strong>Operational Isolation:</strong> Participants utilize dedicated tournament IP addresses and setup environments, ensuring zero-impact on participant production or corporate networks.</p>
+    <p><strong>Explicit Consent Framework:</strong> By enrolling in the ECB, participants provide informed, transparent consent for the collection of tactical, behavioral, and forensic telemetry exclusively within the defined event perimeter (PTP-synchronization, IEEE 1588 for accurate  to ms precision).</p>
+    <p><strong>Transparency Commitment:</strong> We reject "stealth monitoring." All telemetry parameters, are pre-negotiated and audited to ensure compliance with participant requirements.</p>
+  </div>
+  
+
+  <!-- A · PRIVACY -->
+  <div class="acc-group-header">A · PRIVACY &amp; ANONYMITY TIERS</div>
+
+  <div class="acc-tab c-gold" id="privacy">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">A</span>
+        <span class="acc-title">Privacy, Anonymity &amp; Exposition Tiers</span>
+        <span class="acc-sub-label">PROTECTED · PROMOTED · CUSTOM</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#privacy">#privacy</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>We prioritize the safety of personal data, personal telemetry, localization and reputation. 
+
+We offer specially designed exposition and privacy tiers with the possibility of customization. 
+
+Privacy tiers change reputation threat or a limitation — to a competitive advantage, suited for different needs, a design feature.</p>
+
+          <h4>Core Principles</h4>
+          <ul>
+            <li>Default: full anonymity for PRO teams. Open by default for EDU teams.</li>
+            <li>Codenames remain valid across years.</li>
+            <li>Non-anonymised data stored offline only — never exposed or sold.</li>
+            <li>No public exposure without explicit participant consent, and appropriate processing.</li>
+            <li>Great care and separation of any streaming, exposition.</li>
+            <li>Data access restricted and monitored under M-NDA, license and agreements. </li>
+            <li>Right to withdraw or change exposition and privacy tiers.</li>
+          </ul>
+
+
+          <h4>Minimal Commitment</h4>
+          <ul>
+            <li>Code name of team (for a year).</li>
+            <li>All logs and all necessary data for event scoring (anonymised), including actions, setup<br> (basic descriptions / names of commercially available ones) and tools used.</li>
+            <li>Match results and team members score.</li>
+          </ul>
+
+
+          <h4>Default Profiles</h4>
+          <table class="tab-table">
+            <thead>
+              <tr>
+                <th>Tier</th><th>Team Owner</th><th>Members — credentials</th>
+                <th>Members — faces, voices, biometrics</th><th>Rank / Score</th><th>Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Protected</strong><br><small style="opacity:.6">Pro Default</small></td>
+                <td>Codename</td><td>Nicknames</td>
+                <td>Blurred / Animated filter / Video representative / Modulated Audio</td>
+                <td>Inner: complete<br>Outer: match result only</td>
+                <td class="mono">2</td>
+              </tr>
+              <tr>
+                <td><strong>Promoted</strong><br><small style="opacity:.6">Edu Default</small></td>
+                <td>Real Credentials + Codename</td><td>Real Credentials + Nicknames</td>
+                <td>Real and altered hybrid</td>
+                <td>Complete</td>
+                <td class="mono">0</td>
+              </tr>
+              <tr>
+                <td><strong>Anonymity*</strong></td>
+                <td>Codekname + Real credentials</td><td>Nicknames</td>
+                <td>Blurr / Filter / Video / Audio</td>
+                <td>Complete</td>
+                <td class="mono">1</td>
+              </tr>
+              <tr>
+                <td><strong>Complete / Custom**</strong></td>
+                <td colspan="4">Total anonymity. No stream, no commentary, no ranking. Codenames may change daily or be randomized. Only by exception after FC agreement, individually priced depending on degree of anonymity and operational scope.</td>
+                <td class="mono">max</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:13px;opacity:.7">* and **: Paid tiers. Require Format Committee approval. Fee may be waived by FC decision.</p>
+
+          <p>* Complete / Custom tiers are individually priced, require FC approval, and are granted only for an important reason. The fee may be waived by FC decision. Using less anonymised solutions is free of charge, and can be done any time after formal declaration.</p>
+
+          <h4>No-Biometric &amp; Video Anonymisation</h4>
+          <p>All video featuring face, full silhouette, walking, eyes, or voice may be anonymised via:</p>
+          <ul>
+            <li><strong>Blurring</strong> — used in research data and as a selectable option in media.</li>
+            <li><strong>Filter or animated visualization</strong> — visual substitution of participant's choice, for media and external exposition.</li>
+            <li><strong>Voice modulation</strong> — available for all tiers.</li>
+          </ul>
+          <p>We intend to integrate AI-generated animated representations and pre-rendered substitutions with partners. Teams will be able to customize their visual representation and style. Audiences will also be able to customize the visualizations they prefer. We take care to protect biometrics, voice and movements. Privacy will be applied at the first stage of processing.</p>
+</p>
+        </div>
+       
+
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="event.html#s41">Anonymity Details</a>
+            <a href="doc.html#nda">NDA Form</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>PRO DEFAULT</span><span>PROTECTED</span></div>
+            <div class="tab-meta-row"><span>EDU DEFAULT</span><span>PROMOTED</span></div>
+            <div class="tab-meta-row"><span>CUSTOM TIER</span><span>PAID + FC APPROVAL</span></div>
+            <div class="tab-meta-row"><span>STORAGE</span><span>OFFLINE FIRST</span></div>
+            <div class="tab-meta-row"><span>COMPLIANCE</span><span>GDPR</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B · DATA GATHERED -->
+  <div class="acc-group-header">B · DATA GATHERED</div>
+
+  <div class="acc-tab c-emerald" id="gathered">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">B</span>
+        <span class="acc-title">Data Gathered — Types, Formats &amp; Volume</span>
+        <span class="acc-sub-label">TECHNICAL &amp; BEHAVIORAL TELEMETRY </span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#gathered">#gathered</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Technical and behavioral telemetry is gathered, stored and backed-up offline, with appropriate anonymity tiers applied before further processing. Non-anonymised data is never exposed or used externally. Custom data gathering will not be excluded from sets and will never occur in stealth.</p>
+
+<p>Each set can be subdivided in separate: technical, behavioral telemetry and extras - in form of complete archive ("Forensic" or "RAW") or selective and extensively processed ("ML-Ready")and can be acquired in accordance to release policy. Local Buffer Redundancy.</p>
+        
+<p>⚠️ DETAILED DATA POLICY UNDER DEVELOPMENT — FULL SPECIFICATION AVAILABLE UNDER NDA FROM Q2.2026</p>
+
+<div style="background:var(--sky);border-left:3px solid var(--emerald-cyan);padding:16px 22px;margin:20px 0;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--emerald-cyan);margin-bottom:12px;">ML-Ready — Definition</div>
+  <p style="font-size:13.5px;margin-bottom:10px;">ML-ready datasets contain the following processed layers, ready for direct ingestion into ML pipelines without additional pre-processing:</p>
+  <ul style="font-size:13.5px;line-height:1.8;margin-bottom:12px;">
+    <li>NetFlow metadata in place of full PCAP (except during incident windows)</li>
+    <li>Incident-triggered PCAP only — estimated ~20–30% of R3 duration</li>
+    <li>Host logs as compressed labeled JSON (Sysmon/auditd → ~40% of raw size)</li>
+    <li>Behavioral video, H.265 activity-adaptive compression (~3–5× vs raw; video constitutes ~50% of total ML-ready volume)</li>
+    <li>Full L1+L2+L3 labeling and tagging: L1 auto-tagged (scripts - team with judges help) L2 manual participants and captain verified action declarations (AI agent or a scripts as help - is an option) L3 Judge-validated on disputed events.</li>
+  </ul>
+  <p style="font-size:13px;color:var(--gray);margin-bottom:0;"><strong>Forensic archive</strong> contains all of the above plus full raw PCAP, uncompressed logs, and raw video — approximately 3–4× the ML-ready volume. <span style="opacity:.7">Dataset specifications subject to community validation and final format confirmation. Sizes are pre-event estimates; actual volumes may vary.</span> <br>For Edition Z E R O - gathering of complete FA will depend on interest in it and participants agreement. </p>  </div>
+          <h4>Technical Telemetry</h4>
+          <table class="tab-table">
+            <thead>
+              <tr><th>Category</th><th>Metrics &amp; Artifacts</th><th>Example Tools</th><th>Significance</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Network Activity</td>
+                <td>PCAP, NetFlow, payload entropy, inter-arrival delays</td>
+                <td>Zeek, Suricata, Moloch, Wireshark</td>
+                <td>Anomaly detection, C2 analysis, exfiltration identification</td>
+              </tr>
+              <tr>
+                <td>Host Activity</td>
+                <td>Process trees, Bash history with timestamps, registry modifications</td>
+                <td>Sysmon, Auditd, Osquery, Elastic Agent</td>
+                <td>Attack path reconstruction, lateral movement detection</td>
+              </tr>
+              <tr>
+                <td>L7 Monitoring</td>
+                <td>Web server logs (Nginx/Apache), API queries, database sessions</td>
+                <td>Graylog, LogAI, SIEM</td>
+                <td>Application logic gap identification, injection attempt detection</td>
+              </tr>
+              <tr>
+                <td>File Integrity</td>
+                <td>File system hashing, unauthorized config change detection</td>
+                <td>FIM, OSSEC</td>
+                <td>Rootkit and attacker persistence detection</td>
+              </tr>
+              <tr>
+                <td>Service Status</td>
+                <td>Ping results, HTTP response times, port availability (MTTR)</td>
+                <td>Zabbix, Nagios, custom scripts (~1 min interval)</td>
+                <td>Basis for defense scoring and continuity benchmarks</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Behavioral Telemetry</h4>
+          <ul>
+            <li>Video from participant workspace / computer camera. Desktop view. Voice recordings.</li>
+            <li>Internal reports and inter-team communications (with consent).</li>
+            <li>Terminal sessions recorded as timestamped JSON objects (Asciinema).</li>
+            <li>Action log: timestamp, action type, tool, parameters, duration, effect estimation / proof.</li>
+            <li>Live reporting: simplified layer for judges; processed layer for commentary and summaries.</li>
+            <li>AI / bot monitoring is each team's responsibility; all activity is logged as part of the dataset.</li>
+          </ul>
+
+          <h4>Dataset Types</h4>
+          <p><strong>By volume:</strong></p>
+          <ul>
+            <li>Complete Event Dataset (RAW / Labeled)</li>
+            <li>Complete Single Match Dataset (RAW / Labeled)</li>
+            <li>Complete Single Team Dataset (RAW / Labeled)</li>
+          </ul>
+          <p><strong>By processing level:</strong></p>
+          <ul>
+            <li>Simplified Reports, Summary and Exploit List Dataset</li>
+            <li>(Extra-Anonymised) Response Patterns and Behavioral Dataset</li>
+            <li>Q&amp;A / Advisory Transcript Dataset</li>
+            <li>Behavioral / Interaction Dataset</li>
+            <li>Custom Data Gathered Dataset (agreed pre-event)</li>
+          </ul>
+
+
+          <p>This is the only live multi-day, multi-actor, real-infrastructure cybersecurity dataset available under controlled licensing. Team Responsible Entities and Team Members have observer status and receive telemetry from their own matches at no charge.</p>
+<p>
+We consider <strong>forensic complete data</strong> model - if there will be sufficient interest we will open it for Edition Z E R O. Estimated ~2.2TB / 15 teams. 
+</p>
+
+          <h4>Estimated Volume per Edition</h4>
+          <p>At ~15 teams × 7 days* with breaks: estimated <strong>~500 GB–1.5 TB</strong> of ML-ready telemetry per edition. (Labeled by participants and AI. Time sych.)
+<br>
+Technical layer (network metadata, incident-triggered PCAP, host logs, terminal sessions): ~150–500 GB.<br>
+Behavioral video layer (H.265 activity-adaptive, desktop and camera): ~300–660 GB. <br><br>
+
+Full forensic archive: ~2–4 TB. Full-packet PCAP recorded only during incident intervals.<br>
+Full-packet PCAP is recorded only during incident intervals.
+<br>* Duration depends on team number and bonus round choice. Round 1 - a day. Round 2 - between 1 to 2 days. Round 3. 3.5 day PRO / less than 1 day EDU.</p>
+
+          <h4>ML-ready DS Processing Pipeline — Edge-to-Cold Model</h4>
+          <ul>
+            <li><strong>Edge:</strong> selective incident and action logs (Sysmon, EDR, Firewall), packet metadata (NetFlow). Full PCAP on incident triggers only, reducing overall volume by approximately 90%.</li>
+            <li><strong>Smart behavioral compression:</strong> resolution, frame rate and compression adapted per source and activity level.</li>
+            
+<br >
+            <li><strong>Pre-upload:</strong> flagging, manual reports (if required), compression, secure delivery.</li>
+            <li><strong>Post-process:</strong> backup and anonymity / exposition tier implementation, storage and access control.</li>
+          </ul>
+
+          <p style="font-size:13px;opacity:.7">In Edition ZERO it is possible that gathering and reporting will be partially self-scripted or manual. Software solutions will be provided from the outset where possible.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>BASIC</span><span>ML-READY</span></div>
+
+            <div class="tab-meta-row"><span>EST. VOLUME</span><span>~500 GB–1.5 TB</span></div>
+            <div class="tab-meta-row"><span>PCAP TRIGGER</span><span>INCIDENT ONLY</span></div>
+            <div class="tab-meta-row"><span>STORAGE</span><span>OFFLINE + B2/WASABI</span></div>
+            <div class="tab-meta-row"><span>TERMINAL</span><span>ASCIINEMA JSON</span></div>
+            <div class="tab-meta-row"><span>AI MONITORING</span><span>TEAM RESPONSIBILITY</span></div>
+            <div class="tab-meta-row"><span>OWN MATCH DATA</span><span>FREE TO PARTICIPANTS</span></div>
+          </div>
+<br>        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>FORENSIC</span><span>FULL</span></div>
+            <div class="tab-meta-row"><span>EST. VOLUME</span><span>~2-4 TB / 15 Teams</span></div>
+            <div class="tab-meta-row"><span>STORAGE</span><span>OFFLINE + B2/WASABI</span></div>
+            <div class="tab-meta-row"><span>TERMINAL</span><span>ASCIINEMA JSON</span></div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- C · RELEASE POLICY -->
+  <div class="acc-group-header">C · RELEASE POLICY</div>
+
+  <div class="acc-tab c-cyan" id="release">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">C</span>
+        <span class="acc-title">Data Release Policy Timeline &amp; Data Sets</span>
+        <span class="acc-sub-label"> RESTRICTED ACCESS · INTERNAL AUCTION</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#release">#release</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+
+
+        <div class="tab-content">
+<section class="data-inventory-section" style="max-width:1200px; margin: 40px auto; padding: 0 20px;">
+  
+  <div class="acc-section-label mono">▸ AFTER EVENT: STRATEGIC DATA ASSETS </div>
+  
+  <p style="margin-bottom: 30px;">The following datasets constitute the analytical foundation of ECB. All data is normalized, enriched with judge metadata, and engineered for seamless AI/ML integration. Data Sets offered, technical specification and telemetry tools will be subject to process of validation and refinement to suit best all sides involved.
+          <p>We closely follow a release policy with a precise pipeline and rules. Access is time-locked, tiered and governed by clear licensing rules.
+We distinct EDU entities (teams, observers and judges) and (PRO participants and observers including agencies, qualified partners). Release dates will become subject to validation by observers, strategic partners and co-creators.
+
+(Participants do have the observer status, and overall higher ECB access status.)</p>
+
+          <h4>Release Timeline</h4>
+          <table class="tab-table">
+            <thead>
+              <tr><th>Time-frame</th><th>Access Event</th><th>Who</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">Day +3</td>
+                <td>Date Announcement for Internal Limited Auction  </td>
+                <td>Participants + Observers</td>
+                <td>Data Labeling and Processing.</td>
+              </tr>
+              <tr>
+                <td class="mono">Day ~7</td>
+                <td>Internal Limited Auction. <br>HR Framework opens.</td>
+                <td>Partners, Observers</td>
+                <td>Limited to greater from: 6 slots or 10% of combined number entities having access. Auction sets the base price for the DS for 18 months.</td>
+                
+              </tr>
+              <tr>
+                <td class="mono">Day 8 </td>
+                <td>Data Dispatch Starts (Deadline: 1 Month) </td>
+                <td>Observers + Participants + Judges</td>
+                <td>Preferable hdd/ssd mail delivery for big sets.</td>
+              </tr>
+              <tr>
+                <td class="mono">Month +7</td>
+                <td>Unlimited access to Data Sets opens</td>
+                <td>Participants + Observers</td>
+                <td>Observers can acquire licenses on demand, -10% discount. </td>
+              </tr>
+              <tr>
+                <td class="mono">Month +10</td>
+                <td>EDU free DS Release </td>
+                <td>Participants + Observers</td>
+                <td>Free DS for EDU entities delivery date. Data Sets price -30% discount for PRO.</td>
+              </tr>
+              <tr>
+                <td class="mono">Month +18</td>
+                <td>All DS prices fixed for EDU and discount for PRO</td>
+                <td>Observers + Judges + Participants + Partners </td>
+                <td>-50% discount for PRO.</td>
+              </tr>
+              <tr>
+                <td class="mono">Year +3.5</td>
+                <td>DS become available to any (pre-registered) EDU entity. </td>
+                <td>General (registered)</td>
+                <td>Low fee fixed prices available for non-edu observers.</td>
+             
+              </tr>
+            </tbody>    
+          </table>
+
+          <h4>Internal Auction — Day +4 (no longer than two weeks)</h4>
+          <p>Within +/- 7 days (pre-announced) after the event (and not more than 14 days) the organizers open an internal, limited auction of data sets. Auction is setting price for next 18 months, but access to DS will be closed for 7 months next.</p>
+<p>By this date, as soon as possible, Team Responsible Entities receive every own match, compleat telemetry (Forensic Archive or Smart ML-Ready) at no charge. </p>
+
+          <h4>Influence on Scenarios &amp; Future Editions</h4>
+          <p>Observers and community members with dataset access may propose changes to data gathering parameters, scenarios and metrics, submitted to the Format Committee before the next edition.</p>
+     
+<p><strong>EARLY SUPPORTER STATUS PRE-SALE</strong> limited to total of: 6 of each big DS and granular DS, and includes also:
+
+Includes: Founding supporter recognition, observer status (2 editions), priority data access before limited auction (vs Month +7 general release).<br><br>
+  
+This status grants listing as early supporter on our websites, influence on test phases and the format details, insight into format development and invitation for further formats (Cyber-Physical Safety & Integrity System).</p>
+ 
+  <div class="table-container" style="overflow-x:auto; margin-bottom: 60px;">
+    <table class="tab-table">
+      <thead>
+        <tr>
+          <th>Asset Type</th>
+          <th>Description & Scope</th>
+          <th>Volume / Format</th>
+          <th>Pre-Sale Price - only 6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background: rgba(214, 179, 92, 0.05);">
+          <td><strong>Master Event Dataset</strong></td>
+          <td>Full telemetry from ~7 days of maneuvers. Includes all attack phases, SOC responses, and AI-Human-Bot interactions.</td>
+          <td><strong>~150GB <br></STRONG>ML-Ready <strong> <br>>~2.2TB </strong>Forensic </strong><br><small> </small></td>
+          <td><strong style="color: var(--royal-burgundy);">1. $11,000 <br> 2. $16,000 <br> 3. $21,000<br> 4. $25,000<br>(2)$28,000 <br></strong></td>
+        </tr>
+        <tr>
+          <td><strong>Single Match Intelligence Set</strong></td>
+          <td>Forensic, vertical data slice of a specific engagement.</td>
+          <td><strong>~120GB</strong><br><small>Full PCAP/JSON/Forensic Archive </small></td>
+          <td><strong>$9,000</strong></td>
+        </tr>
+        <tr>
+          <td><strong>All-Match Single EDU Team  Compressed</strong></td>
+          <td>ML-Ready, curated, labeled data of all EDU team matches, deeply anonimised. Edge-to-Cold model, deep Smart Behavioral Compression. </td>
+          <td><strong>~180GB</strong><br><small>Various</small></td>
+          <td><strong>$11,000</strong></td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <div class="acc-section-label mono">▸ SPECIALIZED DATA SETS — GRANULAR OFFER</div>
+   <p style="margin-bottom: 30px; color: var(--gray);">Granular datasets focused on specific operational aspects, ranging from exploit repositories to judge-validated transcripts.</p>
+
+  <div class="table-container" style="overflow-x:auto;">
+    <table class="tab-table" style="font-size: 0.9rem;">
+      <thead>
+        <tr>
+          <th>Specialized Set</th>
+          <th>Focus Area</th>
+          <th>Suited for</th>
+          <th>Est. Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Simplified Reports & Exploits</td>
+          <td>Attack vector inventory, exploit codes, and condensed MTTR reports.</td>
+          <td>CS Specialists and Companies</td>
+          <td>$1,750</td>
+        </tr>
+        <tr>
+          <td>Extra Anonymised Behavioral DS</td>
+          <td>Whole event response and interaction patterns without identifiable metadata. Stress and error analysis. In team and screen-utility related channels.</td>
+          <td>Cyber-Security as Service / Insurance </td>
+          <td>$7,000</td>
+        </tr>
+        <tr>
+          <td>Mentorship Transfer</td>
+          <td>Transcriptions of after match QnA + Hinting Sessions from PRO to EDU. Judges advices, Participants tools utility questionnaires - and recommendations. Anonymous transcriptions of inside teams communications. </td>
+          <td>Educational Units and Training for Juniors </td>
+          <td>$3,000</td>
+        </tr>
+<tr>
+          <td>EDUCATIONAL ENTITY PACK  </td>
+          <td>Extra Anonymised Behavioral DS, Simplified Reports & Exploits, for EDU entities who didn't participated in the event: Micro Participation Equivalent. A 10 month standard curation (with exception of Early Supporter Pre-Sale Pack) . </td>
+          <td>Educational Entities</td>
+          <td>Less than $8,000 / Free - Contact  </td>
+        </tr>
+        
+<tr>
+          <td>Custom Data Collection</td>
+          <td>Bespoke telemetry gathered per pre-event agreement (Limited availability).</td>
+          <td>Highly Specialized RnD</td>
+          <td>Contact</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4>▸ EDUCATIONAL ENTITY PARTICIPATION DS PACK ("EDU FREE DS") - EARLY SUPPORTER PACK</h4>
+<p> Free for for participating EDU units, available to EDU observers not participating for 7,150 USD. <br></p>
+<p>For Edition Z E R O: Available as PRE-SALE EARLY SUPPORTER PACK that contains (along it's other benefits): <br><br>
+<strong>Simplified Reports & Exploits,<br>
+Extra Anonymised Behavioral DS,<br>
+Mentorship Transfer,<br>
+Anonymised Judges Materials Excerpt Pack<br>
+Micro Participation Equivalent</strong>- Random Match Data (Fixed Selection): <br>
+Two matches of Round 1,<br> 
+Four matches of Round 2,<br>
+Round 3 two teams data.</p>
+
+</section>
+
+<style>
+  .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e1e6ea; }
+  .tab-table { width: 100%; border-collapse: collapse; text-align: left; }
+  .tab-table th { background: var(--sky); color: var(--royal-burgundy); padding: 15px; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; border-bottom: 2px solid var(--airport-blue); text-transform: uppercase; }
+  .tab-table td { padding: 15px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .tab-table tr:hover { background: #f9fbfc; }
+</style>
+</div>
+        <div class="tab-sidebar">
+          
+
+          <div class="tab-links-box">
+            <div class="tab-links-title">Entry</div>
+            <a href="doc.html#contact">Observer Inquiry</a>
+            <a href="about.html#partners">Partner Status</a>
+            <a href="doc.html#nda">NDA Form</a>
+          </div>
+
+<div class="tab-meta">
+            <div class="tab-meta-row"><span>AUCTION OPENS</span><span>DAY ~7</span></div>
+            <div class="tab-meta-row"><span>FIRST RELEASE</span><span> > MONTH 1</span></div>
+            <div class="tab-meta-row"><span>UNLIMITED ACCESS OPENS</span><span>MONTH +6</span></div>
+            <div class="tab-meta-row"><span>EDU FREE DS</span><span>MONTH +10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+ 
+ <!-- D · LICENSING -->
+  <div class="acc-group-header">D · LICENSING MODEL</div>
+
+  <div class="acc-tab c-peach" id="licencing">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">D</span>
+        <span class="acc-title">Licensing Model &amp; Pre-Sale Access</span>
+        <span class="acc-sub-label">COMMERCIAL · EDU · AI LICENSE · RESTRICTIONS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#licencing">#licencing</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>We understand the risks to commercial companies' reputation and operations. Therefore offer anonymity and data exposure control to maximize gains and avoid harm. All data used outside the event adheres to strict rules available for evaluation prior to participation.</p>
+
+          <h4>License Types</h4>
+          <ul>
+            <li><strong>Participant license</strong> — access to match telemetry participated in, free of charge. Data for AI usage terms & conditions agreement free of charge (team choice: complete or curated&compressed). </li>
+            <li><strong>Observer license</strong> — tiered access to curated datasets per release policy. Requires NDA and observer agreement.</li>
+            <li><strong>Educational license</strong> — EDU FREE: Slightly Simplified, Reports & Exploits DS - access from Month 10 after the benchmark. Requires NDA, observer agreement, license for AI.</li>
+            <li><strong>Judges license</strong> — full dataset access of judged events, pool of free DS and fixed low fee price for not included DS.</li>
+            <li><strong>AI training license</strong> — additional license required on top of any base license. Subject to contractual penalty for unauthorized use or distribution.</li>
+          </ul>
+
+          <h4>Restrictions</h4>
+          <ul>
+            <li>Selling, copying or redistributing datasets is prohibited without organizer authorization.</li>
+            <li>AI training requires an explicit AI license; violation subject to disclosure of model code or substantial contractual penalty.</li>
+            <li>Data may not be used in any harmful, discriminatory or misleading way.</li>
+            <li>Non-anonymised data is never sold and remains offline after delivery.</li>
+            <li>Participants are prohibited from using undeclared monitoring during the event.</li>
+            <li>Servers must be secured according to published guidelines.</li>
+          </ul>
+
+
+
+  <div class="ai-block">
+    <div>
+      <h4>AI Training & Model Development License</h4><br>
+      <div class="ai-label">⚠ Additional license required · Contractual penalty applies</div>
+
+      <div class="ai-body">
+        <P>Any use of ECB datasets for AI model training, fine-tuning, RLHF, or derivative weight generation requires an explicit AI license in addition to the base dataset license. This reflects the significant commercial value of labeled behavioral cybersecurity data: the nearest equivalent — commissioning a comparable cyber range exercise with behavioral instrumentation — costs $200,000–$1,000,000+ to replicate from scratch.<br><br>
+        Violation triggers mandatory model code disclosure or substantial contractual penalty. No exceptions. </p>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--gray)">ON MASTER DATASET / REST → <strong style="color:var(--red)">+$40,000 / 20,000</strong> flat</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--gray)">ON EDU DATASETS → <strong style="color:var(--red)">+$8,000</strong></div>
+      </div>
+    </div>
+
+
+          <h4>Observer Status</h4>
+          <p>Observer status provides bi-yearly access to curated datasets, a representative voice on event rules and scenarios, and access to the HR Framework for talent acquisition.</p>
+          <ul>
+            <li><strong>Observer Status — 2 Editions:</strong> $850 EDU | $1800 PRO</li>
+            <li>Educational observer entities receive additional benefits and privileges.</li>
+          </ul>
+
+          <div class="tab-cta">
+            <p>Interested in early dataset access, observer status, or partnership? Contact us to receive full data policy documentation and licensing terms.</p>
+            <a href="doc.html#contact">REQUEST DATA POLICY →</a>
+          </div>
+
+
+
+          <h4>Pre-Sale Dataset Access — Early Adopters</h4>
+<div class="presale-box">
+            <div class="pb-title">▸ PRE-SALE — FOUNDING SUPPORTER ACCESS</div>
+            <p>Secure priority access to the complete event dataset and founding supporter status before the event takes place. Limited availability. Includes observer status for two editions. Price is per slot progressive.</p>
+            <div class="presale-grid">
+              <div class="presale-card">
+                <div class="pc-label">Complete Event Pack</div>
+                <div class="pc-name">Full Event Dataset</div>
+                <div class="pc-price">1. $11,000 <br>2. $16,000 <br>3. $21,000 <br>4. $25,000 <br>(2) $28,000</div>
+                <div class="pc-limit">Limited to 6 entities</div>
+              </div>
+              <div class="presale-card">
+                <div class="pc-label">Educational Entity</div>
+                <div class="pc-name">EDU EVENT SET</div>
+                <div class="pc-price">$8000 </div>
+                <div class="pc-limit">Limited to 12</div>
+              </div>
+              <div class="presale-card">
+                <div class="pc-label">AI Training Add-on</div>
+                <div class="pc-name">AI License (on any base)</div>
+                <div class="pc-price">+$40,000 Full / +$20,000 Other</div>
+                <div class="pc-limit">Contractual terms apply</div>
+              </div>          
+            </div>
+            <p style="margin-top:16px;font-size:12px;opacity:.55">Pre-sale includes: founding supporter mention on website, observer status for two editions, priority data access per release policy.</p>
+          </div>
+</div></div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Access</div>
+            <a href="#release">PRE SALE EARLY SUPPORTERS</a>
+            <a href="#observers">Observer Status</a>
+            <a href="doc.html#nda">NDA Form</a>
+          <a href="#release">Release Timeline</a>
+<a href="#release">Data Sets</a>
+            
+            
+</div>
+                  <div class="tab-meta">
+            <div class="tab-meta-row"><span>PRESALE</span><span>LIMIT 6 / DS </span></div>
+            <div class="tab-meta-row"><span>EDU PACK</span><span> · LIMIT 12</span></div>
+            <div class="tab-meta-row"><span>AI LICENSE</span><span>L</span>+$20,000 / Main DS: +$40,000 </div>
+            <div class="tab-meta-row"><span>OBSERVER - 2 ed.</span><span>USD $1800 / EDU $850</span></div>
+            <div class="tab-meta-row"><span>PARTICIPATED MATCH DATA</span><span>FREE · COMPLEAT </span></div>
+          </div>
+     </div>
+      </div>
+    </div>
+  </div>    
+
+  <!-- E · SECURITY -->
+  <div class="acc-group-header">E · SECURITY &amp; STORAGE</div>
+
+  <div class="acc-tab c-burgundy" id="security">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">E</span>
+        <span class="acc-title">Data Safety &amp; Storage</span>
+        <span class="acc-sub-label">OFFLINE FIRST · ENCRYPTED · CONTROLLED EXPOSURE</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#security">#security</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>We guarantee offline storage of all non-anonymised data. Non-anonymised data is not exposed, used externally, or sold and is stored only for legal and tournament management purposes. Video data for any purpose other than research and development is covered by an independent agreement and separate policies. This setting allows easy changes in privacy tiers or visualization themes.</p>
+
+          <h4>Storage Architecture</h4>
+          <ul>
+            <li><strong>Primary storage:</strong> offline, on separated HDD/SSD drives, physically secured.</li>
+            <li><strong>Online aggregation (interim):</strong> Wasabi or Backblaze B2 until own dedicated infrastructure is operational.</li>
+            <li><strong>Analytical server:</strong> VPS (e.g. Hetzner / OVH) for processing and labeling pipeline.</li>
+          </ul>
+
+          <h4>Guarantees</h4>
+          <ul>
+            <li>Offline storage guaranteed for all non-anonymised data.</li>
+            <li>Controlled exposure — participants define their own visibility at all times.</li>
+            <li>Inner rankings and private benchmarks — never public by default.</li>
+            <li>Simplified, non-identifiable data used publicly only.</li>
+            <li>All data used outside the event adheres to strict rules available prior for evaluation.</li>
+          </ul>
+
+          <h4>Organizer Obligations</h4>
+          <p>The organizers will inform supporters, observers, partners and all interested parties of any limitations, issues, delays or problems at the earliest possible time. Progress and stage of preparations will be updated publicly. Great care will be taken to ensure flawless delivery.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>NON-ANON DATA</span><span>OFFLINE ONLY</span></div>
+            <div class="tab-meta-row"><span>PRIMARY</span><span>HDD/SSD OFFLINE</span></div>
+            <div class="tab-meta-row"><span>INTERIM ONLINE</span><span>WASABI / B2</span></div>
+            <div class="tab-meta-row"><span>ANALYTICS VPS</span><span>HETZNER / OVH</span></div>
+            <div class="tab-meta-row"><span>COMPLIANCE</span><span>GDPR</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F · OBSERVERS -->
+  <div class="acc-group-header">F · OBSERVERS &amp; PARTNERS</div>
+
+  <div class="acc-tab c-emerald" id="observers">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">F</span>
+        <span class="acc-title">Observers &amp; Data Partners</span>
+        <span class="acc-sub-label">DATA ACCESS · VOICE · COLLABORATION</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#observers">#observers</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>We offer observer and partner status for cybersecurity enterprises, AI research entities, government agencies, non-profit organizations and academic institutions. Want insight or license use of the data without full event participation? Observer status is designed for you.</p>
+
+          <h4>Observer Benefits</h4>
+          <ul>
+            <li>Bi-yearly access to curated datasets per release policy.</li>
+            <li>Representative voice on event rules, scenarios and data gathering parameters.</li>
+            <li>Access to the HR Framework for elite talent acquisition.</li>
+            <li>Possibility to propose data types and scenarios to the community.</li>
+            <li>Access to internal event panels, similar to team member access.</li>
+            <li>Option to purchase live match viewing access separately.</li>
+          </ul>
+          <p>Educational observer entities receive additional special benefits and privileges.</p>
+
+          <h4>Data Partners</h4>
+<p>Partners are specialists and organizations that collaborate on analyses, summaries, monitoring, recommendations, data processing, or who provide the event platform and visualization system.</p>
+          <p>Partners receive individually negotiated data access terms, strategic influence on the format, and are listed as strategic partners on the event website.</p>
+          <p>Our goal is to operate all processing internally - participants will be informed and can influence technical details of data processing.</p>
+
+          <h4>Community Influence - DATA</h4>
+          <p>The Community updates metrics and the data-gathering specification and may suggest tools. Observers and participants may propose scenarios, rules and technical modifications through the Format Committee process. During Edition ZERO and Edition START! the Community holds expanded influence over format shaping.</p>
+
+          <div class="tab-cta">
+            <p>Don't want to participate but still want insight or data access? Observer status gives you exactly that.</p>
+            <a href="doc.html#contact">INQUIRE — OBSERVER STATUS →</a>
+          </div>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Entry</div>
+            <a href="doc.html#contact">Observer Inquiry</a>
+            <a href="about.html#partners">Partner Status</a>
+            <a href="doc.html#nda">NDA Form</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>OBSERVER STATUS</span><span>$1800 PRO | $850 EDU / 2 EDITIONS</span></div>
+            <div class="tab-meta-row"><span>EDU OBSERVER</span><span>EXTRA BENEFITS</span></div>
+            <div class="tab-meta-row"><span>LIVE ACCESS</span><span>JUDGES ONLY</span></div>
+            <div class="tab-meta-row"><span>PARTNER TERMS</span><span>INDIVIDUALLY NEGOTIATED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btt mono" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto;">
+    <p>OPERATIONAL ENTITY: LOCALLY4ME GROUP OÜ | TALLINN, ESTONIA | EU</p>
+    <p>ENHANCED.WORLD FOUNDATION (IN REGISTRATION) | NETHERLANDS</p>
+    <div style="margin-top:20px;">
+      <a href="#">PRIVACY POLICY</a>
+      <a href="#">NDA FORM</a>
+      <a href="#">DATA ACCESS</a>
+    </div>
+    <p style="margin-top:40px;opacity:0.5;">© 2025-2026</p>
+  </div>
+</footer>
+
+<script>
+function T(h){const tab=h.parentElement;const was=tab.classList.contains('open');document.querySelectorAll('.acc-tab.open').forEach(t=>t.classList.remove('open'));if(!was){tab.classList.add('open');setTimeout(()=>{window.scrollTo({top:tab.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'})},40);}}
+function openHash(){const h=window.location.hash;if(!h)return;const el=document.querySelector(h);if(el&&el.classList.contains('acc-tab')){el.classList.add('open');setTimeout(()=>window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'}),180);}}
+window.addEventListener('load',openHash);
+window.addEventListener('hashchange',openHash);
+document.querySelectorAll('.acc-tab[id]').forEach(t=>new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('.event-subnav a[href^="#"]').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));});},{rootMargin:'-25% 0px -65% 0px'}).observe(t));
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>btt.classList.toggle('visible',scrollY>500));
+function setLang(lang){document.getElementById('btn-en').classList.toggle('active',lang==='en');document.getElementById('btn-pl').classList.toggle('active',lang==='pl');}
+</script>
+</body>
+</html>
