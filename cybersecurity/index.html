@@ -1,0 +1,851 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Essential Cybersecurity Benchmark Event™</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --sky: #eaf3f8;
+      --airport-blue: #dbeaf2;
+      --emerald-cyan: #2aa198;
+      --soft-cyan: #3bb7da;
+      --gray: #6f7a82;
+      --black: #111111;
+      --gold: #d6b35c;
+      --peach: #f3b59a;
+      --royal-burgundy: #7a1f2b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Inter", sans-serif; color: var(--black); background: linear-gradient(to bottom, var(--white), var(--sky)); line-height: 1.6; }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+    header { background: var(--white); border-bottom: 1px solid #e1e6ea; position: sticky; top: 0; z-index: 100; }
+    .nav { max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-weight: 600; letter-spacing: 0.03em; }
+    .nav-links a { margin-left: 24px; font-size: 13px; color: var(--black); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    .hero { padding: 100px 24px 80px; background: radial-gradient(ellipse at top, var(--airport-blue), var(--white)); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; }
+    .hero h1 { font-size: 42px; font-weight: 500; margin-bottom: 24px; }
+    .hero p { font-size: 18px; color: var(--gray); max-width: 820px; }
+
+    /* ─── GRID - 3 KOLUMNY SZTYWNE ─── */
+    .grid {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .tile {
+      background: var(--white);
+      border: 1px solid #e3e8ec;
+      padding: 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 992px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .accent-emerald { border-top: 4px solid var(--emerald-cyan); }
+    .accent-cyan    { border-top: 4px solid var(--soft-cyan); }
+    .accent-gold    { border-top: 4px solid var(--gold); }
+    .accent-peach   { border-top: 4px solid var(--peach); }
+    .accent-burgundy{ border-top: 4px solid var(--royal-burgundy); }
+
+    .hover-box {
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+      background: var(--white);
+      border: 1px solid #ccc;
+      box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 110%;
+      left: -5%;
+      z-index: 50;
+      transition: all 0.2s ease-in-out;
+      pointer-events: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+    }
+    .tile:hover .hover-box { visibility: visible; opacity: 1; transform: translateY(-10px); }
+    .tile:hover { border-color: var(--gray); }
+
+    .targets { margin-top: auto; border-top: 1px solid #eef2f5; padding-top: 14px; }
+    .targets a { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--black); text-decoration: none; margin-bottom: 8px; }
+    .targets a:hover { color: var(--emerald-cyan); }
+    .targets a::after { content: " →"; }
+
+    .trust { padding: 80px 24px; border-top: 1px solid #e5eaee; background: #fff; }
+    .trust-inner { max-width: 900px; margin: 0 auto; }
+    .cta { padding: 80px 24px; text-align: center; background: var(--sky); }
+    .cta a { border: 2px solid var(--black); padding: 12px 30px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-decoration: none; color: var(--black); text-transform: uppercase; }
+    footer { background: #0f2a3a; color: #dce9f2; padding: 60px 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+    footer a { color: #9ad0ff; text-decoration: none; margin-right: 20px; }
+   /* ACCORDION */
+    .accordion-section { max-width: 1200px; margin: 56px auto 80px; padding: 0 24px; }
+    .acc-section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--soft-cyan); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--airport-blue); }
+    .acc-group-header { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 20px 0 8px; margin-top: 8px; opacity: 0.6; border-bottom: 1px dashed var(--airport-blue); margin-bottom: 4px; }
+    .acc-tab { border: 1px solid #e3e8ec; background: var(--white); margin-bottom: 4px; transition: border-color 0.2s; }
+    .acc-tab:hover { border-color: #c0cdd6; }
+    .c-emerald  { border-left: 2px solid var(--emerald-cyan); }
+    .c-cyan     { border-left: 2px solid var(--soft-cyan); }
+    .c-gold     { border-left: 2px solid var(--gold); }
+    .c-peach    { border-left: 2px solid var(--peach); }
+    .c-burgundy { border-left: 2px solid var(--royal-burgundy); }
+    .acc-tab.open.c-emerald  { border-top: 1px solid var(--emerald-cyan); }
+    .acc-tab.open.c-cyan     { border-top: 1px solid var(--soft-cyan); }
+    .acc-tab.open.c-gold     { border-top: 1px solid var(--gold); }
+    .acc-tab.open.c-peach    { border-top: 1px solid var(--peach); }
+    .acc-tab.open.c-burgundy { border-top: 1px solid var(--royal-burgundy); }
+    .acc-tab.is-sub { margin-left: 25px; background: #fafcfd; }
+    .acc-tab.is-sub .acc-header { padding: 14px 24px; }
+    .acc-tab.is-sub .acc-title { font-size: 14px; }
+    .acc-tab.is-subsub { margin-left: 25px; background: var(--sky); }
+    .acc-tab.is-subsub .acc-header { padding: 12px 20px; }
+    .acc-tab.is-subsub .acc-title { font-size: 13px; }
+    .acc-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; cursor: pointer; user-select: none; }
+    .acc-header-left { display: flex; align-items: baseline; gap: 16px; flex: 1; min-width: 0; }
+    .acc-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; opacity: 0.35; flex-shrink: 0; }
+    .acc-title { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; }
+    .acc-sub-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); opacity: 0.7; flex-shrink: 0; }
+    .acc-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .acc-anchor { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--soft-cyan); border: 1px solid var(--airport-blue); padding: 3px 7px; background: var(--sky); text-decoration: none; }
+    .acc-anchor:hover { border-color: var(--soft-cyan); }
+    .acc-toggle { font-family: 'IBM Plex Mono', monospace; font-size: 18px; width: 28px; text-align: center; transition: transform 0.3s ease; }
+    .acc-tab.open .acc-toggle { transform: rotate(45deg); }
+    .acc-body { display: none; padding: 0 28px 28px; animation: fsIn 0.22s ease; }
+    .acc-tab.open .acc-body { display: block; }
+    .acc-tab.is-sub .acc-body { padding: 0 24px 22px; }
+    .acc-tab.is-subsub .acc-body { padding: 0 20px 18px; }
+    @keyframes fsIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .tab-inner { display: grid; grid-template-columns: 1fr 260px; gap: 36px; }
+    @media (max-width: 860px) { .tab-inner { grid-template-columns: 1fr; } }
+    .tab-content p, .tab-content li { font-size: 14.5px; line-height: 1.75; margin-bottom: 10px; }
+    .tab-content h4 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 24px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--airport-blue); }
+    .tab-content ul { margin: 0 0 12px; padding-left: 18px; }
+    .tab-content ul li { font-size: 14px; }
+    [data-id]:hover::before { content: attr(data-id); position: absolute; left: -62px; top: 0; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--soft-cyan); opacity: 0.55; white-space: nowrap; pointer-events: none; }
+    [data-id] { position: relative; }
+    .tab-table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: 'IBM Plex Mono', monospace; margin: 16px 0; }
+    .tab-table th { background: var(--airport-blue); padding: 9px 12px; text-align: left; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid #c8d8e4; }
+    .tab-table td { padding: 9px 12px; border: 1px solid #e3e8ec; vertical-align: top; line-height: 1.5; font-size: 12px; }
+    .tab-table tr:nth-child(even) td { background: var(--sky); }
+    .tab-links-box { background: var(--sky); border: 1px solid var(--airport-blue); padding: 18px; margin-bottom: 14px; }
+    .tab-links-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+    .tab-links-box a { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); text-decoration: none; padding: 7px 0; border-bottom: 1px solid var(--airport-blue); }
+    .tab-links-box a:last-child { border-bottom: none; }
+    .tab-links-box a:hover { color: var(--emerald-cyan); }
+    .tab-links-box a::after { content: " →"; }
+    .tab-meta { border: 1px solid #e3e8ec; padding: 14px 18px; background: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+    .tab-meta-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--sky); }
+    .tab-meta-row:last-child { border-bottom: none; }
+    .tab-meta-row span:first-child { opacity: 0.5; font-size: 10px; }
+    .tab-meta-row span:last-child { font-weight: 600; color: var(--black); font-size: 11px; }
+    .tab-cta { margin-top: 28px; padding: 22px; background: var(--sky); border-left: 4px solid var(--emerald-cyan); }
+    .tab-cta p { margin: 0 0 14px; font-weight: 600; font-size: 14px; }
+    .tab-cta a { border: 2px solid var(--black); padding: 10px 22px; text-decoration: none; color: var(--black); font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+    .tab-cta a:hover { background: var(--black); color: var(--white); }
+        </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="nav-logo">Essential Cybersecurity Benchmark</div>
+    <div class="nav-links">
+  <a href="#final-call">For Research (NDA)</a>
+  <a href="#final-call">For Enterprise (NDA)</a>
+  <a href="#final-call">Data Specs</a>
+  <a href="#final-call">About</a>
+</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">Baseline Edition Z | Q4.2026
+    <h1>VALIDATION UNDER OPERATIONAL REALITY</h1>
+    <p>
+      <strong>→ Test ANY approach — SIEM/EDR/XDR, proprietary AI agents,<br>
+      custom automation, human-only SOCs, or hybrid strategies.<br></strong>
+      → Real infrastructure and high-fidelity, competitive environment<br>
+      - designed for advanced tool-chain and response protocol validation.<br>
+      Possibility to test against elite peer solutions<br>
+      → Acquire whole event data, influence what and how is gathered, details and<br>
+      scenarios of multiday real attack/defence unique CTF, benchmark.<br>
+      → Quantify your SOC's. Acquire certificates, and proof of resilience.<br>
+      <br>
+       </p>
+   <h3> No-Loss | High-Reward Policy — understanding your situation.
+   </h3><p>
+This is digital safety refinement system that provide insight, technical and behavioural data, team training, benchmark of setup and tools. 
+    </p>
+
+
+
+
+
+
+  </div>
+</section>
+
+<!-- ═══════════ GRID 1 (5 kafli) ═══════════ -->
+<section class="grid grid-1">
+
+  <div class="tile accent-emerald">
+    <div class="hover-box">
+<strong>     > VALIDATION BY THREAT EXPOSURE:</strong> High-fidelity execution of Advanced Persistent Threats (APT) with asymmetric resource allocation—mirroring real-world high-stakes scenarios.<br>
+ <strong>    > ADVANCED ANALYTICS:</strong> High-granularity interaction logs, behavioural and technical telemetry, and customizable raw data extraction for R&D.<br> 
+ <strong>    > INFLUENCE:</strong> Participants and partners hold real influence over scenario design and telemetry parameters.<br>
+ <strong>The Hybrid Edge:</strong> Unlike traditional events, we mandate a hybrid approach: merging autonomous agents, proprietary AI, and automation with elite human expertise.<br>
+<br>
+Clear benchmarks, <strong>to know which AI systems and security tools deliver true advantages</strong> against real-world attacks.
+
+  </div>
+    <h3>Cyber-Resistance Validation, behavioural and Custom Data</h3>
+<p>
+· Diversity of global threat pasterns and novelties in cyberthreats, penetration & endurance tests.<br>
+· Real infrastructure, life-like setups, real conditions of prolonged threat situation. <br><br>
+· Format includes extended rapports on actions, team members interactions, logs and customization of data gathered.<br><br>
+· Designed to generate high-value (anonymized) data while providing training, internal evaluation and benchmarking (privacy/reputation protected). <br><br>
+· ECD & Enhanced.World Foundation offer rich and rewarding resilience proof certificates and distinction program.
+        </p>
+
+        <div class="targets">
+      <b>Virtual Laboratory · Validation Arena · Research and Development<br><br></b>
+      <a href="com.html#">For CISOs & CTOs</a>
+      <a href="re.html">For Scholars & PIs</a>
+      <a href="about.html#observers">For Partners & Observers</a>
+      <a href="event.html#poe">Proof of Excellence</a>
+
+    </div>
+  </div>
+
+
+  <div class="tile accent-cyan">
+    <div class="hover-box">
+      > Unmatched opportunity to get <strong>cybersecurity tools and teams ready for multi-day crisis</strong>.<br><br>
+      > Usage of a <strong>mix of commercially available,</strong> automated agents <strong>(bots), AI </strong> and <strong>self-made</strong> tools is encouraged.<br><br>
+      > <strong>ELITE TEAMS</strong> from cybersecurity enterprise, prestigious universities, governmental organizations, NGOs, and specialist communities. Anonymity secured.<br><br>
+      > IMPROVE: <strong>Tools </strong> UI, AI Agents and Monitoring Techniques, <strong>Team's:</strong> reaction, cooperation, decision-making, role allocation, time management, and resilience under pressure.<br><br>
+      > 2026 Edition: Z E R O - <strong>invitations</strong> mostly. 2027 Edition START! - 50% <strong>qualifications</strong>. 
+   </div>
+
+    <h3>Improve Response Protocols & Teams Behavior Evaluation</h3>
+    <p>· Study decision-making and resilience under pressure. Evaluate systems, protocols, and tools usability.<br><br>
+      · High-intensity cybersecurity (red/blue) exercises — carefully scripted
+providing anonymized, data harvesting — optimized for tool-chain validation, protocol stress-testing, and AI model training.<br><br>
+	· ECB have strong focus on cadre training and educational excellence – including structured networking for high-end HR and talent acquisition.<br><br>
+· We foster long-term ecosystem growth, cadre development, and ethical R&D.     <br><br>
+· Judges and Co-creators have publication priority rights.  <br></p>
+    <div class="targets">
+            <b>Team dynamics · Human-Human-Tools interactions<br><br></b>
+      <a href="re.html">Academia & Research</a>
+      <a href="com.html#">Enterprise</a>
+      <a href="data.html#privacy">Exposure Policy | Privacy</a>
+      <a href="data.html#licensing">Data Sets | Licensing</a>
+    </div>
+  </div>
+
+
+  <div class="tile accent-gold">
+    <div class="hover-box">
+    <strong>> The COMMUNITY </strong> is based on participants, observers, partners and judges - have voice and 
+influence on scenarios and rules, with organizational coherence guaranteed by Format Committee.<br><br>
+
+<strong>> PRO and EDU:</strong> The format applies slight tweaks to rules for these tiers to maximize participation value (round 3 time, awards, specifications). <br><br>
+
+<strong>> ROUND 4:</strong> Ranking "King of the Hill" | 1 day as default, or custom scenario best team decides. <br><br>
+
+<strong>> BOT & AGENT:</strong> limits to be announced <br><br>
+
+<strong>> DDoS</strong> is <strong>discouraged</strong>, stealth, resilience and speed are encouraged by rules and guidelines.<br><br>
+
+<strong>> SOLID METRICS, RANKINGS & SCORING</strong>
+
+</div>
+
+    <h3>Event Format | HR </h3>
+  <p>OPERATIONAL SCALE: An annual summit for tactical units of 3-15 personnel per entry (including reserve). Strictly limited slots: 30 teams (Edition Z E R O: +/- 15).<br><br>
+· Scenarios evolve through expert feedback and controlled community input, customizations brought by request of participants, partners and observers.<br><br>
+· The event consists of 3 core operational scenarios integrated into a ~7day chain, and a round customized for the best team liking. <br><br> 
+· Participants determine the number of independent pre-registered attackers invited for Round 3 and 4.<br><br>
+· Participation of two tier of teams (EDU/PRO) intentionally chosen to enhance real-like maneuvers outcome.</p>
+    <div class="targets">    
+<b>Human & AI & bots · EDU | PRO <br><br></b>
+      <a href="event.html#">Scenarios & Rules</a>
+      <a href="about.html#partnerships">Partnerships & Co-creation</a>
+      <a href="event.html#signing">Application & Entry</a>
+        <a href="event.html">Benefits and Certificates</a>
+    </div>
+  </div>
+
+  <!-- kafle 4 i 5 wyśrodkowane przez grid-1 nth-child -->
+
+<div class="tile accent-burgundy">
+<div class="hover-box">
+<strong>> FOR RESEARCHERS:</strong> behavioural video layer (~300–660 GB compressed) — human decision logs, fatigue indicators, tool-switching patterns under sustained adversarial pressure. No public equivalent exists. Co-creators receive publication precedence and access before commercial release.<br><br>
+<strong>> FOR CYBERSEC DEVELOPERS:</strong> Ground-truth labeled attack-defense telemetry unavailable from any public source. L1 auto-tagged + L2 captain-verified and judge-validated. AI Training License available. Own match data free to all participants.<br><br>
+<strong>> PRIVACY:</strong> Non-anonymised data stored offline only — never sold, never externally exposed. GDPR-compliant, EU jurisdiction.<br><br>
+<strong>> RELEASE PIPELINE:</strong> Day +7 internal auction → Less than 30 day - dispatch → Month +7 unlimited access opens → Month +10 EDU free release.
+</div>
+
+
+  <h3>Licensing, Data Access & Privacy</h3>
+  <p>Custom anonymity tiers protect sensitive data, reputation, and commercial interests. Participants receive own match telemetry at no charge. Additional datasets are time-locked, tiered, and governed by clear release and licensing rules.<br><br>
+  · ML-ready: ~500 GB–1.5 TB per edition (technical telemetry + behavioural video)<br>
+  · Forensic archive: ~2–4 TB raw, offline delivery<br><br>
+  · Privacy tiers: Protected (PRO default) · Promoted (EDU default) · Custom (FC approval)<br><br>
+  · Separate AI Training License required for model development and training.
+  </p>
+  <div class="targets">
+    <b>Secure storage · NDA · Controlled release<br><br></b>
+    <a href="data.html#privacy">Privacy Tiers & Anonymity</a>
+    <a href="data.html#licencing">Licensing & Pre-Sale</a>
+    <a href="data.html#release">Release Timeline</a>
+  </div>
+</div>
+
+
+
+  <div class="tile accent-peach">
+    <div class="hover-box"> 
+      <strong>> The ECB is baseline</strong> cybersecurity competitive benchmarking and safety related tests format:<br><br></p> <strong>Cyber-Physical Safety & Integrity System. </strong> Further cybersecurity events are planned in the CPSIS ecosystem, including formats focused on testing commercial-grade networks (Smart Environments), autonomous machines, breaching and re-purposing tests.<br>
+ <p>> Exploit Market Value Guarantee Agreement - organisers will take care to sign agreements so EDU and Independent PRO teams will be rewarded for found new vulnerability.  
+  </div>
+   </p> <h3>Participation – Awards – Format Expansion</h3>
+    <p>
+· ECB grants four tier of prizes:<br> 1. Unlimited Event Awards (from outside partners)<br> 2. Edition Prize Pool <br>3. Organizers' Talent Award Program <br>4. Commemorative Award   <br><br>
+· We offer Multi-Winner Title Stacking Awards Program - for 3 and 5 edition award and distinction achievements. <br>
+<p>
+· Participation is free of charge. In Edition Z E R O we invite selected entities; </p>
+<p>
+· From Edition START! - half of the slots will require qualifications.<br>
+
+</p><strong>· First-mover credibility and place in a format that closes after Edition Z E R O</strong><br>    
+</p>
+    <div class="targets">
+      <b>Legacy and Awards · Custom Round<br><br></b>
+      <a href="event.html">Awards & Prize</a>
+      <a href="about.html#plans">Plans for the Future</a>
+    <a href="doc.html">Inquiries</a></div>
+  </div>
+  </div>
+
+<div class="tile accent-emerald">
+  <div class="hover-box">
+    > Pentests find vulnerabilities. Red teams test attack paths. CTFs measure offensive skill. Tabletops discuss decisions. Vendor benchmarks sell products.<br><br>
+    None measure: <strong>multi-day SOC endurance · detection under alert saturation · fatigue-driven decision degradation · peer-benchmarked resilience · Human-AI collaboration at scale.</strong><br><br>
+    <STRONG>> ECB measures all </STRONG>of these simultaneously — under real adversarial pressure, with independent judging, on test dedicated, real-grade infrastructure.<br>    
+  > 7-day event window including ~84h endurance round with suggested inside team rotation<br><br>
+  </div>
+  <h3>Why ECB vs Traditional Testing</h3>
+  <p>
+    Unlike pentests ($25k–$85k, single-direction), CTFs (24–48h, gamified), or vendor benchmarks (lab-controlled, product-specific), <br><br>
+<strong>ECB delivers:</strong><br><br>
+    · Vendor-neutral evaluation with independent judging — deploy any tools: SIEM/EDR/XDR, proprietary AI, custom automation — tested against identical adversarial conditions across all teams.<br><br>
+    · Quantified resilience metrics vs peers, not vendor marketing claims. Evidence for regulators, boards, and procurement decisions. <br><br>
+· Board-level metrics: MTTR, detection coverage and MTTD, peer ranking and judges points<br><br>
+</p>
+  <div class="targets">
+    <b>Operational Benchmark · Measurable Outcomes<br><br></b>
+    <a href="index.html#comparison">Detailed Comparison Table</a>
+    <a href="data.html#gathered">Data & Research Value</a>
+    <a href="about.html#a-observers">Observer Status</a>
+  </div>
+</div>
+
+</section>
+<!-- ═══════════════════════════════════════════════════════
+     ACCORDIONS - ECB VALUE PROPOSITION
+     ═══════════════════════════════════════════════════════ -->
+<section class="accordion-section">
+  <div class="acc-section-label mono">▸ WHY ECB — OPERATIONAL BENCHMARK · VALUE · DIFFERENTIATION</div>
+
+  <!-- ────────── ACCORDION 1: ECB vs ALTERNATIVES ────────── -->
+  <div class="acc-tab c-emerald" id="comparison">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V1</span>
+        <span class="acc-title">ECB vs Traditional Security Testing</span>
+        <span class="acc-sub-label">PENTESTS · RED TEAMS · CTFs · VENDOR BENCHMARKS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#comparison">#comparison</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Security leaders currently rely on penetration tests, red team engagements, tabletop exercises, and CTF competitions to evaluate cyber readiness. Each provides useful insights, but they measure isolated fragments of security capability and rarely simulate sustained operational defense under real pressure.</p>
+          
+          <p>ECB fills this measurement gap by combining real infrastructure defense, multi-day attack pressure, human-AI collaboration analysis, and measurable operational outcomes in one framework.</p>
+
+          <h4>Comparison Matrix</h4>
+          <table class="tab-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Duration</th>
+                <th>Cost</th>
+                <th>Environment</th>
+                <th>What It Measures</th>
+                <th>Limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CTF Competition</strong></td>
+                <td>24–48 hours</td>
+                <td>Free–low</td>
+                <td>Challenge-based</td>
+                <td>Offensive skill, exploit discovery</td>
+                <td>Little operational realism</td>
+              </tr>
+              <tr>
+                <td><strong>Tabletop Exercise</strong></td>
+                <td>1 day</td>
+                <td>$15k–$50k</td>
+                <td>Discussion-based</td>
+                <td>Decision-making process</td>
+                <td>No real infrastructure</td>
+              </tr>
+              <tr>
+                <td><strong>Penetration Test</strong></td>
+                <td>1–4 weeks</td>
+                <td>$15k–$40k</td>
+                <td>Controlled infrastructure</td>
+                <td>Vulnerability discovery</td>
+                <td>Limited operational context</td>
+              </tr>
+              <tr>
+                <td><strong>Red Team</strong></td>
+                <td>2–6 weeks</td>
+                <td>$25k–$85k</td>
+                <td>Real infrastructure</td>
+                <td>Attack success paths</td>
+                <td>Usually one-directional</td>
+              </tr>
+              <tr>
+                <td><strong>Vendor Benchmark</strong></td>
+                <td>Varies</td>
+                <td>Vendor-funded</td>
+                <td>Lab environment</td>
+                <td>Product performance</td>
+                <td>Vendor bias</td>
+              </tr>
+              <tr style="background: #f0faf8;">
+                <td><strong>ECB Benchmark</strong></td>
+                <td><strong>~7 days</strong></td>
+                <td><strong>Infrastructure + team time</strong></td>
+                <td><strong>Real infrastructure under attack</strong></td>
+                <td><strong>Breach + detection + availability + SOC operations</strong></td>
+                <td><strong>Requires committed team participation</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Metrics Captured in ECB</h4>
+          <p><strong>Defensive performance:</strong></p>
+          <ul>
+            <li>Mean Time to Detect (MTTD)</li>
+            <li>Mean Time to Recovery (MTTR)</li>
+            <li>Service uptime during attack</li>
+            <li>Detection coverage of attack attempts</li>
+            <li>Monitoring accuracy</li>
+          </ul>
+
+          <p><strong>behavioural SOC metrics:</strong></p>
+          <ul>
+            <li>Decision latency under alert floods</li>
+            <li>Team coordination patterns</li>
+            <li>Tool-switching costs between SIEM / EDR / forensics</li>
+            <li>Fatigue-driven response degradation</li>
+          </ul>
+
+          <p><strong>Offensive performance:</strong></p>
+          <ul>
+            <li>Successful breaches</li>
+            <li>Stealth infiltration attempts</li>
+            <li>Data extraction attempts</li>
+            <li>Service disruption attempts</li>
+          </ul>
+
+          <p>These data points help organizations understand how their security teams perform under sustained operational pressure.</p>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="data.html#datasets">Dataset Details</a>
+            <a href="about.html#observers">Observer Status</a>
+            <a href="event.html">Event Format</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>DURATION</span><span>7 DAYS SUSTAINED</span></div>
+            <div class="tab-meta-row"><span>ENVIRONMENT</span><span>REAL INFRASTRUCTURE</span></div>
+            <div class="tab-meta-row"><span>EVALUATION</span><span>VENDOR-NEUTRAL</span></div>
+            <div class="tab-meta-row"><span>JUDGING</span><span>INDEPENDENT</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────── ACCORDION 2: EXECUTIVE VALUE & ROI ────────── -->
+  <div class="acc-tab c-gold" id="executive-value">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V2</span>
+        <span class="acc-title">Executive Value & ROI Analysis</span>
+        <span class="acc-sub-label">BOARD-LEVEL INSIGHTS · VENDOR ACCOUNTABILITY · PEER BENCHMARKING</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#executive-value">#executive-value</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Cybersecurity investments are often difficult to quantify. ECB provides measurable operational outcomes that translate into board-level insights.</p>
+
+          <h4>Financial Context</h4>
+          <table class="tab-table">
+            <thead>
+              <tr><th>Metric</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Average cost of a data breach (2024)</td><td><strong>$4.88M</strong></td></tr>
+              <tr><td>Typical red team engagement</td><td>$25k–$85k</td></tr>
+              <tr><td>Global cybersecurity workforce gap</td><td>~4.8M specialists</td></tr>
+              <tr style="background: #fffaed;"><td><strong>ECB participation cost</strong></td><td><strong>Infrastructure + team time</strong></td></tr>
+            </tbody>
+          </table>
+
+          <p>In this context, ECB participation represents a <strong>fractional-cost stress test</strong> against exposures measured in millions of dollars.</p>
+
+          <h4>Quantified Resilience Measurement</h4>
+          <p>Organizations can measure their ability to:</p>
+          <ul>
+            <li>Detect attacks under sustained pressure</li>
+            <li>Maintain service availability during compromise attempts</li>
+            <li>Recover from successful breaches</li>
+          </ul>
+
+          <h4>Peer Benchmarking</h4>
+          <p>Participants receive comparative insights such as:</p>
+          <ul>
+            <li>Resilience ranking among peers</li>
+            <li>Detection performance relative to other teams</li>
+            <li>Operational strengths and weaknesses - after match comentarry, punctation, metrics and labeled data)</li>
+            <li>Hint&Tips + QnA after Match Sessions for EDU from PRO teams.</li>
+</ul>
+
+          <h4>Vendor Accountability</h4>
+          <p>Organizations can evaluate whether security tools and setups perform as expected during real attack conditions.</p>
+          <p><strong>Example insights:</strong></p>
+          <ul>
+            <li>"Automated detection reduced response time by 35%"</li>
+            <li>"Primary detection pipeline failed under alert saturation after 36 hours"</li>
+            <li>"Manual triage remained necessary for lateral movement detection"</li>
+            <li>""Without in team rotation MTTR doubled on day 4"</li>
+</ul>
+
+          <p>These insights allow leadership to prioritize investment decisions based on evidence rather than vendor claims.</p>
+
+          <h4>Early Supporters: the Limited Data Sets Pre-Sale</h4>
+          <p style="background: var(--sky); padding: 16px; border-left: 4px solid var(--gold);">
+            Includes: Founding supporter recognition, observer status for 2 editions, priority data access Day +7 (vs Month +7 general release).
+          </p>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Access</div>
+            <a href="data.html#licencing">Pre-Sale Details</a>
+            <a href="about.html#observers">Observer Status</a>
+            <a href="doc.html#contact">Contact for Terms</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>BREACH COST AVG</span><span>$4.88M</span></div>
+            <div class="tab-meta-row"><span>ECB COST</span><span>INFRA + TIME</span></div>
+            <div class="tab-meta-row"><span>EARLY SUPPORTERS PRE-SALE</span><span>Progresive Price · LIMITED</span></div>
+            <div class="tab-meta-row"><span>ROI</span><span>FRACTIONAL-COST</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────── ACCORDION 3: RESEARCH & DATA VALUE ────────── -->
+  <div class="acc-tab c-cyan" id="research-value">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V3</span>
+        <span class="acc-title">Research-Grade Telemetry & Academic Potential</span>
+        <span class="acc-sub-label">500GB–1.5TB DATASET · HUMAN-AI COLLABORATION · SOC behavioural DYNAMICS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#research-value">#research-value</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Beyond operational benchmarking, ECB creates a unique dataset valuable for cybersecurity research and AI development.</p>
+
+          <h4>Estimated Dataset per Edition</h4>
+          <p><strong>500GB–1.5TB GB of structured telemetry</strong> including:</p>
+          <ul>
+            <li>SIEM logs</li>
+            <li>Network metadata and PCAP fragments</li>
+            <li>Incident response timelines</li>
+            <li>behavioural SOC data</li>
+            <li>System availability metrics</li>
+          </ul>
+
+          <p>Comparable public datasets from real adversarial environments are <strong>extremely rare</strong>. Many similar exercises conducted by national cyber commands or military organizations remain classified.</p>
+
+          <h4>Human-AI Security Collaboration</h4>
+          <p>Modern SOC environments increasingly rely on AI-assisted security tools and automation. ECB provides a rare environment where organizations can evaluate:</p>
+          <ul>
+            <li>Proprietary AI detection systems</li>
+            <li>Vendor security platforms</li>
+            <li>Custom automation workflows</li>
+          </ul>
+          <p>under identical attack conditions.</p>
+
+          <p><strong>Example comparative questions:</strong></p>
+          <ul>
+            <li>Does AI reduce response latency?</li>
+            <li>When do analysts override automated decisions?</li>
+            <li>How do hybrid human-AI teams perform compared to autonomous systems?</li>
+            <li>Trust calibration: When do analysts override AI?</li>
+            <li>Alert fatigue thresholds with/without AI assistance</li>
+            <li>Decision quality degradation: Hour 8 vs. Hour 48</li>
+          </ul>
+
+          <h4>SOC behavioural Dynamics</h4>
+          <ul>
+            <li>Cognitive load during incident response</li>
+            <li>Communication patterns under pressure</li>
+            <li>Decision latency during alert floods</li>
+            <li>Tool-switching cognitive load under pressure</li>
+          </ul>
+
+          <h4>Research Applications</h4>
+          <p>ECB telemetry can support:</p>
+          <ul>
+            <li>Machine learning training datasets</li>
+            <li>SOC behavioural studies</li>
+            <li>Cyber-insurance modeling</li>
+            <li>Resilience benchmarking research</li>
+          </ul>
+
+          <p>This allows organizations to test AI security claims with real telemetry rather than vendor marketing data.</p>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Data Access</div>
+            <a href="data.html#datasets">Dataset Types</a>
+            <a href="data.html#release">Release Timeline</a>
+            <a href="data.html#licencing">Licensing Model</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>VOLUME</span><span>500GB–1.5TB GB</span></div>
+            <div class="tab-meta-row"><span>RARITY</span><span>CLASSIFIED-LEVEL</span></div>
+            <div class="tab-meta-row"><span>EDU ACCESS</span><span>MONTH +10 FREE</span></div>
+            <div class="tab-meta-row"><span>RESEARCH USE</span><span>ACADEMIC-GRADE</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────── ACCORDION 4: EDITION Z E R O FIRST-MOVER ────────── -->
+  <div class="acc-tab c-burgundy" id="edition-Z E R O">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V4</span>
+        <span class="acc-title">Why Participate in Edition Z E R O — First-Mover Advantage</span>
+        <span class="acc-sub-label">CO-CREATOR STATUS · FOUNDING SUPPORTER · SHAPE THE STANDARD</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#edition-Z E R O">#edition-Z E R O</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p><strong>Edition Z E R O represents a unique opportunity that will not exist in future editions.</strong> Once the format is established, comunity influence and  co-creator staus closes - the benchmark becomes a fixed format (subject to evaluation by FC).</p>
+
+          <h4>Co-Creator Status</h4>
+          <p>Tier-1 academic institutions have received invitations to shape the format specification and initial governance. Co-creator status provides:</p>
+          <ul>
+            <li>Permanent influence over scenario design and data gatherig and technical parameters</li>
+            <li>Publication precedence rights, access to data</li>
+            <li>Strategic voice and voting strength on Format Committee proposals</li>
+            <li>Recognition as founding institution in all ECB materials</li>
+         <li>Possibility to be co-creators in whole CIS </li>
+          </ul>
+
+          <h4>First-Mover Benefits</h4>
+          <p><strong>What Edition Z E R O participants gain that future participants won't:</strong></p>
+          <ul>
+            <li><strong>Shape the standard before it's set</strong> — influence rules, scenarios, metrics</li>
+            <li><strong>Founding supporter recognition</strong> — permanent listing on website and materials</li>
+            <li><strong>Priority data access</strong> — Day +3 auction vs Month +8 general release</li>
+            <li><strong>Academic credibility</strong> — first publications from the dataset</li>
+            <li><strong>Pre-sale pricing</strong> —  (limited 6) vs future commercial rates</li>
+          </ul>
+
+          <h4>Risk Mitigation — "No History" Addressed</h4>
+          <p>We understand Edition Z E R O involves trust in an unproven event. We mitigate this through:</p>
+          <ul>
+            <li><strong>Protected tier (anonymity):</strong> Enterprise participants default to full anonymity — codenames, no public exposure, Z E R O reputation risk</li>
+            <li><strong>No-loss policy:</strong> Participants receive value regardless of performance — dataset access, certificates, peer comparison insights</li>
+            <li><strong>Transparent operations:</strong> Enhanced.World Foundation (in registration, Netherlands) holds long-term stewardship; Locally4Me Group OÜ (Estonia, EU) handles commercial operations</li>
+            <li><strong>Academic co-creators:</strong> Tier-1 universities involved in format specification provide third-party validation</li>
+          </ul>
+
+          <h4></h4>
+          <table class="tab-table">
+            <thead>
+              <tr><th>Milestone</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Co-creator invitations issued</td><td>Q1.2026 (completed)</td></tr>
+              <tr><td>Pre-sale access opens</td><td>Q1.2026 (active)</td></tr>
+              <tr><td>CO-CREATORS OPPORTUNITY</td><td><strong>3 + 3</strong></td></tr>
+              <tr><td>Edition Z E R O launch</td><td><strong>Q4.2026</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h4></h4>
+          <ul>
+            <li>Edition Z E R O: ~15 teams (invitations-mostly)</li>
+            <li>Pre-sale data access: Limited to 6 entities per DS</li>
+            <li>Observer status: $1800 PRO | $850 / 2 editions (unrestricted)</li>
+          </ul>
+
+          <div class="tab-cta">
+            <p>Edition Z E R O is designed for early adopters who want to shape the future standard of operational resilience benchmarking.</p>
+            <a href="doc.html#contact">REQUEST INVITATION & NDA →</a>
+          </div>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Entry</div>
+            <a href="about.html#a-fc">Co-Creator Process</a>
+            <a href="data.html#licencing">Pre-Sale Access</a>
+            <a href="doc.html#contact">Contact Organizers</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>EDITION Z E R O</span><span>Q4.2026</span></div>
+            <div class="tab-meta-row"><span>APPLICATIONS CLOSE</span><span>Q2.2026</span></div>
+            <div class="tab-meta-row"><span>TEAM SLOTS</span><span>~12/18 (INVITE)</span></div>
+            <div class="tab-meta-row"><span>PRE-SALE LIMIT</span><span>6 ENTITIES PER DS</span></div>
+            <div class="tab-meta-row"><span>RISK</span><span>Z E R O (PROTECTED TIER)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<section class="trust">
+  <div class="trust-inner">
+    <h2>Academic Rigor & Operational Reality</h2>
+    <p class="mono" style="font-size: 14px;">> No simulations. No artificial scoring.<br>> Real adversarial pressure on real systems.</p>
+    <p>This event is designed to be the "Allied Armies Large Scale Maneuvers" of the digital age. We provide the ground for the most prestigious universities and global tech giants to validate their capabilities.</p>
+<p><strong>Unique cybersecurity improvment system:</strong>
+	<li>Unmached diversity, with highest quality.</li>
+	<li>Simulanous world-wide in substantial numbers.</li>    
+   	<li>Unique, evolving hybrid-CTF solution. </li>
+        <li>Exclusive Custom Data intended for technology improvement.</li>
+	<li>Anonymity and reputation protection by design.</li>
+	<li>Cadres tutoring, training and  support as integral part of solution.</li>
+<li> Every edition is precoius experience for your cybersecurity and RnD teams. </li></p>
+<li>HR Framework, Visualisations, independent Judges, Community Impact.</li>
+<li>Tools, systems, team compositions, protocols benchmark and validation.</li>
+<h2> </h2>
+  </div>
+</section>
+
+<section id="final-call" style="text-align:center; padding: 100px 24px; background: #ffffff; border-top: 1px solid #dbeaf2;">
+  <div style="max-width:800px; margin:0 auto;">
+    <h2 class="mono" style="letter-spacing: 2px; color: #111;">ACCESS & FULL DOCUMENTATION</h2>
+    <p style="margin: 24px auto; color: #6f7a82; font-size: 1.1rem; line-height: 1.8;">
+      Full technical specifications, raw telemetry structures (500 GB – 1.5 TB ML-Ready), 
+      and the Edition Zero Manual are restricted to <strong>verified academic and corporate partners.</strong>
+    </p>
+    <div style="background: #f4f8fa; padding: 30px; border-radius: 4px; margin-top: 40px;">
+      <p class="mono" style="font-size: 0.9rem; color: #666; margin-bottom: 10px; text-transform: uppercase;">Direct Inquiry for M-NDA:</p>
+      <a href="mailto: research@enhanced.world" style="font-size: 1.5rem; color: #2aa198; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-decoration: none; border-bottom: 2px solid #2aa198;">reasearch@enhanced.world</a>
+    </div>
+  </div>
+</section>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT FOR ACCORDIONS
+     ═══════════════════════════════════════════════════════ -->
+<script>
+function T(h) {
+  const tab = h.parentElement;
+  const was = tab.classList.contains('open');
+  document.querySelectorAll('.acc-tab.open').forEach(t => t.classList.remove('open'));
+  if (!was) {
+    tab.classList.add('open');
+    setTimeout(() => window.scrollTo({ top: tab.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }), 40);
+  }
+}
+function openHash() {
+  const h = window.location.hash;
+  if (!h) return;
+  const el = document.querySelector(h);
+  if (el && el.classList.contains('acc-tab')) {
+    el.classList.add('open');
+    setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }), 180);
+  }
+}
+window.addEventListener('load', openHash);
+window.addEventListener('hashchange', openHash);
+const btt = document.getElementById('btt');
+if (btt) window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 500));
+</script>
+
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:20px;">
+      <strong>Essential Cybersecurity Benchmark™</strong><br>
+     
+    </div>
+    <p>OPERATIONAL ENTITY: LOCALLY4ME GROUP OÜ | TALLINN, ESTONIA | EU</p>
+    <p>ENHANCED.WORLD FOUNDATION (IN REGISTRATION) | NETHERLANDS</p>
+    <div style="margin-top:20px;">
+      <a href="data.html#privpolicy">PRIVACY POLICY</a>
+      <a href="doc.html#">NDA</a>
+      <a href="data.html#">DATA ACCESS</a>
+      <a href="https://locally4me.org ">L4M Group</a>
+<a href="https://enhanced.world">Enhanced.World</a>
+    </div>
+    <p style="margin-top:40px;opacity:0.5;">© Locally4Me Group 2025–2026</p>
+  </div>
+</footer>
+</body>
+</html>
