@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ECB — About, Organisation &amp; Cooperation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff; --sky: #eaf3f8; --airport-blue: #dbeaf2;
+      --emerald-cyan: #2aa198; --soft-cyan: #3bb7da; --gray: #6f7a82;
+      --black: #111111; --gold: #d6b35c; --peach: #f3b59a; --royal-burgundy: #7a1f2b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Inter", sans-serif; color: var(--black); background: linear-gradient(to bottom, var(--white), var(--sky)); line-height: 1.6; }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+    header { background: var(--white); border-bottom: 1px solid #e1e6ea; position: sticky; top: 0; z-index: 200; }
+    .nav { max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-weight: 600; letter-spacing: 0.03em; }
+    .nav-links a { margin-left: 24px; font-size: 13px; color: var(--black); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    .hero { padding: 80px 24px 60px; background: radial-gradient(ellipse at top, var(--airport-blue), var(--white)); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; }
+    .hero h1 { font-size: 38px; font-weight: 500; margin-bottom: 16px; }
+    .hero p { font-size: 17px; color: var(--gray); max-width: 820px; margin: 0; }
+    footer { background: #0f2a3a; color: #dce9f2; padding: 60px 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+    footer a { color: #9ad0ff; text-decoration: none; margin-right: 20px; }
+
+    /* SUBNAV */
+    .event-subnav { position: sticky; top: 57px; z-index: 150; background: var(--white); border-bottom: 2px solid var(--airport-blue); overflow-x: auto; white-space: nowrap; }
+    .event-subnav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; }
+    .event-subnav a { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--black); text-decoration: none; padding: 12px 14px; border-bottom: 3px solid transparent; transition: all 0.2s; opacity: 0.55; }
+    .event-subnav a:hover { opacity: 1; border-bottom-color: var(--emerald-cyan); color: var(--emerald-cyan); }
+    .event-subnav a.active { opacity: 1; border-bottom-color: var(--emerald-cyan); }
+
+    /* ORIENTATION STRIP */
+    .orient-strip { max-width: 1200px; margin: 40px auto 0; padding: 0 24px; display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+    .orient-card { border: 1px solid var(--airport-blue); padding: 16px 18px; background: var(--white); border-top: 4px solid; }
+    .orient-card.oc-a { border-top-color: var(--emerald-cyan); }
+    .orient-card.oc-b { border-top-color: var(--gold); }
+    .orient-card.oc-c { border-top-color: var(--soft-cyan); }
+    .orient-card.oc-d { border-top-color: var(--royal-burgundy); }
+    .orient-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.55; margin-bottom: 6px; }
+    .orient-title { font-weight: 600; font-size: 13px; margin-bottom: 7px; }
+    .orient-desc { font-size: 12.5px; color: var(--gray); line-height: 1.5; margin-bottom: 10px; }
+    .orient-link { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); text-decoration: none; }
+    .orient-link:hover { color: var(--emerald-cyan); }
+    .orient-link::after { content: " →"; }
+    @media (max-width: 820px) { .orient-strip { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 500px) { .orient-strip { grid-template-columns: 1fr; } }
+
+    /* ACCORDION */
+    .accordion-section { max-width: 1200px; margin: 48px auto 80px; padding: 0 24px; }
+    .acc-section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--soft-cyan); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--airport-blue); }
+    .acc-group-header { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 20px 0 8px; margin-top: 8px; opacity: 0.6; border-bottom: 1px dashed var(--airport-blue); margin-bottom: 4px; }
+    .acc-tab { border: 1px solid #e3e8ec; background: var(--white); margin-bottom: 4px; transition: border-color 0.2s; }
+    .acc-tab:hover { border-color: #c0cdd6; }
+    .c-emerald { border-left: 2px solid var(--emerald-cyan); }
+    .c-cyan    { border-left: 2px solid var(--soft-cyan); }
+    .c-gold    { border-left: 2px solid var(--gold); }
+    .c-peach   { border-left: 2px solid var(--peach); }
+    .c-burgundy{ border-left: 2px solid var(--royal-burgundy); }
+    .acc-tab.open.c-emerald { border-top: 1px solid var(--emerald-cyan); }
+    .acc-tab.open.c-cyan    { border-top: 1px solid var(--soft-cyan); }
+    .acc-tab.open.c-gold    { border-top: 1px solid var(--gold); }
+    .acc-tab.open.c-peach   { border-top: 1px solid var(--peach); }
+    .acc-tab.open.c-burgundy{ border-top: 1px solid var(--royal-burgundy); }
+    .acc-tab.is-sub { margin-left: 25px; background: #fafcfd; }
+    .acc-tab.is-sub .acc-header { padding: 14px 24px; }
+    .acc-tab.is-sub .acc-title { font-size: 14px; }
+    .acc-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; cursor: pointer; user-select: none; }
+    .acc-header-left { display: flex; align-items: baseline; gap: 16px; flex: 1; min-width: 0; }
+    .acc-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; opacity: 0.35; flex-shrink: 0; }
+    .acc-title { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; }
+    .acc-sub-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); opacity: 0.7; flex-shrink: 0; }
+    .acc-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .acc-anchor { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--soft-cyan); border: 1px solid var(--airport-blue); padding: 3px 7px; background: var(--sky); text-decoration: none; }
+    .acc-anchor:hover { border-color: var(--soft-cyan); }
+    .acc-toggle { font-family: 'IBM Plex Mono', monospace; font-size: 18px; width: 28px; text-align: center; transition: transform 0.3s ease; }
+    .acc-tab.open .acc-toggle { transform: rotate(45deg); }
+    .acc-body { display: none; padding: 0 28px 28px; animation: fsIn 0.22s ease; }
+    .acc-tab.open .acc-body { display: block; }
+    .acc-tab.is-sub .acc-body { padding: 0 24px 22px; }
+    @keyframes fsIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .tab-inner { display: grid; grid-template-columns: 1fr 260px; gap: 36px; }
+    @media (max-width: 860px) { .tab-inner { grid-template-columns: 1fr; } }
+    .tab-content p, .tab-content li { font-size: 14.5px; line-height: 1.75; margin-bottom: 10px; }
+    .tab-content h4 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 24px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--airport-blue); }
+    .tab-content ul { margin: 0 0 12px; padding-left: 18px; }
+    .tab-content ul li { font-size: 14px; }
+    .tab-table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: 'IBM Plex Mono', monospace; margin: 16px 0; }
+    .tab-table th { background: var(--airport-blue); padding: 9px 12px; text-align: left; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid #c8d8e4; }
+    .tab-table td { padding: 9px 12px; border: 1px solid #e3e8ec; vertical-align: top; line-height: 1.5; font-size: 12px; }
+    .tab-table tr:nth-child(even) td { background: var(--sky); }
+    .tab-links-box { background: var(--sky); border: 1px solid var(--airport-blue); padding: 18px; margin-bottom: 14px; }
+    .tab-links-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+    .tab-links-box a { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); text-decoration: none; padding: 7px 0; border-bottom: 1px solid var(--airport-blue); }
+    .tab-links-box a:last-child { border-bottom: none; }
+    .tab-links-box a:hover { color: var(--emerald-cyan); }
+    .tab-links-box a::after { content: " →"; }
+    .tab-meta { border: 1px solid #e3e8ec; padding: 14px 18px; background: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+    .tab-meta-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--sky); }
+    .tab-meta-row:last-child { border-bottom: none; }
+    .tab-meta-row span:first-child { opacity: 0.5; font-size: 10px; }
+    .tab-meta-row span:last-child { font-weight: 600; color: var(--black); font-size: 11px; }
+    .tab-cta { margin-top: 28px; padding: 22px; background: var(--sky); border-left: 4px solid var(--emerald-cyan); }
+    .tab-cta p { margin: 0 0 14px; font-weight: 600; font-size: 14px; }
+    .tab-cta a { border: 2px solid var(--black); padding: 10px 22px; text-decoration: none; color: var(--black); font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+    .tab-cta a:hover { background: var(--black); color: var(--white); }
+    .notice-bar { background: var(--black); color: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 10px 24px; text-align: center; letter-spacing: 0.5px; }
+    .notice-bar a { color: var(--gold); text-decoration: none; margin-left: 8px; }
+    .coop-badge { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 1px; padding: 3px 10px; text-transform: uppercase; margin-right: 6px; margin-bottom: 4px; }
+    .cb-emerald { background: var(--emerald-cyan); color: #fff; }
+    .cb-gold    { background: var(--gold); color: var(--black); }
+    .cb-cyan    { background: var(--soft-cyan); color: #fff; }
+    .cb-peach   { background: var(--peach); color: var(--black); }
+    .cb-burgundy{ background: var(--royal-burgundy); color: #fff; }
+    .btt { position: fixed; bottom: 28px; right: 20px; z-index: 300; background: var(--black); color: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1px; border: none; padding: 9px 13px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .btt.visible { opacity: 1; pointer-events: auto; }
+    .btt:hover { background: var(--emerald-cyan); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="nav-logo">Essential Cybersecurity Benchmark</div>
+    <div class="nav-links">
+      <a href="re.html">For Research</a>
+      <a href="com.html">For Enterprise</a>
+      <a href="event.html">Event</a>
+      <a href="data.html">Data</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</header>
+
+<div class="notice-bar">
+  Came directly here? Find your entry point below.
+  <a href="event.html">→ Full Event Specification</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>About ECB — Organisation &amp; Cooperation</h1>
+    <p>A lighthouse project for cybersecurity safety standards in the era of XR, BMI and autonomous systems. We bet on human talents and real-world validation — not synthetic benchmarks.</p>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<div class="orient-strip">
+  <div class="orient-card oc-a">
+    <div class="orient-label">Research / University</div>
+    <div class="orient-title">Observer &amp; data access</div>
+    <div class="orient-desc">Dataset access, publication rights, community voice.</div>
+    <a class="orient-link" href="#cooperation">See Observer Status</a>
+  </div>
+  <div class="orient-card oc-b">
+    <div class="orient-label">Company / Agency</div>
+    <div class="orient-title">Partner or strategic sponsor</div>
+    <div class="orient-desc">Brand exposure, HR Framework access, regional rights.</div>
+    <a class="orient-link" href="#cooperation">See Partnership Types</a>
+  </div>
+  <div class="orient-card oc-c">
+    <div class="orient-label">Individual / Expert</div>
+    <div class="orient-title">Judge or supporter</div>
+    <div class="orient-desc">Influence on format, publication rights, community status.</div>
+    <a class="orient-link" href="#a-judges">See Judge Roles</a>
+  </div>
+  <div class="orient-card oc-d">
+    <div class="orient-label">Hacktivist / Community</div>
+    <div class="orient-title">Community &amp; Extended Community</div>
+    <div class="orient-desc">Forum access, format influence, specialist panels.</div>
+    <a class="orient-link" href="#a-community">See Community</a>
+  </div>
+</div>
+
+<!-- ACCORDION -->
+<div class="accordion-section">
+  <div class="acc-section-label mono">▸ ORGANISATION — GOVERNANCE · COMMUNITY · COOPERATION</div>
+
+  <!-- A1 · ORGANISATION -->
+  <div class="acc-group-header">A1 · OPERATIONAL ORGANISATION</div>
+
+  <div class="acc-tab c-emerald" id="a-org">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">A1</span>
+        <span class="acc-title">Operational Organization &amp; Legal Structure</span>
+        <span class="acc-sub-label">LOCALLY4ME OÜ · ENHANCED.WORLD FOUNDATION</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-org">#a-org</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p><strong>Operational Organizer:</strong> Locally4Me Group OÜ, Tallinn, Estonia, EU. Responsible for event operations, commercial agreements, data infrastructure and day-to-day organization.</p>
+          <p><strong>Co-organizer &amp; Future IP Owner:</strong> Enhanced.World Foundation (in registration, Netherlands, expected Q2 2026). The Foundation holds long-term stewardship of the format's values, data ethics and the Legacy Award Program. The division of responsibility is designed to separate commercial operations (OÜ) from data value, ethics and community trust (Foundation).</p>
+          
+<!-- REPLACE: the "Co-Creators" paragraph in section A1 -->
+<h4>Co-Creators</h4>
+<p>Invitations for the first co-creator round have been issued to leading academic centres. A second round is in preparation. Co-creator status reflects formal involvement in shaping ECB's format specification and initial governance — this role is distinct from observer or participant status.</p>
+
+<table class="tab-table">
+  <thead>
+    <tr><th>Co-Creator Receives</th><th>Co-Creator Contributes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Permanent influence over scenario design and telemetry parameters</td>
+      <td>Participation in format specification sessions (remote possible)</td>
+    </tr>
+    <tr>
+      <td>Publication precedence rights — first access to dataset for academic output</td>
+      <td>Academic review and validation of scoring methodology</td>
+    </tr>
+    <tr>
+      <td>Strategic voice on Format Committee (non-binding advisory)</td>
+      <td>Nomination of at least one judge candidate per edition</td>
+    </tr>
+    <tr>
+      <td>Recognition as founding institution in all ECB materials (permanent)</td>
+      <td>Visibility of ECB in institutional communication channels</td>
+    </tr>
+    <tr>
+      <td>Pre-sale dataset access — founding price, no auction wait</td>
+      <td>Signed co-creator agreement (pre-NDA or concurrent with NDA)</td>
+    </tr>
+  </tbody>
+</table>
+<p style="font-size:13px;opacity:.7">Co-creator invitations are by appointment only. Status closes when Edition ZERO format is finalised.</p>
+
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>OPERATIONAL</span><span>LOCALLY4ME OÜ</span></div>
+            <div class="tab-meta-row"><span>JURISDICTION</span><span>TALLINN, ESTONIA · EU</span></div>
+            <div class="tab-meta-row"><span>FOUNDATION</span><span>ENHANCED.WORLD</span></div>
+            <div class="tab-meta-row"><span>FOUND. JURISDICTION</span><span>NETHERLANDS</span></div>
+            <div class="tab-meta-row"><span>FOUND. STATUS</span><span>IN REGISTRATION</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- A2 · FORMAT COMMITTEE -->
+  <div class="acc-group-header">A2 · GOVERNANCE — FORMAT COMMITTEE</div>
+
+  <div class="acc-tab c-gold" id="a-fc">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">A2</span>
+        <span class="acc-title">The Format Committee (FC)</span>
+        <span class="acc-sub-label">SUPREME GOVERNING BODY · FINAL APPEAL · INTEGRITY</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-fc">#a-fc</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>The Format Committee is the supreme governing body ensuring technical evolution and integrity of the ECB format. It is the final appeal and decision-making instance on all format, scoring and eligibility matters.</p>
+          <h4>Composition</h4>
+          <ul>
+            <li><strong>Representative Members:</strong> Organizers, co-creators and strategic partners.</li>
+            <li><strong>Person Members:</strong> Invited exceptional individuals. Once appointed, members self-renew every 2 years through an independent internal process.</li>
+            <li><strong>Judicial &amp; Community Representation:</strong> 3 Representatives of the Judges and 2 Representatives of the Community — ensuring oversight of proceedings and voicing community interests.</li>
+          </ul>
+          <h4>FC Authority Includes</h4>
+          <ul>
+            <li>Final decisions on format evolution, scenario rules and scoring modifications.</li>
+            <li>Approval of custom privacy tier changes and AI licensing decisions.</li>
+            <li>Review of formal objections submitted by Team Responsible Entities.</li>
+            <li>Waiving of fees in exceptional circumstances.</li>
+          </ul>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>TYPE</span><span>GOVERNING BODY</span></div>
+            <div class="tab-meta-row"><span>RENEWAL</span><span>EVERY 2 YEARS</span></div>
+            <div class="tab-meta-row"><span>JUDGE REPS</span><span>3</span></div>
+            <div class="tab-meta-row"><span>COMMUNITY REPS</span><span>2</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A3 · COMMUNITY -->
+  <div class="acc-group-header">A3 · THE COMMUNITY</div>
+
+  <div class="acc-tab c-cyan" id="a-community">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">A3</span>
+        <span class="acc-title">The Community &amp; Extended Community</span>
+        <span class="acc-sub-label">PARTICIPANTS · HACKTIVISTS · RESEARCHERS · VOLUNTEERS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-community">#a-community</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>The Community includes all individuals who have participated in ECB events — judges, technical volunteers, advisors, contractors, members of associated cybersecurity societies, researchers, academics, and students of associated units.</p>
+          <h4>Community Access &amp; Rights</h4>
+          <ul>
+            <li>Dedicated sectors of the Event Utility Terminal.</li>
+            <li>Right to voice opinions and vote on details, changes, new policies and terms proposed by the FC.</li>
+            <li>Mechanisms to propose scenarios, rules and technical modifications.</li>
+          </ul>
+          <p>During Edition ZERO and Edition START!, the Community holds expanded influence over final format shaping.</p>
+          <h4>Extended Community</h4>
+          <p>Includes specialists, hacktivists and expert groups — with access to the inner specialist forum — as well as associated employees, contractors, official commentators and franchise/broadcast partners. Extended Community membership is recognized by the FC based on relevant contribution and affiliation.</p>
+          <h4>Team Responsible Entities &amp; Team Members</h4>
+          <p>Hold observer status and receive free telemetry data from their specific matches. May issue formal objections to judge fairness and decisions, reviewed by the Format Committee.</p>
+          <p>We insist that software manufacturers — or Team Responsible Entities — pay market prices for security gaps and exploits found during the event, as part of the post-match event report program.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Enter</div>
+            <a href="doc.html#contact">Contact Organizers</a>
+            <a href="event.html#s32">Individual Entry</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>FORUM ACCESS</span><span>COMMUNITY MEMBERS</span></div>
+            <div class="tab-meta-row"><span>FORMAT VOTE</span><span>COMMUNITY RIGHT</span></div>
+            <div class="tab-meta-row"><span>ED. ZERO INFLUENCE</span><span>EXPANDED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A4 · COOPERATION -->
+  <div class="acc-group-header" id="cooperation">A4 · COOPERATION TYPES</div>
+
+  <div class="acc-tab c-gold" id="a-observers">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4</span>
+        <span class="acc-title">COOPERATION TYPES</span>
+        <span class="acc-sub-label">COMPANIES · UNIVERSITIES & RESEARCH ENTITIES  · NGOS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-observers">#a-cooptypes</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p> 
+
+</p>
+<h4>We offer various cooperation models — suited (but not limited) for:</h4>
+<ul>
+  <li><strong>Observers</strong> — Enterprises, agencies, and research institutions seeking competitive intelligence and behavioural data while maintaining strategic distance from operational participation. Educational observer entities receive additional benefits.</p></li>
+  
+  <li><strong>Judges</strong> — Veteran cybersecurity professionals and academics gain publication precedence rights, strategic format influence, and proof of elite-level involvement in the most rigorous validation event of its kind.</li>
+  
+  <li><strong>Strategic Partners</strong> — Key infrastructure and prize pool providers receive global brand exposure, ECB trademark authorization, and individually negotiated terms that align their capabilities with our mission-critical needs.</li>
+  
+  <li><strong>Certified Partners & Local Representatives</strong> — Entrepreneurial organizations and individuals, regional scale initiatives and events eclusivity, direct access to the HR Framework — positioning themselves as local cybersecurity talent hubs.</li>
+  
+  <li><strong>Supporters</strong> — Early-stage contributors — whether through donations, volunteering, or sponsorship — gain honorary recognition, specialist forum access, and priority consideration as the ecosystem expands into future formats.</li>
+</ul>          
+          </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="data.html#d-release">Data Release Policy</a>
+            <a href="data.html#d-access">Licensing Tiers</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>DATA ACCESS</span><span>BI-YEARLY, CURATED</span></div>
+            <div class="tab-meta-row"><span>HR FRAMEWORK</span><span>INCLUDED</span></div>
+            <div class="tab-meta-row"><span>FORMAT VOICE</span><span>REPRESENTATIVE</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-emerald is-sub" id="a-judges">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4.1</span>
+        <span class="acc-title">Observers</span>
+        <span class="acc-sub-label">ACCESS TO DATA · INFLUENCE PARAMETERS · ACCESS HR FRAMEWORK</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-judges">#a-observers</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+
+          <p>Observer status is available enterprises ( cybersecurity, AI, insurance), research entities, government agencies, non-profit organizations and academies. It is the primary access route for organizations that want insight or data without full event participation.</p>
+          <h4>Observer Benefits</h4>
+          <ul>
+            <li>Bi-yearly access to curated datasets according to the release policy.</li>
+            <li>Representative voice on event rules, scenarios and data gathering parameters.</li>
+            <li>Access to the HR Framework for elite talent acquisition.</li>
+            <li>Early information on format development and future editions.</li>
+          </ul>
+          <p><strong>Educational observer entities</strong> receive additional special benefits and privileges, including extended anonymised data access and dedicated academic discounts.</p>
+          <div class="tab-cta">
+            <p>Observer status is available via NDA and registration. Contact us to discuss terms.</p>
+            <a href="doc.html#contact">INQUIRE ABOUT OBSERVER STATUS →</a>
+          </div>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="data.html#d-release">Data Release Policy</a>
+            <a href="data.html#d-access">Licensing Tiers</a>
+            <a href="data.html#d-ds">Data Sets</a>
+</div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>DATA ACCESS</span><span>BI-YEARLY, CURATED</span></div>
+            <div class="tab-meta-row"><span>HR FRAMEWORK</span><span>INCLUDED</span></div>
+            <div class="tab-meta-row"><span>FORMAT VOICE</span><span>REPRESENTATIVE</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="acc-tab c-gold is-sub" id="a-judges">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4.2</span>
+        <span class="acc-title">Judges</span>
+        <span class="acc-sub-label">VETERANS AND  · ATV · SUPPORT — BY APPOINTMENT</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-judges">#a-judges</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>To ensure unbiased evaluation, judges are preferably veterans, retired experts, academics and Committee PM's. Support Judges may include any highly skilled volunteers.</p>
+          <h4>Selection</h4>
+          <p>By appointment, based on Academic and Industry Merit.</p>
+          <h4>Judge Tiers</h4>
+          <ul>
+            <li><strong>A. Live Match Lead (LML)</strong> — leads real-time evaluation of active confrontations.</li>
+            <li><strong>B. Analytic Tech-Verification (ATV)</strong> — post-hoc technical verification of claims and logs.</li>
+            <li><strong>C. Support Judges (SJ)</strong> — assist with specific technical domains or volume periods.</li>
+          </ul>
+          <h4>Judge Benefits</h4>
+          <ul>
+            <li>Scientific publication precedence rights and special data access for independent research.</li>
+            <li>Strategic influence on format and certification standards.</li>
+            <li>Proof of high-level involvement; eligibility for event awards.</li>
+            <li>VIP networking; possibility to judge the expanded format (CSSS).</li>
+          </ul>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>SELECTION</span><span>BY APPOINTMENT</span></div>
+            <div class="tab-meta-row"><span>TIERS</span><span>LML / ATV / SJ</span></div>
+            <div class="tab-meta-row"><span>PUBLICATION RIGHTS</span><span>PRECEDENCE</span></div>
+            <div class="tab-meta-row"><span>DATA ACCESS</span><span>SPECIAL RESEARCH</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="a-strategic">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4.3</span>
+        <span class="acc-title">Strategic Partnerships</span>
+        <span class="acc-sub-label">KEY ASSET PROVIDERS · PRIZES · PLATFORM · VISUALIZATION</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-strategic">#a-strategic</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Strategic Partnerships are reserved for providers of key assets: prizes and award pool funding, Event Utility Platform development, live event commentary and visualization software, and IT infrastructure sponsorship.</p>
+          <h4>Strategic Partner Benefits</h4>
+          <ul>
+            <li>Global brand exposure across all ECB channels and materials.</li>
+            <li>Authorized use of ECB trademarks within agreed scope.</li>
+            <li>Observer Status included.</li>
+            <li>Individually negotiated strategic terms.</li>
+          </ul>
+          <div class="tab-cta">
+            <p>Strategic partnership terms are negotiated individually. Contact us to discuss scope and fit.</p>
+            <a href="doc.html#contact">DISCUSS STRATEGIC PARTNERSHIP →</a>
+          </div>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>TRADEMARK USE</span><span>AUTHORIZED</span></div>
+            <div class="tab-meta-row"><span>OBSERVER STATUS</span><span>INCLUDED</span></div>
+            <div class="tab-meta-row"><span>TERMS</span><span>INDIVIDUALLY NEGOTIATED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-peach is-sub" id="a-partners">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4.4</span>
+        <span class="acc-title">Certified Partner &amp; Local Representative</span>
+        <span class="acc-sub-label">REGIONAL RIGHTS · HR FRAMEWORK · TEAM-FORMING</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-partners">#a-partners</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Available to companies, non-profits, associations and industrious individuals. Certified Partners and Local Representatives hold regional roles within the ECB ecosystem — connecting local talent with the global event structure.</p>
+          <h4>Benefits</h4>
+          <ul>
+            <li>Exclusive licensing for Regional Networking Hubs.</li>
+            <li>Local Screening and Live Transmission Rights (Small–Medium scale).</li>
+            <li>Access to the HR Framework.</li>
+            <li>Participation in the ECB Team-Forming module.</li>
+            <li>Branding and promotion within ECB channels.</li>
+          </ul>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>REGIONAL RIGHTS</span><span>EXCLUSIVE LICENSING</span></div>
+            <div class="tab-meta-row"><span>TRANSMISSION</span><span>SM SCALE</span></div>
+            <div class="tab-meta-row"><span>HR ACCESS</span><span>INCLUDED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-emerald is-sub" id="a-supporters">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4.5</span>
+        <span class="acc-title">Supporters &amp; Individual Supporters</span>
+        <span class="acc-sub-label">DONATIONS · VOLUNTEERS · SPONSORSHIP</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-supporters">#a-supporters</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>At this stage we invite various forms of support: volunteering, donations and sponsorship (non financial and financial). Supporters play a direct role in making Edition ZERO possible and in shaping the community around the event.</p>
+          <h4>Supporter Benefits</h4>
+          <ul>
+            <li>Honorary mention on the website.</li>
+            <li>Official Certificate of Support.</li>
+            <li>Access to specialist forums.</li>
+            <li>Early information on format expansion and future editions.</li>
+            <li>Right to comment on selected FC proposals.</li>
+            <li>Priority consideration in further contract and partnership possibilities.</li>
+          </ul>
+          <div class="tab-cta">
+            <p>Want to support ECB — as an individual, organization or through donation?</p>
+            <a href="doc.html#contact">GET IN TOUCH →</a>
+          </div>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>TYPES</span><span>DONATION · VOLUNTEER · SPONSOR</span></div>
+            <div class="tab-meta-row"><span>CERTIFICATE</span><span>YES</span></div>
+            <div class="tab-meta-row"><span>FORUM ACCESS</span><span>SPECIALIST</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A5 · MISSION & FUTURE -->
+  <div class="acc-group-header">A5 · MISSION &amp; FUTURE PLANS</div>
+
+  <div class="acc-tab c-peach" id="a-mission">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">A5</span>
+        <span class="acc-title">Mission &amp; The Void</span>
+        <span class="acc-sub-label">WHY ECB EXISTS · C-P SIS  · LIGHTHOUSE PROJECT</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-mission">#a-mission</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>This is a lighthouse project. Reserch shows there is insufficient importance placed on cybersecurity and safety in the digital age of AI, XR, BMI, autonomous or hyperconnected systems. 
+We offer a complete system solution — validation, refinement, cadre - Cyber-Physical Security & Integrity System.</p>
+          <p><strong></strong> Technology for the benefit of humanity. Safety in a New Era. We bet on talents.</p>
+          <p>ECB is the first recurring test in this system. Subsequent tests will address a broader range of cyber-physical threat scenarios — from hardware-level system integrity to autonomous machine survival under adversarial conditions.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>FIRST EVENT</span><span>Q4.2026</span></div>
+            <div class="tab-meta-row"><span>SYSTEM</span><span>5 BRANCHES </span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-peach" id="a-csss">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">A6</span>
+        <span class="acc-title">Future Plans — Cyber-Physical Security & Integrity System (C-P SIS )</span>
+        <span class="acc-sub-label">ISI · CIB · AMS/N · EEAC</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#a-csss">#a-csss</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Future editions of ECB will introduce mandatory pre-qualification and eliminations for half of all participation slots. The baseline event format is part of a multi-purpose system designed for global cybersecurity development.</p>
+          <h4>C-P SIS | Recurring Standards & Ultimate Tests Family</h4>
+          <ul>
+            <li><strong>In-Flight System Integrity: Breach/Detection (ISI B/D)</strong> — rapid-cycle penetration and unauthorized modification of operational hardware/software, from consumer electronics to physical autonomous AI systems.</li>
+            <li><strong>Cross-Domain Infrastructure Breach (CIB)</strong> — goal-oriented penetration of complex commercial-grade networks (Smart Environments) to achieve kinetic effects or data exfiltration.</li>
+            <li><strong>Autonomous Machine Survival/Neutralization (AM - S/N)</strong> — evaluation of multi-tier resistance and neutralization strategies, from electronic warfare and reprogramming to physical immobilization.</li>
+            <li><strong>Extreme Environment Autonomy Competitive Format (EEAC)</strong> — autonomous machine mission-integrity testing across hostile or exotic environments: sub-surface, aerial, aquatic and high-vacuum simulations.</li>
+          </ul>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>TESTS</span><span>ISI · CIB · AMS/N · EEAC</span></div>
+            <div class="tab-meta-row"><span>QUALIFICATION</span><span>FROM ED. III</span></div>
+            <div class="tab-meta-row"><span>SCOPE</span><span>GLOBAL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /accordion-section -->
+
+<!-- ═══════════════════════════════════════════════════════
+     ACCORDIONS - ECB VALUE PROPOSITION
+     ═══════════════════════════════════════════════════════ -->
+<section class="accordion-section">
+  <div class="acc-section-label mono">▸ WHY ECB — OPERATIONAL BENCHMARK · VALUE · DIFFERENTIATION</div>
+
+  <!-- ────────── ACCORDION 1: ECB vs ALTERNATIVES ────────── -->
+  <div class="acc-tab c-emerald" id="comparison">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V1</span>
+        <span class="acc-title">ECB vs Traditional Security Testing</span>
+        <span class="acc-sub-label">PENTESTS · RED TEAMS · CTFs · VENDOR BENCHMARKS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#comparison">#comparison</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Security leaders currently rely on penetration tests, red team engagements, tabletop exercises, and CTF competitions to evaluate cyber readiness. Each provides useful insights, but they measure isolated fragments of security capability and rarely simulate sustained operational defense under real pressure.</p>
+          
+          <p>ECB fills this measurement gap by combining real infrastructure defense, multi-day attack pressure, human-AI collaboration analysis, and measurable operational outcomes in one framework.</p>
+
+          <h4>Comparison Matrix</h4>
+          <table class="tab-table">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Duration</th>
+                <th>Cost</th>
+                <th>Environment</th>
+                <th>What It Measures</th>
+                <th>Limitations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CTF Competition</strong></td>
+                <td>24–48 hours</td>
+                <td>Free–low</td>
+                <td>Challenge-based</td>
+                <td>Offensive skill, exploit discovery</td>
+                <td>Little operational realism</td>
+              </tr>
+              <tr>
+                <td><strong>Tabletop Exercise</strong></td>
+                <td>1 day</td>
+                <td>$15k–$50k</td>
+                <td>Discussion-based</td>
+                <td>Decision-making process</td>
+                <td>No real infrastructure</td>
+              </tr>
+              <tr>
+                <td><strong>Penetration Test</strong></td>
+                <td>1–4 weeks</td>
+                <td>$15k–$40k</td>
+                <td>Controlled infrastructure</td>
+                <td>Vulnerability discovery</td>
+                <td>Limited operational context</td>
+              </tr>
+              <tr>
+                <td><strong>Red Team</strong></td>
+                <td>2–6 weeks</td>
+                <td>$25k–$85k</td>
+                <td>Real infrastructure</td>
+                <td>Attack success paths</td>
+                <td>Usually one-directional</td>
+              </tr>
+              <tr>
+                <td><strong>Vendor Benchmark</strong></td>
+                <td>Varies</td>
+                <td>Vendor-funded</td>
+                <td>Lab environment</td>
+                <td>Product performance</td>
+                <td>Vendor bias</td>
+              </tr>
+              <tr style="background: #f0faf8;">
+                <td><strong>ECB Benchmark</strong></td>
+                <td><strong>~7 days</strong></td>
+                <td><strong>Infrastructure + team time</strong></td>
+                <td><strong>Real infrastructure under attack</strong></td>
+                <td><strong>Breach + detection + availability + SOC operations</strong></td>
+                <td><strong>Requires committed team participation</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Metrics Captured in ECB</h4>
+          <p><strong>Defensive performance:</strong></p>
+          <ul>
+            <li>Mean Time to Detect (MTTD)</li>
+            <li>Mean Time to Recovery (MTTR)</li>
+            <li>Service uptime during attack</li>
+            <li>Detection coverage of attack attempts</li>
+            <li>Monitoring accuracy</li>
+          </ul>
+
+          <p><strong>behavioural SOC metrics:</strong></p>
+          <ul>
+            <li>Decision latency under alert floods</li>
+            <li>Team coordination patterns</li>
+            <li>Tool-switching costs between SIEM / EDR / forensics</li>
+            <li>Fatigue-driven response degradation</li>
+          </ul>
+
+          <p><strong>Offensive performance:</strong></p>
+          <ul>
+            <li>Successful breaches</li>
+            <li>Stealth infiltration attempts</li>
+            <li>Data extraction attempts</li>
+            <li>Service disruption attempts</li>
+          </ul>
+
+          <p>These data points help organizations understand how their security teams perform under sustained operational pressure.</p>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="data.html#datasets">Dataset Details</a>
+            <a href="about.html#observers">Observer Status</a>
+            <a href="event.html">Event Format</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>DURATION</span><span>7 DAYS SUSTAINED</span></div>
+            <div class="tab-meta-row"><span>ENVIRONMENT</span><span>REAL INFRASTRUCTURE</span></div>
+            <div class="tab-meta-row"><span>EVALUATION</span><span>VENDOR-NEUTRAL</span></div>
+            <div class="tab-meta-row"><span>JUDGING</span><span>INDEPENDENT</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────── ACCORDION 2: EXECUTIVE VALUE & ROI ────────── -->
+  <div class="acc-tab c-gold" id="executive-value">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V2</span>
+        <span class="acc-title">Executive Value & ROI Analysis</span>
+        <span class="acc-sub-label">BOARD-LEVEL INSIGHTS · VENDOR ACCOUNTABILITY · PEER BENCHMARKING</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#executive-value">#executive-value</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Cybersecurity investments are often difficult to quantify. ECB provides measurable operational outcomes that translate into board-level insights.</p>
+
+          <h4>Financial Context</h4>
+          <table class="tab-table">
+            <thead>
+              <tr><th>Metric</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Average cost of a data breach (2024)</td><td><strong>$4.88M</strong></td></tr>
+              <tr><td>Typical red team engagement</td><td>$25k–$85k</td></tr>
+              <tr><td>Global cybersecurity workforce gap</td><td>~4.8M specialists</td></tr>
+              <tr style="background: #fffaed;"><td><strong>ECB participation cost</strong></td><td><strong>Infrastructure + team time</strong></td></tr>
+            </tbody>
+          </table>
+
+          <p>In this context, ECB participation represents a <strong>fractional-cost stress test</strong> against exposures measured in millions of dollars.</p>
+
+          <h4>Quantified Resilience Measurement</h4>
+          <p>Organizations can measure their ability to:</p>
+          <ul>
+            <li>Detect attacks under sustained pressure</li>
+            <li>Maintain service availability during compromise attempts</li>
+            <li>Recover from successful breaches</li>
+          </ul>
+
+          <h4>Peer Benchmarking</h4>
+          <p>Participants receive comparative insights such as:</p>
+          <ul>
+            <li>Resilience ranking among peers</li>
+            <li>Detection performance relative to other teams</li>
+            <li>Operational strengths and weaknesses - after match comentarry, punctation, metrics and labbeled data)</li>
+            <li>Hint&Tips + QnA after Match Sessions for EDU from PRO teams.</li>
+</ul>
+
+          <h4>Vendor Accountability</h4>
+          <p>Organizations can evaluate whether security tools and setups perform as expected during real attack conditions.</p>
+          <p><strong>Example insights:</strong></p>
+          <ul>
+            <li>"Automated detection reduced response time by 35%"</li>
+            <li>"Primary detection pipeline failed under alert saturation after 36 hours"</li>
+            <li>"Manual triage remained necessary for lateral movement detection"</li>
+            <li>""Without in team rotation MTTR doubled on day 4"</li>
+</ul>
+
+          <p>These insights allow leadership to prioritize investment decisions based on evidence rather than vendor claims.</p>
+
+          <h4>Early Supporters: the Limited Data Sets Pre-Sale</h4>
+          <p style="background: var(--sky); padding: 16px; border-left: 4px solid var(--gold);">
+            Includes: Founding supporter recognition, observer status for 2 editions, priority data access Day +3 (vs Month +8 general release).<br><br>
+           .
+          </p>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Access</div>
+            <a href="data.html#licencing">Pre-Sale Details</a>
+            <a href="about.html#observers">Observer Status</a>
+            <a href="doc.html#contact">Contact for Terms</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>BREACH COST AVG</span><span>$4.88M</span></div>
+            <div class="tab-meta-row"><span>ECB COST</span><span>INFRA + TIME</span></div>
+            <div class="tab-meta-row"><span>EARLY SUPPORTERS PRE-SALE</span><span>Progresive Price · LIMITED</span></div>
+            <div class="tab-meta-row"><span>ROI</span><span>FRACTIONAL-COST</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────── ACCORDION 3: RESEARCH & DATA VALUE ────────── -->
+  <div class="acc-tab c-cyan" id="research-value">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V3</span>
+        <span class="acc-title">Research-Grade Telemetry & Academic Potential</span>
+        <span class="acc-sub-label">50–150GB DATASET · HUMAN-AI COLLABORATION · SOC behavioural DYNAMICS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#research-value">#research-value</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p>Beyond operational benchmarking, ECB creates a unique dataset valuable for cybersecurity research and AI development.</p>
+
+          <h4>Estimated Dataset per Edition</h4>
+          <p><strong>50–150 GB of structured telemetry</strong> including:</p>
+          <ul>
+            <li>SIEM logs</li>
+            <li>Network metadata and PCAP fragments</li>
+            <li>Incident response timelines</li>
+            <li>behavioural SOC data</li>
+            <li>System availability metrics</li>
+          </ul>
+
+          <p>Comparable public datasets from real adversarial environments are <strong>extremely rare</strong>. Many similar exercises conducted by national cyber commands or military organizations remain classified.</p>
+
+          <h4>Human-AI Security Collaboration</h4>
+          <p>Modern SOC environments increasingly rely on AI-assisted security tools and automation. ECB provides a rare environment where organizations can evaluate:</p>
+          <ul>
+            <li>Proprietary AI detection systems</li>
+            <li>Vendor security platforms</li>
+            <li>Custom automation workflows</li>
+          </ul>
+          <p>under identical attack conditions.</p>
+
+          <p><strong>Example comparative questions:</strong></p>
+          <ul>
+            <li>Does AI reduce response latency?</li>
+            <li>When do analysts override automated decisions?</li>
+            <li>How do hybrid human-AI teams perform compared to autonomous systems?</li>
+            <li>Trust calibration: When do analysts override AI?</li>
+            <li>Alert fatigue thresholds with/without AI assistance</li>
+            <li>Decision quality degradation: Hour 8 vs. Hour 48</li>
+          </ul>
+
+          <h4>SOC behavioural Dynamics</h4>
+          <ul>
+            <li>Cognitive load during incident response</li>
+            <li>Communication patterns under pressure</li>
+            <li>Decision latency during alert floods</li>
+            <li>Tool-switching cognitive load under pressure</li>
+          </ul>
+
+          <h4>Research Applications</h4>
+          <p>ECB telemetry can support:</p>
+          <ul>
+            <li>Machine learning training datasets</li>
+            <li>SOC behavioural studies</li>
+            <li>Cyber-insurance modeling</li>
+            <li>Resilience benchmarking research</li>
+          </ul>
+
+          <p>This allows organizations to test AI security claims with real telemetry rather than vendor marketing data.</p>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Data Access</div>
+            <a href="data.html#datasets">Dataset Types</a>
+            <a href="data.html#release">Release Timeline</a>
+            <a href="data.html#licencing">Licensing Model</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>VOLUME</span><span>50–150 GB</span></div>
+            <div class="tab-meta-row"><span>RARITY</span><span>CLASSIFIED-LEVEL</span></div>
+            <div class="tab-meta-row"><span>EDU ACCESS</span><span>MONTH +10 FREE</span></div>
+            <div class="tab-meta-row"><span>RESEARCH USE</span><span>ACADEMIC-GRADE</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────── ACCORDION 4: EDITION ZERO FIRST-MOVER ────────── -->
+  <div class="acc-tab c-burgundy" id="edition-zero">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">V4</span>
+        <span class="acc-title">Why Participate in Edition ZERO — First-Mover Advantage</span>
+        <span class="acc-sub-label">CO-CREATOR STATUS · FOUNDING SUPPORTER · SHAPE THE STANDARD</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#edition-zero">#edition-zero</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p><strong>Edition Z E R O represents a unique opportunity that will not exist in future editions.</strong> Once the format is established, comunity influence and  co-creator staus closes - the benchmark becomes a fixed format (subject to evaluation by FC).</p>
+
+          <h4>Co-Creator Status</h4>
+          <p>Tier-1 academic institutions have received invitations to shape the format specification and initial governance. Co-creator status provides:</p>
+          <ul>
+            <li>Permanent influence over scenario design and data gatherig and technical parameters</li>
+            <li>Publication precedence rights, access to data</li>
+            <li>Strategic voice and voting strength on Format Committee proposals</li>
+            <li>Recognition as founding institution in all ECB materials</li>
+           <li>Possibility to be co-creators in whole CIS </li>
+          </ul>
+
+          <h4>First-Mover Benefits</h4>
+          <p><strong>What Edition ZERO participants gain that future participants won't:</strong></p>
+          <ul>
+            <li><strong>Shape the standard before it's set</strong> — influence rules, scenarios, metrics</li>
+            <li><strong>Founding supporter recognition</strong> — permanent listing on website and materials</li>
+            <li><strong>Priority data access</strong> — Day +3 auction vs Month +8 general release</li>
+            <li><strong>Academic credibility</strong> — first publications from the dataset</li>
+            <li><strong>Pre-sale pricing</strong> —  (limited 6) vs future commercial rates</li>
+          </ul>
+
+          <h4>Risk Mitigation — "No History" Addressed</h4>
+          <p>We understand Edition ZERO involves trust in an unproven event. We mitigate this through:</p>
+          <ul>
+            <li><strong>Protected tier (anonymity):</strong> Enterprise participants default to full anonymity — codenames, no public exposure, zero reputation risk</li>
+            <li><strong>No-loss policy:</strong> Participants receive value regardless of performance — dataset access, certificates, peer comparison insights</li>
+            <li><strong>Transparent operations:</strong> Enhanced.World Foundation (in registration, Netherlands) holds long-term stewardship; Locally4Me Group OÜ (Estonia, EU) handles commercial operations</li>
+            <li><strong>Academic co-creators:</strong> Tier-1 universities involved in format specification provide third-party validation</li>
+          </ul>
+
+          <h4></h4>
+          <table class="tab-table">
+            <thead>
+              <tr><th>Milestone</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Co-creator invitations issued</td><td>Q1.2026 (completed)</td></tr>
+              <tr><td>Pre-sale access opens</td><td>Q1.2026 (active)</td></tr>
+              <tr><td>Applications close</td><td><strong>Q2.2026</strong></td></tr>
+              <tr><td>Edition ZERO launch</td><td><strong>Q4.2026</strong></td></tr>
+            </tbody>
+          </table>
+
+          <h4></h4>
+          <ul>
+            <li>Edition ZERO: ~15 teams (invitations-mostly)</li>
+            <li>Pre-sale data access: Limited to 6 entities per DS</li>
+            <li>Observer status: $1800 PRO | $850 / 2 editions (unrestricted)</li>
+          </ul>
+
+          <div class="tab-cta">
+            <p>Edition ZERO is designed for early adopters who want to shape the future standard of operational resilience benchmarking.</p>
+            <a href="doc.html#contact">REQUEST INVITATION & NDA →</a>
+          </div>
+        </div>
+        
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Entry</div>
+            <a href="about.html#a-fc">Co-Creator Process</a>
+            <a href="data.html#licencing">Pre-Sale Access</a>
+            <a href="doc.html#contact">Contact Organizers</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>EDITION ZERO</span><span>Q4.2026</span></div>
+            <div class="tab-meta-row"><span>APPLICATIONS CLOSE</span><span>Q2.2026</span></div>
+            <div class="tab-meta-row"><span>TEAM SLOTS</span><span>~12/18 (INVITE)</span></div>
+            <div class="tab-meta-row"><span>PRE-SALE LIMIT</span><span>6 ENTITIES< PER DS</span></div>
+            <div class="tab-meta-row"><span>RISK</span><span>ZERO (PROTECTED TIER)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT FOR ACCORDIONS
+     ═══════════════════════════════════════════════════════ -->
+<script>
+function T(h) {
+  const tab = h.parentElement;
+  const was = tab.classList.contains('open');
+  document.querySelectorAll('.acc-tab.open').forEach(t => t.classList.remove('open'));
+  if (!was) {
+    tab.classList.add('open');
+    setTimeout(() => window.scrollTo({ top: tab.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }), 40);
+  }
+}
+function openHash() {
+  const h = window.location.hash;
+  if (!h) return;
+  const el = document.querySelector(h);
+  if (el && el.classList.contains('acc-tab')) {
+    el.classList.add('open');
+    setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }), 180);
+  }
+}
+window.addEventListener('load', openHash);
+window.addEventListener('hashchange', openHash);
+const btt = document.getElementById('btt');
+if (btt) window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 500));
+</script>
+
+<button class="btt mono" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
+
+
+
+
+</section>
+<!-- ═══════════════════════════════════════════════════════
+     ACCORDIONS - ECB VALUE PROPOSITION
+     ═══════════════════════════════════════════════════════ -->
+
+<footer>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:20px;">
+      <strong>Essential Cybersecurity Benchmark™</strong><br>
+      ™
+    </div>
+    <p>OPERATIONAL ENTITY: LOCALLY4ME GROUP OÜ | TALLINN, ESTONIA | EU</p>
+    <p>ENHANCED.WORLD FOUNDATION (IN REGISTRATION) | NETHERLANDS</p>
+    <div style="margin-top:20px;">
+      <a href="data.html#privpolicy">PRIVACY POLICY</a>
+      <a href="doc.html#">NDA FORM</a>
+      <a href="data.html#">DATA ACCESS</a>
+<a href="https://locally4me.org ">L4M Group</a>
+<a href="https://enhanced.world">Enhanced.World</a>
+    </div>
+    <p style="margin-top:40px;opacity:0.5;">© Locally4Me Group 2025–2026</p>
+  </div>
+</footer>
+</body>
+</html>
+
+
