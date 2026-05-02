@@ -876,20 +876,6 @@ Round 3 two teams data.</p>
 </div>
 
 <button class="btt mono" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
-
-<footer>
-  <div style="max-width:1200px;margin:0 auto;">
-    <p>OPERATIONAL ENTITY: LOCALLY4ME GROUP OÜ | TALLINN, ESTONIA | EU</p>
-    <p>ENHANCED.WORLD FOUNDATION (IN REGISTRATION) | NETHERLANDS</p>
-    <div style="margin-top:20px;">
-      <a href="#">PRIVACY POLICY</a>
-      <a href="#">NDA FORM</a>
-      <a href="#">DATA ACCESS</a>
-    </div>
-    <p style="margin-top:40px;opacity:0.5;">© 2025-2026</p>
-  </div>
-</footer>
-
 <script>
 function T(h){const tab=h.parentElement;const was=tab.classList.contains('open');document.querySelectorAll('.acc-tab.open').forEach(t=>t.classList.remove('open'));if(!was){tab.classList.add('open');setTimeout(()=>{window.scrollTo({top:tab.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'})},40);}}
 function openHash(){const h=window.location.hash;if(!h)return;const el=document.querySelector(h);if(el&&el.classList.contains('acc-tab')){el.classList.add('open');setTimeout(()=>window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'}),180);}}
@@ -900,5 +886,20 @@ const btt=document.getElementById('btt');
 window.addEventListener('scroll',()=>btt.classList.toggle('visible',scrollY>500));
 function setLang(lang){document.getElementById('btn-en').classList.toggle('active',lang==='en');document.getElementById('btn-pl').classList.toggle('active',lang==='pl');}
 </script>
+<footer>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:20px;">
+      <strong>Essential Cybersecurity Benchmark™</strong><br>
+     
+    </div>
+   <a href="https://locally4me.org">OPERATIONAL ENTITY: LOCALLY4ME GROUP OÜ | TALLINN, ESTONIA</a><br>
+    <a href="https://enhanced.world">ENHANCED.WORLD FOUNDATION (IN REGISTRATION) | NETHERLANDS</a>
+    <div style="margin-top:20px;">
+      <a href="privacy-policy-ecb.pdf">PRIVACY POLICY</a>
+      <a href="data.html">DATA ACCESS</a>
+    </div>
+    <p style="margin-top:40px;opacity:0.5;">© Locally4Me Group 2025–2026</p>
+  </div>
+</footer>
 </body>
 </html>
