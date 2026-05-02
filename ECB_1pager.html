@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ECB — Edition Zero · Pre-NDA Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0e1117;--paper:#f7f4ee;--rule:#d4cfc4;
+  --teal:#1a7a6e;--gold:#b8860b;--red:#8b1a1a;
+  --mono:'DM Mono',monospace;--serif:'DM Serif Display',serif;--sans:'DM Sans',sans-serif;
+}
+html{font-size:10px;}
+body{
+  font-family:var(--sans);color:var(--ink);background:var(--paper);
+  width:210mm;min-height:297mm;margin:0 auto;
+  padding:12mm 14mm 10mm;
+  position:relative;
+}
+/* PRINT */
+@media print{
+  body{width:210mm;padding:10mm 13mm 9mm;}
+  .no-print{display:none;}
+}
+@page{size:A4;margin:0;}
+
+/* MASTHEAD */
+.masthead{display:grid;grid-template-columns:1fr auto;align-items:end;border-bottom:2px solid var(--ink);padding-bottom:5mm;margin-bottom:5mm;}
+.ecb-name{font-family:var(--serif);font-size:2.8rem;line-height:1;letter-spacing:-0.02em;color:var(--ink);}
+.ecb-name span{color:var(--teal);}
+.masthead-meta{text-align:right;font-family:var(--mono);font-size:0.75rem;line-height:1.8;color:#666;}
+
+/* TAGLINE */
+.tagline{font-size:1.05rem;font-weight:300;color:#333;margin-bottom:4mm;line-height:1.5;max-width:165mm;}
+
+/* STATS ROW */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--rule);margin-bottom:5mm;}
+.stat{padding:2.5mm 3mm;border-right:1px solid var(--rule);}
+.stat:last-child{border-right:none;}
+.stat-label{font-family:var(--mono);font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:#888;display:block;margin-bottom:1mm;}
+.stat-val{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--ink);}
+
+/* TWO COL BODY */
+.body{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-bottom:4mm;}
+.col-left{}
+.col-right{}
+
+/* SECTION */
+.sec{margin-bottom:4mm;}
+.sec-head{font-family:var(--mono);font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);border-bottom:1px solid var(--rule);padding-bottom:1mm;margin-bottom:2mm;}
+.sec p{font-size:0.9rem;line-height:1.55;color:#2a2a2a;margin-bottom:1.5mm;}
+.sec ul{padding-left:3.5mm;}
+.sec ul li{font-size:0.87rem;line-height:1.55;color:#2a2a2a;margin-bottom:1mm;list-style:none;padding-left:2mm;position:relative;}
+.sec ul li::before{content:"—";position:absolute;left:-2mm;color:var(--teal);font-family:var(--mono);}
+
+/* COMPARISON TABLE */
+.ctab{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:0.72rem;margin-top:1mm;}
+.ctab th{background:var(--ink);color:var(--paper);padding:1.5mm 2mm;text-align:left;font-size:0.6rem;letter-spacing:1px;text-transform:uppercase;}
+.ctab td{padding:1.5mm 2mm;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.4;}
+.ctab tr:nth-child(even) td{background:#f0ede6;}
+.ctab .ecb-row td{background:#e8f4f1;font-weight:500;color:var(--teal);}
+
+/* DATASET BOX */
+.ds-box{border:1px solid var(--rule);background:#fff;padding:2.5mm 3mm;margin-bottom:2mm;}
+.ds-row{display:flex;justify-content:space-between;align-items:baseline;padding:1mm 0;border-bottom:1px solid #ece9e3;font-size:0.82rem;}
+.ds-row:last-child{border-bottom:none;}
+.ds-row span:first-child{color:#555;}
+.ds-row span:last-child{font-family:var(--mono);font-weight:500;font-size:0.78rem;}
+
+/* CO-CREATOR BOX */
+.coc-box{border-left:3px solid var(--gold);background:#fefcf5;padding:2.5mm 3mm;margin-bottom:2mm;}
+.coc-box .coc-head{font-family:var(--mono);font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.5mm;}
+.coc-box ul li{font-size:0.84rem;}
+
+/* WARNING BOX */
+.warn{background:#fdf5f5;border-left:3px solid var(--red);padding:2mm 3mm;font-size:0.8rem;line-height:1.5;color:#4a1a1a;}
+.warn strong{color:var(--red);}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--rule);padding-top:3mm;display:grid;grid-template-columns:1fr auto;align-items:end;margin-top:auto;}
+.footer-left{font-size:0.72rem;color:#666;line-height:1.6;}
+.footer-right{font-family:var(--mono);font-size:0.65rem;color:#888;text-align:right;line-height:1.8;}
+
+/* PRINT BTN */
+.no-print{position:fixed;bottom:20px;right:20px;background:var(--teal);color:#fff;border:none;padding:10px 18px;font-family:var(--mono);font-size:12px;cursor:pointer;letter-spacing:1px;}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div>
+    <div class="ecb-name">Essential Cybersecurity<br><span>Benchmark™</span></div>
+  </div>
+  <div class="masthead-meta">
+    Edition Zero · Q4.2026<br>
+    Pre-NDA Summary · Public<br>
+    Locally4Me Group OÜ · Tallinn EU<br>
+    Enhanced.World Foundation · NL
+  </div>
+</div>
+
+<p class="tagline">A 7-day, 3 rounds, real-infrastructure adversarial cybersecurity exercise. PRO enterprise teams and EDU university teams compete on standalone, dedicated server environments under sustained adversarial pressure 
+ simultaneously generating academic-grade behavioral and technical telemetry that does not exist in any public dataset. Benchmarking different protocols, validating human - tools (UI, UX, AI) and human - human efficiency. It's very advanced real life CTF (various type of flags) with low points for DDoS and high for stealth, creativity, resistance. Team: Red + Blue + Setup | Response, Detection, Recovery / Stealth, Modification, Time. Any approach AI / Bot / Human. Rules are slightly different for EDU and PRO.</p>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="stat-label">Event window</span><span class="stat-val">7 days + FINAL</span></div>
+  <div class="stat"><span class="stat-label">Endurance round</span><span class="stat-val">~84h PRO / 14h EDU </span></div>
+  <div class="stat"><span class="stat-label">Teams · Ed. Zero</span><span class="stat-val">~15 Global</span></div>
+  <div class="stat"><span class="stat-label">ML-ready data</span><span class="stat-val">150–600 GB</span></div>
+  <div class="stat"><span class="stat-label">Forensic archive</span><span class="stat-val">1.2–4.1 TB</span></div>
+</div>
+
+<!-- BODY -->
+<div class="body">
+
+<!-- LEFT -->
+<div class="col-left">
+
+  <div class="sec">
+    <div class="sec-head">What ECB measures — that nothing else does</div>
+    <table class="ctab">
+      <thead><tr><th>Method</th><th>Duration</th><th>Misses</th></tr></thead>
+      <tbody>
+        <tr><td>CTF</td><td>24–48h</td><td>Operational defense, fatigue, real infra</td></tr>
+        <tr><td>Pentest</td><td>1–4 wks</td><td>SOC behavior, peer benchmarking, AI</td></tr>
+        <tr><td>Red Team</td><td>2–6 wks</td><td>Independent judging, detection data</td></tr>
+        <tr><td>Tabletop</td><td>1 day</td><td>Real pressure, toolchain, real time</td></tr>
+        <tr class="ecb-row"><td>ECB</td><td>7 days</td><td>All above and more. </td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">Dataset — no public equivalent</div>
+    <div class="ds-box">
+      <div class="ds-row"><span>Technical telemetry (ML-ready)</span><span>150–600 GB</span></div>
+      <div class="ds-row"><span>Behavioral video layer</span><span>300–700 GB</span></div>
+      <div class="ds-row"><span>Forensic archive (if there is interest)</span><span>1.2–4.1 TB</span></div>
+      <div class="ds-row"><span>Labeling</span><span>L1 auto + L2 teams + L3 disputed events judge-verified</span></div>
+    </div>
+    <ul>
+      <li>SOC fatigue and decision degradation data — no public source exists</li>
+      <li>Human-AI collaboration logs at this fidelity — no public equivalent</li>
+      <li>Multi-day behavioral telemetry — classified military exercises only</li>
+      <li>Comparable: CICIDS 2018 (~50 GB, network only, lab-generated)</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">EDU participation — what students get</div>
+    <ul>
+      <li>Compete against professional SOC teams on real infrastructure</li>
+      <li>Certificates & Distintions for team, tools and independent performance — verifiable, with metrics, judge-signed - No Loss Poliy and Tiered Exposition Policies guards all parties involed best interest, along the voice to FC.</li>
+      <li>BUG BOUNTY: Fair Market payments for vulnerabilities found during the event (goal).</li>  
+      <li>HR Framework: only after Day 7 — visibility to enterprise hiring (not mandatory)</li>
+      <li>MENTORSHIP: Post-match Q&amp;A / HINTS with PRO teams — documented, included in dataset</li>
+      <li>Own match comleate telemetry, free post-event</li>
+      <li>Cost: free participation = only time and setup for the event duration</li>
+    </ul>
+  </div>
+  <div class="warn">
+    <strong>Co-creator Benefits:</strong> Co-creators have access to gathered data before most other parties, and will have permanent influence on the format, technicalities and a usage license for research, papers, and education.   
+  </div>
+
+  <div class="warn">
+    <strong>Co-creator Invitation:</strong> We want to cooperate with ~3 co-creators in Format Committee. Two tests  runs with co-creators only are planned: <br>Test 1 Basic: Single simple scenario, specification and expectations general test. Locally inside co-creators structures.  Minimum team members: Red vs [Server + Blue] + Captain. | Monitoring, Data Gathering, Labeling. <br>Test 2. Format test: Online. Geographically diverse. 3 to 6 teams - from 3+ entities. Scenario validation: Time / Intensity, Scoring, Communication, Judging and Conflicts, Data Volume, etc. <br><br>Test 3. Participating Teams - pre-event: settings privacy tiers in practice, readiness and settings validation and tweaks, (any security concerns, privacy and real influence and performance in real infrastructure and network setting).
+  </div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="col-right">
+
+  <div class="sec">
+    <div class="sec-head">Co-Creator Status — closes after Edition Zero</div>
+    <div class="coc-box">
+      <div class="coc-head">What a co-creator institution receives</div>
+      <ul>
+        <li>Permanent influence over scenario design and telemetry parameters</li>
+        <li>Publication precedence — first access to dataset for academic output</li>
+        <li>Format Committee vote and advisory voice</li>
+        <li>Recognition as founding institution in all ECB materials</li>
+        <li>Observer status included, license to data sets for research and educational purpose. </li>
+        <li>No financial commitment required, withdrawal right</li>
+      </ul>
+    </div>
+    <div class="coc-box" style="border-left-color:var(--teal);">
+      <div class="coc-head" style="color:var(--teal);">What is expected in return</div>
+      <ul>
+        <li>Academic review of scoring methodology, technical specification</li>
+        <li>Format Tests and Validation - at least two planned test runs</li>
+        <li>Nomination of at least one judge candidate per edition</li>
+        <li>Visibility of ECB in institutional communication</li>
+        <li>Visibility of Co-creators on ECB materials</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">Research applications</div>
+    <ul>
+      <li>SOC cognitive load and analyst fatigue studies</li>
+      <li>Human-AI trust calibration research</li>
+      <li>Decision quality degradation: hour 8 vs. hour 48</li>
+      <li>ML training datasets for detection models</li>
+      <li>Cyber-insurance actuarial modeling</li>
+      <li>Organizational behavior under sustained pressure</li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">Timeline</div>
+    <ul>
+      <li>III.2026 — Co-creator invitations issued (Round 1, active)</li>
+      <li>Q2.2026 — Foundation registration, full spec under M-NDA</li>
+      <li>Q3.2026 — Format test phases (A.1 team R+B+S, B. 3 or 6 teams global)</li>
+      <li>Q4.2026 — Edition Zero launch (~12 / 18 teams, invitation-only)</li>
+
+
+      <li>Month +10 — Anonymized EDU dataset release</li>
+<li> Year 3.5 - Release EDU - Free (registration), PRO - low, fixed fee / free. </li>
+    </ul>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">Operations & jurisdiction</div>
+    <ul>
+      <li>Commercial entity: Locally4Me Group OÜ · Tallinn, Estonia · EU</li>
+      <li>Long-term stewardship: Enhanced.World Foundation (in registration, NL)</li>
+      <li>Data jurisdiction: Estonian + Dutch · GDPR-compliant</li>
+<li>Virtual Web Based World Wide Event - HQ / processing UE. </li>
+    </ul>
+  </div>
+
+    <div class="warn">
+    <strong>Note on Edition Zero:</strong> This is the first edition of ECB. We do not claim a track record we do not have. Co-creator agreements include a right to withdraw institutional recognition.
+ Participation is free. Protected tier ensures no public exposure without explicit consent.
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    Full specifications available under M-NDA · No commitment required to receive M-NDA.<br>
+    Technical brief, event formula and rules, and co-creator term sheet available on request<br>
+    Contact: <strong>contact via research@enhanced.world</strong>
+  </div>
+  <div class="footer-right">
+    Essential Cybersecurity Benchmark™<br>
+    Pre-NDA Summary · Edition Zero<br>
+    Public document · Q1.2026<br>
+    Enhanced.World | Locally4Me Group
+</div>
+</div>
+
+<button class="no-print" onclick="window.print()">PRINT / SAVE PDF</button>
+
+</body>
+</html>
