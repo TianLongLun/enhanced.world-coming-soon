@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ECB Event — Format, Rounds & Timeline | Q4.2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO meta tags -->
+  <meta name="description" content="ECB Event format: 7-day hybrid cybersecurity benchmark across three (plus 1) rounds. RED/BLUE teams, real infrastructure, multi-day APT scenarios under sustained pressure. Operational architecture, round flow, judging tiers, and timeline.">
+  <meta name="keywords" content="ECB event, cybersecurity event format, RED team BLUE team, SOC validation, APT scenario, multi-day cybersecurity, hybrid cyber event, judges, scoring, Q4 2026">
+  <meta name="author" content="Locally4Me Group OÜ / Enhanced.World Foundation">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2aa198">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://enhanced.world/cybersecurity/event.html">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../logo.png" type="image/png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Essential Cybersecurity Benchmark">
+  <meta property="og:title" content="ECB Event — Format, Rounds & Timeline | Q4.2026">
+  <meta property="og:description" content="7-day hybrid cybersecurity benchmark. RED/BLUE teams under sustained adversarial pressure. Operational architecture, round flow, and timeline.">
+  <meta property="og:image" content="https://enhanced.world/logo.png">
+  <meta property="og:image:alt" content="Essential Cybersecurity Benchmark logo">
+  <meta property="og:url" content="https://enhanced.world/cybersecurity/event.html">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ECB Event — Format, Rounds & Timeline | Q4.2026">
+  <meta name="twitter:description" content="7-day hybrid cybersecurity benchmark. RED/BLUE teams under sustained adversarial pressure.">
+  <meta name="twitter:image" content="https://enhanced.world/logo.png">
+
+  <!-- Schema.org JSON-LD: Event -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "ECB — Essential Cybersecurity Benchmark Event (Edition Zero)",
+    "alternateName": "ECB Event Q4.2026",
+    "description": "Hybrid cybersecurity benchmark event — 7-day format with three (plus 1) rounds. RED/BLUE teams compete under sustained adversarial pressure on dedicated tournament infrastructure. Behavioral telemetry, decision-making under fatigue, and AI-collaboration dynamics captured across the full event window.",
+    "startDate": "2026-10-01",
+    "endDate": "2026-12-31",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://enhanced.world/cybersecurity/event.html"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Locally4Me Group OÜ",
+      "url": "https://locally4me.org"
+    },
+    "image": "https://enhanced.world/logo.png"
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --sky: #eaf3f8;
+      --airport-blue: #dbeaf2;
+      --emerald-cyan: #2aa198;
+      --soft-cyan: #3bb7da;
+      --gray: #6f7a82;
+      --black: #111111;
+      --gold: #d6b35c;
+      --peach: #f3b59a;
+      --royal-burgundy: #7a1f2b;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Inter", sans-serif; color: var(--black); background: linear-gradient(to bottom, var(--white), var(--sky)); line-height: 1.6; }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+    header { background: var(--white); border-bottom: 1px solid #e1e6ea; position: sticky; top: 0; z-index: 200; }
+    .nav { max-width: 1200px; margin: 0 auto; padding: 18px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-weight: 600; letter-spacing: 0.03em; }
+    .nav-links a { margin-left: 24px; font-size: 13px; color: var(--black); text-transform: uppercase; letter-spacing: 1px; text-decoration: none; }
+    .hero { padding: 100px 24px 80px; background: radial-gradient(ellipse at top, var(--airport-blue), var(--white)); }
+    .hero-inner { max-width: 1000px; margin: 0 auto; }
+    .hero h1 { font-size: 42px; font-weight: 500; margin-bottom: 24px; }
+    .hero p { font-size: 18px; color: var(--gray); max-width: 820px; }
+    .grid { max-width: 1200px; margin: 80px auto; padding: 0 24px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 28px; }
+    .tile { background: var(--white); border: 1px solid #e3e8ec; padding: 32px; position: relative; grid-column: span 2; display: flex; flex-direction: column; transition: all 0.3s ease; }
+    .tile:nth-child(4) { grid-column: 2 / span 2; }
+    .tile:nth-child(5) { grid-column: 4 / span 2; }
+    @media (max-width: 992px) { .grid { grid-template-columns: 1fr; } .tile, .tile:nth-child(4), .tile:nth-child(5) { grid-column: auto; } }
+    .accent-emerald { border-top: 4px solid var(--emerald-cyan); }
+    .accent-cyan    { border-top: 4px solid var(--soft-cyan); }
+    .accent-gold    { border-top: 4px solid var(--gold); }
+    .accent-peach   { border-top: 4px solid var(--peach); }
+    .accent-burgundy{ border-top: 4px solid var(--royal-burgundy); }
+    .hover-box { position: absolute; visibility: hidden; opacity: 0; background: var(--white); border: 1px solid #ccc; box-shadow: 8px 8px 0px rgba(0,0,0,0.1); padding: 20px; width: 110%; left: -5%; z-index: 50; transition: all 0.2s ease-in-out; pointer-events: none; font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+    .tile:hover .hover-box { visibility: visible; opacity: 1; transform: translateY(-10px); }
+    .tile:hover { border-color: var(--gray); }
+    .targets { margin-top: auto; border-top: 1px solid #eef2f5; padding-top: 14px; }
+    .targets a { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--black); text-decoration: none; margin-bottom: 8px; }
+    .targets a:hover { color: var(--emerald-cyan); }
+    .targets a::after { content: " →"; }
+    .trust { padding: 80px 24px; border-top: 1px solid #e5eaee; background: #fff; }
+    .trust-inner { max-width: 900px; margin: 0 auto; }
+    .cta { padding: 80px 24px; text-align: center; background: var(--sky); }
+    .cta a { border: 2px solid var(--black); padding: 12px 30px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; text-decoration: none; color: var(--black); text-transform: uppercase; }
+    footer { background: #0f2a3a; color: #dce9f2; padding: 60px 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+    footer a { color: #9ad0ff; text-decoration: none; margin-right: 20px; }
+
+    /* SUBNAV */
+    .event-subnav { position: sticky; top: 57px; z-index: 150; background: var(--white); border-bottom: 2px solid var(--airport-blue); overflow-x: auto; white-space: nowrap; }
+    .event-subnav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; }
+    .event-subnav a { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: var(--black); text-decoration: none; padding: 12px 14px; border-bottom: 3px solid transparent; transition: all 0.2s; opacity: 0.55; }
+    .event-subnav a:hover { opacity: 1; border-bottom-color: var(--emerald-cyan); color: var(--emerald-cyan); }
+    .event-subnav a.active { opacity: 1; border-bottom-color: var(--emerald-cyan); }
+    .event-subnav a.sub { opacity: 0.4; font-size: 10px; padding: 12px 10px; }
+    .event-subnav a.sub:hover { opacity: 0.9; }
+    .lang-switch { margin-left: auto; display: flex; gap: 6px; flex-shrink: 0; padding: 8px 0 8px 16px; border-left: 1px solid #e1e6ea; }
+    .lang-switch button { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 1px; background: none; border: 1px solid #e3e8ec; padding: 4px 10px; cursor: pointer; color: var(--black); transition: all 0.2s; }
+    .lang-switch button.active, .lang-switch button:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+    /* SCHEMA STRIP */
+    .schema-strip { max-width: 1200px; margin: 60px auto 0; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .schema-frame { border: 2px solid var(--black); background: var(--white); }
+    .schema-titlebar { background: var(--black); color: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 8px 14px; display: flex; align-items: center; gap: 8px; }
+    .schema-titlebar::before { content: '▣'; opacity: 0.5; }
+    .schema-body { height: 260px; display: flex; align-items: center; justify-content: center; background: var(--sky); overflow: hidden; }
+    .schema-body img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .schema-placeholder { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--soft-cyan); opacity: 0.6; }
+    .schema-placeholder .si { font-size: 38px; display: block; margin-bottom: 10px; opacity: 0.25; }
+    .schema-caption { padding: 9px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--gray); border-top: 1px solid #e3e8ec; }
+    @media (max-width: 720px) { .schema-strip { grid-template-columns: 1fr; } }
+
+    /* ACCORDION */
+    .accordion-section { max-width: 1200px; margin: 56px auto 80px; padding: 0 24px; }
+    .acc-section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--soft-cyan); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--airport-blue); }
+    .acc-group-header { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 20px 0 8px; margin-top: 8px; opacity: 0.6; border-bottom: 1px dashed var(--airport-blue); margin-bottom: 4px; }
+    .acc-tab { border: 1px solid #e3e8ec; background: var(--white); margin-bottom: 4px; transition: border-color 0.2s; }
+    .acc-tab:hover { border-color: #c0cdd6; }
+    .c-emerald  { border-left: 2px solid var(--emerald-cyan); }
+    .c-cyan     { border-left: 2px solid var(--soft-cyan); }
+    .c-gold     { border-left: 2px solid var(--gold); }
+    .c-peach    { border-left: 2px solid var(--peach); }
+    .c-burgundy { border-left: 2px solid var(--royal-burgundy); }
+    .acc-tab.open.c-emerald  { border-top: 1px solid var(--emerald-cyan); }
+    .acc-tab.open.c-cyan     { border-top: 1px solid var(--soft-cyan); }
+    .acc-tab.open.c-gold     { border-top: 1px solid var(--gold); }
+    .acc-tab.open.c-peach    { border-top: 1px solid var(--peach); }
+    .acc-tab.open.c-burgundy { border-top: 1px solid var(--royal-burgundy); }
+    .acc-tab.is-sub { margin-left: 25px; background: #fafcfd; }
+    .acc-tab.is-sub .acc-header { padding: 14px 24px; }
+    .acc-tab.is-sub .acc-title { font-size: 14px; }
+    .acc-tab.is-subsub { margin-left: 25px; background: var(--sky); }
+    .acc-tab.is-subsub .acc-header { padding: 12px 20px; }
+    .acc-tab.is-subsub .acc-title { font-size: 13px; }
+    .acc-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; cursor: pointer; user-select: none; }
+    .acc-header-left { display: flex; align-items: baseline; gap: 16px; flex: 1; min-width: 0; }
+    .acc-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; opacity: 0.35; flex-shrink: 0; }
+    .acc-title { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; }
+    .acc-sub-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--gray); opacity: 0.7; flex-shrink: 0; }
+    .acc-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .acc-anchor { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1.5px; color: var(--soft-cyan); border: 1px solid var(--airport-blue); padding: 3px 7px; background: var(--sky); text-decoration: none; }
+    .acc-anchor:hover { border-color: var(--soft-cyan); }
+    .acc-toggle { font-family: 'IBM Plex Mono', monospace; font-size: 18px; width: 28px; text-align: center; transition: transform 0.3s ease; }
+    .acc-tab.open .acc-toggle { transform: rotate(45deg); }
+    .acc-body { display: none; padding: 0 28px 28px; animation: fsIn 0.22s ease; }
+    .acc-tab.open .acc-body { display: block; }
+    .acc-tab.is-sub .acc-body { padding: 0 24px 22px; }
+    .acc-tab.is-subsub .acc-body { padding: 0 20px 18px; }
+    @keyframes fsIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .tab-inner { display: grid; grid-template-columns: 1fr 260px; gap: 36px; }
+    @media (max-width: 860px) { .tab-inner { grid-template-columns: 1fr; } }
+    .tab-content p, .tab-content li { font-size: 14.5px; line-height: 1.75; margin-bottom: 10px; }
+    .tab-content h4 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 24px 0 8px; padding-bottom: 5px; border-bottom: 1px solid var(--airport-blue); }
+    .tab-content ul { margin: 0 0 12px; padding-left: 18px; }
+    .tab-content ul li { font-size: 14px; }
+    [data-id]:hover::before { content: attr(data-id); position: absolute; left: -62px; top: 0; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--soft-cyan); opacity: 0.55; white-space: nowrap; pointer-events: none; }
+    [data-id] { position: relative; }
+    .tab-table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: 'IBM Plex Mono', monospace; margin: 16px 0; }
+    .tab-table th { background: var(--airport-blue); padding: 9px 12px; text-align: left; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid #c8d8e4; }
+    .tab-table td { padding: 9px 12px; border: 1px solid #e3e8ec; vertical-align: top; line-height: 1.5; font-size: 12px; }
+    .tab-table tr:nth-child(even) td { background: var(--sky); }
+    .tab-links-box { background: var(--sky); border: 1px solid var(--airport-blue); padding: 18px; margin-bottom: 14px; }
+    .tab-links-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+    .tab-links-box a { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--black); text-decoration: none; padding: 7px 0; border-bottom: 1px solid var(--airport-blue); }
+    .tab-links-box a:last-child { border-bottom: none; }
+    .tab-links-box a:hover { color: var(--emerald-cyan); }
+    .tab-links-box a::after { content: " →"; }
+    .tab-meta { border: 1px solid #e3e8ec; padding: 14px 18px; background: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; }
+    .tab-meta-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--sky); }
+    .tab-meta-row:last-child { border-bottom: none; }
+    .tab-meta-row span:first-child { opacity: 0.5; font-size: 10px; }
+    .tab-meta-row span:last-child { font-weight: 600; color: var(--black); font-size: 11px; }
+    .tab-cta { margin-top: 28px; padding: 22px; background: var(--sky); border-left: 4px solid var(--emerald-cyan); }
+    .tab-cta p { margin: 0 0 14px; font-weight: 600; font-size: 14px; }
+    .tab-cta a { border: 2px solid var(--black); padding: 10px 22px; text-decoration: none; color: var(--black); font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+    .tab-cta a:hover { background: var(--black); color: var(--white); }
+
+    /* SUMMARY BUTTON */
+    .summary-trigger { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 300; writing-mode: vertical-rl; background: var(--black); color: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 20px 10px; cursor: pointer; border: none; border-left: 4px solid var(--gold); transition: background 0.2s; }
+    .summary-trigger:hover { background: var(--royal-burgundy); }
+
+    /* SUMMARY POPUP */
+    .summary-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.48); z-index: 400; display: none; align-items: center; justify-content: center; }
+    .summary-overlay.visible { display: flex; }
+    .summary-popup { background: var(--white); border: 2px solid var(--black); box-shadow: 14px 14px 0 rgba(0,0,0,0.18); width: min(94vw, 860px); max-height: 88vh; overflow-y: auto; transform: scale(0.04) rotate(180deg); opacity: 0; transition: transform 0.44s cubic-bezier(0.34,1.56,0.64,1), opacity 0.28s ease; }
+    .summary-overlay.visible .summary-popup { transform: scale(1) rotate(0deg); opacity: 1; }
+    .summary-titlebar { background: var(--black); color: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+    .summary-titlebar .tl { display: flex; align-items: center; gap: 10px; }
+    .summary-titlebar .tl::before { content: '∑'; font-size: 15px; color: var(--gold); }
+    .summary-close { background: none; border: 1px solid rgba(255,255,255,0.3); color: var(--white); font-size: 14px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-family: 'IBM Plex Mono', monospace; }
+    .summary-close:hover { background: var(--royal-burgundy); }
+    .summary-body { padding: 26px; }
+    .summary-intro { font-family: 'IBM Plex Mono', monospace; font-size: 13px; line-height: 1.65; margin-bottom: 22px; }
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .summary-grid { grid-template-columns: 1fr; } }
+    .sum-col { border: 1px solid var(--airport-blue); padding: 14px; background: var(--sky); }
+    .sum-col-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; padding-bottom: 7px; border-bottom: 2px solid; }
+    .sum-col-title.t-emerald { border-color: var(--emerald-cyan); color: var(--emerald-cyan); }
+    .sum-col-title.t-gold    { border-color: var(--gold); color: #8a6010; }
+    .sum-col-title.t-peach   { border-color: var(--peach); color: #a04010; }
+    .sum-col ul { list-style: none; margin: 0; padding: 0; }
+    .sum-col ul li { font-size: 12.5px; padding: 5px 0; border-bottom: 1px solid var(--airport-blue); line-height: 1.5; }
+    .sum-col ul li:last-child { border-bottom: none; }
+    .sum-col ul li::before { content: '›'; font-family: 'IBM Plex Mono', monospace; margin-right: 8px; font-weight: 700; color: var(--gray); }
+    .sum-col ul li.pos::before { content: '+'; color: var(--emerald-cyan); }
+    .sum-codes { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 7px; }
+    .sum-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 1px; padding: 4px 11px; text-transform: uppercase; }
+    .sum-badge.c-emerald  { background: var(--emerald-cyan); color: #fff; }
+    .sum-badge.c-cyan     { background: var(--soft-cyan); color: #fff; }
+    .sum-badge.c-gold     { background: var(--gold); color: var(--black); }
+    .sum-badge.c-peach    { background: var(--peach); color: var(--black); }
+    .sum-badge.c-burgundy { background: var(--royal-burgundy); color: #fff; }
+    .sum-badge.c-black    { background: var(--black); color: #fff; }
+    .btt { position: fixed; bottom: 28px; right: 20px; z-index: 300; background: var(--black); color: var(--white); font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 1px; border: none; padding: 9px 13px; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .btt.visible { opacity: 1; pointer-events: auto; }
+    .btt:hover { background: var(--emerald-cyan); }
+  </style>
+</head>
+<body>
+
+<!-- EXISTING HEADER — DO NOT CHANGE -->
+<header>
+    <div class="nav">
+    <div class="nav-logo">Essential Cybersecurity Benchmark</div>
+    <div class="nav-links">
+      <a href="event.html">Event</a>
+      <a href="data.html">Data</a>
+      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
+    </div></div>
+</header>
+
+
+
+<!-- SUBNAV -->
+<nav class="event-subnav">
+  <div class="event-subnav-inner">
+    <a href="#s1"   data-i18n="n1">FORMAT</a>
+    <a href="#s2"   data-i18n="n2">CERTS</a>
+    <a href="#s3"   data-i18n="n3">PARTICIPATION</a>
+    <a href="#s4"   data-i18n="n4">PRIVACY</a>
+    <a href="#s5"   data-i18n="n5">HR</a>
+    <a href="#s6"   data-i18n="n6">AWARDS</a>
+    <a href="#s7"   data-i18n="n7">MISSION</a>
+    <div class="lang-switch">
+      <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
+      <button onclick="setLang('pl')" id="btn-pl">PL</button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- SCHEMA STRIP -->
+<div class="schema-strip">
+  <div class="schema-frame">
+    <div class="schema-titlebar">SCHEMA 01 — EVENT OPERATIONAL ARCHITECTURE</div>
+    <div class="schema-body">
+      <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;max-height:100%;" role="img" aria-label="ECB Operational Architecture: dedicated tournament VPS connects RED/BLUE teams with judges and observers, telemetry flowing to data archive">
+        <!-- definitions -->
+        <defs>
+          <marker id="arrow-arch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#2aa198"/>
+          </marker>
+        </defs>
+
+        <!-- Central infrastructure node -->
+        <rect x="240" y="105" width="120" height="50" fill="#2aa198" stroke="#111" stroke-width="1.5"/>
+        <text x="300" y="128" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600" fill="#fff" text-anchor="middle">DEDICATED VPS</text>
+        <text x="300" y="143" font-family="IBM Plex Mono, monospace" font-size="9" fill="#fff" text-anchor="middle" opacity="0.85">Tournament IPs</text>
+
+        <!-- RED team (left) -->
+        <rect x="30" y="30" width="120" height="46" fill="#fff" stroke="#7a1f2b" stroke-width="2"/>
+        <text x="90" y="50" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#7a1f2b" text-anchor="middle">RED TEAM</text>
+        <text x="90" y="65" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6f7a82" text-anchor="middle">offensive ops</text>
+
+        <!-- BLUE team (right) -->
+        <rect x="450" y="30" width="120" height="46" fill="#fff" stroke="#3bb7da" stroke-width="2"/>
+        <text x="510" y="50" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#3bb7da" text-anchor="middle">BLUE TEAM</text>
+        <text x="510" y="65" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6f7a82" text-anchor="middle">defense + SOC</text>
+
+        <!-- Judges (top center) -->
+        <rect x="240" y="30" width="120" height="46" fill="#fff" stroke="#d6b35c" stroke-width="2"/>
+        <text x="300" y="50" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#d6b35c" text-anchor="middle">JUDGES</text>
+        <text x="300" y="65" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6f7a82" text-anchor="middle">LML · ATV · SJ</text>
+
+        <!-- Observers (bottom left) -->
+        <rect x="30" y="184" width="120" height="46" fill="#fff" stroke="#6f7a82" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="90" y="204" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#6f7a82" text-anchor="middle">OBSERVERS</text>
+        <text x="90" y="219" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6f7a82" text-anchor="middle">read-only access</text>
+
+        <!-- Data archive (bottom right) -->
+        <rect x="450" y="184" width="120" height="46" fill="#dbeaf2" stroke="#111" stroke-width="1.5"/>
+        <text x="510" y="204" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" fill="#111" text-anchor="middle">DATA ARCHIVE</text>
+        <text x="510" y="219" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#6f7a82" text-anchor="middle">ML-Ready · Forensic</text>
+
+        <!-- Connecting lines -->
+        <line x1="150" y1="53" x2="240" y2="120" stroke="#2aa198" stroke-width="1.5" marker-end="url(#arrow-arch)"/>
+        <line x1="450" y1="53" x2="360" y2="120" stroke="#2aa198" stroke-width="1.5" marker-end="url(#arrow-arch)"/>
+        <line x1="300" y1="76" x2="300" y2="105" stroke="#2aa198" stroke-width="1.5" marker-end="url(#arrow-arch)"/>
+        <line x1="240" y1="140" x2="150" y2="207" stroke="#6f7a82" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="360" y1="140" x2="450" y2="207" stroke="#2aa198" stroke-width="1.5" marker-end="url(#arrow-arch)"/>
+
+        <!-- Telemetry label -->
+        <text x="420" y="170" font-family="IBM Plex Mono, monospace" font-size="8" fill="#2aa198" font-weight="600">telemetry</text>
+      </svg>
+    </div>
+    <div class="schema-caption mono">Dedicated tournament infrastructure isolated from production networks. All telemetry flows to controlled data archive.</div>
+  </div>
+  <div class="schema-frame">
+    <div class="schema-titlebar">SCHEMA 02 — ROUND FLOW &amp; TIMELINE</div>
+    <div class="schema-body">
+      <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;max-height:100%;" role="img" aria-label="ECB Round Flow: 7-day timeline across R1 qualifying, R2 main bracket, R3 endurance, plus optional Final Round, then post-event data release pipeline">
+        <defs>
+          <marker id="arrow-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#2aa198"/>
+          </marker>
+        </defs>
+
+        <!-- Timeline baseline -->
+        <line x1="40" y1="120" x2="560" y2="120" stroke="#dbeaf2" stroke-width="2"/>
+
+        <!-- R1 -->
+        <circle cx="80" cy="120" r="20" fill="#2aa198" stroke="#111" stroke-width="1.5"/>
+        <text x="80" y="125" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">R1</text>
+        <text x="80" y="78" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#111" text-anchor="middle">QUALIFYING</text>
+        <text x="80" y="92" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">~2 days</text>
+        <text x="80" y="160" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">all teams</text>
+
+        <!-- R2 -->
+        <circle cx="180" cy="120" r="20" fill="#2aa198" stroke="#111" stroke-width="1.5"/>
+        <text x="180" y="125" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">R2</text>
+        <text x="180" y="78" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#111" text-anchor="middle">MAIN BRACKET</text>
+        <text x="180" y="92" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">~2 days</text>
+        <text x="180" y="160" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">advancing teams</text>
+
+        <!-- R3 -->
+        <circle cx="290" cy="120" r="22" fill="#7a1f2b" stroke="#111" stroke-width="1.5"/>
+        <text x="290" y="125" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">R3</text>
+        <text x="290" y="78" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#7a1f2b" text-anchor="middle">ENDURANCE</text>
+        <text x="290" y="92" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">14–84h sustained</text>
+        <text x="290" y="160" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">SOC fatigue capture</text>
+
+        <!-- Final / Bonus -->
+        <circle cx="400" cy="120" r="20" fill="#d6b35c" stroke="#111" stroke-width="1.5"/>
+        <text x="400" y="125" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="700" fill="#111" text-anchor="middle">+1</text>
+        <text x="400" y="78" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#111" text-anchor="middle">FINAL / BONUS</text>
+        <text x="400" y="92" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">optional</text>
+        <text x="400" y="160" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">individuals welcome</text>
+
+        <!-- Post-event Data Release -->
+        <rect x="490" y="100" width="80" height="40" fill="#dbeaf2" stroke="#111" stroke-width="1.5"/>
+        <text x="530" y="118" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#111" text-anchor="middle">DATA</text>
+        <text x="530" y="131" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#111" text-anchor="middle">RELEASE</text>
+        <text x="530" y="78" font-family="IBM Plex Mono, monospace" font-size="9" font-weight="600" fill="#111" text-anchor="middle">PIPELINE</text>
+        <text x="530" y="92" font-family="IBM Plex Mono, monospace" font-size="8" fill="#6f7a82" text-anchor="middle">D+7 → M+10</text>
+
+        <!-- Connecting arrows -->
+        <line x1="100" y1="120" x2="160" y2="120" stroke="#2aa198" stroke-width="1.5" marker-end="url(#arrow-flow)"/>
+        <line x1="200" y1="120" x2="268" y2="120" stroke="#2aa198" stroke-width="1.5" marker-end="url(#arrow-flow)"/>
+        <line x1="312" y1="120" x2="380" y2="120" stroke="#7a1f2b" stroke-width="1.5" marker-end="url(#arrow-flow)"/>
+        <line x1="420" y1="120" x2="490" y2="120" stroke="#d6b35c" stroke-width="1.5" marker-end="url(#arrow-flow)"/>
+
+        <!-- Bottom: Day +7 release marker -->
+        <text x="300" y="220" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6f7a82" text-anchor="middle" opacity="0.7">EDU dataset free release: Month +10 post-event</text>
+        <text x="300" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6f7a82" text-anchor="middle" opacity="0.7">HR Framework opens: Day +7 post-event</text>
+      </svg>
+    </div>
+    <div class="schema-caption mono">Three (plus 1) rounds across 2+4 days. R3 endurance window captures sustained-pressure data not available in any public dataset.</div>
+  </div>
+</div>
+
+
+
+
+
+
+<section class="hero">
+  <div class="hero-inner">Essential Cybersecurity Benchmark: Edition Z | Q4.2026
+   
+<h2>Operational Cybersecurity Benchmark</h2>
+<p>
+The Essential Cybersecurity Benchmark (ECB) is a multi-day adversarial exercise designed to measure real operational cyber resilience.
+Unlike traditional security tests, ECB evaluates how organizations detect, respond and recover during sustained attack pressure on live infrastructure.
+The benchmark combines peer competition, research telemetry, and operational scoring across human and AI-assisted security teams.
+</p>
+
+<h2>Infrastructure and Participation</h2>
+<p>
+Participating organizations typically use existing SOC infrastructure and tooling.
+Additional hosting requirements are minimal and may range from temporary cloud environments to dedicated servers depending on team setup. It's advised that participants utilize dedicated tournament IP addresses and environments. 
+A typical team consists of of 3-12 specialists including SOC analysts, threat hunters, detection engineers and automation operators. </p>
+
+<h2>Operational Metrics</h2>
+<p>
+ECB measures operational resilience rather than isolated vulnerabilities.
+Core metrics include breach attempts and success rates, detection latency, service availability under attack, and mean time to recovery (MTTR).
+The benchmark evaluates full SOC performance including monitoring accuracy, tools utility, response coordination and human-AI collaboration during incidents.
+</p>
+
+<h2>Vendor-Neutral Evaluation</h2>
+<p>
+ECB is vendor-neutral and allows participants to deploy any combination of commercial security platforms, proprietary AI models or custom detection pipelines.
+This enables organizations to validate their security architecture under identical adversarial conditions and compare operational performance against peer teams.
+</p>
+
+<h2>Research and Data Value</h2>
+<p>
+Each benchmark edition generates structured operational telemetry including monitoring logs, detection events and response timelines.
+Datasets from realistic adversarial environments of this type are rare outside classified cyber exercises, making ECB telemetry valuable for academic and industry research.
+</p>
+
+<h2>Human-AI Security Collaboration</h2>
+<p>
+Modern security operations increasingly combine human analysts with AI-assisted detection and automation systems.
+ECB provides a controlled environment to evaluate how hybrid teams perform under sustained attack pressure.
+This includes measuring analyst decision latency, automation effectiveness and collaboration between human operators and autonomous security tools.
+</p>
+
+<h2>Benchmarking vs Traditional Security Testing</h2>
+<p>
+Traditional security assessments such as penetration tests, red-team engagements or tabletop exercises measure specific aspects of cybersecurity capability.
+ECB complements these methods by introducing sustained attack conditions, independent judging and measurable operational outcomes.
+The result is a benchmark of real defensive performance rather than theoretical readiness.
+</p>
+
+<h2>Why ECB Exists</h2>
+<p>
+Organizations invest heavily in security tools, AI detection systems and automation frameworks, yet few environments exist where these systems can be tested under realistic adversarial pressure.
+ECB was designed to provide a neutral operational benchmark where security teams can measure resilience, validate technologies and gain evidence-based insights into their defensive capabilities.
+</p>
+</div></div>
+
+
+
+<!-- ACCORDION -->
+<div class="accordion-section">
+  <div class="acc-section-label mono">▸ ESSENTIAL CYBERSECURITY BENCHMARK DETAILS: </div>
+
+
+  <!-- ━━━ 01 · ECB FORMAT ━━━ -->
+  <div class="acc-group-header">01 · ECB FORMAT</div>
+
+  <div class="acc-tab c-cyan" id="s1">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">01</span>
+        <span class="acc-title" data-i18n="t1">Essential Cybersecurity Benchmark — Format Basics</span>
+        <span class="acc-sub-label">ECB · OVERVIEW</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s1">#s1</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-101">The Essential Cybersecurity Benchmark (ECB) is engineered as a high-fidelity simulation of modern, asymmetric data warfare. It is not a static test but a dynamic operational environment where infrastructure resilience is measured against adaptive human–AI–bot threats.<br><br>
+
+Participants bring their own safe testing setup (safe, real-like, separated from real systems and telemetry) and form two teams, using any tools they choose. The interaction between humans, systems, and tools forms the core of the format. A baseline for Cyber-Safety Improvement System. </p>
+
+The Essential Cybersecurity Benchmark is a multi-day adversarial infrastructure exercise designed to measure real operational resilience, human-AI security collaboration, and SOC performance under sustained attack conditions.
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Quick Links</div>
+            <a href="#s11">Architecture</a>
+            <a href="com.html#">For Companies</a><!-- [LINK: com.html#] -->
+            <a href="er.html#">For Research</a><!-- [LINK: er.html#] -->
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>OPEN SUMMARY</span><span>INQUIRE NO NDA</span></div>
+            <div class="tab-meta-row"><span>DETAILS</span><span>NDA REQUIRED</span></div>
+            <div class="tab-meta-row"><span>NEXT EDITION: </span><span>Q4.2026</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s11">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">1.1</span>
+        <span class="acc-title" data-i18n="t11">Operational Architecture</span>
+        <span class="acc-sub-label">RESILIENCE VALIDATION FRAMEWORK</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s11">#s11</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-111">The Benchmark Event is a virtual, multifunctional, worldwide operation characterized by strict physical and logical separation of internal telemetry and external exposition.<br><br>
+
+We move beyond the traditional Capture The Flag (CTF) model to create a Resilience Validation Framework that tests the entire life-cycle of a data breach.</p>
+          <p data-id="p-112">We have developed four baseline scenarios that serve as an industry standard for next-generation security validation, combining full-spectrum performance testing with functionality assessment:</p>
+          <ul data-id="p-113">
+            <li><strong>Advanced CTF (Capture The Flag)</strong> – red teams need to breach, find clue  , identify flags and interact with them.</li>
+            <li><strong>Service Persistence &amp; Resistance Validation</strong> – blue teams must maintain service availability, and monitor compromise attempts.</li>
+            <li><strong>Tools &amp; AI Validation</strong> – opportunity to test proprietary defensive algorithms and AI-driven response systems against non-signature-based threats.</li>
+            <li><strong>Performance &amp; Composition Test</strong> - analysis of how different red/blue team structures (size, specialization, hierarchy, tools, UI/UX) affect outcomes and performance metrics.</li>
+          </ul>
+          <p data-id="p-114"><strong>The C-SIS Mandate:</strong> These are full-spectrum exercises. Whether you are testing new cybersecurity tools, BMI (Brain-Machine Interface) encryption or XR (Extended Reality) data streams, the ECB provides the closest possible approximation to an actual global cyber conflict.<br><br>Detailed operational protocols for each round are available only in the Introduction Pack under M-NDA.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="#s12">Scenarios Detail</a>
+            <a href="doc.html#intro-pack">Introduction Pack (M-NDA)</a><!-- [LINK: doc.html#intro-pack] -->
+            <a href="data.html#licencing">Data &amp; Licensing</a><!-- [LINK: data.html#licencing] -->
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>TEAMS</span><span>PRO + EDU</span></div>
+            <div class="tab-meta-row"><span>ROUNDS</span><span>4</span></div>
+            <div class="tab-meta-row"><span>FULL DETAIL</span><span>M-NDA</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s12">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">1.2</span>
+        <span class="acc-title" data-i18n="t12">ECB Scenarios</span>
+        <span class="acc-sub-label">4 ROUNDS · OPERATIONAL FLOW</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s12">#s12</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <table class="tab-table" data-id="p-121">
+            <thead>
+              <tr><th>ROUND</th><th>NAME</th><th>DESCRIPTION</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono">R1</td>
+                <td>Multi-threat Limited Arenas</td>
+                <td>Focuses on triage and lateral movement detection in multi-vector environments.</td>
+              </tr>
+              <tr>
+                <td class="mono">R2</td>
+                <td>Fast Matches</td>
+                <td>Supplementary round of classic red/blue confrontation.</td>
+              </tr>
+              <tr>
+                <td class="mono">R3</td>
+                <td>High-Threat High-Volume</td>
+                <td>The core endurance benchmark and exercises. A sustained engagement window lasting multiple days (rotations, breaks), with red and blue divisions operating in an environment with many actors.</td>
+              </tr>
+              <tr>
+                <td class="mono">R4</td>
+                <td>Custom Round / King on the Hill</td>
+                <td>An All-on-One, MTTR ranking round or your custom test scenario.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">See Also</div>
+            <a href="#s13">Flags &amp; Clue File</a>
+            <a href="#s31">Scoring Guide</a>
+            <a href="doc.html#rules">Full Rules (M-NDA)</a><!-- [LINK: doc.html#rules] -->
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>DURATION</span><span>7 + 1–3 DAYS</span></div>
+            <div class="tab-meta-row"><span>LIMIT</span><span>30 TEAMS</span></div>
+  <div class="tab-meta-row"><span>ED. Z E R O</span><span>EST. ~15 </span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s13">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">1.3</span>
+        <span class="acc-title" data-i18n="t13">Advanced Flags &amp; The Clue File</span>
+        <span class="acc-sub-label">FLAG SPEC · THE     CLUE </span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s13">#s13</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-131">For Pro Teams Flag type is assigned at random, Edu teams have right to choice their. (A control hash/exact data will be delivered by the organizers. Flags prepared according to these regulations must be documented and stored separately for post-event verification. ) The upcoming Event Utility Platform – Teams Node will guide teams through flag creation or generate flags automatically.
+</p>
+          <h4>Accepted Flag Types</h4>
+          <ul data-id="p-132">
+            <li>Official-like Document | Photo / Scan | ~200 dpi / A4</li>
+            <li>Sensitive Data: Name, Surname, ID, Password (fake) – in form of text file, email, database entry.</li>
+            <li>Server process / 3D render (available for whole match duration).</li>
+            <li>Looped stream video (1 GB – negotiable).</li>
+            <li>Accepted Community Proposition.</li>
+          </ul>
+          <h4>Flag Rules</h4>
+          <p data-id="p-133">The flag may be placed among other files or processes, either in memory or on disk.<br><br>
+
+Teams may use commercial encryption tools (16-bit key) and may use any language known to participants in the files. However, the flag itself must not be modified after creation (the language should be selected during flag creation).</p>
+          <h4>The Clue File</h4>
+          <p data-id="p-134">There has to be a non-encrypted .txt / .eml file containing precise description of what the flag is and not more than double other content (fair text). No file name restriction.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="#s31">Scoring Guide</a>
+            <a href="doc.html#verification">DOC</a><!-- [LINK: doc.html#verification/reon possible=examples] -->
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>PRO TYPE</span><span>RANDOM</span></div>
+            <div class="tab-meta-row"><span>EDU TYPE</span><span>CHOSEN</span></div>
+            <div class="tab-meta-row"><span>SCENARIO</span><span>REAL MISSION</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ━━━ 02 · PROOF OF EXCELLENCE ━━━ -->
+  <div class="acc-group-header">02 · PROOF OF EXCELLENCE</div>
+
+  <div class="acc-tab c-cyan" id="s2">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">02</span>
+        <span class="acc-title" data-i18n="t2">Proof of Excellence — Certificates &amp; Badges</span>
+        <span class="acc-sub-label">4 PROOF TYPES · RESILIENCE CERTS · RANKINGS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s2">#s2</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-201">We provide a wide array of certificates, badges, marks, and distinctions – divided into four basic types: Participation Proof, Quality Proof, Score & Rank Proof, and Impressions.</p>
+
+          <h4>Participation Proof</h4>
+          <p data-id="p-202">Every participant, judge and affiliated organization entity will be issued a digital certificate of participation including:<br> 
+• role<br>
+• individual and team badges, marks, distinctions, and awards<br>
+• other team members and their best distinction<br>
+• matches with judges<br>
+• serious warnings<br>
+It will be available in two versions: Basic Anonymysed and Complete Detailed.<br><br><br>
+<ul data-id="p-203">
+<li>Every entity participating can use badge <strong>ECB Participant</strong>.</li>
+            <li>If applicable (for those used by team): <strong>Protocols ECB Validated</strong> and <strong>Services ECB Validated</strong>.</li>
+            <li>If a team or entity chooses to use its own tools, those tools may carry the mark: <strong>ECB Tested</strong>.</li>
+          </ul>
+
+          <h4>Quality Proof</h4>
+          <p>Owner can apply for if applicable and documented:</p>
+          <ul data-id="p-204">
+            <li><strong>ECB 100% Resilience Certificate</strong> | teams and tools teams and tools that remain uncompromised may use it directly.</li>
+            <li><strong>ECB 98% Resilience Certificate</strong> and <strong>ECB 95% RC</strong> | if metrics apply.</li>
+            <li><strong>ECB Success – YEAR</strong> | cybersecurity related tools success rate over 79% in any edition.</li>
+            <li><strong>Cybersecurity Monitoring &amp; Detection: 100% Correct Certificate.</strong></li>
+            <li><strong>ECB Detection Tier 95%+ Mark.</strong></li>
+          </ul>
+
+          <h4>Score &amp; Rank Proof</h4>
+          <ul data-id="p-205">
+            <li>TEAM of the Year XXXX / Best in the Event — XXXX (TEAM)</li>
+            <li>Exceptional Team: Red Distinction</li>
+            <li>Exceptional Team: Blue Distinction</li>
+            <li>Exceptional Team: Amateur Distinction</li>
+            <li>Fair Play / Attitude - Community Distinction</li>
+          </ul>
+
+          <h4>Impression Proof — Tools</h4>
+          <ul data-id="p-206">
+            <li>Exceptional New Tool: Committee Distinction</li>
+            <li>Quality Distinction Own Tool Mark</li>
+            <li>Monitoring Tools Distinction</li>
+            <li>Utility Participants Choice and Recommendation List (Badges)</li>
+          </ul>
+
+          <h4>Impression Proof — Individual</h4>
+          <ul data-id="p-207">
+            <li>Exceptional Impression - Individual Action Mark</li>
+            <li>Match Impression Mark</li>
+            <li>Public Favorite Vote</li>
+            <li>Judge of the Year (Participants' Acknowledgment)</li>
+          </ul>
+
+          <h4>Benefits and Achievements Types and Rank</h4>
+          <p>Non-prize benefits – proofs:</p>
+          <ul>
+            <li>Badges – Graphic Icon / Description, Achievement Entry</li>
+            <li>Marks – Badge + Achievement Entry</li>
+            <li>Certificate – Digital Document / Achievement Entry</li>
+          </ul>
+          <p>Non-prize achievements (from least ranking):</p>
+          <ul>
+            <li>Distinctions (Unlimited per event)</li>
+            <li>Top 4 Tier Score</li>
+            <li>Distinctions (Limited)</li>
+            <li>TEAM of the Year XXXX</li>
+          </ul>
+          <p data-id="p-208">Organizers provide prizes, managing and acquiring the prize pool from sponsors and supporters.<br><br>
+
+Multiple-edition award stacking program – special set-awards and legendary ranks.<br><br>
+
+For Prizes Policy and details, see: Awards and Legacy.<br>
+
+The Ranking includes:<br>
+• team points<br>
+• team win–lose match results<br>
+• points (and nominations) for individual participant actions from judges<br>
+</p>
+          <p>For Prizes Policy and details – see: <a href="#s6">Awards and Legacy →</a></p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="#s6">Awards &amp; Legacy</a>
+            <a href="#s3">How to Participate</a>
+            <a href="doc.html#listing">Listing &amp; Ranking</a><!-- [LINK: doc.html#listing] -->
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>PROOF TYPES</span><span>4 CATEGORIES</span></div>
+            <div class="tab-meta-row"><span>CERT FORMAT</span><span>DIGITAL + PHYSICAL</span></div>
+            <div class="tab-meta-row"><span>VERSIONS</span><span>BASIC / DETAILED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ━━━ 03 · PARTICIPATION ━━━ -->
+  <div class="acc-group-header">03 · Participation in Essential Cybersecurity Benchmark</div>
+
+  <div class="acc-tab c-cyan" id="s3">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">03</span>
+        <span class="acc-title" data-i18n="t3">Validation Setup: Server, Service, Team </span>
+        <span class="acc-sub-label">TEAM STRUCTURE · SETUP · ENTRY</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s3">#s3</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-301">Parent Entity organizes the Team: composed of two groups (red/blue, 2 to 6 participants +2 captains and reserve participant – advisor), for the duration of a 7-day event and 1 to 3 days for the Final Round. Reputation verification or invitation required.</p>
+
+          <p>Affiliated organizations of the team provide a real-life, separated server, functional setup, monitoring, connections – according to the published specification, and report, stream, and upload data.</p>
+
+          <p><strong>Asset Authenticity:</strong> Functional Mockup must support real traffic (e.g. simulated shop/bank). Service Functionality and Commercial Grade Tech/Software</p>
+
+
+<P><strong>Interested in participation?<strong> - register as team in suspension, if the number of participants don't divide by 6 by the end of Q3 we will invite your team.</p> 
+
+        <p><strong>Timezone:</strong> HQ timezone rotates to a different timezone each year.</p>
+Informed Consent & Sandboxing 
+
+▸ OPERATIONAL ISOLATION & INFORMED CONSENT
+
+Dedicated Infrastructure: The Essential Cybersecurity Benchmark (ECB) operates entirely within a strictly controlled, isolated arena.  We do not monitor external or corporate networks.
+
+Explicit Consent for R&D: By entering the ECB, all participating entities and individuals provide explicit, informed consent for the comprehensive capture of tactical, behavioral, and forensic telemetry within the event perimeter.
+
+The Commitment: There is no stealth monitoring. All telemetry parameters are consulted and agreed upon with participants prior to the event. The acquired data is leveraged exclusively to advance global cybersecurity defense, train AI resilience models, and establish empirical industry standards.
+
+          <h4>Specification Edition: Z E R O</h4>
+          <table class="tab-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Pro</th>
+                <th>Edu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Connection band.</td>
+                <td>~1 Gbps symmetric</td>
+                <td>250/250 Mbps</td>
+    
+              </tr>
+          
+ <tr>
+<td>Min. spec.:</td>
+<td>12 vCPU, 32 GB RAM, 2 TB NVMe SSD</td>
+<td>8 vCPU, 16 GB RAM, 1 TB NVMe SSD</td>
+<tr>
+                <td>Limits</td>
+                <td colspan="2">Attacks on the educational teams server must not exceed 100 Mbps.</td> </tr>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Bot / AI agent usage - open, any limitations – to be announced ahead.</p>
+          <p>Advised Spec.: To be announced after consultations, revised by Test Round 2.</p>
+
+          <h4>Access Vectors / Real Services</h4>
+          <p>The number of vectors is related to the number of team members.</p>
+          <p>The server must provide at least one internet access vector (e.g. ftp/api/www) and at least two "supplementary" vectors of another type (physical or application layer L7), e.g. usb, wifi, bluetooth.</p>
+          <p>Over this base, divide the number of team members by 3 (rounding up; captains and reserve members don't count. The first and third additional access routes must be online service related – commercial grade, functional mockups (precisely measurable availability).</p>
+          <p>Separate backup is required.</p>
+          <p> <br><br>
+Want insights, influence or license use of the <strong>data - without participation? </strong>For you we offer observer status → <a href="data.html#observers">licensing model:observers/</a></p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Entry Points</div>
+            <a href="doc.html#nda">NDA Form</a>
+            <a href="doc.html#contact">Contact</a>
+            <a href="data.html#observers">Observer Status</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>COST</span><span>FREE (EDT. ZERO)</span></div>
+            <div class="tab-meta-row"><span>EDT. ZERO</span><span>~15 ENTITIES</span></div>
+            <div class="tab-meta-row"><span>DATE</span><span>Q4.2026</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s31">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">3.1</span>
+        <span class="acc-title" data-i18n="t31">Reporting &amp; Scoring</span>
+        <span class="acc-sub-label">PROOFING STANDARDS · TIMESTAMPS · JUDGES</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s31">#s31</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-311">Teams get scores proving their claims, so monitoring settings are their responsibility.</p>
+          <p>Seven days before the event judges will be available to check and advise on monitoring settings. Pre-match, judges will consult teams on their detection, documentation, verification methodology on : actions, monitoring & detection.</p>
+          <p>The organizers will provide Service Availability Testing Scripts (~1 min) and MTTP (~0.0s).</p>
+          <p>Logs should include an exact timestamp (~0.00s) for real execution/detection and an individual flag beforehand. We want to include a layer of categorical declarations of what is happening — response declarations including consequences. This layer will be simplified and reused for other functions and purposes of the event, such as summaries.</p>
+          <p>Timezone – every edition will have an official HQ timezone for global coordination.</p>
+          <p><strong>Edition START:</strong> Organizers and Strategic Partners will provide a manual reporting platform, automated scripts and data-gathering software.</p>
+          <p><strong>Edition Z E R O:</strong> We take great care to provide software solutions from the outset, but it is possible that gathering and reporting will be self-scripted, scripted with judges, or manually.</p>
+          <p>Tools recommendations – coming soon.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Related</div>
+            <a href="#s311">Scoring Guidelines</a>
+            <a href="#s13">Flags &amp; Clue File</a>
+            <a href="doc.html#scoring-full">Full Scoring (NDA)</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>PRE-CHECK BY JUDGE</span><span>7 DAYS BEFORE</span></div>
+            <div class="tab-meta-row"><span>TIMESTAMP</span><span>~0.00s PRECISION</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-peach is-subsub" id="s311">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">3.1.1</span>
+        <span class="acc-title" data-i18n="t311">Scoring Excerpt</span>
+        <span class="acc-sub-label">DEFENSE · BREACH · MONITORING · EXTRA POINTS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s311">#s311</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+<p>
+For purpose of benchmark and comparison, we use match points (penetration level and achievement), performance metrics (direct and synergistic metrics, telemetry data, win-to-loss ratio, and detection and restoration times), the match result, action points, and distinctions. 
+The benchmark data is divided into three levels: internal rating, external exposition, and feedback benchmarking, meaning that each layer presents a different level of detail.
+</p>
+          <h4>A. Active Defence Points</h4>
+          <table class="tab-table">
+            <thead><tr><th>Criterion</th><th>Points</th><th>Rationale</th></tr></thead>
+            <tbody>
+              <tr><td>Server not shut down / blocked (entire round)</td><td>+2</td><td>Rewards operational continuity – the foundation of corporate stability.</td></tr>
+              <tr><td>Team repelled opponent completely (zero points for opponent)</td><td>+5</td><td>Reward for a perfect round – complete repulsion of all attacks.</td></tr>
+              <tr><td>Team detected all attacks that bypassed defences but did not capture the flag</td><td>+4</td><td>Monitoring is an equally important element of the competition.</td></tr>
+              <tr><td colspan="3"><em>Once per tournament, awarded after Round 3:</em></td></tr>
+              <tr><td>Team maintained service availability across all rounds (no shutdowns, no gaps in metrics)</td><td>+5</td><td>–</td></tr>
+              <tr><td>Team with the lowest server / service downtime</td><td>+3</td><td>–</td></tr>
+              <tr><td><strong>Total Criterion: 3 + 2 </strong></td><td><strong> - </strong></td><td>Max: 7p/match + 8p/event.</td></tr>
+            </tbody>
+          </table>
+
+          <h4>B. Breach &amp; Compromise Points</h4>
+          <table class="tab-table">
+            <thead><tr><th>Criterion – highest level</th><th>Points</th><th>Rationale</th></tr></thead>
+            <tbody>
+              <tr><td>Suspicion of data access, decoding or interference – without detection (Stealth)</td><td>+3</td><td>Stealth operation - for finesse.</td></tr>
+              <tr><td>Server shutdown / block (DDoS)</td><td>1</td><td>Rewards a successful DDoS / Denial of Service. Lowest award as it is the most technically straightforward.</td></tr>
+              <tr><td>Extraction of the exact fragment constituting the flag</td><td>   8</td><td>Full data compromise. The primary reward for an offensive team.</td></tr>
+              <tr><td><strong>Total Criterion: 4 + 1 + 2 </strong></td><td><strong> - </strong></td><td>Max: 12p/match x opponent.</td></tr>
+            </tbody>
+          </table>
+
+          <h4>C. Community Points (Jury)</h4>
+          <table class="tab-table">
+            <thead><tr><th>Criterion</th><th>Points</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Own non-commercial / not-yet-commercial tools</td><td>+2</td><td>Rewards community contribution and promoting skill over commercial tools. Amateur tools, created for the tournament or not yet commercial. Once per event.</td></tr>
+              <tr><td>Underdog: amateur team scores at least one point against a professional team, or concedes zero points in any confrontation</td><td>+1</td><td>Per confrontation (match).</td></tr>
+              <tr><td>Efficiency / Speed distinction (judges and observers nominate, committee awards)</td><td>+1</td><td>For any number of teams, max once per round.</td></tr>
+              <tr><td><strong>Total Criterion: 3 + 2 + 1</strong></td><td><strong> - </strong></td><td>Max: 1p/match + 3 p./e. + 5p./round.</td></tr>
+            </tbody>
+          </table>
+          <p data-id="p-3111"></p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>MAX ROUND</span><span>Depends on number of Teams</span></div>
+            <div class="tab-meta-row"><span></span><span> ???</span></div>
+            <div class="tab-meta-row"><span>MAX C/ROUND</span><span>6 PTS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s32">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">3.2</span>
+        <span class="acc-title" data-i18n="t32">Individual &amp; Incomplete Teams</span>
+        <span class="acc-sub-label">SOLO ENTRY · PRE-REGISTRATION</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s32">#s32</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-321">Individuals and incomplete groups may preregister for participation in Round 3 and the Award Round.</p>
+          <p>Accepted individuals will be offered agreements and NDA, and may be invited to participate during Round 3 and the Final Round according to PRO teams consultations. The exact number of individuals, requirements and validation is decided by FC.</p>
+          <p>Individual Participants who will take part of any round will be offered further assistance including team building help, learning and hints groups (hardware, software, tests), access to HR Framework and cooperation as volunteers, supporters, depending on skills and scores also judges, commentators, certified partners. Grants certificate and right to use the ECB Participation badge (logo) and listing on website. From Edition START! we will gather data similarly as from other participants, and will provide data gathering software.</p> 
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">IP Entry:</div>
+            <a href="doc.html#contact">Pre-Register / Recommendations </a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>ELIGIBLE ROUNDS</span><span>R3 + FINAL</span></div>
+            <div class="tab-meta-row"><span>DECISION</span><span>FC + PRO TEAMS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s33">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">3.3</span>
+        <span class="acc-title" data-i18n="t33">Participation Flow</span>
+        <span class="acc-sub-label">STEPS 0–6 · CONTACT TO CLOSING</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s33">#s33</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-331">
+          0. Contact: request summary or send NDA to receive the Introduction Pack: documents, agreements, a summary flyer and extras.<br><br>
+          1. Sign-in procedure: deliver documents and declare any changes to default privacy, exposure and anonymisation settings. After review we will establish contact and keep your entity informed on details, news and changes.<br><br>
+          2. Event platform access. Team composition details; tools and tech declaration; setup verification before the start of the tournament.<br><br>
+          3. 45 days before the event, teams should provide IP addresses and all necessary information normally available to organizers (Summary Card in accordance with the specification document). Day before opening – contact established, internal/hybrid tech tests and verification, readiness confirmation, test connections.<br><br>
+          The date, contact, round start–end, pairing and IP details will be delivered via dedicated communication lines, the event platform, the website and live communications.<br><br>
+          4. Data stream, reporting, data upload, feedback — after matches.<br><br>
+          5. Claims, verification orders, awards, bonuses. Data Sets Access. HR sessions.<br><br>
+          6. Next year proposals, mock-ups/server closing.
+          </p> 
+<p data-id="p-341">Edition Z E R O – Q4 2026 | ~15 entities, invitation mostly.<br>
+          Edition START! – X/XI.2027 | ~21 entities, invitations, previous participants and inquiries.<br>
+          Edition III – X/XI.2028 | ~30 entities, qualifications (15) and best previous participants (15).</p>
+
+          <h4>Event Roadmap — Edition Z E R O</h4>
+          <p><strong>Invitation Round 1.</strong> Details, preparations, setting up.<br>
+          Test 1. 1 Team Red/Blue, Simple format, tools and settings validation.<br>
+          Test 2. 3 Teams x2, Format Test: Timing, Monitoring, Recommendations, Judges, Scripts/Ping, Labeling, Data.</p>
+          <p>
+          Day‑9: Readiness Confirmation, team members lists closing, random settings check period.<br>
+          Day‑2: Basic Validation (settings, ping, service availability, scripts, connections). IP and details declaration deadline.<br>
+          Day‑1: Opening Day.<br>
+          Day 1: Round 1 | Day 2: Round 2 | Days 3–6: Round 3<br>
+          Break: 1–5 days.<br>
+          Bonus Round: ~1 day. Closing Day.<br><br>
+          Day +3: Data Release Date.<br>
+          Day +7: HR Framework Open.<br>
+          Day +7-21: Data Release Round First. 
+          </p>
+  
+          <div class="tab-cta">
+            <p data-id="p-332">Ready to participate? Contact us to receive the Introduction Pack.</p>
+            <a href="doc.html#contact-form">REQUEST INTRODUCTION PACK →</a><!-- [LINK: doc.html#contact-form] -->
+          </div>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Start Here</div>
+            <a href="doc.html#nda">NDA Form</a>
+            <a href="doc.html#contact">Contact</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>IP DEADLINE</span><span>45 DAYS BEFORE</span></div>
+            <div class="tab-meta-row"><span>DAY-1 TEST</span><span>CONNECTIONS + PING</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s34">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">3.4</span>
+        <span class="acc-title" data-i18n="t34">Costs, Predictions &amp; ROI</span>
+        <span class="acc-sub-label">EDITION ZERO → START → III</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s34">#s34</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+         
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>Ed. ZERO</span><span>~15 ENTITIES</span></div>
+            <div class="tab-meta-row"><span>START! 2027</span><span>~21 ENTITIES</span></div>
+            <div class="tab-meta-row"><span>Ed. III 2028</span><span>~15+15 ENTITIES</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+
+  <!-- ━━━ 04 · PRIVACY ━━━ -->
+  <div class="acc-group-header">04 · PRIVACY &amp; ANONYMITY</div>
+
+  <div class="acc-tab c-cyan" id="s4">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">04</span>
+        <span class="acc-title" data-i18n="t4">Privacy, Anonymity &amp; Exposition Tiers</span>
+        <span class="acc-sub-label">PROTECTED · PROMOTED · CUSTOM</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s4">#s4</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-401">We prioritize the safety of sensitive data. As organizers we will take best care to enforce No Loss Policy, protecting personal telemetry, localization and reputation. The benchmark offers specially designed exposition and privacy tiers with the possibility of customization.</p>
+
+<p>The Commitment: There is no stealth monitoring. All telemetry parameters are consulted and agreed upon with participants prior to the event. The acquired data is leveraged exclusively to advance global cybersecurity defense, train AI resilience models, and establish empirical industry standards.
+</p>
+<p>
+Explicit Consent for R&D: By entering the ECB, all participating entities and individuals provide explicit, informed consent for the comprehensive capture of tactical, behavioral, and forensic telemetry within the event perimeter. Details on technical solutions for privacy tiers will be available after co-creators validation, and participants audit.</p>
+
+
+          <table class="tab-table">
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Team Owner</th>
+                <th>Team Members – credentials</th>
+                <th>Team Members – faces, voices, biometrics</th>
+                <th>Rank / Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Protected</strong><br><small>Pro Default</small></td>
+                <td>Codename</td>
+                <td>Nicknames</td>
+                <td>Blurred / Visual Animated Filters / Video Representations / Modulated Audio</td>
+                <td>Inner – complete<br>Outer – match result</td>
+              </tr>
+              <tr>
+                <td><strong>Promoted</strong><br><small>Edu Default</small></td>
+                <td>Real Credentials + Codename</td>
+                <td>Real Credentials / Nickname </td>
+                <td>Hybrid: real and altered</td>
+                <td>Complete</td>
+              </tr>
+              <tr>
+                <td><strong>Anonymity*</strong></td>
+                <td>Codename | D: Real Credentials </td>
+                <td>Nickname</td>
+                <td>Blurred / Visual Animated Filters / Video Representative </td>
+                <td>Complete</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>* Complete / Custom tiers are individually priced, require FC approval, and are granted only for an important reason. The fee may be waived by FC decision. Using less anonymised solutions is free of charge, and can be done any time after formal declaration.</p>
+
+          <h4>Minimal Commitment</h4>
+          <ul>
+            <li>Code name of team (for a year).</li>
+            <li>All logs and all necessary data for event scoring (anonymised), including actions, setup and tools used.</li>
+            <li>Match results and team members' score.</li>
+          </ul>
+<p>Data processing and entities responsible are based in EU, and comply wuth strict GDDR and privacy regulations.</p>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Full Details</div>
+            <a href="data.html#privacy">Privacy Policy</a>
+            <a href="data.html#licencing">Data Licensing</a>
+            <a href="doc.html#nda">NDA</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>PRO DEFAULT</span><span>PROTECTED</span></div>
+            <div class="tab-meta-row"><span>EDU DEFAULT</span><span>PROMOTED</span></div>
+            <div class="tab-meta-row"><span>CUSTOM</span><span>PAID + FC APPROVAL</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-tab c-burgundy is-sub" id="s41">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">4.1</span>
+        <span class="acc-title" data-i18n="t41">Anonymity, Telemetry & Data Processing</span>
+        <span class="acc-sub-label">VIDEO FILTERS · AI AVATARS · BIOMETRIC PROTECTION</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s41">#s41</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-411">We intend to integrate animated representation substitutions, filters, pre-rendered animations and LLM-generated videos with partners. In the meantime we will offer blur, filter, limited exposition or masks as options. We advise teams to treat this as an advantage. Teams will be able to customize and choose their visual representations and style, while audiences will also be able to customize the visualizations they prefer.</p>
+          <p>We take care to protect biometrics, voice and movements. Organizers and strategic partners will take great care to provide affordable or free video capture and transmission setup — privacy will be applied live at the first stage.</p>
+          <h4>Processing Pipeline</h4>
+          <ul>
+            <li><strong>Pre-harvest setting</strong> – implementation of live optimization.</li>
+            <li><strong>Pre-upload process</strong> – flagging, manual reports (if needed), compression and secure delivery.</li>
+            <li><strong>Post-process</strong> – backup and anonymity / exposition policy tiers implementation, storage and data control.</li>
+          </ul>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>BIOMETRICS</span><span>PROTECTED</span></div>
+            <div class="tab-meta-row"><span>VIDEO</span><span>LIVE + POST-PROCESS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ━━━ 05 · HR ━━━ -->
+  <div class="acc-group-header">05 · HR FRAMEWORK</div>
+
+  <div class="acc-tab c-cyan" id="s5">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">05</span>
+        <span class="acc-title" data-i18n="t5">HR Framework</span>
+        <span class="acc-sub-label">TALENT · RECRUITMENT PROTOCOL · PRIVACY</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s5">#s5</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-501"><strong>Privacy and Respect:</strong> Recruiting during the event and for one week after is prohibited.</p>
+          <p>The HR section of the Event Utility Platform will provide basic participant data, with the possibility to enter closed recruitment information.</p>
+<p> It will be subsection of ECB - with voluntary participation, custom exposition and information's - for purpose of HR and networking, according to the community needs, with compliance to GDDR and other privacy regulations</p>  
+          <p>The framework works both ways and will be available to companies and certified local partners. There will be a tier for participants, an eliminations-level tier, and a tier for certified partners inviting local talent.</p>
+  <p> HR Framework is planned to be opened with Edition START! (the Second Edition).</div>
+        <div class="tab-sidebar">
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>RECRUIT BAN</span><span>EVENT + 7 DAYS</span></div>
+            <div class="tab-meta-row"><span>ACCESS</span><span>TIERED</span></div>
+            <div class="tab-meta-row"><span>PARTNERS</span><span>CERTIFIED ONLY</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- ━━━ 06 · AWARDS ━━━ -->
+  <div class="acc-group-header">06 · AWARDS &amp; LEGACY</div>
+
+  <div class="acc-tab c-cyan" id="s6">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">06</span>
+        <span class="acc-title" data-i18n="t6">Awards, Multi-Championship &amp; Legacy</span>
+        <span class="acc-sub-label">OVERVIEW · TIERS · PROGRAMS</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s6">#s6</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-601">ECB: Along very real assets to be gained like proof of excellence, safety validation and reputation building, we provide wide set of prizes, distinctions and awards. Our most prestigious prizes follow the expert's career path, and can be inherited or passed within a family for one generation.</p>    
+          <p>We introduce a Yearly Awards and Multiple Awards Program. Prizes and awards differ between PRO and EDU tier teams, and between those for Team Affiliate Organizations and those for Individual Participants.</p>
+            <p>Every Edition will have independent Prize Pool. </p>
+
+
+<p id="s61"><strong>6.1 Participation Tiers</strong> </p>
+ <p data-id="p-611"><strong>Pro team members</strong> are awarded: Basic Awards, Multiple Award Winner Sets (MWAS) and Individual Legendary Stackable Prize (ILSP).</p>
+          <p><strong>Edu team members and Independent Pro teams</strong> are awarded: Basic Awards, MWAS,Legacy Award Program that includes ILSP, and Edition Prize Pool.</p>
+          <h4>I-Pro Status</h4>
+          <p>Within PRO-type teams we recognize an "Independent" status for members not associated with large corporations (entities with net worth over 5 million USD). Independent members and teams receive the same awards as EDU teams and use EDU-type rules, but do not get access to data other than from their own match.</p>
+
+ <h4>Awards and Prizes</h4>
+<p id="s62"><strong>6.2 Team Grand Prize </strong> - is an Extremely Durable Data Storage Medium (EDDS). It contains basic information, the team logo and an art-custom message of the same size for all prize types.</p>
+
+<p id="s63"><strong>6.3 Basic Awards </strong> include: Artistic Trophies, Holographic Stands, Digital NFT and Medals — available in both physical and digital formats.</p>
+<p id="s64"><strong>6.4 Edition Award Pool </strong> <br> A. Non-financial awards are granted according to sponsor instructions.<br>
+          B. Every edition distributes 50% of money granted by sponsors and supporters in connection with ECB to the Enhanced.World Foundation for money prizes and legacy programs (FC or designated commission).<br>
+          C. Memorabilia: Our intention is to provide — with partners — physical prizes for participants: holographic stands, mini holographic sculptures, engraved crystal stands and metal-engraved certificates for distinguished and awarded participants.</p>
+<p id="s65"><strong>6.5 Award Multi-Win Sets &amp; Individual Legendary Prize </strong> - each edition prizes and awards are granted, with a gradually expanding spectrum of planned elements available to all people achieving a given prize. Collecting sets of 3 or 5 identical awards will unlock special combined sets and ranks.
+<p id="s66"><strong> 6.6 Legacy Program: EDDS Individual Legendary Stackable Prize (ILSP)</strong>
+          <ul>
+            <li><strong>Stage A – Description &amp; Analysis:</strong> Professional Personality Description and Psychological Tests; Person-Customized Summary Description and Instructions. | – achieved on: 2 different awards total.</li>
+            <li><strong>Stage B – Sensual Representation:</strong> Selected Data Samples &amp; Media Archive Samples (voice, video, pictures, creations); Body Scan. | – achieved on 4 total awards.</li>
+            <li><strong>Stage C – Ultimate Memory Core:</strong> DNA sequencing; Brain Scans during performance of pre-designed tasks, topics and states; AI digital-copy model with custom refinement. | – achieved gradually with 5, 6 and 7 total awards.</li>
+          </ul>
+<p id="s67"><strong> 6.7 Legacy Program: </strong> Inheritable Access to Services of Enhanced.World Foundation, associated Locally4Me Group and partners:</p>
+          <ul>
+            <li>Data and Privacy Protocol Service</li>
+            <li>Education, Camps and Activities for Youth Program</li>
+            <li>Kids and Empathy Program</li>
+            <li>Crowd Research Campus Partners Invitation</li>
+            <li>Health Pack and App Pack</li>
+          </ul>
+          <p>Legacy Awards can be inherited or passed within a family for one generation.</p>
+         <h4>For all the details and regulations on awards, prizes and  check our documents section.</h4>   
+       
+
+        
+         
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Subsections</div>
+            <a href="#s61">6.2 Grand Prize</a>
+            <a href="#s62">6.3 Basic Awards</a>
+            <a href="#s63">6.4 Multi-Win Sets</a>
+            <a href="#s65">6.5 Edition Pool</a>
+            <a href="#s66">6.6 Legacy Program</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ━━━ 07 · MISSION ━━━ -->
+  <div class="acc-group-header">07 · VALUES &amp; MISSION</div>
+
+  <div class="acc-tab c-cyan" id="s7">
+    <div class="acc-header" onclick="T(this)">
+      <div class="acc-header-left">
+        <span class="acc-num">07</span>
+        <span class="acc-title" data-i18n="t7">Values, Mission &amp; Summary</span>
+        <span class="acc-sub-label">WHY · WHAT · FOR WHOM</span>
+      </div>
+      <div class="acc-right">
+        <a class="acc-anchor mono" href="#s7">#s7</a>
+        <span class="acc-toggle">+</span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="tab-inner">
+        <div class="tab-content">
+          <p data-id="p-701"><strong>Values:</strong> Fairness &amp; Safety.<br>
+          <strong>Mission:</strong> Enhancing safety standards in the digital age. Under the pressure of AI we promote human talents and human connections.</p>
+          <p>ECB focuses on strategic, managerial and operational issues including risk analysis, ROI calculations, simulation of cybersecurity resilience and developing metrics for organizations. Empirical research uncovers weaknesses that can only be detected in real-world conditions.</p>
+          <ul>
+            <li>Need for real-world data vs. synthetic scenarios</li>
+            <li>Behavioral research on team dynamics under pressure</li>
+                        <li>Deliverable: quantified resilience score + peer benchmark positioning + board-ready financial impact analysis</li>
+
+          </ul>
+
+
+          <div class="tab-cta">
+            <p data-id="p-702">Ready to benchmark your team's real resilience? Contact us to receive the Introduction Pack.</p>
+            <a href="doc.html#contact">INQUIRE →</a><!-- [LINK: doc.html#contact] -->
+          </div>
+        </div>
+        <div class="tab-sidebar">
+          <div class="tab-links-box">
+            <div class="tab-links-title">Target Flows</div>
+            <a href="com.html#ciso">CISOs &amp; CTOs</a>
+            <a href="er.html">Researchers &amp; PIs</a>
+          </div>
+          <div class="tab-meta">
+            <div class="tab-meta-row"><span>ORGANIZATIONAL CREATOR</span><span>LOCALLY4ME OÜ</span></div>
+            <div class="tab-meta-row"><span>SYSTEM CREATOR</span><span>ENHANCED.WORLD</span></div>
+            <div class="tab-meta-row"><span>FORMAT AND TECHNICAL CREATORS:</span><span>INVITATIONS SEND TIER 1 EDU ENTITIES</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div><!-- /accordion-section -->
+
+<section class="trust">
+
+  <div class="trust-inner">
+     <p> <strong>Global Participant Matrix:</strong> This maneuvers details are engineered to capture a global spectrum of crisis-response cultures, mentalities, and resource-specific strategies rooted in geographical-infrastructure conditions. We are inviting two tiers of participants from most cybersecurity capable countries:<br><BR>
+      <em>Tier 1:</em> Enterprise & Agency Professional Units ("PRO").  <BR>
+      <em>Tier 2:</em> Academic, Research and Independent Powerhouses ("EDU").<BR>
+Such GPM ensures broad variety of techniques, tactics and tools - for best system validation and quality of data (including operational patterns under stress and pressure). <br>
+    </p>
+
+    <h2>Event Timeline & Test Phases</h2>
+    <p class="mono">> Edition ZERO: Q4.2026 | PREPARATIONS </p>
+    
+    <h3>Realization pipline</h3>
+    <ul>
+      <li><strong>Phase 1 - Inner:</strong> ~Q2/3 | Core operational scenarios, two independent teams.</li>
+      <li><strong>Phase 2 - Outer:</strong> ~Q3 | Format details, Timing, Intensity, Punctuation, Telemetry, three+ teams </li>
+      <li><strong>Phase 3 - Readiness:</strong> -40 days| Pre-benchmark setup test </li>
+      <li><strong>Current Status:</strong> Co-creator invitations issued to tier-1 academic institutions</li>
+      <li><strong>Participant Selection:</strong> Edition ZERO - invitation only (~15 teams). From Edition II ("START!") - 50%  elimination rounds.</li>
+<li><strong>Edition Z E R O - Q4.2026</strong></li>    
+</ul>
+  </div>
+</section>
+
+<!-- ACCORDION -->
+<div class="accordion-section">
+  <div class="acc-section-label mono">▸ EVENT DOCUMENTATION — FULL SPECIFICATION AFTER NDA</div>
+<button class="btt mono" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ TOP</button>
+</div>
+
+<script>
+function T(h) {
+  const tab = h.parentElement;
+  const was = tab.classList.contains('open');
+  document.querySelectorAll('.acc-tab.open').forEach(t => t.classList.remove('open'));
+  if (!was) {
+    tab.classList.add('open');
+    setTimeout(() => {
+      window.scrollTo({ top: tab.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+    }, 40);
+  }
+}
+function openHash() {
+  const h = window.location.hash;
+  if (!h) return;
+  const el = document.querySelector(h);
+  if (el && el.classList.contains('acc-tab')) {
+    el.classList.add('open');
+    setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' }), 180);
+  }
+}
+window.addEventListener('load', openHash);
+window.addEventListener('hashchange', openHash);
+document.querySelectorAll('.acc-tab[id]').forEach(t =>
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting)
+        document.querySelectorAll('.event-subnav a[href^="#"]').forEach(a =>
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-25% 0px -65% 0px' }).observe(t)
+);
+function openSum() { document.getElementById('sum-overlay').classList.add('visible'); document.body.style.overflow='hidden'; }
+function closeSum() { document.getElementById('sum-overlay').classList.remove('visible'); document.body.style.overflow=''; }
+function closeOnBg(e) { if (e.target.id==='sum-overlay') closeSum(); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeSum(); });
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => btt.classList.toggle('visible', scrollY > 500));
+
+const i18n = {
+  en: {
+    t1:'Essential Cybersecurity Benchmark — Format Basics',
+    t11:'Operational Architecture', t12:'ECB Scenarios', t13:'Advanced Flags & The Clue File',
+    t2:'Proof of Excellence — Certificates & Badges',
+    t3:'Participation in ECB', t31:'Reporting & Scoring', t311:'Scoring Guidelines',
+    t32:'Individual & Incomplete Teams', t33:'Participation Flow',
+    t34:'Costs, Predictions & ROI', t35:'Fair Exploit & Bug Hunting Program',
+    t36:'Educational Entity Privileges',
+    t4:'Privacy, Anonymity & Exposition Tiers', t41:'Anonymity Technology',
+    t5:'HR Framework',
+    t6:'Awards, Multi-Championship & Legacy',
+    t61:'Award Tiers', t62:'Team Grand Prize', t63:'Basic Awards',
+    t64:'Award Multi-Win Sets & Individual Legendary Prize',
+    t65:'Edition Award Pool', t66:'Legacy Program — ILSP & LAP',
+    t7:'Values, Mission & Summary',
+    n1:'FORMAT', n11:'1.1', n12:'1.2', n13:'1.3', n2:'CERTS',
+    n3:'PARTICIPATION', n31:'3.1', n311:'3.1.1', n32:'3.2', n33:'3.3',
+    n34:'3.4', n35:'3.5', n36:'3.6', n4:'PRIVACY', n41:'4.1', n5:'HR',
+    n6:'AWARDS', n61:'6.1', n62:'6.2', n63:'6.3', n64:'6.4', n65:'6.5', n66:'6.6', n7:'MISSION',
+  },
+  pl: {
+    t1:'Essential Cybersecurity Benchmark — Podstawy Formatu',
+    t11:'Architektura Operacyjna', t12:'Scenariusze ECB', t13:'Zaawansowane Flagi i Plik Clue',
+    t2:'Dowód Doskonałości — Certyfikaty i Odznaki',
+    t3:'Uczestnictwo w ECB', t31:'Raportowanie i Punktacja', t311:'Wytyczne Punktacji',
+    t32:'Uczestnicy Indywidualni i Niekompletne Drużyny', t33:'Flow Uczestnictwa',
+    t34:'Koszty, Prognozy i ROI', t35:'Program Fair Exploit i Bug Hunting',
+    t36:'Przywileje Podmiotów Edukacyjnych',
+    t4:'Prywatność, Anonimowość i Poziomy Ekspozycji', t41:'Technologia Anonimizacji',
+    t5:'Framework HR',
+    t6:'Nagrody, Multi-Mistrzostwa i Dziedzictwo',
+    t61:'Poziomy Nagród', t62:'Główna Nagroda Drużynowa', t63:'Nagrody Podstawowe',
+    t64:'Zestawy Multi-Win i Indywidualna Nagroda Legendarna',
+    t65:'Pula Nagród Edycji', t66:'Program Legacy — ILSP i LAP',
+    t7:'Wartości, Misja i Podsumowanie',
+    n1:'FORMAT', n11:'1.1', n12:'1.2', n13:'1.3', n2:'CERTY',
+    n3:'UCZESTNICTWO', n31:'3.1', n311:'3.1.1', n32:'3.2', n33:'3.3',
+    n34:'3.4', n35:'3.5', n36:'3.6', n4:'PRYWATNOŚĆ', n41:'4.1', n5:'HR',
+    n6:'NAGRODY', n61:'6.1', n62:'6.2', n63:'6.3', n64:'6.4', n65:'6.5', n66:'6.6', n7:'MISJA',
+  }
+};
+function setLang(lang) {
+  document.documentElement.setAttribute('data-lang', lang);
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-pl').classList.toggle('active', lang==='pl');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (i18n[lang]?.[k]) el.textContent = i18n[lang][k];
+  });
+}
+</script>
+<footer>
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="margin-bottom:20px;">
+      <strong>Essential Cybersecurity Benchmark™</strong><br>
+     
+    </div>
+   <a href="https://locally4me.org">OPERATIONAL ENTITY: LOCALLY4ME GROUP OÜ | TALLINN, ESTONIA</a><br>
+    <a href="https://enhanced.world">ENHANCED.WORLD FOUNDATION (IN REGISTRATION) | NETHERLANDS</a>
+    <div style="margin-top:20px;">
+      <a href="privacy-policy-ecb.pdf">PRIVACY POLICY</a>
+      <a href="data.html">DATA ACCESS</a>
+    </div>
+    <p style="margin-top:40px;opacity:0.5;">© Locally4Me Group 2025–2026</p>
+  </div>
+</footer>
+</body>
+</html>
