@@ -102,6 +102,35 @@ header{background:var(--w);border-bottom:1px solid #e1e6ea;position:sticky;top:0
 footer{background:#0f2a3a;color:#dce9f2;padding:28px 24px;font-family:'IBM Plex Mono',monospace;font-size:11px;}
 footer a{color:#9ad0ff;text-decoration:none;margin-right:14px;}
 .fi{max-width:1200px;margin:0 auto;}
+
+/* ====== UNIFIED SUMMARY POPUP (cross-page consistency) ====== */
+.summary-trigger { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 300; writing-mode: vertical-rl; background: #111; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 18px 9px; cursor: pointer; border: none; border-left: 4px solid #d6b35c; transition: background 0.2s; }
+.summary-trigger:hover { background: #7a1f2b; }
+.summary-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.48); z-index: 400; display: none; align-items: center; justify-content: center; padding: 20px; }
+.summary-overlay.visible { display: flex; }
+.summary-popup { background: #fff; border: 2px solid #111; box-shadow: 14px 14px 0 rgba(0,0,0,0.18); width: min(94vw, 860px); max-height: 88vh; overflow-y: auto; transform: scale(0.95); opacity: 0; transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease; }
+.summary-overlay.visible .summary-popup { transform: scale(1); opacity: 1; }
+.summary-titlebar { background: #111; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2px; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; }
+.summary-titlebar .tl { display: flex; align-items: center; gap: 10px; }
+.summary-titlebar .tl::before { content: '∑'; font-size: 15px; color: #d6b35c; }
+.summary-close { background: none; border: 1px solid rgba(255,255,255,0.3); color: #fff; font-size: 14px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; font-family: 'IBM Plex Mono', monospace; }
+.summary-close:hover { background: #7a1f2b; }
+.summary-body { padding: 26px; }
+.summary-intro { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.65; margin-bottom: 22px; color: #6f7a82; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 600px) { .summary-grid { grid-template-columns: 1fr; } }
+.sum-col { border: 1px solid #dbeaf2; padding: 14px; background: #eaf3f8; }
+.sum-col-title { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; padding-bottom: 7px; border-bottom: 2px solid; }
+.sum-col-title.t-emerald { border-color: #2aa198; color: #2aa198; }
+.sum-col-title.t-gold    { border-color: #d6b35c; color: #8a6010; }
+.sum-col-title.t-burgundy { border-color: #7a1f2b; color: #7a1f2b; }
+.sum-col ul { list-style: none; margin: 0; padding: 0; }
+.sum-col ul li { font-size: 12.5px; padding: 5px 0; border-bottom: 1px solid #dbeaf2; line-height: 1.5; }
+.sum-col ul li:last-child { border-bottom: none; }
+.sum-col ul li::before { content: '›'; font-family: 'IBM Plex Mono', monospace; margin-right: 8px; font-weight: 700; color: #6f7a82; }
+.sum-flow { margin-top: 18px; padding: 14px; border: 1px solid #111; background: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.7; }
+.sum-flow .arr { color: #2aa198; font-weight: 700; }
+
 </style>
 </head>
 <body>
@@ -133,66 +162,92 @@ footer a{color:#9ad0ff;text-decoration:none;margin-right:14px;}
 
   <div class="doc-section" id="intro-pack">
     <div class="doc-head">
-      <h3>Intro Pack — 1-Page Summary &amp; Flyer</h3>
-      <span class="doc-status s-public">PRE-NDA</span>
+      <h3>Intro Pack — 1-page Summary</h3>
+      <span class="doc-status s-public">PUBLIC</span>
     </div>
     <div class="doc-body">
-      Brief executive overview and visual flyer available on request before any NDA. Suitable for initial review by Heads of Department, CISOs, and Faculty Advisors.
-      Request via the form below — select <em>"Pre NDA — 1-pager + flyer"</em>.
+      Concise overview suitable for initial review by Heads of Department, CISOs, and Faculty Advisors.
+      <br><br>
+      <a href="ECB_1pager.html">→ Open the 1-page summary</a>
+    </div>
+  </div>
+
+  <div class="doc-section" id="flyer">
+    <div class="doc-head">
+      <h3>ECB Flyer</h3>
+      <span class="doc-status s-public">PUBLIC</span>
+    </div>
+    <div class="doc-body">
+      Visual one-pager with the format outline and timeline.
+      <br><br>
+      <a href="ecb_flyer.html">→ Open the flyer</a>
     </div>
   </div>
 
   <div class="doc-section" id="nda">
     <div class="doc-head">
       <h3>M-NDA — Mutual Non-Disclosure Agreement</h3>
-      <span class="doc-status s-nda">ON REQUEST</span>
+      <span class="doc-status s-nda">ON INQUIRY</span>
     </div>
     <div class="doc-body">
-      Standard mutual NDA. Two access tiers available:
+      Standard mutual NDA. Two access tiers:
       <strong>Light M-NDA</strong> opens the extensive summary and most concepts.
       <strong>Deep M-NDA</strong> opens format documents and agreement templates for co-creators and participants.
-      Issued via the form below.
+      <br><br>
+      Issued via the contact form below — select <em>"Light M-NDA"</em> or <em>"Deep M-NDA"</em>.
     </div>
   </div>
 
   <div class="doc-section" id="rules">
     <div class="doc-head">
       <h3>Format Specification &amp; Rules</h3>
-      <span class="doc-status s-nda">UNDER M-NDA</span>
+      <span class="doc-status s-nda">ON INQUIRY · UNDER M-NDA</span>
     </div>
     <div class="doc-body">
       Round structure, scoring model, telemetry specification, judge tiers, and dispute resolution. Available under Deep M-NDA from Q2.2026.
+      <br><br>
+      Request via the contact form below.
     </div>
   </div>
 
   <div class="doc-section" id="scoring-full">
     <div class="doc-head">
       <h3>Scoring Methodology</h3>
-      <span class="doc-status s-nda">UNDER M-NDA</span>
+      <span class="doc-status s-nda">ON INQUIRY · UNDER M-NDA</span>
     </div>
     <div class="doc-body">
-      Full scoring model including L1 / L2 / L3 labeling framework, dispute handling, and certification basis. Open to academic review during co-creator format sessions (Q2–Q3.2026).
+      L1 / L2 / L3 labeling framework, dispute handling, and certification basis. Open to academic review during co-creator format sessions (Q2–Q3.2026).
+      <br><br>
+      Request via the contact form below.
     </div>
   </div>
 
   <div class="doc-section" id="verification">
     <div class="doc-head">
       <h3>Team &amp; Judge Verification Procedures</h3>
-      <span class="doc-status s-nda">UNDER M-NDA</span>
+      <span class="doc-status s-nda">ON INQUIRY · UNDER M-NDA</span>
     </div>
     <div class="doc-body">
       Eligibility verification for PRO and EDU teams, judge appointment process, and conflict-of-interest checks.
+      <br><br>
+      Request via the contact form below.
     </div>
   </div>
+</div>
 
-  <div class="doc-section" id="privacy-doc">
-    <div class="doc-head">
-      <h3>Privacy Policy &amp; Anonymisation Tiers</h3>
-      <span class="doc-status s-soon">COMING SOON</span>
-    </div>
-    <div class="doc-body">
-      Full privacy policy, GDPR mapping, and anonymisation tiers. Public release upcoming.
-      Overview already available at <a href="data.html#privacy">Data &amp; Privacy</a>.
+<!-- WHAT TO EXPECT — dedicated short orientation panel -->
+<div class="docs-wrap" style="margin-top:8px;">
+  <div class="form-label">Inquiry path — what to expect</div>
+  <div class="doc-section">
+    <div class="doc-body" style="padding:18px 20px;">
+      Inquiries are answered individually. Expected sequence:
+      <br><br>
+      <strong>1.</strong> &nbsp;Inquiry submitted via the form below — no commitment.<br>
+      <strong>2.</strong> &nbsp;Reply with relevant materials (1-pager, flyer, public policy) within a few working days.<br>
+      <strong>3.</strong> &nbsp;If continuing — Light or Deep M-NDA shared on request. M-NDA does not constitute participation or financial commitment.<br>
+      <strong>4.</strong> &nbsp;Specifications, rules, scoring methodology, and agreement templates open under M-NDA.
+      <br><br>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gray);">No financial commitment at any stage of the inquiry process.</span>
     </div>
   </div>
 </div>
@@ -290,16 +345,135 @@ footer a{color:#9ad0ff;text-decoration:none;margin-right:14px;}
   </form>
 </div>
 
-<footer>
-  <div class="fi">
-    <div style="margin-bottom:8px;"><strong>Essential Cybersecurity Benchmark™</strong></div>
-    <p>LOCALLY4ME GROUP OÜ · TALLINN, ESTONIA · EU &nbsp;|&nbsp; ENHANCED.WORLD FOUNDATION (IN REGISTRATION) · NETHERLANDS</p>
-    <div style="margin-top:12px;">
-      <a href="data.html#privacy">PRIVACY TIERS</a>
-      <a href="data.html">DATA</a>
-      <a href="about.html">ABOUT</a>
+<!-- ─────── Slide-out side panel + Shared footer ─────── -->
+<style>
+.anchor-alias { display: block; height: 0; visibility: hidden; }
+.sp-trigger { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 280; writing-mode: vertical-rl; background: #111; color: #fff; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 16px 9px; cursor: pointer; border: none; border-left: 3px solid #d6b35c; transition: background 0.2s, padding-right 0.2s; }
+.sp-trigger:hover { background: #2aa198; padding-right: 13px; }
+.sp-trigger::before { content: '◀ '; opacity: 0.6; margin-right: 4px; }
+.sp-overlay { position: fixed; inset: 0; background: rgba(15, 42, 58, 0.55); backdrop-filter: blur(2px); z-index: 290; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.sp-overlay.on { opacity: 1; pointer-events: auto; }
+.sp-panel { position: fixed; top: 0; right: -440px; width: min(92vw, 420px); height: 100vh; background: #fff; border-left: 4px solid #d6b35c; box-shadow: -10px 0 28px rgba(0,0,0,0.18); z-index: 300; overflow-y: auto; transition: right 0.32s cubic-bezier(0.22, 0.61, 0.36, 1); font-family: 'Inter', sans-serif; }
+.sp-panel.on { right: 0; }
+.sp-head { background: #0f2a3a; color: #fff; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #d6b35c; }
+.sp-head h2 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; margin: 0; color: #d6b35c; }
+.sp-close { background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff; width: 28px; height: 28px; cursor: pointer; font-family: 'IBM Plex Mono', monospace; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: background 0.18s; }
+.sp-close:hover { background: rgba(255,255,255,0.12); }
+.sp-body { padding: 22px 22px 36px; }
+.sp-body h3 { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #6f7a82; margin: 22px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #dbeaf2; }
+.sp-body h3:first-child { margin-top: 0; }
+.sp-body p { font-size: 13px; line-height: 1.65; color: #111; margin: 0 0 10px; }
+.sp-body ul { list-style: none; margin: 0 0 10px; padding: 0; }
+.sp-body ul li { font-size: 12.5px; line-height: 1.6; padding: 4px 0 4px 14px; position: relative; color: #111; }
+.sp-body ul li::before { content: '▸'; position: absolute; left: 0; color: #2aa198; font-size: 10px; top: 6px; }
+.sp-body .sp-target { background: #eaf3f8; border-left: 3px solid #2aa198; padding: 10px 14px; margin: 0 0 10px; font-size: 12.5px; line-height: 1.6; }
+.sp-body .sp-target strong { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #2aa198; display: block; margin-bottom: 3px; }
+.sp-body .sp-flow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.85; color: #111; background: #fafbfc; border: 1px solid #e3e8ec; padding: 12px 14px; margin-bottom: 10px; }
+.sp-body .sp-cta { display: block; text-align: center; background: #111; color: #fff; text-decoration: none; padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; margin-top: 16px; border: 2px solid #111; transition: all 0.2s; }
+.sp-body .sp-cta:hover { background: #2aa198; border-color: #2aa198; }
+@media (max-width: 480px) { .sp-trigger { font-size: 9px; padding: 12px 7px; } }
+footer.ecb-footer { background: #0f2a3a; color: #dce9f2; padding: 48px 24px 36px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; margin-top: 80px; }
+footer.ecb-footer .ff-inner { max-width: 1200px; margin: 0 auto; }
+footer.ecb-footer .ff-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; margin-bottom: 28px; }
+@media (max-width: 720px) { footer.ecb-footer .ff-grid { grid-template-columns: 1fr; gap: 22px; } }
+footer.ecb-footer .ff-brand { font-size: 13px; font-weight: 600; color: #fff; letter-spacing: 0.5px; margin-bottom: 10px; }
+footer.ecb-footer .ff-mark { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase; color: #d6b35c; margin-bottom: 14px; }
+footer.ecb-footer .ff-entity { font-size: 11px; line-height: 1.65; color: #9ad0ff; opacity: 0.85; }
+footer.ecb-footer .ff-entity a { color: #9ad0ff; text-decoration: none; }
+footer.ecb-footer .ff-entity a:hover { text-decoration: underline; }
+footer.ecb-footer .ff-col h4 { font-size: 9.5px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #d6b35c; margin-bottom: 10px; }
+footer.ecb-footer .ff-col a { display: block; color: #dce9f2; text-decoration: none; font-size: 11px; padding: 3px 0; transition: color 0.18s; }
+footer.ecb-footer .ff-col a:hover { color: #9ad0ff; }
+footer.ecb-footer .ff-base { border-top: 1px solid rgba(220,233,242,0.15); padding-top: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.55; }
+</style>
+
+<button class="sp-trigger" onclick="spOpen()" aria-label="Open page briefing">PAGE BRIEFING</button>
+<div class="sp-overlay" id="sp-overlay" onclick="spClose()"></div>
+<aside class="sp-panel" id="sp-panel" role="dialog" aria-labelledby="sp-title" aria-hidden="true">
+  <div class="sp-head">
+    <h2 id="sp-title">▸ BRIEFING — DOCUMENTS &amp; CONTACT</h2>
+    <button class="sp-close" onclick="spClose()" aria-label="Close">×</button>
+  </div>
+  <div class="sp-body">
+    <h3>Target Audience</h3>
+    <div class="sp-target">
+      <strong>For</strong>
+      Anyone preparing to engage — Department Heads, CISOs, PIs, Faculty Advisors, Security Leads, Students, Supporters. The single inbound channel.
     </div>
-    <p style="margin-top:14px;opacity:.4;">© Locally4Me Group 2025–2026</p>
+
+    <h3>Highlights</h3>
+    <ul>
+      <li>Public materials available without NDA: 1-page summary + flyer</li>
+      <li>Light M-NDA — extensive summary, most concepts</li>
+      <li>Deep M-NDA — format documents and agreement templates</li>
+      <li>Three inquiry routes: M-NDA · Participation · General question</li>
+      <li>No financial commitment at any inquiry stage</li>
+      <li>Privacy policy public — see footer</li>
+    </ul>
+
+    <h3>Page Flow</h3>
+    <div class="sp-flow">
+      01 · Document Index<br>
+      02 · Inquiry Path — what to expect<br>
+      03 · Contact form (3 routes)
+    </div>
+
+    <h3>Next Step</h3>
+    <p>Pick the route that fits your role and submit. Reply within a few working days.</p>
+
+    <a href="#contact-form" class="sp-cta">Jump to contact form</a>
+  </div>
+</aside>
+
+<script>
+function spOpen(){
+  document.getElementById('sp-panel').classList.add('on');
+  document.getElementById('sp-overlay').classList.add('on');
+  document.getElementById('sp-panel').setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function spClose(){
+  document.getElementById('sp-panel').classList.remove('on');
+  document.getElementById('sp-overlay').classList.remove('on');
+  document.getElementById('sp-panel').setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') spClose(); });
+</script>
+
+<footer class="ecb-footer">
+  <div class="ff-inner">
+    <div class="ff-grid">
+      <div>
+        <div class="ff-brand">Essential Cybersecurity Benchmark™</div>
+        <div class="ff-mark">— Edition Z E R O · Q4.2026 —</div>
+        <div class="ff-entity">
+          <a href="https://locally4me.org">OPERATIONAL ENTITY · LOCALLY4ME GROUP OÜ</a><br>
+          JUHKENTALI 8 · TALLINN 10132 · ESTONIA · EU<br><br>
+          <a href="https://enhanced.world">ENHANCED.WORLD FOUNDATION (IN REGISTRATION)</a><br>
+          NETHERLANDS
+        </div>
+      </div>
+      <div class="ff-col">
+        <h4>▸ Documents</h4>
+        <a href="ECB_1pager.html">1-Page Summary</a>
+        <a href="ecb_flyer.html">Flyer</a>
+        <a href="privacy-policy-ecb.pdf">Privacy Policy (PDF)</a>
+        <a href="doc.html#nda">M-NDA Inquiry</a>
+      </div>
+      <div class="ff-col">
+        <h4>▸ Sections</h4>
+        <a href="event.html">Event Format</a>
+        <a href="re.html">Research / Academia</a>
+        <a href="com.html">Companies</a>
+        <a href="data.html">Data &amp; Privacy</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="ff-base">
+      <span>© LOCALLY4ME GROUP · 2025–2026</span>
+      <span>GDPR-COMPLIANT · ESTONIAN &amp; DUTCH JURISDICTION</span>
+    </div>
   </div>
 </footer>
 
@@ -336,5 +510,44 @@ if (h === '#nda' || h === '#contact-form') {
   }, 80);
 }
 </script>
+
+<!-- SIDE SUMMARY TRIGGER + OVERLAY (unified across pages) -->
+<button class="summary-trigger" onclick="openSum()" aria-label="Open page summary">∑ &nbsp; SUMMARY · HIGHLIGHTS</button>
+<div class="summary-overlay" id="sum-overlay" onclick="closeOnBg(event)" role="dialog" aria-modal="true" aria-labelledby="sum-title">
+  <div class="summary-popup">
+    <div class="summary-titlebar">
+      <div class="tl" id="sum-title">PAGE SUMMARY · HIGHLIGHTS &amp; FLOW</div>
+      <button class="summary-close" onclick="closeSum()" aria-label="Close">×</button>
+    </div>
+    <div class="summary-body">
+      <div class="summary-intro">DOCUMENTS &amp; CONTACT — Public materials available immediately. Specifications and agreements open under M-NDA. Inquiry path involves no financial commitment at any stage.</div>
+      <div class="summary-grid">
+        <div class="sum-col">
+          <div class="sum-col-title t-emerald">Highlights</div>
+          <ul>
+            <li>1-page summary &amp; flyer — public</li><li>Privacy Policy — public PDF</li><li>Whitepaper EN/PL — public</li><li>Light M-NDA — extensive summary</li><li>Deep M-NDA — format + agreements</li>
+          </ul>
+        </div>
+        <div class="sum-col">
+          <div class="sum-col-title t-gold">Target Audience</div>
+          <ul>
+            <li>Heads of Department &amp; Vice-Deans</li><li>CISOs / CTOs / Security Leads</li><li>PIs &amp; Faculty Advisors</li><li>Potential judges</li><li>Pre-sale &amp; sponsor inquiries</li>
+          </ul>
+        </div>
+        <div class="sum-col">
+          <div class="sum-col-title t-burgundy">Flow</div>
+          <div class="sum-flow"><span class="arr">→</span> Inquiry submitted <span class="arr">→</span> Reply with materials <span class="arr">→</span> M-NDA on request <span class="arr">→</span> Specifications open</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function openSum() { document.getElementById('sum-overlay').classList.add('visible'); document.body.style.overflow='hidden'; }
+function closeSum() { document.getElementById('sum-overlay').classList.remove('visible'); document.body.style.overflow=''; }
+function closeOnBg(e) { if (e.target.id==='sum-overlay') closeSum(); }
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeSum(); });
+</script>
+
 </body>
 </html>
