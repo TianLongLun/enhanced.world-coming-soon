@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECB — Measurement Framework | DRAFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --ink: #0d1117;
+  --ink-2: #353a44;
+  --ink-3: #5a626d;
+  --line: #d8dde4;
+  --line-soft: #ecf0f4;
+  --emerald: #0f7d52;
+  --cyan: #0a6a82;
+  --gold: #a87a17;
+  --emerald-soft: #f0f7f3;
+  --cyan-soft: #eef5f8;
+  --gold-soft: #faf4e6;
+
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #e8ebee;
+  font-family: var(--sans);
+  color: var(--ink);
+  font-size: 9.2pt;
+  line-height: 1.42;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 14mm 14mm 12mm 14mm;
+  margin: 16px auto;
+  background: var(--bg);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+@media print {
+  html, body { background: white; }
+  .page { box-shadow: none; margin: 0; width: 100%; min-height: auto; }
+  @page { size: A4; margin: 0; }
+}
+
+/* ===== Header ===== */
+.head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 6mm;
+  margin-bottom: 5mm;
+}
+.head h1 {
+  font-family: var(--mono);
+  font-size: 13pt;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.head h1 .accent { color: var(--emerald); }
+.head .sub {
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 2mm;
+}
+.head .meta {
+  font-family: var(--mono);
+  font-size: 7pt;
+  color: var(--ink-3);
+  text-align: right;
+  line-height: 1.5;
+}
+.head .meta .ver { color: var(--emerald); font-weight: 500; }
+
+/* ===== Lede ===== */
+.lede {
+  font-size: 9pt;
+  color: var(--ink-2);
+  margin-bottom: 4mm;
+  max-width: 165mm;
+}
+.lede strong { color: var(--ink); font-weight: 600; }
+
+/* ===== Evidence philosophy bar ===== */
+.philosophy {
+  background: var(--emerald-soft);
+  border-left: 2.5px solid var(--emerald);
+  padding: 2.2mm 3mm;
+  margin-bottom: 5mm;
+  font-family: var(--mono);
+  font-size: 8pt;
+  color: var(--ink);
+  letter-spacing: 0.005em;
+}
+.philosophy .tag {
+  color: var(--emerald);
+  font-weight: 600;
+  margin-right: 2mm;
+}
+
+/* ===== Section heads ===== */
+.sec-title {
+  font-family: var(--mono);
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 4mm 0 2mm 0;
+  padding-bottom: 1mm;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+.sec-title .num {
+  color: var(--gold);
+  font-weight: 500;
+}
+.sec-title .note {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  font-weight: 400;
+  color: var(--ink-3);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: auto;
+}
+
+/* ===== Metric grid ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3mm 5mm;
+  margin-bottom: 3mm;
+}
+
+.group {
+  border: 1px solid var(--line);
+  padding: 2.5mm 3mm 2.5mm 3mm;
+}
+.group h3 {
+  font-family: var(--mono);
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 1.2mm;
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+}
+.group h3 .pill {
+  font-size: 6.5pt;
+  font-weight: 500;
+  font-family: var(--mono);
+  background: var(--line-soft);
+  color: var(--ink-3);
+  padding: 0.3mm 1.5mm;
+  border-radius: 1mm;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.group .desc {
+  font-size: 7.8pt;
+  color: var(--ink-3);
+  margin-bottom: 1.8mm;
+  line-height: 1.35;
+}
+.metric-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6mm;
+}
+.metric-list li {
+  font-family: var(--mono);
+  font-size: 7.4pt;
+  color: var(--ink-2);
+  line-height: 1.42;
+  padding-left: 2.8mm;
+  position: relative;
+}
+.metric-list li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--emerald);
+  font-weight: 700;
+  font-size: 9pt;
+  line-height: 1.1;
+}
+.metric-list .name {
+  color: var(--ink);
+  font-weight: 500;
+}
+.metric-list .gloss {
+  color: var(--ink-3);
+}
+
+/* Unique markers */
+.group.unique { border-color: var(--gold); background: linear-gradient(to bottom, var(--gold-soft) 0%, transparent 18mm); }
+.group.unique h3 .pill { background: var(--gold); color: white; }
+
+/* ===== Comparison table ===== */
+.compare {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.6pt;
+  margin-bottom: 3mm;
+}
+.compare th, .compare td {
+  text-align: left;
+  padding: 1.5mm 2mm;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+.compare th {
+  font-family: var(--mono);
+  font-size: 7pt;
+  font-weight: 500;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1.5px solid var(--ink);
+}
+.compare td.metric {
+  font-family: var(--mono);
+  color: var(--ink);
+  font-weight: 500;
+  width: 38%;
+}
+.compare td.where {
+  color: var(--ink-3);
+  width: 42%;
+}
+.compare td.why {
+  font-family: var(--mono);
+  font-size: 7pt;
+  color: var(--emerald);
+  width: 20%;
+  font-weight: 500;
+}
+
+/* ===== Composite scoring strip ===== */
+.composite {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3mm;
+  margin-bottom: 3mm;
+}
+.composite .idx {
+  border: 1px solid var(--line);
+  padding: 2.5mm 3mm;
+  background: var(--cyan-soft);
+  border-left: 2.5px solid var(--cyan);
+}
+.composite .idx .code {
+  font-family: var(--mono);
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.02em;
+}
+.composite .idx .label {
+  font-size: 7.6pt;
+  color: var(--ink);
+  margin-top: 0.8mm;
+  font-weight: 500;
+}
+.composite .idx .formula {
+  font-family: var(--mono);
+  font-size: 6.8pt;
+  color: var(--ink-3);
+  margin-top: 1.2mm;
+  line-height: 1.4;
+}
+
+/* ===== Footer ===== */
+.foot {
+  margin-top: 5mm;
+  padding-top: 3mm;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4mm;
+  font-size: 7.4pt;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+.foot .left strong { color: var(--ink); font-weight: 600; }
+.foot .right {
+  font-family: var(--mono);
+  font-size: 7pt;
+  text-align: right;
+  color: var(--ink-3);
+}
+.foot .right .url { color: var(--emerald); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ HEADER ============ -->
+  <header class="head">
+    <div>
+      <h1>Measurement <span class="accent">Framework</span></h1>
+      <div class="sub">Essential Cybersecurity Benchmark · Edition Zero</div>
+    </div>
+    <div class="meta">
+      <div class="ver">DRAFT v0.1</div>
+      <div>Methodology brief</div>
+      <div>For participants & co-creators</div>
+    </div>
+  </header>
+
+  <!-- ============ LEDE ============ -->
+  <p class="lede">
+    ECB measures <strong>operational capability under sustained adversarial pressure</strong>, not isolated technical
+    skill. Metrics are organised into six functional groups, recorded through server-side telemetry with millisecond
+    UTC timestamps, and validated through a three-tier judge process (LML / ATV / SJ). This document defines the
+    Core set used for Edition Zero — additional research metrics may be enabled per co-creator agreement.
+  </p>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <div class="philosophy">
+    <span class="tag">EVIDENCE RULE</span>
+    Attackers must prove successful actions. Defenders must prove detection and response. Judges verify against
+    correlated multi-source telemetry. Unverified claims do not score.
+  </div>
+
+  <!-- ============ CORE METRIC GROUPS ============ -->
+  <div class="sec-title">
+    <span class="num">01</span> Core metric groups
+    <span class="note">A measurements server-side, ms-precision UTC, cross-source correlated</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- A. Time-based operational -->
+    <div class="group">
+      <h3>A. Time-to-event <span class="pill">raw</span></h3>
+      <div class="desc">Direct timestamped intervals between adversarial actions and operator responses.</div>
+      <ul class="metric-list">
+        <li><span class="name">MTTD</span> <span class="gloss">— compromise → first detection</span></li>
+        <li><span class="name">MTTRd</span> <span class="gloss">— detection → active interruption</span></li>
+        <li><span class="name">MTTRr</span> <span class="gloss">— full service recovery (≥3 min outage threshold)</span></li>
+        <li><span class="name">TTP</span> <span class="gloss">— scenario start → first foothold</span></li>
+        <li><span class="name">TTPE</span> <span class="gloss">— foothold → privilege escalation</span></li>
+        <li><span class="name">Persistence lifetime</span> <span class="gloss">— mean undetected dwell</span></li>
+        <li><span class="name">Service availability</span> <span class="gloss">— heartbeat probe uptime</span></li>
+      </ul>
+    </div>
+
+    <!-- B. Outcome -->
+    <div class="group">
+      <h3>B. Outcome &amp; coverage <span class="pill">verified</span></h3>
+      <div class="desc">Judge-confirmed results of offensive and defensive activity over the scenario window.</div>
+      <ul class="metric-list">
+        <li><span class="name">Objective completion rate</span> <span class="gloss">— flags / mission goals</span></li>
+        <li><span class="name">Detection coverage</span> <span class="gloss">— detected / total attacker actions</span></li>
+        <li><span class="name">False negative rate</span> <span class="gloss">— missed actions / total</span></li>
+        <li><span class="name">False positive burden</span> <span class="gloss">— operator-time-cost weighted</span></li>
+        <li><span class="name">Containment efficiency</span> <span class="gloss">— blast radius reduction</span></li>
+        <li><span class="name">Recovery completeness</span> <span class="gloss">— functional restoration verified</span></li>
+        <li><span class="name">Lateral movement count</span> <span class="gloss">— successful pivots</span></li>
+      </ul>
+    </div>
+
+    <!-- C. Team coordination -->
+    <div class="group">
+      <h3>C. Team coordination <span class="pill">behavioral</span></h3>
+      <div class="desc">Internal team dynamics derived from comms timestamps, ticket chains, and protocol logs.</div>
+      <ul class="metric-list">
+        <li><span class="name">Coordination latency</span> <span class="gloss">— event → first internal response</span></li>
+        <li><span class="name">Escalation integrity</span> <span class="gloss">— correct routing rate</span></li>
+        <li><span class="name">Protocol adherence</span> <span class="gloss">— declared playbook vs executed</span></li>
+        <li><span class="name">Decision chain length</span> <span class="gloss">— steps to action</span></li>
+        <li><span class="name">Role overlap rate</span> <span class="gloss">— duplicated work indicator</span></li>
+        <li><span class="name">Shift transition quality</span> <span class="gloss">— handover degradation cost</span></li>
+        <li><span class="name">Cross-team interaction</span> <span class="gloss">— Blue/Red engagement quality</span></li>
+      </ul>
+    </div>
+
+    <!-- D. Human-AI workflow -->
+    <div class="group unique">
+      <h3>D. Human–AI workflow <span class="pill">unique</span></h3>
+      <div class="desc">Operator-AI collaboration recorded via prompt logs, override events, and outcome correlation.</div>
+      <ul class="metric-list">
+        <li><span class="name">AI response latency</span> <span class="gloss">— request → actionable output</span></li>
+        <li><span class="name">AI actionability ratio</span> <span class="gloss">— used / generated outputs</span></li>
+        <li><span class="name">Human override rate</span> <span class="gloss">— rejected AI suggestions</span></li>
+        <li><span class="name">Prompt iteration depth</span> <span class="gloss">— attempts to usable answer</span></li>
+        <li><span class="name">Hallucination impact</span> <span class="gloss">— operational cost of bad AI output</span></li>
+        <li><span class="name">Trust calibration</span> <span class="gloss">— acceptance × correctness</span></li>
+        <li><span class="name">Cloud vs local-AI delta</span> <span class="gloss">— performance differential</span></li>
+      </ul>
+    </div>
+
+    <!-- E. Longitudinal degradation -->
+    <div class="group unique">
+      <h3>E. Longitudinal degradation <span class="pill">unique</span></h3>
+      <div class="desc">Performance change across the 84h adversarial window — only observable in sustained format.</div>
+      <ul class="metric-list">
+        <li><span class="name">Performance decay curve</span> <span class="gloss">— skill metric vs elapsed time</span></li>
+        <li><span class="name">Error acceleration</span> <span class="gloss">— mistake rate growth</span></li>
+        <li><span class="name">Reaction-time drift</span> <span class="gloss">— MTTD trend across shifts</span></li>
+        <li><span class="name">Detection-rate decay</span> <span class="gloss">— SOC weakening over time</span></li>
+        <li><span class="name">Recovery adaptation</span> <span class="gloss">— learning curve, repeat incidents</span></li>
+        <li><span class="name">Comms collapse rate</span> <span class="gloss">— team fragmentation indicator</span></li>
+      </ul>
+    </div>
+
+    <!-- F. Infrastructure -->
+    <div class="group">
+      <h3>F. Infrastructure load <span class="pill">raw</span></h3>
+      <div class="desc">System-level state during operations — required for fair normalisation across teams.</div>
+      <ul class="metric-list">
+        <li><span class="name">CPU / RAM pressure</span> <span class="gloss">— per-host utilisation</span></li>
+        <li><span class="name">Network saturation</span> <span class="gloss">— interface throughput &amp; loss</span></li>
+        <li><span class="name">Telemetry throughput</span> <span class="gloss">— ingestion vs capacity</span></li>
+        <li><span class="name">Log delay</span> <span class="gloss">— SIEM lag</span></li>
+        <li><span class="name">Tool stability</span> <span class="gloss">— security stack crash/restart events</span></li>
+        <li><span class="name">Storage latency</span> <span class="gloss">— evidence pipeline health</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ============ COMPOSITE INDICES ============ -->
+  <div class="sec-title">
+    <span class="num">02</span> Composite indices
+    <span class="note">Weighted baskets, versioned formulas, published before event start</span>
+  </div>
+
+  <div class="composite">
+    <div class="idx">
+      <div class="code">OSI</div>
+      <div class="label">Operational Stability Index</div>
+      <div class="formula">availability · 30% · error-growth⁻¹ · 20% · recovery · 20% · escalation · 15% · stability · 15%</div>
+    </div>
+    <div class="idx">
+      <div class="code">HACE</div>
+      <div class="label">Human–AI Collaboration Efficiency</div>
+      <div class="formula">latency⁻¹ · actionability · trust-calibration · (1 − hallucination-impact)</div>
+    </div>
+    <div class="idx">
+      <div class="code">SOCI</div>
+      <div class="label">Sustained Operational Capability</div>
+      <div class="formula">∫ performance(t) dt over 84h, normalised against initial baseline</div>
+    </div>
+  </div>
+
+  <!-- ============ UNIQUE TO ECB ============ -->
+  <div class="sec-title">
+    <span class="num">03</span> Measurements not obtainable from existing sources
+    <span class="note">Why this dataset has no public substitute</span>
+  </div>
+
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>Measurement</th>
+        <th>Why unavailable elsewhere</th>
+        <th>Visible in ECB</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="metric">Multi-day adversarial degradation curves</td>
+        <td class="where">CTF events are too short (4–48h); synthetic benchmarks (Cybench, MITRE CALDERA) have no human operator fatigue dimension.</td>
+        <td class="why">R3 PRO 84h</td>
+      </tr>
+      <tr>
+        <td class="metric">Human–AI workflow under real adversarial pressure</td>
+        <td class="where">No public dataset captures operator prompts, overrides, and downstream consequences during live offense/defense. AI cyber benchmarks evaluate models, not collaboration.</td>
+        <td class="why">Prompt + outcome logs</td>
+      </tr>
+      <tr>
+        <td class="metric">Synchronised cross-team telemetry</td>
+        <td class="where">CCDCOE Locked Shields data is closed; CAIDA / MAWI provide traffic but no labelled offense/defense ground truth across teams.</td>
+        <td class="why">Central UTC ms timeline</td>
+      </tr>
+      <tr>
+        <td class="metric">Shift transition operational cost</td>
+        <td class="where">Production SOC data is proprietary; academic studies rely on self-report. No publishable ground-truth handover dataset exists.</td>
+        <td class="why">Handover event logs</td>
+      </tr>
+      <tr>
+        <td class="metric">Blue/Red interaction quality on shared infrastructure</td>
+        <td class="where">Range exercises typically run isolated Blue and Red workflows; ECB records bidirectional engagement with judge-verified causality.</td>
+        <td class="why">Bidirectional event chain</td>
+      </tr>
+      <tr>
+        <td class="metric">Hallucination operational impact in cyber ops</td>
+        <td class="where">AI eval datasets measure factual error in lab conditions, not damage caused by acted-upon bad output during incidents.</td>
+        <td class="why">Override + outcome delta</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="left">
+      <strong>Methodology integrity.</strong>
+      Weights, formulas, and thresholds are versioned and frozen before each edition. Confidence levels are recorded
+      per metric. The framework distinguishes <em>raw</em>, <em>derived</em>, and <em>composite</em> measurements
+      explicitly to support replication and independent re-analysis. Optional research extensions (cognitive load,
+      attention, biometrics) are opt-in, consent-based, and not part of the Core ranking.
+    </div>
+    <div class="right">
+      ECB · Edition Zero · Q4 2026<br>
+      <span class="url">ecb.enhanced.world/doc</span><br>
+      Enhanced.World Foundation (NL)<br>
+      Locally4Me Group OÜ (EE)
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
