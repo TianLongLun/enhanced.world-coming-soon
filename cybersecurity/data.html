@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO meta tags -->
-  <meta name="description" content="ECB cybersecurity dataset: real-infrastructure, multi-day, 500 GB–1.5 TB ML-Ready, 300–660 GB behavioral video, 2–4 TB forensic archive. Time-locked release, GDPR-aligned anonymisation tiers, controlled licensing. Free EDU release at M+10.">
-  <meta name="keywords" content="ECB dataset, cybersecurity dataset, behavioral telemetry, ML-Ready data, SOC dataset, real-infrastructure data, APT dataset, GDPR anonymisation, dataset licensing">
+  <meta name="description" content="ECB cybersecurity dataset: real-infrastructure, multi-day, 500 GB–1.5 TB ML-Ready, 300–660 GB behavioral video, 2–4 TB forensic archive. Time-locked release, GDPR-aligned anonymization tiers, controlled licensing. Free EDU release at M+10.">
+  <meta name="keywords" content="ECB dataset, cybersecurity dataset, behavioral telemetry, ML-Ready data, SOC dataset, real-infrastructure data, APT dataset, GDPR anonymization, dataset licensing">
   <meta name="author" content="Locally4Me Group OÜ / Enhanced.World Foundation">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#2aa198">
@@ -203,14 +203,10 @@
     <div class="nav">
     <div class="nav-logo">Essential Cybersecurity Benchmark</div>
     <div class="nav-links">
-     <a href="#privacy">PRIVACY & ANONYMITY</a>
-    <a href="#gathered">DS & DATA GATHERED</a>
-     <a href="#metrics">METRICS</a> 
-    <a href="#release">RELEASE POLICY</a>
-    <a href="#licencing">LICENSING</a>
-    <a href="#security">SECURITY</a>
-   
-    <a href="#observers">OBSERVERS</a>
+        <a href="event.html">Event</a>
+      <a href="data.html">Data</a>
+      <a href="about.html">About</a>
+      <a href="index.html">Home</a>
     </div></div>
 </header>
 
@@ -223,11 +219,14 @@
 
 <nav class="event-subnav">
   <div class="event-subnav-inner">
-    <a href="#privacy">PRIVACY</a>
-    <a href="#gathered">DATA GATHERED</a>
+    
+     <a href="#privacy">PRIVACY & ANONYMITY</a>
+    <a href="#gathered">DS & DATA GATHERED</a>
+     <a href="#metrics">METRICS</a> 
     <a href="#release">RELEASE POLICY</a>
     <a href="#licencing">LICENSING</a>
     <a href="#security">SECURITY</a>
+   
     <a href="#observers">OBSERVERS</a>
     <div class="lang-switch">
       <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
@@ -336,7 +335,7 @@ Privacy tiers change reputation threat or a limitation — to a competitive adva
 
           <p>* Complete / Custom tiers are individually priced, require FC approval, and are granted only for an important reason. The fee may be waived by FC decision. Using less anonymized solutions is free of charge, and can be done any time after formal declaration.</p>
 
-          <h4>No-Biometric &amp; Video Anonymisation</h4>
+          <h4>No-Biometric &amp; Video Anonymization</h4>
           <p>All video featuring face, full silhouette, walking, eyes, or voice may be anonymized via:</p>
           <ul>
             <li><strong>Blurring</strong> — used in research data and as a selectable option in media.</li>
@@ -397,7 +396,7 @@ Privacy tiers change reputation threat or a limitation — to a competitive adva
     <li>Incident-triggered PCAP only — estimated ~20–30% of R3 duration</li>
     <li>Host logs as compressed labeled JSON (Sysmon/auditd → ~40% of raw size)</li>
     <li>Behavioral video, H.265 activity-adaptive compression (~3–5× vs raw; video constitutes ~50% of total ML-ready volume)</li>
-    <li>Full L1+L2+L3 labeling and tagging: L1 auto-tagged (scripts — team with judges' help), L2 manual participants and captain-verified action declarations (AI agent or scripts as help — an option), L3 judge-validated on disputed events.</li>
+    <li>Full L1+L2+L3 labeling and tagging: L1 auto-tagged (scripts — team with judges' help), L2 manual participants and captain-verified action declarations (AI agent or scripts as help — an option), L2.1 judge-validated on disputed events. L3 post-processing cross-team math - script/AI</li>
   </ul>
   <p style="font-size:13px;color:var(--gray);margin-bottom:0;"><strong>Forensic archive</strong> contains all of the above plus full raw PCAP, uncompressed logs, and raw video — approximately 3–4× the ML-ready volume. <span style="opacity:.7">Dataset specifications subject to community validation and final format confirmation. Sizes are pre-event estimates; actual volumes may vary.</span> <br>For Edition Z E R O — gathering of complete FA will depend on interest in it and participants' agreement. </p>  </div>
           <h4>Technical Telemetry</h4>
@@ -1029,7 +1028,7 @@ function setLang(lang){document.getElementById('btn-en').classList.toggle('activ
       <button class="summary-close" onclick="closeSum()" aria-label="Close">×</button>
     </div>
     <div class="summary-body">
-      <div class="summary-intro">Real-infrastructure, multi-day cybersecurity dataset captured on dedicated tournament infrastructure. Time-locked release pipeline, tiered privacy &amp; exposition profiles, GDPR-aligned anonymisation, controlled licensing. Non-anonymized data is never sold and remains offline. Free EDU release from Month +10. Founding-supporter pre-sale available before the event.</div>
+      <div class="summary-intro">Real-infrastructure, multi-day cybersecurity dataset captured on dedicated tournament infrastructure. Time-locked release pipeline, tiered privacy &amp; exposition profiles, GDPR-aligned anonymization, controlled licensing. Non-anonymized data is never sold and remains offline. Free EDU release from Month +10. Founding-supporter pre-sale available before the event.</div>
       <div class="summary-grid">
         <div class="sum-col">
           <div class="sum-col-title t-emerald">Dataset &amp; Telemetry</div>
