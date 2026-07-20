@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essential Crisis Software - An open initiative for in-case scenario. </title>
+<meta name="description" content="Open, pro-bono mesh communication framework for when centralized infrastructure fails. Four scenarios, four threat models. Nothing is built yet. Everything is unclaimed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red-deep:#8E1B1B;      /* darker than red */
+  --red-bright:#D93A26;    /* slightly brighter */
+  --red-edge:#6E1414;
+  --ink:#0C0C0C;
+  --paper:#FFFFFF;
+  --grey-1:#F1F0EE;
+  --grey-2:#D6D4D1;
+  --grey-3:#8A8783;
+  --grey-4:#3A3937;
+  --mono:'IBM Plex Mono',monospace;
+  --disp:'Archivo',sans-serif;
+  --body:'Inter',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  line-height:1.6;
+  background:var(--red-deep);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--red-bright);color:#fff}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+code{font-family:var(--mono);font-size:.9em}
+
+/* ===== THE ENCLOSURE =====
+   Red is not an accent. It is the shell.
+   Nested frames: red-edge > red-deep > red-bright > white core. */
+.enclosure{
+  padding:22px;
+  background:var(--red-edge);
+  min-height:100vh;
+}
+.enclosure-2{
+  border:1px solid rgba(255,255,255,.18);
+  padding:20px;
+  background:var(--red-deep);
+}
+.enclosure-3{
+  border:1px solid rgba(255,255,255,.14);
+  padding:18px;
+  background:linear-gradient(180deg,var(--red-deep),var(--red-bright) 120%);
+}
+@media(max-width:700px){
+  .enclosure{padding:10px}
+  .enclosure-2{padding:9px}
+  .enclosure-3{padding:8px}
+}
+
+/* corner ticks — the shell has structure */
+.enclosure-3{position:relative}
+.enclosure-3::before,.enclosure-3::after{
+  content:"";position:absolute;width:14px;height:14px;
+  border:2px solid rgba(255,255,255,.5);
+}
+.enclosure-3::before{top:6px;left:6px;border-right:0;border-bottom:0}
+.enclosure-3::after{bottom:6px;right:6px;border-left:0;border-top:0}
+
+/* ===== BAR / MASTHEAD (red, white type) ===== */
+.masthead{
+  padding:26px 8px 34px;
+  color:#fff;
+}
+.mast-top{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.28);
+  flex-wrap:wrap;gap:12px;
+}
+.mast-top .org{opacity:.85}
+.mast-top nav{display:flex;gap:20px}
+.mast-top nav a{opacity:.8;transition:.15s}
+.mast-top nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.mast-top nav{display:none}}
+
+.mast-body{padding-top:38px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
+@media(max-width:860px){.mast-body{grid-template-columns:1fr;gap:28px}}
+.mast-body h1{font-size:clamp(40px,6.4vw,80px);color:#fff;margin-bottom:20px}
+.mast-body h1 .thin{font-weight:600;color:rgba(255,255,255,.6)}
+.mast-lede{font-size:17px;color:rgba(255,255,255,.88);max-width:640px}
+.mast-meta{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:rgba(255,255,255,.75);
+  border-left:2px solid rgba(255,255,255,.5);padding-left:14px;line-height:1.9;
+}
+.mast-meta b{color:#fff;font-weight:600}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  padding:14px 24px;transition:.15s;display:inline-block;
+}
+.btn-solid{background:#fff;color:var(--red-deep)}
+.btn-solid:hover{background:var(--ink);color:#fff}
+.btn-line{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn-line:hover{background:#fff;color:var(--red-deep)}
+
+/* ===== THE CORE — white/black/grey interior ===== */
+.core{
+  background:var(--paper);
+  color:var(--ink);
+  padding:0;
+}
+.core-inner{max-width:1080px;margin:0 auto;padding:0 40px}
+@media(max-width:700px){.core-inner{padding:0 22px}}
+
+.block{padding:76px 0;border-bottom:1px solid var(--grey-2)}
+.block:last-child{border-bottom:none}
+
+.kicker{
+  font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red-bright);font-weight:600;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.kicker::before{content:"";width:24px;height:2px;background:var(--red-bright)}
+.block h2{font-size:clamp(28px,3.6vw,42px);margin-bottom:18px}
+.block .sub{font-size:16.5px;color:var(--grey-4);max-width:660px}
+
+/* GAP */
+.gap-2col{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;margin-top:36px;align-items:start}
+@media(max-width:820px){.gap-2col{grid-template-columns:1fr;gap:32px}}
+.gap-2col p{color:var(--grey-4);margin-bottom:16px}
+.quote{
+  background:var(--ink);color:#fff;padding:32px;
+  font-family:var(--disp);font-weight:600;font-size:20px;line-height:1.35;
+}
+.quote span{color:var(--red-bright)}
+.quote cite{display:block;font-family:var(--mono);font-size:11px;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-3);margin-top:18px}
+
+/* SCENARIOS — red-filled cards */
+.scen{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--grey-2);margin-top:40px}
+@media(max-width:900px){.scen{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.scen{grid-template-columns:1fr}}
+.scen-c{background:var(--grey-1);padding:26px 22px;transition:.18s}
+.scen-c:hover{background:var(--red-deep);color:#fff}
+.scen-c:hover .scen-l,.scen-c:hover .scen-t b{color:#fff}
+.scen-c:hover p,.scen-c:hover .scen-t{color:rgba(255,255,255,.8)}
+.scen-l{font-family:var(--disp);font-weight:800;font-size:44px;color:var(--red-deep);line-height:1;margin-bottom:12px;transition:.18s}
+.scen-c h3{font-size:15px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.scen-c p{font-size:13.5px;color:var(--grey-4);margin-bottom:16px;transition:.18s}
+.scen-t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-3);border-top:1px solid var(--grey-2);padding-top:12px;transition:.18s}
+.scen-t b{color:var(--red-bright);font-weight:600;transition:.18s}
+
+/* ARCHITECTURE — nested boxes, literal enclosure */
+.arch{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:40px;align-items:center}
+@media(max-width:880px){.arch{grid-template-columns:1fr;gap:36px}}
+.nest{padding:0}
+.n1,.n2,.n3,.n4{padding:18px;position:relative}
+.n1{background:var(--grey-1);border:1px solid var(--grey-2)}
+.n2{background:var(--grey-2)}
+.n3{background:var(--grey-4)}
+.n4{background:var(--red-deep)}
+.nlab{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;margin-bottom:8px;display:block;
+}
+.n1>.nlab{color:var(--grey-3)}
+.n2>.nlab{color:var(--grey-4)}
+.n3>.nlab{color:var(--grey-2)}
+.n4>.nlab{color:rgba(255,255,255,.7)}
+.ntitle{font-family:var(--disp);font-weight:800;font-size:15px;margin-bottom:4px}
+.n1>.ntitle,.n2>.ntitle{color:var(--ink)}
+.n3>.ntitle,.n4>.ntitle{color:#fff}
+.ndesc{font-size:12.5px;line-height:1.45}
+.n1>.ndesc,.n2>.ndesc{color:var(--grey-4)}
+.n3>.ndesc{color:var(--grey-2)}
+.n4>.ndesc{color:rgba(255,255,255,.8)}
+.n2,.n3,.n4{margin-top:14px}
+
+.arch-note h3{font-size:19px;margin-bottom:10px}
+.arch-note p{color:var(--grey-4);font-size:14.5px;margin-bottom:22px}
+.trust{display:flex;border:1px solid var(--grey-2)}
+.trust div{
+  flex:1;padding:14px 8px;text-align:center;font-family:var(--mono);
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-3);
+  border-right:1px solid var(--grey-2);
+}
+.trust div:last-child{border-right:none;background:var(--red-deep);color:#fff}
+.trust div b{display:block;font-size:12px;color:var(--ink);font-weight:600;margin-top:5px;letter-spacing:0;text-transform:none}
+.trust div:last-child b{color:#fff}
+@media(max-width:640px){.trust{flex-direction:column}.trust div{border-right:none;border-bottom:1px solid var(--grey-2)}}
+
+/* STATUS — the honest one */
+.status-band{background:var(--ink);color:#fff;padding:52px 40px;margin-top:0}
+.status-band .kicker{color:var(--red-bright)}
+.status-band h2{color:#fff;margin-bottom:16px}
+.status-band p{color:var(--grey-2);max-width:620px;font-size:16px}
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--grey-4);margin-top:34px}
+@media(max-width:700px){.status-grid{grid-template-columns:1fr}}
+.status-grid div{background:var(--ink);padding:22px}
+.status-grid .num{font-family:var(--disp);font-weight:800;font-size:32px;color:var(--red-bright);line-height:1}
+.status-grid .lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-3);margin-top:8px}
+
+/* TRACKS */
+.tracks{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--grey-2);margin-top:40px}
+@media(max-width:760px){.tracks{grid-template-columns:1fr}}
+.trk{background:var(--paper);padding:26px 24px;border-left:3px solid transparent;transition:.15s}
+.trk:hover{border-left-color:var(--red-bright);background:var(--grey-1)}
+.trk h3{font-size:16px;margin-bottom:8px}
+.trk p{font-size:13.5px;color:var(--grey-4)}
+.trk .more{font-family:var(--mono);font-size:11px;color:var(--red-bright);margin-top:12px;display:block;letter-spacing:.05em}
+
+/* GOVERNANCE */
+.gov{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:36px}
+@media(max-width:820px){.gov{grid-template-columns:1fr;gap:28px}}
+.qa{padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--grey-2)}
+.qa:last-child{border-bottom:none;margin-bottom:0}
+.qa .q{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red-deep);margin-bottom:8px}
+.qa .a{font-size:14.5px;color:var(--grey-4)}
+
+/* START */
+.start{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--grey-2);margin-top:38px}
+@media(max-width:900px){.start{grid-template-columns:1fr}}
+.st{background:var(--grey-1);padding:22px 18px}
+.st .n{font-family:var(--disp);font-weight:800;font-size:26px;color:var(--red-deep);line-height:1;margin-bottom:10px}
+.st h4{font-size:14px;margin-bottom:6px}
+.st p{font-size:12.5px;color:var(--grey-4)}
+
+/* CLOSING RED BAND */
+.closing{
+  padding:64px 8px 30px;color:#fff;text-align:center;
+}
+.closing h2{font-size:clamp(26px,3.6vw,40px);color:#fff;margin-bottom:14px}
+.closing p{color:rgba(255,255,255,.85);max-width:540px;margin:0 auto 30px;font-size:16px}
+.closing .cta-row{justify-content:center}
+
+.footline{
+  margin-top:52px;padding-top:22px;border-top:1px solid rgba(255,255,255,.28);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.7);
+  text-align:left;
+}
+.footline a{text-decoration:underline;text-underline-offset:3px}
+.footline a:hover{color:#fff}
+.ai-note{
+  margin-top:22px;padding:14px 16px;border:1px dashed rgba(255,255,255,.4);
+  font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.82);text-align:left;letter-spacing:.02em;line-height:1.7;
+}
+.ai-note b{color:#fff}
+
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
+.reveal.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="enclosure">
+<div class="enclosure-2">
+<div class="enclosure-3">
+
+  <!-- ===== MASTHEAD (RED) ===== -->
+  <header class="masthead">
+    <div class="mast-top">
+      <div class="org">Pro Publico Bono · Crowd-Dev Initiative</div>
+      <nav>
+        <a href="#gap">Vulnerability</a>
+        <a href="#scenarios">Scenarios</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#status">Status</a>
+        <a href="#tracks">Contribute</a>
+        <a href="#governance">Governance</a>
+      </nav>
+      <a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">GitHub ↗</a>
+    </div>
+<section class="hero">
+        <h1>Essential Crisis Software</h1>
+        <div class="subtitle">Mesh P2P Modular System • Infrastructure of Last Resort</div>
+        <blockquote>
+            "This is not a thought experiment. Seventy years of internet history is a blink of an eye. We've built a global civilization dependent on grids that can fail and corporations that can die. This is an engineering initiative to build a backup."
+        </blockquote>
+    </section>
+    <div class="mast-body">
+      <div>
+        <h1>Essential<br>Crisis<br><span class="thin">Software</span></h1>
+        <p class="mast-lede">A modular mesh communication framework for when the internet, the grid, and the satellites are gone. Four scenarios. Four threat models. No product, no company, no founder in charge — an open build anyone can claim a piece of.</p> 
+        <div class="cta-row">
+          <a class="btn btn-solid" href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware" target="_blank" rel="noopener">Open the repository</a>
+          <a class="btn btn-line" href="#tracks">Claim a problem</a>
+        </div>
+      </div>
+      <div class="mast-meta">
+        STATUS · <b>Pre-alpha</b><br>
+        CODE WRITTEN · <b>None</b><br>
+        ARCHITECTURE · <b>Defined</b><br>
+        LICENSE · <b>AGPLv3 + commercial</b><br>
+        CONTRIBUTORS · <b>You'd be first</b>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== CORE (WHITE) ===== -->
+  <main class="core">
+
+    <!-- GAP -->
+    <section class="block" id="gap">
+      <div class="core-inner">
+        <div class="kicker reveal">The gap</div>
+        <h2 class="reveal">Nobody builds for the network being gone.</h2>
+        <p class="sub reveal">Everything you use assumes the infrastructure holds. Challenging that assumption isn't profitable — so almost no one has.</p>
+
+        <div class="gap-2col reveal">
+          <div>
+            <p>Blackouts, backbone failures, solar events, supply-chain breaks, war. Each strips a different layer from the stack societies run on: connection, exchange, communication, payment. When it happens, there is currently nothing free, tested, and ready to deploy at scale.</p>
+            <p>ECS is being built as infrastructure of last resort — a modular system with scenario-specific presets, designed to work when nothing else does. It runs on the assumption that the people who need it will not be technical, will not have power, and will not have time to read a manual.</p>
+            <p>It is open source because a system whose survival depends on one company, one server, or one person is not resilient. It is pro bono because the people who will need it cannot pay.</p>
+          </div>
+          <blockquote class="quote">
+            Like building a submarine — it can be done, but <span>everything</span> has to be right, or it doesn't come back up.
+            <cite>— Project rationale, README</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENARIOS -->
+    <section class="block" id="scenarios">
+      <div class="core-inner">
+        <div class="kicker reveal">Four scenarios</div>
+        <h2 class="reveal">Not one generic "offline mode."</h2>
+        <p class="sub reveal">Each scenario assumes a different adversary and a different available tech budget. A design that survives a blackout does not survive automated signal-hunting. So there are four.</p>
+
+        <div class="scen reveal">
+          <article class="scen-c">
+            <div class="scen-l">A</div>
+            <h3>Dead Internet</h3>
+            <p>ISP or backbone failure, regional outage. The network is down; the hardware isn't. Nobody is hunting you.</p>
+            <div class="scen-t">Threat <b>Low</b> · Priority <b>High</b></div>
+          </article>
+          <article class="scen-c">
+            <div class="scen-l">B</div>
+            <h3>Civilization Collapse</h3>
+            <p>Long-term grid and manufacturing failure. Proxy comms, barter, resource coordination. Scavenged hardware only.</p>
+            <div class="scen-t">Threat <b>Medium</b> · Priority <b>Mid</b></div>
+          </article>
+          <article class="scen-c">
+            <div class="scen-l">C</div>
+            <h3>Total War</h3>
+            <p>Automated signal scanning, active node hunting. Emitting is dangerous. Metadata is a target list.</p>
+            <div class="scen-t">Threat <b>Highest</b> · Priority <b>Mid</b></div>
+          </article>
+          <article class="scen-c">
+            <div class="scen-l">D</div>
+            <h3>Hybrid War</h3>
+            <p>Surveillance state, compromised infrastructure, working economy. Anything the first three don't cover.</p>
+            <div class="scen-t">Threat <b>High+</b> · Priority <b>Configurable</b></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="block" id="architecture">
+      <div class="core-inner">
+        <div class="kicker reveal">Architecture</div>
+        <h2 class="reveal">Every layer encloses the next.</h2>
+        <p class="sub reveal">Swap a plugin without touching the core. Swap a module without touching the framework. Nothing depends on one component, one build, or one person surviving intact.</p>
+
+        <div class="arch reveal">
+          <div class="nest">
+            <div class="n1">
+              <span class="nlab">L1 — Outer</span>
+              <div class="ntitle">Build Package</div>
+              <div class="ndesc">Scenario-specific app type: Client · NF relay node · PON pocket point · HQ</div>
+
+              <div class="n2">
+                <span class="nlab">L2</span>
+                <div class="ntitle">Core Framework</div>
+                <div class="ndesc">Routing, security, storage, device I/O, process management. Audited and frozen.</div>
+
+                <div class="n3">
+                  <span class="nlab">L3</span>
+                  <div class="ntitle">Modules</div>
+                  <div class="ndesc">Communication · maps · community boards · reputation · data exchange</div>
+
+                  <div class="n4">
+                    <span class="nlab">L4 — Core</span>
+                    <div class="ntitle">Plugins</div>
+                    <div class="ndesc">Encryption, compression, transmission, verification — swapped at runtime via the inject-matrix.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="arch-note">
+            <h3>Trust escalates the same way access does</h3>
+            <p>You start by reading. You end — if the work earns it — inside the Black Box, where encryption and safety-critical modules live under gated review, in a repository separate from the public one.</p>
+            <div class="trust">
+              <div>01<b>Public</b></div>
+              <div>02<b>Community</b></div>
+              <div>03<b>Verified</b></div>
+              <div>04<b>Core</b></div>
+              <div>05<b>Vault</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATUS — honest -->
+    <section class="status-band" id="status">
+      <div class="core-inner">
+        <div class="kicker reveal">Where this actually is</div>
+        <h2 class="reveal">Nothing is built yet.</h2>
+        <p class="reveal">That is not a warning. It is the offer. The architecture is drawn, the scenarios are specified, the licence is written — and not one line of the framework exists. Every module, every plugin, every protocol decision in this system is currently unowned. If you join now, you are not maintaining someone else's code. You are deciding what it is.</p>
+        <div class="status-grid reveal">
+          <div><div class="num">0</div><div class="lab">Lines of framework code</div></div>
+          <div><div class="num">4</div><div class="lab">Scenarios specified</div></div>
+          <div><div class="num">∞</div><div class="lab">Modules unclaimed</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRACKS -->
+    <section class="block" id="tracks">
+      <div class="core-inner">
+        <div class="kicker reveal">Who's needed</div>
+        <h2 class="reveal">Claim a problem. Not a job.</h2>
+        <p class="sub reveal">Open an issue for the piece you want to own. No résumé, no interview, no gatekeeper. Every contributor is credited permanently, and earns a share if their module ever generates revenue.</p>
+
+        <div class="tracks reveal">
+          <div class="trk">
+            <h3>Cryptographers &amp; security engineers</h3>
+            <p>Offline-first encryption with no real-time validation. Node authentication without a certificate authority. Post-quantum key exchange for a network that may need to outlive the state that attacked it.</p>
+          </div>
+          <div class="trk">
+            <h3>Distributed systems &amp; P2P engineers</h3>
+            <p>Gossip protocols over links measured in bytes per minute. Byzantine fault tolerance where nodes lie on purpose. Consensus across clusters that may never reconnect.</p>
+          </div>
+          <div class="trk">
+            <h3>Hardware &amp; embedded specialists</h3>
+            <p>Turning dead phones, routers, and salvaged components into relay nodes. Power harvesting. Builds that survive conditions the datasheet doesn't cover.</p>
+          </div>
+          <div class="trk">
+            <h3>Systems architects</h3>
+            <p>What does Scenario C actually cost in watts, latency, and emission risk? How does the network behave at 10% of nodes? At 1%? Graceful degradation is the whole discipline here.</p>
+          </div>
+          <div class="trk">
+            <h3>Documentation &amp; localisation</h3>
+            <p>Instructions a frightened, non-technical person can follow with no power and no signal. In their language. An error here costs more than a bug does.</p>
+          </div>
+          <div class="trk">
+            <h3>Governance, legal &amp; organisers</h3>
+            <p>Licensing that resists corporate capture. Contributor rights that survive the project outgrowing anyone. Onboarding a distributed volunteer base that has never met.</p>
+          </div>
+        </div>
+        <p style="font-family:var(--mono);font-size:12.5px;color:var(--grey-3);margin-top:24px;letter-spacing:.03em">Not on the list? Open a discussion. If the problem is real, the track gets created.</p>
+      </div>
+    </section>
+
+    <!-- GOVERNANCE -->
+    <section class="block" id="governance">
+      <div class="core-inner">
+        <div class="kicker reveal">Governance</div>
+        <h2 class="reveal">The moment one person is essential, resilience has already failed.</h2>
+        <p class="sub reveal">This project is deliberately built without founder authority. That is not modesty — it is the same design principle as the mesh itself.</p>
+
+        <div class="gov reveal">
+          <div>
+            <div class="qa">
+              <div class="q">Who started it?</div>
+              <div class="a">Karol, a systems architect who got tired of waiting for someone else to build resilience infrastructure. He drew the blueprints and wrote the first documentation. That's the extent of it.</div>
+            </div>
+            <div class="qa">
+              <div class="q">Is he in charge?</div>
+              <div class="a">No. No veto, not even author's privilege. If the architecture is wrong, say so publicly — and it changes, or you fork it and build the better one.</div>
+            </div>
+            <div class="qa">
+              <div class="q">How are decisions made?</div>
+              <div class="a">Proposal → 72-hour minimum discussion → vote → logged → implemented by volunteers. The exact mechanism is still open, and shaping it is itself an unclaimed problem.</div>
+            </div>
+          </div>
+          <div>
+            <div class="qa">
+              <div class="q">What do contributors get?</div>
+              <div class="a">Permanent credit on GitHub. Governance weight proportional to work done. Free use of the system in your own country. A revenue share if a module you built is ever licensed commercially.</div>
+            </div>
+            <div class="qa">
+              <div class="q">What's the licence?</div>
+              <div class="a">AGPLv3 for open and non-commercial use, globally. Commercial deployment requires a written agreement — specifically so that a corporation cannot enclose what a community built. Terms in <code>05_LICENSE.md</code>.</div>
+            </div>
+            <div class="qa">
+              <div class="q">And the AI policy?</div>
+              <div class="a">Online AI must not be used on whole modules, files, or repositories. Locally run models only for Core Framework and Black Box work. Fragment-level help is fine.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO START -->
+    <section class="block">
+      <div class="core-inner">
+        <div class="kicker reveal">How to start</div>
+        <h2 class="reveal">Five steps. No onboarding deck.</h2>
+        <div class="start reveal">
+          <div class="st"><div class="n">01</div><h4>Claim</h4><p>Open an issue for what you want to own — or take one already open.</p></div>
+          <div class="st"><div class="n">02</div><h4>Introduce</h4><p>Say who you are and what made you stop scrolling.</p></div>
+          <div class="st"><div class="n">03</div><h4>Build</h4><p>Submit the first pull request. Reviewed by people, not process.</p></div>
+          <div class="st"><div class="n">04</div><h4>Get credited</h4><p>Your name in the contributor registry, permanently.</p></div>
+          <div class="st"><div class="n">05</div><h4>Get a share</h4><p>If your module earns, you earn.</p></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== CLOSING (RED) ===== -->
+  <footer class="closing">
+    <h2>The first person who gets a message through<br>during a real blackout won't ask for your résumé.</h2>
+    <p>They'll care that someone made connection possible when nothing else did. That someone hasn't shown up yet.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware" target="_blank" rel="noopener">Open the repository</a>
+      <a class="btn btn-line" href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware/discussions" target="_blank" rel="noopener">Start a discussion</a>
+    </div>
+
+    <div class="ai-note"><b>AI POLICY —</b> Do not use online AI on whole modules, files, or repositories. Only locally run models may be used in Core Framework and Black Box development. Fragment-level assistance is permitted. Unauthorised AI use and training is a licence violation.</div>
+
+    <div class="footline">
+      <div>
+        ECS — ESSENTIAL CRISIS SOFTWARE<br>
+        <span style="opacity:.7">ENHANCED.WORLD FOUNDATION · LOCALLY4ME GROUP, ESTONIA</span>
+      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware" target="_blank" rel="noopener">REPO</a>
+        <a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware/blob/main/02_CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING</a>
+        <a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware/issues" target="_blank" rel="noopener">ISSUES</a>
+        <a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware/discussions" target="_blank" rel="noopener">DISCUSSIONS</a>
+        <a href="mailto:research@enhanced.world">CONTACT</a>
+      </div>
+      <div style="opacity:.7">
+        V1.01 · PRE-ALPHA<br>
+        Support: <a href="mailto:research@enhanced.world">research@enhanced.world</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</div>
+</div>
+
+<script>
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
