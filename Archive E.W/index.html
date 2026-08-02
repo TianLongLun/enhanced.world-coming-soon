@@ -85,18 +85,6 @@ code{font-family:var(--mono);font-size:.9em}
 .mast-top nav{display:flex;gap:20px}
 .mast-top nav a{opacity:.8;transition:.15s}
 .mast-top nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
-.mast-top nav select{
-  background:transparent;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.55);
-  padding:8px 10px;
-  border-radius:4px;
-  font-family:var(--mono);
-  font-size:11px;
-  letter-spacing:.08em;
-  cursor:pointer;
-}
-.mast-top nav select option{color:#000}
 @media(max-width:760px){.mast-top nav{display:none}}
 
 .mast-body{padding-top:38px;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
@@ -285,7 +273,6 @@ code{font-family:var(--mono);font-size:.9em}
         <a href="#status">Status</a>
         <a href="#tracks">Contribute</a>
         <a href="#governance">Governance</a>
-        <select id="language-selector" aria-label="Select language"><option value="en" selected>English</option><option value="pl">Polski</option></select>
       </nav>
       <a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">GitHub ↗</a>
     </div>
@@ -313,10 +300,10 @@ code{font-family:var(--mono);font-size:.9em}
   </header>
 
   <!-- ===== CORE (WHITE) ===== -->
-  <main class="core" data-block="core">
+  <main class="core">
 
     <!-- GAP -->
-    <section class="block" id="gap" data-block="gap">
+    <section class="block" id="gap">
       <div class="core-inner">
         <div class="kicker reveal">The gap</div>
         <h2 class="reveal">Nobody builds for the network being gone, <br> supplies disrupted, for natural crisis or war <br>- it's unprofitable situations. <br> <br>Yet, technology allows it.</h2>
@@ -341,7 +328,7 @@ code{font-family:var(--mono);font-size:.9em}
     </section>
 
     <!-- SCENARIOS -->
-    <section class="block" id="scenarios" data-block="scenarios">
+    <section class="block" id="scenarios">
       <div class="core-inner">
         <div class="kicker reveal">Four scenarios</div>
         <h2 class="reveal">Not one generic "offline mode."</h2>
@@ -390,7 +377,7 @@ code{font-family:var(--mono);font-size:.9em}
     </section>
 
     <!-- ARCHITECTURE -->
-    <section class="block" id="architecture" data-block="architecture">
+    <section class="block" id="architecture">
       <div class="core-inner">
         <div class="kicker reveal">Architecture</div>
         <h2 class="reveal">Every layer encloses the next.</h2>
@@ -439,7 +426,7 @@ code{font-family:var(--mono);font-size:.9em}
     </section>
 
     <!-- STATUS — honest -->
-    <section class="status-band" id="status" data-block="status">
+    <section class="status-band" id="status">
       <div class="core-inner">
         <div class="kicker reveal">Where this actually is</div>
         <h2 class="reveal">Nothing is built yet.</h2>
@@ -453,7 +440,7 @@ code{font-family:var(--mono);font-size:.9em}
     </section>
 
     <!-- TRACKS -->
-    <section class="block" id="tracks" data-block="tracks">
+    <section class="block" id="tracks">
       <div class="core-inner">
         <div class="kicker reveal">Who's needed</div>
         <h2 class="reveal">Claim a problem. Not a job.</h2>
@@ -499,7 +486,7 @@ code{font-family:var(--mono);font-size:.9em}
     </section>
 
     <!-- GOVERNANCE -->
-    <section class="block" id="governance" data-block="governance">
+    <section class="block" id="governance">
       <div class="core-inner">
         <div class="kicker reveal">Governance</div>
         <h2 class="reveal">The moment one person is essential, resilience has already failed.</h2>
@@ -539,7 +526,7 @@ code{font-family:var(--mono);font-size:.9em}
     </section>
 
     <!-- HOW TO START -->
-    <section class="block" data-block="how-to-start">
+    <section class="block">
       <div class="core-inner">
         <div class="kicker reveal">How to start</div>
         <h2 class="reveal">Five steps. No onboarding deck.</h2>
