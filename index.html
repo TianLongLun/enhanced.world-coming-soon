@@ -1,1397 +1,394 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Enhanced.World™ - The wisdom to safeguard our future.</title>
-
-<!-- FIX 5: SEO meta tags — Google indexing, search snippets, social sharing -->
-<meta name="description" content="Enhanced.World — charity, science and technology foundation. Cybersecurity benchmark, ethical AI/XR/BMI initiatives (FENI), knowledge preservation (GEMSTONES), and digital immortality projects. Building safer technology for everyone's benevolence.">
-<meta name="keywords" content="Enhanced.World, foundation, cybersecurity, FENI, GEMSTONES, ECB, ethics, technology, AI safety, XR, BMI, charity, Locally4Me, non-profit, science, research">
-<meta name="author" content="Enhanced.World Foundation">
+<title>Enhanced.World™ — The wisdom to safeguard our future</title>
+<meta name="description" content="Enhanced.World brings together independent initiatives in crisis resilience, open-source software, cybersecurity, responsible technology and human well-being. Open to research and collaboration.">
+<meta name="keywords" content="Enhanced.World, Essential Crisis Software, ECS, Crisis Resilience Network, A-Tools, open source, resilience, cybersecurity, research, human well-being, Locally4Me">
+<meta name="author" content="Enhanced.World — Independent Initiatives">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0a0510">
 <meta name="format-detection" content="telephone=no">
-
-<!-- Canonical URL -->
 <link rel="canonical" href="https://enhanced.world/">
-
-<!-- Open Graph (Facebook, LinkedIn, Slack, Discord) -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Enhanced.World Foundation">
+<meta property="og:site_name" content="Enhanced.World">
 <meta property="og:title" content="Enhanced.World — The wisdom to safeguard our future">
-<meta property="og:description" content="Charity, science and technology foundation. Cybersecurity, ethical AI, knowledge preservation, and digital immortality projects.">
+<meta property="og:description" content="Independent initiatives for crisis resilience, practical technology, research and cooperation.">
 <meta property="og:image" content="https://enhanced.world/logo.png">
-<meta property="og:image:alt" content="Enhanced.World Foundation logo">
+<meta property="og:image:alt" content="Enhanced.World logo">
 <meta property="og:url" content="https://enhanced.world/">
 <meta property="og:locale" content="en_US">
-
-<!-- Twitter Cards (X / Twitter) -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Enhanced.World — The wisdom to safeguard our future">
-<meta name="twitter:description" content="Charity, science and technology foundation. Cybersecurity, ethical AI, knowledge preservation.">
+<meta name="twitter:description" content="Independent initiatives in resilience, open-source tools and responsible technology.">
 <meta name="twitter:image" content="https://enhanced.world/logo.png">
-<meta name="twitter:image:alt" content="Enhanced.World Foundation logo">
-
+<meta name="twitter:image:alt" content="Enhanced.World logo">
 <script src="https://cdn.tailwindcss.com"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- FIX 1: favicon — eliminates 404 on every page load -->
 <link rel="icon" href="logo.png" type="image/png">
-
-<!-- FIX 6: Schema.org JSON-LD — structured data for Google, helps Knowledge Graph -->
-<!-- Using "Organization" (not "NGO") because foundation is "to be registered" — accurate metadata only -->
+<!-- No registered-foundation or confirmed-event claims in structured metadata. -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Enhanced.World Foundation",
-  "alternateName": "Enhanced.World",
-  "url": "https://enhanced.world",
-  "logo": "https://enhanced.world/logo.png",
-  "image": "https://enhanced.world/logo.png",
-  "description": "Charity, science and technology foundation focused on cybersecurity, ethical AI/XR/BMI initiatives, knowledge preservation, and digital immortality projects. Currently in registration phase in the Netherlands.",
-  "foundingDate": "2026",
-  "areaServed": "Worldwide",
-  "knowsAbout": [
-    "Cybersecurity",
-    "Artificial Intelligence Safety",
-    "Extended Reality",
-    "Brain-Machine Interfaces",
-    "Knowledge Preservation",
-    "Digital Immortality",
-    "Ethics in Technology"
-  ],
-  "memberOf": {
-    "@type": "Organization",
-    "name": "Locally4Me Group OÜ",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Juhkentali 8",
-      "addressLocality": "Tallinn",
-      "postalCode": "10132",
-      "addressCountry": "EE"
-    }
-  },
-  "sameAs": [
-    "https://locally4me.org"
-  ]
-}
+{"@context":"https://schema.org","@type":"WebSite","name":"Enhanced.World","url":"https://enhanced.world/","description":"Independent initiatives in crisis resilience, practical open-source technology and research collaboration.","inLanguage":["en","pl","es","zh-CN"]}
 </script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Essential Cybersecurity Benchmark (ECB) 2026",
-  "description": "Recurring, community-driven cybersecurity tournament event. Three (plus 1) rounds across 2+4 days. Teams (Server + 3 person minimum, optimum 5-6) compete in real-life scenarios with RED/BLUE team format. Open to student circles (EDU) and professionals (PRO).",
-  "startDate": "2026-10-01",
-  "endDate": "2026-12-31",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-  "location": {
-    "@type": "VirtualLocation",
-    "url": "https://enhanced.world/#security"
-  },
-  "organizer": {
-    "@type": "Organization",
-    "name": "Enhanced.World Foundation",
-    "url": "https://enhanced.world"
-  },
-  "image": "https://enhanced.world/logo.png"
+<style>  :root {  /* NEON MAGENTA/PURPLE PALETTE - Cyberpunk Optimistic */  --bg-black: #000000;  --bg-deep: #0a0510;  --card-bg: rgba(20, 10, 25, 0.85);  --neon-magenta: #FF00FF;  --neon-pink: #FF9900;  --neon-purple: #9D00FF;  --neon-plum: #C71585;  --neon-violet: #A500B5;  --neon-hot: #FF1493;  --accent-lime: #92CA2C;  --text-main: #f79515d6;  --text-bright: #FF00FF;  --font-main: 'Plus Jakarta Sans', sans-serif;  --font-mono: 'JetBrains Mono', monospace;  }  * {  margin: 0;  padding: 0;  box-sizing: border-box;  }  body {  font-family: var(--font-main);  background-color: var(--bg-black);  background-image:  radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.08) 0%, transparent 30%),  radial-gradient(circle at 90% 80%, rgba(157, 0, 255, 0.08) 0%, transparent 30%);  color: var(--text-main);  line-height: 1.6;  overflow-x: hidden;  }  .mono {  font-family: var(--font-mono);  }  /* RADIAL RAYS */  .radial-rays-bg {  position: fixed;  inset: -50%;  background:  repeating-conic-gradient(  from 0deg,  rgba(255,0,255,0.08) 0deg 6deg,  rgba(0,0,0,0) 6deg 18deg  );  animation: rotate-rays 180s linear infinite;  z-index: -1;  }  @keyframes rotate-rays {  to { transform: rotate(360deg); }  }  /* BACKGROUND LAYERS */  #matrix-canvas {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  z-index: -2;  opacity: 0.4;  pointer-events: none;  }  .tiger-stripes {  position: fixed;  top: 0;  left: 0;  width: 200%;  height: 200%;  background: repeating-linear-gradient(  -30deg,  transparent,  transparent 150px,  rgba(10, 5, 16, 0.95) 150px,  rgba(10, 5, 16, 0.95) 300px  );  z-index: -1;  pointer-events: none;  animation: move-stripes 50s linear infinite;  }  @keyframes move-stripes {  from { transform: translateX(-10%); }  to { transform: translateX(0); }  }  .noise-bg {  position: fixed;  top: 0;  left: 0;  width: 100%;  height: 100%;  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");  opacity: 0.06;  pointer-events: none;  z-index: 49;  }  /* GLASS EFFECT */  .glass {  background: var(--card-bg);  backdrop-filter: blur(20px);  border: 1px solid rgba(255, 0, 255, 0.15);  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);  }  /* NAVIGATION */  nav.fixed {  background: rgba(0, 0, 0, 0.92);  backdrop-filter: blur(15px);  border-bottom: 1px solid rgba(255, 0, 255, 0.3);  }  .nav-logo-box {  border: 1px solid rgba(255, 20, 147, 0.5);  }  .nav-link {  transition: all 0.3s;  color: var(--text-main);  }  .nav-link:hover {  color: var(--neon-pink);  text-shadow: 0 0 10px var(--neon-pink);  }  /* BUTTONS */  .btn-main {  display: inline-block;  background: linear-gradient(135deg, var(--neon-magenta), var(--neon-plum));  color: var(--bg-black);  padding: 15px 40px;  text-decoration: none;  font-weight: 700;  border-radius: 2px;  text-transform: uppercase;  letter-spacing: 1px;  transition: all 0.3s;  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);  border: none;  cursor: pointer;  }  .btn-main:hover {  transform: scale(1.05);  box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);  }  .btn-industrial {  background: linear-gradient(135deg, var(--neon-magenta), var(--neon-hot));  color: var(--bg-black);  font-weight: 800;  text-transform: uppercase;  letter-spacing: 0.15em;  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);  transition: all 0.3s ease;  display: inline-block;  padding: 12px 24px;  text-decoration: none;  box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);  }  .btn-industrial:hover {  transform: scale(1.05);  filter: brightness(1.2);  box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);  }  /* LANGUAGE BUTTONS */  .lang-btn {  opacity: 0.5;  transition: opacity 0.3s;  color: var(--text-main);  background: none;  border: none;  cursor: pointer;  }  .lang-btn.active {  opacity: 1;  color: var(--neon-magenta);  border-bottom: 2px solid var(--neon-magenta);  text-shadow:  0 0 5px var(--neon-magenta),  0 0 10px var(--neon-magenta),  0 0 15px var(--neon-magenta);  }  /* REVEAL ANIMATION */  .reveal {  opacity: 0;  transform: translateY(25px);  transition: all 0.8s ease-out;  }  .reveal.visible {  opacity: 1;  transform: translateY(0);  }  /* HERO SECTION */  .hero-section {  min-height: 100vh;  display: flex;  flex-direction: column;  justify-content: center; /* To trzyma w pionie */  align-items: center; /* TO JEST KLUCZOWE - to wyśrodkuje w poziomie */  padding: 120px 40px 80px;  position: relative;  }  .hero-section h1 {  font-size: clamp(2.5rem, 6vw, 4rem);  font-weight: 900;  line-height: 0.9;  margin-bottom: 2rem;  color: var(--text-main);  text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);  }  .hero-section h1 .highlight {  color: var(--neon-magenta);  text-shadow: 0 0 30px var(--neon-magenta);  }  /* FOCUS CARDS */  .focus-grid {  display: grid;  /* Zamiast auto-fit, wymuś 2 kolumny na desktopie */  grid-template-columns: repeat(2, 1fr);  gap: 2rem;  margin-top: 3rem;  }  .focus-item {  padding: 2rem;  background: var(--card-bg);  border: 1px solid rgba(255, 0, 255, 0.2);  border-top: 3px solid var(--neon-magenta);  transition: all 0.3s;  }  .focus-item:hover {  transform: translateY(-10px);  border-color: var(--neon-pink);  box-shadow: 0 10px 40px rgba(255, 0, 255, 0.2);  }  .focus-icon {  font-size: 2.5em;  color: var(--neon-pink);  margin-bottom: 1rem;  display: block;  filter: drop-shadow(0 0 10px var(--neon-pink));  }  .focus-item h3 {  color: var(--neon-magenta);  font-size: 1.4em;  margin-bottom: 1rem;  font-family: var(--font-mono);  }  .focus-item p {  color: var(--text-main);  opacity: 0.8;  font-size: 0.9em;  }  /* ROADMAP */  .roadmap-section {  padding: 100px 20px;  background: rgba(0, 0, 0, 0.5);  }  .section-title {  text-align: center;  margin-bottom: 60px;  font-size: 2.5em;  font-weight: 800;  text-transform: uppercase;  letter-spacing: 2px;  color: var(--neon-magenta);  text-shadow: 0 0 20px var(--neon-magenta);  }  .timeline-container {  display: grid;  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  gap: 2rem;  position: relative;  margin-top: 60px;  max-width: 1200px;  margin-left: auto;  margin-right: auto;  }  .roadmap-step {  text-align: center;  padding: 0 1rem;  }  .step-marker {  width: 60px;  height: 60px;  background: var(--bg-black);  border: 3px solid var(--neon-magenta);  border-radius: 50%;  margin: 0 auto 20px;  display: flex;  align-items: center;  justify-content: center;  color: var(--neon-magenta);  font-weight: bold;  font-family: var(--font-mono);  font-size: 1.2em;  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);  }  .roadmap-step:nth-child(2) .step-marker {  border-color: var(--neon-pink);  color: var(--neon-pink);  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);  }  .roadmap-step:nth-child(3) .step-marker {  border-color: var(--neon-purple);  color: var(--neon-purple);  box-shadow: 0 0 20px rgba(157, 0, 255, 0.5);  }  .roadmap-step:nth-child(4) .step-marker {  border-color: var(--neon-hot);  color: var(--neon-hot);  box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);  }  .roadmap-step h3 {  color: var(--text-main);  font-size: 1.2em;  margin-bottom: 10px;  font-weight: 700;  }  .roadmap-step p {  font-size: 0.85em;  color: var(--text-main);  opacity: 0.7;  }  .content-wrapper {  max-width: 1200px; /* Stała szerokość dla prestiżowego wyglądu */  margin: 0 auto; /* Magia centrowania */  padding: 0 40px; /* Oddech na boki */  display: flex;  flex-direction: column;  align-items: center; /* Centrowanie elementów wewnątrz */  text-align: center; /* Centrowanie tekstu */  }  /* TOOLTIPS */  .secure-contact-container {  position: relative;  display: inline-block;  }  .tooltip-box2 {  visibility: hidden;  width: 120px;  background-color: var(--bg-deep);  color: var(--neon-pink);  text-align: center;  border-radius: 6px;  border: 1px solid var(--neon-magenta);  padding: 8px 0;  position: absolute;  z-index: 100;  bottom: -120%;  left: 50%;  transform: translateX(-50%) translateY(10px);  opacity: 0;  transition: opacity 0.3s, transform 0.3s;  font-size: 0.85rem;  box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);  }  .secure-contact-container:hover .tooltip-box2 {  visibility: visible;  opacity: 1;  transform: translateX(-50%) translateY(0);  }  /* DETAILS/SUMMARY */  details {  border: 2px solid rgba(255, 0, 255, 0.3);  border-radius: 4px;  overflow: hidden;  transition: all 0.3s;  }  details:hover {  border-color: var(--neon-magenta);  box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);  }  summary {  cursor: pointer;  padding: 1.5rem;  background: rgba(10, 5, 16, 0.6);  display: flex;  justify-content: space-between;  align-items: center;  transition: all 0.3s;  }  details[open] summary {  background: rgba(10, 5, 16, 0.8);  }  /* WP STATUS */  .wp-status {  display: inline-block;  background: rgba(227, 3, 3, 0.16);  border: 1px solid #5f1010;  color: #da2a2a;  padding: 6px 12px;  margin-bottom: 25px;  font-family: var(--font-mono);  font-size: 0.8em;  letter-spacing: 1px;  text-transform: uppercase;  }  .wp-status:hover {  background: rgba(86, 3, 3, 0.609);  box-shadow: 0 0 15px rgba(230, 3, 3, 0.332);  }  /* FOOTER */  footer {  background: var(--bg-black);  padding: 40px 20px;  text-align: center;  color: var(--text-main);  opacity: 0.6;  font-size: 0.8em;  border-top: 2px solid var(--neon-magenta);  }  /* RESPONSIVE */  @media (max-width: 768px) {  .hero-section {  padding: 100px 20px 60px;  }  nav .hidden {  display: none !important;  }  }  /* CENTER UTILITY */  .text-center {  text-align: center;  }  .flex-center {  display: flex;  justify-content: center;  align-items: center;  }  
+/* Added portfolio frame uses the site's existing glass/neon system. */
+.initiatives-frame { width:100%; max-width:1080px; margin:1rem auto 3rem; padding:2rem; text-align:left; }
+.initiatives-frame h2 { color:var(--neon-magenta); font-family:var(--font-mono); text-transform:uppercase; font-size:clamp(1.35rem,3vw,2rem); margin-bottom:.6rem; }
+.initiatives-frame .eyebrow { font:700 .73rem var(--font-mono); text-transform:uppercase; letter-spacing:.15em; color:var(--neon-pink); margin-bottom:1rem; }
+.initiatives-frame .portfolio-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem; margin:1.25rem 0; }
+.initiatives-frame article { border:1px solid rgba(255,0,255,.22); background:rgba(10,5,16,.42); padding:1.2rem; min-width:0; }
+.initiatives-frame article h3 { color:var(--neon-magenta); font-family:var(--font-mono); font-size:1.08rem; margin-bottom:.45rem; }
+.initiatives-frame article p { font-size:.91rem; opacity:.95; }
+.initiatives-frame a, .wp-status a { color:var(--neon-pink); text-decoration:underline; text-underline-offset:3px; }
+.initiatives-frame .small-links { display:flex; flex-wrap:wrap; gap:.6rem 1rem; margin-top:.75rem; font:.77rem var(--font-mono); }
+.initiatives-frame details { margin-top:1.1rem; }
+.initiatives-frame details summary { font:.9rem var(--font-mono); color:var(--neon-pink); padding:1rem; }
+.initiatives-frame details p { padding:1rem 1.1rem; font-size:.9rem; }
+.initiatives-frame .group-label { border-top:1px solid rgba(255,0,255,.25); padding-top:1.2rem; margin-top:1.6rem; }
+.initiatives-frame .status-note { font-size:.81rem; opacity:.77; margin-top:.6rem; }
+.language-switcher { flex-wrap:wrap; }
+@media (max-width:768px) {
+ .initiatives-frame { padding:1.2rem; }
+ .initiatives-frame .portfolio-grid { grid-template-columns:1fr; }
+ nav.fixed { padding:1rem !important; gap:.6rem; }
+ .language-switcher { gap:.4rem; }
+ .lang-btn { font-size:.7rem; }
 }
-</script>
-
-<style>
-
-:root {
-
-/* NEON MAGENTA/PURPLE PALETTE - Cyberpunk Optimistic */
-
---bg-black: #000000;
-
---bg-deep: #0a0510;
-
---card-bg: rgba(20, 10, 25, 0.85);
-
---neon-magenta: #FF00FF;
-
---neon-pink: #FF9900;
-
---neon-purple: #9D00FF;
-
---neon-plum: #C71585;
-
---neon-violet: #A500B5;
-
---neon-hot: #FF1493;
-
---accent-lime: #92CA2C;
-
---text-main: #f79515d6;
-
---text-bright: #FF00FF;
-
---font-main: 'Plus Jakarta Sans', sans-serif;
-
---font-mono: 'JetBrains Mono', monospace;
-
-}
-
-* {
-
-margin: 0;
-
-padding: 0;
-
-box-sizing: border-box;
-
-}
-
-body {
-
-font-family: var(--font-main);
-
-background-color: var(--bg-black);
-
-background-image:
-
-radial-gradient(circle at 10% 20%, rgba(255, 0, 255, 0.08) 0%, transparent 30%),
-
-radial-gradient(circle at 90% 80%, rgba(157, 0, 255, 0.08) 0%, transparent 30%);
-
-color: var(--text-main);
-
-line-height: 1.6;
-
-overflow-x: hidden;
-
-}
-
-.mono {
-
-font-family: var(--font-mono);
-
-}
-
-/* RADIAL RAYS */
-
-.radial-rays-bg {
-
-position: fixed;
-
-inset: -50%;
-
-background:
-
-repeating-conic-gradient(
-
-from 0deg,
-
-rgba(255,0,255,0.08) 0deg 6deg,
-
-rgba(0,0,0,0) 6deg 18deg
-
-);
-
-animation: rotate-rays 180s linear infinite;
-
-z-index: -1;
-
-}
-
-@keyframes rotate-rays {
-
-to { transform: rotate(360deg); }
-
-}
-
-/* BACKGROUND LAYERS */
-
-#matrix-canvas {
-
-position: fixed;
-
-top: 0;
-
-left: 0;
-
-width: 100%;
-
-height: 100%;
-
-z-index: -2;
-
-opacity: 0.4;
-
-pointer-events: none;
-
-}
-
-.tiger-stripes {
-
-position: fixed;
-
-top: 0;
-
-left: 0;
-
-width: 200%;
-
-height: 200%;
-
-background: repeating-linear-gradient(
-
--30deg,
-
-transparent,
-
-transparent 150px,
-
-rgba(10, 5, 16, 0.95) 150px,
-
-rgba(10, 5, 16, 0.95) 300px
-
-);
-
-z-index: -1;
-
-pointer-events: none;
-
-animation: move-stripes 50s linear infinite;
-
-}
-
-@keyframes move-stripes {
-
-from { transform: translateX(-10%); }
-
-to { transform: translateX(0); }
-
-}
-
-.noise-bg {
-
-position: fixed;
-
-top: 0;
-
-left: 0;
-
-width: 100%;
-
-height: 100%;
-
-background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-
-opacity: 0.06;
-
-pointer-events: none;
-
-z-index: 49;
-
-}
-
-/* GLASS EFFECT */
-
-.glass {
-
-background: var(--card-bg);
-
-backdrop-filter: blur(20px);
-
-border: 1px solid rgba(255, 0, 255, 0.15);
-
-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
-
-}
-
-/* NAVIGATION */
-
-nav.fixed {
-
-background: rgba(0, 0, 0, 0.92);
-
-backdrop-filter: blur(15px);
-
-border-bottom: 1px solid rgba(255, 0, 255, 0.3);
-
-}
-
-.nav-logo-box {
-
-border: 1px solid rgba(255, 20, 147, 0.5);
-
-}
-
-.nav-link {
-
-transition: all 0.3s;
-
-color: var(--text-main);
-
-}
-
-.nav-link:hover {
-
-color: var(--neon-pink);
-
-text-shadow: 0 0 10px var(--neon-pink);
-
-}
-
-/* BUTTONS */
-
-.btn-main {
-
-display: inline-block;
-
-background: linear-gradient(135deg, var(--neon-magenta), var(--neon-plum));
-
-color: var(--bg-black);
-
-padding: 15px 40px;
-
-text-decoration: none;
-
-font-weight: 700;
-
-border-radius: 2px;
-
-text-transform: uppercase;
-
-letter-spacing: 1px;
-
-transition: all 0.3s;
-
-box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-
-border: none;
-
-cursor: pointer;
-
-}
-
-.btn-main:hover {
-
-transform: scale(1.05);
-
-box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
-
-}
-
-.btn-industrial {
-
-background: linear-gradient(135deg, var(--neon-magenta), var(--neon-hot));
-
-color: var(--bg-black);
-
-font-weight: 800;
-
-text-transform: uppercase;
-
-letter-spacing: 0.15em;
-
-clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
-
-transition: all 0.3s ease;
-
-display: inline-block;
-
-padding: 12px 24px;
-
-text-decoration: none;
-
-box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
-
-}
-
-.btn-industrial:hover {
-
-transform: scale(1.05);
-
-filter: brightness(1.2);
-
-box-shadow: 0 0 25px rgba(255, 0, 255, 0.7);
-
-}
-
-/* LANGUAGE BUTTONS */
-
-.lang-btn {
-
-opacity: 0.5;
-
-transition: opacity 0.3s;
-
-color: var(--text-main);
-
-background: none;
-
-border: none;
-
-cursor: pointer;
-
-}
-
-.lang-btn.active {
-
-opacity: 1;
-
-color: var(--neon-magenta);
-
-border-bottom: 2px solid var(--neon-magenta);
-
-text-shadow:
-
-0 0 5px var(--neon-magenta),
-
-0 0 10px var(--neon-magenta),
-
-0 0 15px var(--neon-magenta);
-
-}
-
-/* REVEAL ANIMATION */
-
-.reveal {
-
-opacity: 0;
-
-transform: translateY(25px);
-
-transition: all 0.8s ease-out;
-
-}
-
-.reveal.visible {
-
-opacity: 1;
-
-transform: translateY(0);
-
-}
-
-/* HERO SECTION */
-
-.hero-section {
-
-min-height: 100vh;
-
-display: flex;
-
-flex-direction: column;
-
-justify-content: center; /* To trzyma w pionie */
-
-align-items: center; /* TO JEST KLUCZOWE - to wyśrodkuje w poziomie */
-
-padding: 120px 40px 80px;
-
-position: relative;
-
-}
-
-.hero-section h1 {
-
-font-size: clamp(2.5rem, 6vw, 4rem);
-
-font-weight: 900;
-
-line-height: 0.9;
-
-margin-bottom: 2rem;
-
-color: var(--text-main);
-
-text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
-
-}
-
-.hero-section h1 .highlight {
-
-color: var(--neon-magenta);
-
-text-shadow: 0 0 30px var(--neon-magenta);
-
-}
-
-/* FOCUS CARDS */
-
-.focus-grid {
-
-display: grid;
-
-/* Zamiast auto-fit, wymuś 2 kolumny na desktopie */
-
-grid-template-columns: repeat(2, 1fr);
-
-gap: 2rem;
-
-margin-top: 3rem;
-
-}
-
-.focus-item {
-
-padding: 2rem;
-
-background: var(--card-bg);
-
-border: 1px solid rgba(255, 0, 255, 0.2);
-
-border-top: 3px solid var(--neon-magenta);
-
-transition: all 0.3s;
-
-}
-
-.focus-item:hover {
-
-transform: translateY(-10px);
-
-border-color: var(--neon-pink);
-
-box-shadow: 0 10px 40px rgba(255, 0, 255, 0.2);
-
-}
-
-.focus-icon {
-
-font-size: 2.5em;
-
-color: var(--neon-pink);
-
-margin-bottom: 1rem;
-
-display: block;
-
-filter: drop-shadow(0 0 10px var(--neon-pink));
-
-}
-
-.focus-item h3 {
-
-color: var(--neon-magenta);
-
-font-size: 1.4em;
-
-margin-bottom: 1rem;
-
-font-family: var(--font-mono);
-
-}
-
-.focus-item p {
-
-color: var(--text-main);
-
-opacity: 0.8;
-
-font-size: 0.9em;
-
-}
-
-/* ROADMAP */
-
-.roadmap-section {
-
-padding: 100px 20px;
-
-background: rgba(0, 0, 0, 0.5);
-
-}
-
-.section-title {
-
-text-align: center;
-
-margin-bottom: 60px;
-
-font-size: 2.5em;
-
-font-weight: 800;
-
-text-transform: uppercase;
-
-letter-spacing: 2px;
-
-color: var(--neon-magenta);
-
-text-shadow: 0 0 20px var(--neon-magenta);
-
-}
-
-.timeline-container {
-
-display: grid;
-
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-gap: 2rem;
-
-position: relative;
-
-margin-top: 60px;
-
-max-width: 1200px;
-
-margin-left: auto;
-
-margin-right: auto;
-
-}
-
-.roadmap-step {
-
-text-align: center;
-
-padding: 0 1rem;
-
-}
-
-.step-marker {
-
-width: 60px;
-
-height: 60px;
-
-background: var(--bg-black);
-
-border: 3px solid var(--neon-magenta);
-
-border-radius: 50%;
-
-margin: 0 auto 20px;
-
-display: flex;
-
-align-items: center;
-
-justify-content: center;
-
-color: var(--neon-magenta);
-
-font-weight: bold;
-
-font-family: var(--font-mono);
-
-font-size: 1.2em;
-
-box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-
-}
-
-.roadmap-step:nth-child(2) .step-marker {
-
-border-color: var(--neon-pink);
-
-color: var(--neon-pink);
-
-box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-
-}
-
-.roadmap-step:nth-child(3) .step-marker {
-
-border-color: var(--neon-purple);
-
-color: var(--neon-purple);
-
-box-shadow: 0 0 20px rgba(157, 0, 255, 0.5);
-
-}
-
-.roadmap-step:nth-child(4) .step-marker {
-
-border-color: var(--neon-hot);
-
-color: var(--neon-hot);
-
-box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
-
-}
-
-.roadmap-step h3 {
-
-color: var(--text-main);
-
-font-size: 1.2em;
-
-margin-bottom: 10px;
-
-font-weight: 700;
-
-}
-
-.roadmap-step p {
-
-font-size: 0.85em;
-
-color: var(--text-main);
-
-opacity: 0.7;
-
-}
-
-.content-wrapper {
-
-max-width: 1200px; /* Stała szerokość dla prestiżowego wyglądu */
-
-margin: 0 auto; /* Magia centrowania */
-
-padding: 0 40px; /* Oddech na boki */
-
-display: flex;
-
-flex-direction: column;
-
-align-items: center; /* Centrowanie elementów wewnątrz */
-
-text-align: center; /* Centrowanie tekstu */
-
-}
-
-/* TOOLTIPS */
-
-.secure-contact-container {
-
-position: relative;
-
-display: inline-block;
-
-}
-
-.tooltip-box2 {
-
-visibility: hidden;
-
-width: 120px;
-
-background-color: var(--bg-deep);
-
-color: var(--neon-pink);
-
-text-align: center;
-
-border-radius: 6px;
-
-border: 1px solid var(--neon-magenta);
-
-padding: 8px 0;
-
-position: absolute;
-
-z-index: 100;
-
-bottom: -120%;
-
-left: 50%;
-
-transform: translateX(-50%) translateY(10px);
-
-opacity: 0;
-
-transition: opacity 0.3s, transform 0.3s;
-
-font-size: 0.85rem;
-
-box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
-
-}
-
-.secure-contact-container:hover .tooltip-box2 {
-
-visibility: visible;
-
-opacity: 1;
-
-transform: translateX(-50%) translateY(0);
-
-}
-
-/* DETAILS/SUMMARY */
-
-details {
-
-border: 2px solid rgba(255, 0, 255, 0.3);
-
-border-radius: 4px;
-
-overflow: hidden;
-
-transition: all 0.3s;
-
-}
-
-details:hover {
-
-border-color: var(--neon-magenta);
-
-box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
-
-}
-
-summary {
-
-cursor: pointer;
-
-padding: 1.5rem;
-
-background: rgba(10, 5, 16, 0.6);
-
-display: flex;
-
-justify-content: space-between;
-
-align-items: center;
-
-transition: all 0.3s;
-
-}
-
-details[open] summary {
-
-background: rgba(10, 5, 16, 0.8);
-
-}
-
-/* WP STATUS */
-
-.wp-status {
-
-display: inline-block;
-
-background: rgba(227, 3, 3, 0.16);
-
-border: 1px solid #5f1010;
-
-color: #da2a2a;
-
-padding: 6px 12px;
-
-margin-bottom: 25px;
-
-font-family: var(--font-mono);
-
-font-size: 0.8em;
-
-letter-spacing: 1px;
-
-text-transform: uppercase;
-
-}
-
-.wp-status:hover {
-
-background: rgba(86, 3, 3, 0.609);
-
-box-shadow: 0 0 15px rgba(230, 3, 3, 0.332);
-
-}
-
-/* FOOTER */
-
-footer {
-
-background: var(--bg-black);
-
-padding: 40px 20px;
-
-text-align: center;
-
-color: var(--text-main);
-
-opacity: 0.6;
-
-font-size: 0.8em;
-
-border-top: 2px solid var(--neon-magenta);
-
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 768px) {
-
-.hero-section {
-
-padding: 100px 20px 60px;
-
-}
-
-nav .hidden {
-
-display: none !important;
-
-}
-
-}
-
-/* CENTER UTILITY */
-
-.text-center {
-
-text-align: center;
-
-}
-
-.flex-center {
-
-display: flex;
-
-justify-content: center;
-
-align-items: center;
-
-}
-
 </style>
-
 </head>
-
 <body>
 
 <!-- BACKGROUND LAYERS -->
-
 <div class="radial-rays-bg"></div>
-
 <canvas id="matrix-canvas"></canvas>
-
 <div class="noise-bg"></div>
-
-<!-- FIX 2: NAV — removed 2 stray </div> tags that placed lang selector and nav links outside <nav> -->
+<!-- NAVIGATION -->
 <nav class="fixed w-full z-[60] glass px-8 py-4 flex items-center border-b border-white/5">
-
-<div class="flex items-center gap-6">
-
-<div class="text-xl font-bold text-neon-magenta"></div>
-
-<div class="bg-orange-500 text-black font-black px-3 py-1 text-xl tracking-tighter">Enhanced.World</div>
-
-</div>
-
-<div class="flex gap-4 text-[11px] mono border-l pl-4" style="border-color: rgba(255, 0, 255, 0.2)">
-
-<button onclick="setLanguage('en')" id="en-btn" class="lang-btn active">EN</button>
-
-</div>
-
-<div class="ml-auto flex items-center gap-10">
-
-<div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] color: rgba(255, 0, 255, 0.2)">
-
-<a href="https://enhanced.world/ecs/" class="nav-link">Essential Crisis Software Initiative (ECSI)</a>
-<a href="" class="nav-link"></a>
-
-<a href="#pipeline" color: rgba(255, 0, 255, 0.2) class="nav-link"></a>
-
-<a href="https://locally4me.org" class="nav-link">Locally4Me Group</a>
-
-<a href="#hr" class="nav-link">Cooperations & Networking</a>
-
-</div>
-
-<div class="secure-contact-container">
-
-<a href="javascript:void(0)" onclick="openSecureMail()" class="btn-industrial px-8 py-2 text-[10px]">Contact</a>
-
-<span class="tooltip-box2">Email</span>
-
-</div>
-
-</div>
-
+  <div class="flex items-center gap-6">
+    <div class="text-xl font-bold text-neon-magenta"></div>
+    <div class="bg-orange-500 text-black font-black px-3 py-1 text-xl tracking-tighter">Enhanced.World</div>
+  </div>
+  <div class="language-switcher flex gap-4 text-[11px] mono border-l pl-4" style="border-color:rgba(255,0,255,0.2)">
+    <button type="button" onclick="setLanguage('en')" id="en-btn" class="lang-btn active" aria-label="English">EN</button>
+    <button type="button" onclick="setLanguage('pl')" id="pl-btn" class="lang-btn" aria-label="Polski">PL</button>
+    <button type="button" onclick="setLanguage('es')" id="es-btn" class="lang-btn" aria-label="Español">ES</button>
+    <button type="button" onclick="setLanguage('zh')" id="zh-btn" class="lang-btn" aria-label="简体中文">中文</button>
+  </div>
+  <div class="ml-auto flex items-center gap-10">
+    <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em]">
+      <a href="https://enhanced.world/ecs/" class="nav-link" data-i18n="nav_ecs">ECS / Resilience</a>
+      <a href="https://locally4me.org/" class="nav-link" data-i18n="nav_locally">Locally4Me - a New Economic Model</a>
+      <a href="#hr" class="nav-link" data-i18n="nav_collab">Cooperation</a>
+    </div>
+    <div class="secure-contact-container">
+      <a href="mailto:research@enhanced.world" class="btn-industrial px-8 py-2 text-[10px]" data-i18n="nav_contact">Contact</a>
+      <span class="tooltip-box2">Email</span>
+    </div>
+  </div>
 </nav>
-
-<!-- HERO SECTION -->
-
+<!-- HERO SECTION: same class and background animations as the original -->
 <section class="hero-section">
-
-<div class="max-w-5xl reveal">
-
-<div class="mono text-xs mb-6 tracking-[0.6em] font-bold uppercase border-l-4 pl-4"
-
-style="color: var(--neon-magenta); border-color: var(--neon-magenta)"; align: center;
-
-data-i18n="hero_label">
-
-Systems - Technology - Survival - Thrive
-
-</div>
-
-<h1 id="hero-title" data-i18n="hero_title";>
-
-Safe, responsible and publicly benevolent technology. 
-</h1>
-
-<div class="mono text-[9px] ml-2 tracking-[0.2em] opacity-70 uppercase hidden lg:block">
-
-</div>
-
-<p class="max-w-2xl leading-relaxed mb-4" style="opacity: 0.85" data-i18n="hero_desc">
-
-<strong>Enhanced.World at this stage is collection of initiatives, related to crisis and instability resistance - driven by future founder, Karol. Currently bootstraping and promoting a set of open source projects, formal registration is linked to securing financial base.
-
-  Guided AI utility system for aTools, 1-Click's, and L4M ecosystems.
-
-1-Click:
-<br>#1 MyLocalAI - benchmarks PC, installs model and dependencies, setups agentic AI and related software.
-<br>#2 KnowledgeBackup - downloader of in-case of internet outage knowledge backup, divided in to clear presets. 
-<br>#3- PublicationHQ (Dev/Creator) - modern creator and developer helpful tools. 
-<br><br>
-
-Crisis Resilience Network - peppers and concerned individuals HQ, that promotes skills, knowledge, connection.
-
-Essential Crisis Software - open-sourced modular development initiative, pro publico bono project for 4 major scenarios with 2 levels of intensity. Github|General plans - published, Frame proposed, internal blueprints drawn.<br>
-
-Essential Cybersecurity Benchmarking Event - proposal, in review and preparation for pilot 2027 edition. <br><br>
-</strong> Future scope I want to expand is charity, science, empathy.
-<br><br>
-
-</p><b>All the project are planed with synergic modularity in mind.</b><br><br><br><br>
-<strong>Ensuring survival and thriving</strong> on individual and humankind levels. Let's build alternatives. 
-
-The goal is: <strong>at least fine life for everyone</strong> - we believe that garden have to be built, it will not appear out of nowhere.<br><br>
-<div class="text-center mt-8">
-
-
-</div>
-
-</div>
-
-<main class="content-wrapper">
-
-<!-- WHITEPAPER SECTION -->
-
-<section class="py-10 px-10">
-
-<div class="max-w-5xl mx-auto text-center reveal">
-
-<div class="wp-status" data-i18n="whitepaper_link">
-
-<a href="wh-techdangersen09.pdf" download>Download: Holistic Technological Threat Assessment and the Turn of Cycles #1 Overview of the issues. ENv0.9 PDF | Part #2 - on hold. <BR></a>
-
-</div> </div><br>
-
-<div class="max-w-5xl mx-auto text-center reveal">
-
-<div class="wp-status" data-i18n="whitepaper_link2">
-
-    <a href="wh-techdangerspl09.pdf" download>Download: Polish Version PLv0.9 PDF </a>
-
-
-</div>
-
-<p style="opacity: 0.8" data-i18n="whitepaper_desc"> an opinion about current times, cycles of change and holistic threat assessments - includes related experiments.</p>
-
-</div>
-
+  <div class="max-w-5xl reveal">
+    <div class="mono text-xs mb-6 tracking-[0.6em] font-bold uppercase border-l-4 pl-4" style="color:var(--neon-magenta);border-color:var(--neon-magenta)" data-i18n="hero_label">Systems · Technology · Survival · Thrive</div>
+    <h1 id="hero-title" data-i18n="hero_title">Safe, responsible and <span class="highlight">publicly beneficial technology.</span></h1>
+    <p class="max-w-2xl leading-relaxed mb-4" style="opacity:.85" data-i18n="hero_desc"><strong>Enhanced.World is currently a collection of independent initiatives</strong> linked by a long-term vision: resilience, human well-being, safety and responsible technology. Immediate focus is on practical software systems, open collaboration, and securing a sustainable financial and organizational basis for a formal foundation.</p>
+    <p class="max-w-2xl leading-relaxed mb-4" style="opacity:.85" data-i18n="hero_vision"><strong>Ensuring the ability to survive and thrive</strong>—for individuals, communities and humanity. Our aim is <strong>at least a decent life for everyone</strong>. A better future has to be built; it will not emerge on its own.</p>
+    <div class="text-center mt-8"><a href="#initiatives" class="btn-main" data-i18n="hero_button">Explore initiatives</a></div>
+  </div>
+  <main class="content-wrapper">
+    <!-- PORTFOLIO: one compact frame in the middle, no separate HTML file -->
+    <section id="initiatives" class="initiatives-frame glass reveal" aria-labelledby="initiatives-heading">
+      <h2 id="initiatives-heading" data-i18n="initiatives_title">Initiatives &amp; directions</h2>
+      <p data-i18n="initiatives_subtitle">Independent initiatives. Shared long-term vision. Different stages of development, one invitation to cooperate.</p>
+      <h3 class="eyebrow group-label" data-i18n="focus_label">Current focus &amp; practical work</h3>
+      <div class="portfolio-grid">
+        <article>
+          <h3 data-i18n="ecs_title">Essential Crisis Software (ECS)</h3>
+          <p data-i18n="ecs_desc">An open-source, modular crisis-resilience software initiative. Its proposed <strong>Crisis Resilience Network</strong> and related application pack are part of the same direction: connecting people and local groups through practical skills, knowledge, preparation and cooperation. Blueprints and initial documentation are available; co-development open source call is open:) Let's build together.</p>
+          <div class="small-links"><a href="https://enhanced.world/ecs/" data-i18n="link_ecs">ECS overview</a><a href="https://github.com/Enhanced-World-Foundation/EssentialCrisisSoftware" data-i18n="link_code">Public ECS repository</a></div>
+        </article>
+        <article>
+          <h3 data-i18n="atools_title">Founder's Own: a-Tools ecosystem</h3>
+          <p data-i18n="atools_desc">A family of practical automation and AI tools at different stages of development: <strong>1-Click Apps</strong> (MyLocalAI, KnowledgeBackup, PublicationHQ), Communication Manager; Deep Companion; Extended HQ. Presets for: Free API / Fully Local / Hybrid (sensitive and public data differentiating). Individually released.</p>
+          <div class="small-links"><a href="https://ko-fi.com/4community/shop" data-i18n="link_shop">A-Tools / support</a></div>
+        </article>
+        <article>
+          <h3 data-i18n="cyber_title">Open projects that wait for co-operations</h3>
+          <p data-i18n="cyber_desc">Cybersecurity &amp; cyber-physical formats Exploratory event and evaluation formats, including: robotics, autonomous machines and cybersecurity. We welcome discussion with operators, technical experts and possible co-organizers.</p>
+          <div class="small-links"><a href="mailto:research@enhanced.world" data-i18n="link_coop">Cooperation Call!:)</a></div>
+        </article>
+        <article>
+          <h3 data-i18n="locally_title">Locally4Me: Food4Me</h3>
+          <p data-i18n="locally_desc">Community-centered ecosystem of platforms, for local connections, exchange, mutual support and everyday needs. Product and business information belongs primarily to Locally4Me - planned as umbrella company and frame for Decentralized Autonomous Organization-inspired format.</p>
+          <div class="small-links"><a href="https://locally4me.org/" data-i18n="link_locally">Locally4Me website</a></div>
+        </article>
+      </div>
+      <details><summary data-i18n="future_label">Additional long-term directions</summary><p data-i18n="future_desc">Along ECS I'm creating C-Resilience Network for pre-crisis communities platform and app pack. FENI (responsible technology discussions), GEMSTONES (knowledge and skills preservation), personal safety and layered protection concepts, drones and areostats, memory and identity preservation, social support and charity, governance ideas and alternative economic models, including future qDAO-related exploration. These are aspirations rather than active programmes. Human-centred AI &amp; interdisciplinary science. Longer-term interests include a psychologically aware AI companion, support for people experiencing hardship, robotics and autonomous systems, medicine, longevity and research partnerships. These are exploratory directions, not existing services.</p></details>
+      <p class="status-note" data-i18n="status_note">Project status varies. Public links are provided where a dedicated page exists; other concepts are described here without placeholder links.</p>
+    </section>
+    <!-- WHITEPAPERS: original PDF filenames preserved -->
+    <section class="py-10 px-10">
+      <div class="max-w-5xl mx-auto text-center reveal">
+        <div class="wp-status"><a href="wh-techdangersen09.pdf" download data-i18n="whitepaper_en">Technology related threats: overview · English PDF v0.9</a></div>
+      </div>
+      <div class="max-w-5xl mx-auto text-center reveal">
+        <div class="wp-status"><a href="wh-techdangerspl09.pdf" download data-i18n="whitepaper_pl">Zagrożenia związane z technologią · Polish PDF v0.9</a></div>
+        <p style="opacity:.8" data-i18n="whitepaper_desc">An independent perspective on technological risks, societal change and possible responses. Second part with solution proposals are hold for publication.</p>
+      </div>
+    </section>
+    <!-- COOPERATION -->
+    <section class="py-20 px-10" id="hr" style="background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(20,5,30,.5) 100%)">
+      <div class="max-w-4xl mx-auto text-center reveal">
+        <div class="mono text-2xl mb-8 tracking-[0.3em] font-bold uppercase" style="color:var(--neon-magenta);text-shadow:0 0 20px var(--neon-magenta)" data-i18n="collab_motto">“Aim high. Think beyond. Execute with wisdom.”</div>
+        <p class="text-lg leading-relaxed mb-8" style="opacity:.9" data-i18n="collab_desc"><strong>Research, collaboration &amp; partnerships.</strong> We welcome contact from researchers, engineers, students, community organizers, cyber-range operators and independent contributors. A practical question, useful expertise or a small pilot can be the beginning of cooperation. Please do not interpret exploratory concepts as funded or formally organized programmes.</p>
+        <div class="secure-contact-container"><a href="mailto:research@enhanced.world" class="btn-industrial px-12 py-3 text-sm" data-i18n="collab_cta">Contact us</a><span class="tooltip-box2">Email</span></div>
+        <div class="mt-4"><a href="https://www.linkedin.com/in/karol-kwestarz-maciejewski-4199a92a2/" target="_blank" rel="noopener noreferrer" class="nav-link mono text-sm" data-i18n="link_linkedin">Connect on LinkedIn</a></div>
+      </div>
+      <br><br><br><br>
+      <div class="bg-orange-500 text-black font-black px-3 py-1 text-xl tracking-tighter">The wisdom to safeguard our future</div>
+    </section>
+    <!-- APPLICATIONS SECTION: retained in the ECS initiative narrative above. -->
+  </main>
 </section>
-
-
-<!-- COLLABORATION SECTION -->
-
-<section class="py-20 px-10" id="hr" style="background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(20,5,30,0.5) 100%)">
-
-<div class="max-w-4xl mx-auto text-center reveal">
-
-<div class="mono text-2xl mb-8 tracking-[0.3em] font-bold uppercase"
-
-style="color: var(--neon-magenta); text-shadow: 0 0 20px var(--neon-magenta)"
-
-data-i18n="collab_motto">
-
-"Aim high. Think Beyond. 
-Bring what is best possible staying efficient."
-
-</div>
-
-<p class="text-lg leading-relaxed mb-8" style="opacity: 0.9" data-i18n="collab_desc">
-
-Seeking cooperation with talented individuals, learning and experts for various kinds of cooperation in a few projects of interdisciplinary scope. Full list of fields of expertise / skills we want to include in our research and development. Whether you have a PhD or a garage project—if you want to build a better world, without tortures and victims, without hunger and terror - there will be a place for you. More formal cooperation brief - coming soon. <BR> <B>Let's secure our place in the future!</B>
-
-</p>
-
-<div class="secure-contact-container">
-
-<a href="javascript:void(0)" onclick="openSecureMail()" class="btn-industrial px-12 py-3 text-sm">Contact Us</a>
-
-<span class="tooltip-box2">Email</span>
-
-</div>
-
-</div>
-
-<br><br>
-
-<br><br>
-
-<br> <div class="bg-orange-500 text-black font-black px-3 py-1 text-xl tracking-tighter">The wisdom to safeguard our future
-
-</div>
-
-</section>
-<!-- APPLICATIONS SECTION -->
-
-<section id="ecosystem" class="py-20 px-10">
-
-<div class="max-w-7xl mx-auto">
-
-<div class="reveal">
-
-<h2 class="text-4xl font-black mb-6 uppercase"
-
-style="color: var(--neon-magenta); text-shadow: 0 0 15px var(--neon-magenta)"
-
-data-i18n="apps_title">
-
-Packs of Applications:
-
-</h2>
-
-<p class="mb-8" style="opacity: 0.85" data-i18n="apps_desc">
-
-We will gradually introduce sets of individual applications/plugins for the Locally4Me ecosystem: <BR>
-
-<strong>Basic Social Pack</strong> (including free surplus, charity, voluntary);<br>
-
-<strong>Local Community Pack</strong> (sharing / co-ownership template, community self-governance manager, day-to-day running manager)<br>
-
-<strong>Community Resilience Network integrations (supplement to Essential Crisis Software Initiative). </strong><br>
-<strong>Shared Computing Power Plugin</strong>
-
-</p>
-
-<p style="opacity: 0.8">
-
-BSP will contain: F4F - platform and plugin where surplus food can be given for free subscriptions Food4Me platform.<br>
-
-F4M - plugin for free items. HL - local community help, charity, voluntary.<br>
-
-C4M - local self management, connection, time schedule.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-</div>
-
-</main>
-
 <!-- FOOTER INFO -->
-
 <section class="py-10 px-10">
-
-<div class="max-w-7xl mx-auto">
-
-<div class="pt-4 border-t grid md:grid-cols-2 gap-8 text-left"
-
-style="border-color: rgba(255, 0, 255, 0.2); opacity: 0.6">
-
-<div class="mono text-[10px] uppercase tracking-[0.3em] leading-relaxed">
-
-Netherlands Foundation Enhanced.World<br>
-
-(To be registered) 2026 Non-Profit Entity
-
-</div>
-
-<div class="mono text-[10px] uppercase tracking-[0.3em] leading-relaxed">
-
-In association of Locally4Me Group OÜ™<br>
-
-Juhkentali 8, Tallinn 10132<br>
-
-Republic of Estonia, EU.
-
-</div>
-
-</div>
-
-</div>
-
+  <div class="max-w-7xl mx-auto"><div class="pt-4 border-t grid md:grid-cols-2 gap-8 text-left" style="border-color:rgba(255,0,255,.2);opacity:.6">
+    <div class="mono text-[10px] uppercase tracking-[0.3em] leading-relaxed" data-i18n="footer_status">Enhanced.World — independent initiatives and future organizational aspirations. Not currently a registered foundation.</div>
+    <div class="mono text-[10px] uppercase tracking-[0.3em] leading-relaxed" data-i18n="footer_locally">In association with <a href="https://locally4me.org/">Locally4Me Group OÜ</a>, Tallinn, Estonia. Separate legal entity.</div>
+  </div></div>
 </section>
-
-<!-- SCRIPTS -->
 
 <script>
-
-// FIX 4: i18n object — was missing entirely, causing ReferenceError on every page load.
-// Values mirror existing EN content exactly so setLanguage('en') produces no visual change.
-// NOTE: 'whitepaper_link' was used twice in the original with different content (same key = bug).
-//       Second occurrence renamed to 'whitepaper_link2' to fix the collision.
-
+/* Single-file EN/PL/ES/ZH translations. No third-party JS needed for this. */
+const i18n = {
+  "en": {
+    "nav_ecs": "ECS / Resilience",
+    "nav_locally": "Locally4Me - a New Economic Model",
+    "nav_collab": "Cooperation",
+    "nav_contact": "Contact",
+    "hero_label": "Systems · Technology · Survival · Thrive",
+    "hero_title": "Safe, responsible and <span class=\"highlight\">publicly beneficial technology.<\/span>",
+    "hero_desc": "<strong>Enhanced.World is currently a collection of independent initiatives<\/strong> linked by a long-term vision: resilience, human well-being, safety and responsible technology. Immediate focus is on practical software systems, open collaboration, and securing a sustainable financial and organizational basis for a formal foundation.",
+    "hero_vision": "<strong>Ensuring the ability to survive and thrive<\/strong>—for individuals, communities and humanity. Our aim is <strong>at least a decent life for everyone<\/strong>. A better future has to be built; it will not emerge on its own.",
+    "hero_button": "Explore initiatives",
+    "initiatives_title": "Initiatives &amp; directions",
+    "initiatives_subtitle": "Independent initiatives. Shared long-term vision. Different stages of development, one invitation to cooperate.",
+    "focus_label": "Current focus &amp; practical work",
+    "ecs_title": "Essential Crisis Software (ECS)",
+    "ecs_desc": "An open-source, modular crisis-resilience software initiative. Its proposed <strong>Crisis Resilience Network<\/strong> and related application pack are part of the same direction: connecting people and local groups through practical skills, knowledge, preparation and cooperation. Blueprints and initial documentation are available; co-development open source call is open:) Let's build together.",
+    "link_ecs": "ECS overview",
+    "link_code": "Public ECS repository",
+    "atools_title": "Founder's Own: a-Tools ecosystem",
+    "atools_desc": "A family of practical automation and AI tools at different stages of development: <strong>1-Click Apps<\/strong> (MyLocalAI, KnowledgeBackup, PublicationHQ), Communication Manager; Deep Companion; Extended HQ. Presets for: Free API / Fully Local / Hybrid (sensitive and public data differentiating). Individually released.",
+    "link_shop": "A-Tools / support",
+    "cyber_title": "Open projects that wait for co-operations",
+    "cyber_desc": "Cybersecurity &amp; cyber-physical formats Exploratory event and evaluation formats, including: robotics, autonomous machines and cybersecurity. We welcome discussion with operators, technical experts and possible co-organizers.",
+    "link_coop": "Cooperation Call!:)",
+    "locally_title": "Locally4Me: Food4Me",
+    "locally_desc": "Community-centered ecosystem of platforms, for local connections, exchange, mutual support and everyday needs. Product and business information belongs primarily to Locally4Me - planned as umbrella company and frame for Decentralized Autonomous Organization-inspired format.",
+    "link_locally": "Locally4Me website",
+    "future_label": "Additional long-term directions",
+    "future_desc": "Along ECS I'm creating C-Resilience Network for pre-crisis communities platform and app pack. FENI (responsible technology discussions), GEMSTONES (knowledge and skills preservation), personal safety and layered protection concepts, drones and areostats, memory and identity preservation, social support and charity, governance ideas and alternative economic models, including future qDAO-related exploration. These are aspirations rather than active programmes. Human-centred AI &amp; interdisciplinary science. Longer-term interests include a psychologically aware AI companion, support for people experiencing hardship, robotics and autonomous systems, medicine, longevity and research partnerships. These are exploratory directions, not existing services.",
+    "status_note": "Project status varies. Public links are provided where a dedicated page exists; other concepts are described here without placeholder links.",
+    "whitepaper_en": "Technology related threats: overview · English PDF v0.9",
+    "whitepaper_pl": "Zagrożenia związane z technologią · Polish PDF v0.9",
+    "whitepaper_desc": "An independent perspective on technological risks, societal change and possible responses. Second part with solution proposals are hold for publication.",
+    "collab_motto": "“Aim high. Think beyond. Execute with wisdom.”",
+    "collab_desc": "<strong>Research, collaboration &amp; partnerships.<\/strong> We welcome contact from researchers, engineers, students, community organizers, cyber-range operators and independent contributors. A practical question, useful expertise or a small pilot can be the beginning of cooperation. Please do not interpret exploratory concepts as funded or formally organized programmes.",
+    "collab_cta": "Contact us",
+    "link_linkedin": "Connect on LinkedIn",
+    "footer_status": "Enhanced.World — independent initiatives and future organizational aspirations. Not currently a registered foundation.",
+    "footer_locally": "In association with <a href=\"https://locally4me.org/\">Locally4Me Group OÜ<\/a>, Tallinn, Estonia. Separate legal entity."
+  },
+  "pl": {
+    "nav_ecs": "ECS / Odporność",
+    "nav_locally": "Locally4Me — nowy model ekonomiczny",
+    "nav_collab": "Współpraca",
+    "nav_contact": "Kontakt",
+    "hero_label": "Systemy · Technologia · Przetrwanie · Rozwój",
+    "hero_title": "Bezpieczna, odpowiedzialna i <span class=\"highlight\">społecznie użyteczna technologia.<\/span>",
+    "hero_desc": "<strong>Enhanced.World to obecnie zbiór niezależnych inicjatyw<\/strong> połączonych długoterminową wizją: odpornością na kryzysy, dobrostanem ludzi, bezpieczeństwem i odpowiedzialną technologią. Bieżące priorytety to praktyczne systemy informatyczne, otwarta współpraca oraz zapewnienie trwałych podstaw finansowych i organizacyjnych do formalnego utworzenia fundacji.",
+    "hero_vision": "<strong>Zapewnienie możliwości przetrwania i rozwoju<\/strong> — jednostkom, społecznościom i całej ludzkości. Dążymy do tego, by <strong>każdy mógł żyć przynajmniej godnie<\/strong>. Lepszą przyszłość trzeba zbudować; nie powstanie sama.",
+    "hero_button": "Poznaj inicjatywy",
+    "initiatives_title": "Inicjatywy i kierunki",
+    "initiatives_subtitle": "Niezależne inicjatywy. Wspólna długoterminowa wizja. Różne etapy rozwoju i otwarte zaproszenie do współpracy.",
+    "focus_label": "Obecne priorytety i działania praktyczne",
+    "ecs_title": "Essential Crisis Software (ECS)",
+    "ecs_desc": "Otwarta inicjatywa rozwoju modułowego oprogramowania wspierającego odporność na kryzysy. Planowana <strong>Crisis Resilience Network<\/strong> i powiązany pakiet aplikacji są częścią tego samego kierunku: łączenia ludzi i lokalnych grup dzięki praktycznym umiejętnościom, wiedzy, przygotowaniu i współpracy. Dostępne są wstępne plany i dokumentacja; zaproszenie do wspólnego rozwoju open source jest otwarte :) Budujmy razem.",
+    "link_ecs": "O inicjatywie ECS",
+    "link_code": "Publiczne repozytorium ECS",
+    "atools_title": "Founder’s Own: ekosystem a-Tools",
+    "atools_desc": "Rodzina praktycznych narzędzi automatyzacji i AI na różnych etapach rozwoju: <strong>1-Click Apps<\/strong> (MyLocalAI, KnowledgeBackup, PublicationHQ), Communication Manager; Deep Companion; Extended HQ. Presety: bezpłatne API / całkowicie lokalnie / hybrydowo (z rozróżnieniem danych wrażliwych i publicznych). Narzędzia wydawane są indywidualnie.",
+    "link_shop": "A-Tools / wsparcie",
+    "cyber_title": "Otwarte projekty poszukujące współpracy",
+    "cyber_desc": "Cyberbezpieczeństwo i formaty cyberfizyczne. Wstępne koncepcje wydarzeń i oceny, obejmujące robotykę, maszyny autonomiczne i cyberbezpieczeństwo. Zapraszamy do rozmów operatorów, ekspertów technicznych i potencjalnych współorganizatorów.",
+    "link_coop": "Zaproszenie do współpracy! :)",
+    "locally_title": "Locally4Me: Food4Me",
+    "locally_desc": "Ekosystem platform skoncentrowany na lokalnych społecznościach, kontaktach, wymianie, wzajemnej pomocy i codziennych potrzebach. Informacje o produktach i działalności biznesowej należą przede wszystkim do Locally4Me — planowanego jako spółka parasolowa i ramy modelu inspirowanego zdecentralizowanymi organizacjami autonomicznymi (DAO).",
+    "link_locally": "Strona Locally4Me",
+    "future_label": "Dodatkowe kierunki długoterminowe",
+    "future_desc": "Równolegle z ECS tworzę koncepcję C-Resilience Network: platformy społeczności przygotowujących się na kryzysy oraz pakietu aplikacji. Pozostałe kierunki to FENI (dyskusje o odpowiedzialnej technologii), GEMSTONES (zachowanie wiedzy i umiejętności), koncepcje bezpieczeństwa osobistego i ochrony warstwowej, drony i aerostaty, zachowanie pamięci i tożsamości, wsparcie społeczne i działalność dobroczynna, idee zarządzania oraz alternatywne modele ekonomiczne, w tym przyszłe rozwiązania związane z qDAO. Są to aspiracje, a nie działające programy. AI skoncentrowana na człowieku i nauka interdyscyplinarna. Dalsze zainteresowania obejmują towarzysza AI uwzględniającego potrzeby psychologiczne, wsparcie osób w trudnej sytuacji, robotykę i systemy autonomiczne, medycynę, długowieczność oraz partnerstwa badawcze. To kierunki eksploracyjne, a nie już świadczone usługi.",
+    "status_note": "Poszczególne projekty znajdują się na różnych etapach. Podajemy publiczne linki tam, gdzie istnieją dedykowane strony; pozostałe koncepcje opisujemy bez pustych odnośników.",
+    "whitepaper_en": "Zagrożenia związane z technologią: przegląd · PDF po angielsku v0.9",
+    "whitepaper_pl": "Zagrożenia związane z technologią · PDF po polsku v0.9",
+    "whitepaper_desc": "Niezależne spojrzenie na zagrożenia technologiczne, przemiany społeczne i możliwe sposoby reagowania. Publikacja drugiej części, poświęconej propozycjom rozwiązań, została wstrzymana.",
+    "collab_motto": "„Mierz wysoko. Myśl szerzej. Działaj mądrze.”",
+    "collab_desc": "<strong>Badania, współpraca i partnerstwa.<\/strong> Zapraszamy naukowców, inżynierów, studentów, organizatorów społeczności, operatorów cyber-range i niezależnych twórców. Konkretne pytanie, przydatne umiejętności lub niewielki pilotaż mogą stać się początkiem współpracy. Prosimy nie traktować wstępnych koncepcji jako finansowanych lub formalnie zorganizowanych programów.",
+    "collab_cta": "Kontakt",
+    "link_linkedin": "Połączmy się na LinkedIn",
+    "footer_status": "Enhanced.World — niezależne inicjatywy i przyszłe aspiracje organizacyjne. Obecnie nie jest zarejestrowaną fundacją.",
+    "footer_locally": "W powiązaniu z <a href=\"https://locally4me.org/\">Locally4Me Group OÜ<\/a>, Tallinn, Estonia. Odrębny podmiot prawny."
+  },
+  "es": {
+    "nav_ecs": "ECS / Resiliencia",
+    "nav_locally": "Locally4Me — un nuevo modelo económico",
+    "nav_collab": "Colaboración",
+    "nav_contact": "Contacto",
+    "hero_label": "Sistemas · Tecnología · Supervivencia · Progreso",
+    "hero_title": "Tecnología segura, responsable y <span class=\"highlight\">beneficiosa para la sociedad.<\/span>",
+    "hero_desc": "<strong>Enhanced.World reúne actualmente iniciativas independientes<\/strong> unidas por una visión a largo plazo: resiliencia ante las crisis, bienestar humano, seguridad y tecnología responsable. Las prioridades actuales son los sistemas de software prácticos, la colaboración abierta y la creación de una base financiera y organizativa sostenible para constituir formalmente una fundación.",
+    "hero_vision": "<strong>Garantizar la capacidad de sobrevivir y prosperar<\/strong> de las personas, las comunidades y la humanidad. Nuestro objetivo es que <strong>todos puedan disfrutar, al menos, de una vida digna<\/strong>. Un futuro mejor hay que construirlo; no surgirá por sí solo.",
+    "hero_button": "Explorar iniciativas",
+    "initiatives_title": "Iniciativas y líneas de trabajo",
+    "initiatives_subtitle": "Iniciativas independientes. Visión compartida a largo plazo. Diferentes etapas de desarrollo y una invitación abierta a colaborar.",
+    "focus_label": "Prioridades actuales y trabajo práctico",
+    "ecs_title": "Essential Crisis Software (ECS)",
+    "ecs_desc": "Iniciativa de código abierto para desarrollar software modular que mejore la resiliencia ante las crisis. La propuesta <strong>Crisis Resilience Network<\/strong> y su paquete de aplicaciones forman parte de la misma línea: conectar a personas y grupos locales mediante habilidades prácticas, conocimientos, preparación y cooperación. Ya hay diseños iniciales y documentación disponible; la invitación a colaborar en su desarrollo de código abierto sigue abierta :) Construyamos juntos.",
+    "link_ecs": "Presentación de ECS",
+    "link_code": "Repositorio público de ECS",
+    "atools_title": "Founder’s Own: ecosistema a-Tools",
+    "atools_desc": "Familia de herramientas prácticas de automatización e IA en distintas fases de desarrollo: <strong>1-Click Apps<\/strong> (MyLocalAI, KnowledgeBackup, PublicationHQ), Communication Manager; Deep Companion; Extended HQ. Configuraciones predefinidas: API gratuitas / totalmente local / híbrida (distinguiendo entre datos sensibles y públicos). Se publican individualmente.",
+    "link_shop": "A-Tools / apoyo",
+    "cyber_title": "Proyectos abiertos a colaboraciones",
+    "cyber_desc": "Ciberseguridad y formatos ciberfísicos. Conceptos exploratorios de eventos y evaluación, que incluyen robótica, máquinas autónomas y ciberseguridad. Invitamos a operadores, especialistas técnicos y posibles coorganizadores a conversar.",
+    "link_coop": "¡Invitación a colaborar! :)",
+    "locally_title": "Locally4Me: Food4Me",
+    "locally_desc": "Ecosistema de plataformas centrado en las comunidades locales, sus conexiones, los intercambios, el apoyo mutuo y las necesidades cotidianas. La información sobre productos y actividad empresarial corresponde principalmente a Locally4Me, concebida como empresa paraguas y marco de un modelo inspirado en las organizaciones autónomas descentralizadas (DAO).",
+    "link_locally": "Sitio de Locally4Me",
+    "future_label": "Otras líneas a largo plazo",
+    "future_desc": "Junto a ECS, estoy creando el concepto C-Resilience Network: una plataforma para comunidades que se preparan antes de las crisis y un paquete de aplicaciones. Otras líneas incluyen FENI (debates sobre tecnología responsable), GEMSTONES (preservación de conocimientos y habilidades), conceptos de seguridad personal y protección por capas, drones y aeróstatos, preservación de la memoria y la identidad, apoyo social y beneficencia, ideas de gobernanza y modelos económicos alternativos, incluidas futuras iniciativas relacionadas con qDAO. Son aspiraciones, no programas activos. IA centrada en las personas y ciencia interdisciplinaria. Entre los intereses a largo plazo figuran un acompañante de IA atento a las necesidades psicológicas, el apoyo a personas en situaciones difíciles, la robótica y los sistemas autónomos, la medicina, la longevidad y las alianzas de investigación. Son líneas exploratorias, no servicios ya disponibles.",
+    "status_note": "Las iniciativas están en distintas etapas. Incluimos enlaces públicos cuando existe una página dedicada; los demás conceptos se describen aquí sin enlaces ficticios.",
+    "whitepaper_en": "Riesgos relacionados con la tecnología: panorama general · PDF en inglés v0.9",
+    "whitepaper_pl": "Riesgos relacionados con la tecnología · PDF en polaco v0.9",
+    "whitepaper_desc": "Perspectiva independiente sobre los riesgos tecnológicos, los cambios sociales y las posibles respuestas. La publicación de la segunda parte, con propuestas de solución, está en pausa.",
+    "collab_motto": "«Aspira alto. Piensa más allá. Actúa con sabiduría».",
+    "collab_desc": "<strong>Investigación, colaboración y alianzas.<\/strong> Invitamos a contactar a investigadores, ingenieros, estudiantes, organizadores comunitarios, operadores de cyber-range y colaboradores independientes. Una pregunta concreta, unos conocimientos útiles o un pequeño proyecto piloto pueden iniciar una colaboración. No deben interpretarse los conceptos exploratorios como programas financiados u organizados formalmente.",
+    "collab_cta": "Contáctanos",
+    "link_linkedin": "Conectemos en LinkedIn",
+    "footer_status": "Enhanced.World — iniciativas independientes y aspiraciones organizativas futuras. Actualmente no es una fundación registrada.",
+    "footer_locally": "En colaboración con <a href=\"https://locally4me.org/\">Locally4Me Group OÜ<\/a>, Tallin, Estonia. Entidad jurídica independiente."
+  },
+  "zh": {
+    "nav_ecs": "ECS／危机韧性",
+    "nav_locally": "Locally4Me — 新经济模式",
+    "nav_collab": "合作",
+    "nav_contact": "联系",
+    "hero_label": "系统 · 技术 · 生存 · 发展",
+    "hero_title": "安全、负责任、<span class=\"highlight\">有益于公众的技术。<\/span>",
+    "hero_desc": "<strong>Enhanced.World 目前汇集了一系列独立倡议<\/strong>，共同致力于长期愿景：提高危机应对韧性、促进人类福祉、保障安全和推动负责任的技术发展。当前重点是实用的软件系统、开放合作，以及为正式设立基金会建立可持续的资金和组织基础。",
+    "hero_vision": "<strong>保障个人、社区和人类生存与持续发展的能力。<\/strong>我们的目标是让<strong>每个人至少都能过上有尊严的生活<\/strong>。更好的未来需要主动建设，不会自行出现。",
+    "hero_button": "了解倡议",
+    "initiatives_title": "倡议与发展方向",
+    "initiatives_subtitle": "独立倡议，共同的长期愿景。各项目处于不同发展阶段，诚邀合作。",
+    "focus_label": "当前重点与实际工作",
+    "ecs_title": "Essential Crisis Software（ECS）",
+    "ecs_desc": "一项开发模块化危机应对软件的开源倡议。计划中的 <strong>Crisis Resilience Network<\/strong> 及相关应用套件属于同一方向，旨在通过实用技能、知识、应急准备和合作连接个人与当地社区。目前已有初步设计和文档；开源共建邀请持续开放 :) 让我们一起建设。",
+    "link_ecs": "ECS 项目介绍",
+    "link_code": "ECS 公开代码仓库",
+    "atools_title": "Founder’s Own：a-Tools 生态系统",
+    "atools_desc": "一系列处于不同开发阶段的实用 AI 和自动化工具，包括 <strong>1-Click Apps<\/strong>（MyLocalAI、KnowledgeBackup、PublicationHQ）、Communication Manager、Deep Companion 和 Extended HQ。提供免费 API、完全本地运行及混合模式预设（区分敏感数据与公开数据）。各工具单独发布。",
+    "link_shop": "A-Tools／支持",
+    "cyber_title": "欢迎合作的开放项目",
+    "cyber_desc": "网络安全与信息物理系统活动。探索中的活动和评估形式涵盖机器人、自主机器以及网络安全。欢迎运营方、技术专家和潜在联合组织者交流。",
+    "link_coop": "欢迎洽谈合作！ :)",
+    "locally_title": "Locally4Me：Food4Me",
+    "locally_desc": "以当地社区为中心的平台生态系统，促进人际联系、交换、互助及满足日常需求。产品与商业信息主要由 Locally4Me 发布；其规划定位为控股型组织与受去中心化自治组织（DAO）理念启发的模式框架。",
+    "link_locally": "Locally4Me 网站",
+    "future_label": "其他长期方向",
+    "future_desc": "除 ECS 外，我也在构思 C-Resilience Network——面向危机发生前的社区准备工作的平台及应用套件。其他方向包括 FENI（负责任技术讨论）、GEMSTONES（知识与技能保存）、个人安全和分层保护方案、无人机与浮空器、记忆与身份保存、社会支持与公益、治理理念及替代性经济模式，包括未来与 qDAO 相关的探索。这些属于愿景，并非已启动的项目。以人为本的 AI 与跨学科科学也是关注方向。长期兴趣还包括能够理解心理需求的 AI 陪伴工具、支持陷入困境的人群、机器人和自主系统、医学、长寿研究及科研合作。这些仍处于探索阶段，并非现有服务。",
+    "status_note": "各项目进展不同。已有专属页面的项目提供真实公开链接；其他构想在此直接介绍，不使用虚假链接。",
+    "whitepaper_en": "技术相关风险：概览 · 英文 PDF v0.9",
+    "whitepaper_pl": "技术相关风险 · 波兰文 PDF v0.9",
+    "whitepaper_desc": "关于技术风险、社会变化及可能应对方法的独立观点。包含解决方案建议的第二部分目前暂缓发布。",
+    "collab_motto": "“志存高远，放眼未来，明智行动。”",
+    "collab_desc": "<strong>研究、合作与伙伴关系。<\/strong>欢迎研究人员、工程师、学生、社区组织者、网络安全演练平台运营方及独立开发者联系。一个具体的问题、一项实用技能或小规模试点，都可能成为合作的起点。探索性构想并不代表已获得资金或已正式成立的项目。",
+    "collab_cta": "联系我们",
+    "link_linkedin": "在 LinkedIn 上建立联系",
+    "footer_status": "Enhanced.World——独立倡议及未来的组织愿景。目前并非已注册的基金会。",
+    "footer_locally": "与位于爱沙尼亚塔林的 <a href=\"https://locally4me.org/\">Locally4Me Group OÜ<\/a> 有合作关联。双方是独立的法律实体。"
+  }
+};
 function setLanguage(lang) {
-
-document.querySelectorAll('[data-i18n]').forEach(el => {
-
-const key = el.getAttribute('data-i18n');
-
-if(i18n[lang] && i18n[lang][key]) {
-
-el.innerHTML = i18n[lang][key];
-
+  if (!Object.prototype.hasOwnProperty.call(i18n, lang)) lang = 'en';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (Object.prototype.hasOwnProperty.call(i18n[lang], key)) el.innerHTML = i18n[lang][key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const active = btn.id === lang + '-btn';
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+  try { localStorage.setItem('ew_pref_lang', lang); } catch (_) {}
 }
-
-});
-
-const heroTitle = document.getElementById('hero-title');
-
-if(heroTitle && i18n[lang].hero_title) {
-
-heroTitle.innerHTML = i18n[lang].hero_title;
-
-}
-
-document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-
-document.getElementById(`${lang}-btn`).classList.add('active');
-
-localStorage.setItem('l4m_pref_lang', lang);
-
-}
-
-// Reveal animation
-
-const observer = new IntersectionObserver((entries) => {
-
-entries.forEach(entry => {
-
-if (entry.isIntersecting) entry.target.classList.add('visible');
-
-});
-
-}, { threshold: 0.01 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Initialize language
-
-window.onload = () => {
-
-const saved = localStorage.getItem('l4m_pref_lang') || 'en';
-
-setLanguage(saved);
-
-};
-
-// MATRIX RAIN with NEON effect
-
-const canvas = document.getElementById('matrix-canvas');
-
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-
-canvas.height = window.innerHeight;
-
-const chars = '01010101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ01010αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ寶物天龍月日代码计算机术生命力死禍財前祥發富貴こんにちはᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿðĐĩũơưĂÂÊÔƠƯ';
-
-const fontSize = 13;
-
-const columns = Math.floor(canvas.width / fontSize);
-
-const drops = [];
-
-for(let i = 0; i < columns; i++) {
-
-drops[i] = 1 + Math.random() * 100;
-
-}
-
-function draw() {
-
-ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
-
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-ctx.font = fontSize + 'px JetBrains Mono';
-
-for(let i = 0; i < drops.length; i++) {
-
-const char = chars.charAt(Math.floor(Math.random() * chars.length));
-
-// NEON colors - magenta/pink/purple
-
-if(Math.random() > 0.97) {
-
-ctx.fillStyle = 'rgba(255, 0, 255, 0.9)'; // bright magenta
-
-ctx.shadowBlur = 15;
-
-ctx.shadowColor = '#FF00FF';
-
-} else if(Math.random() > 0.95) {
-
-ctx.fillStyle = 'rgba(255, 105, 180, 0.8)'; // hot pink
-
-ctx.shadowBlur = 10;
-
-ctx.shadowColor = '#FF69B4';
-
+// Preserve the original reveal effect.
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: .01 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 } else {
-
-ctx.fillStyle = 'rgba(157, 0, 255, 0.5)'; // purple
-
-ctx.shadowBlur = 5;
-
-ctx.shadowColor = '#9D00FF';
-
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 }
-
-ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-// Reset shadow
-
-ctx.shadowBlur = 0;
-
-if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-
-drops[i] = 0;
-
-}
-
-drops[i]++;
-
-}
-
-}
-
-setInterval(draw, 33);
-
-window.onresize = () => {
-
+let savedLanguage = 'en';
+try { savedLanguage = localStorage.getItem('ew_pref_lang') || localStorage.getItem('l4m_pref_lang') || 'en'; } catch (_) {}
+setLanguage(savedLanguage);
+// ORIGINAL MATRIX RAIN / NEON ANIMATION
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
-
 canvas.height = window.innerHeight;
-
-};
-
-function openSecureMail() {
-
-const u = "reserch";
-
-const d = "enhanced.world";
-
-window.location.href = "mailto:" + u + "@" + d;
-
+const chars = "01010101010101ABCDEFGHIJKLMNOPQRSTUVWXYZ01010αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ寶物天龍月日代码计算机术生命力死禍財前祥發富貴こんにちはᚠᚡᚢᚣᚤᚥᚦᚧᚨᚩᚪᚫᚬᚭᚮᚯᚰᚱᚲᚳᚴᚵᚶᚷᚸᚹᚺᚻᚼᚽᚾᚿðĐĩũơưĂÂÊÔƠƯ";
+const fontSize = 13;
+let columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+for (let i = 0; i < columns; i++) drops[i] = 1 + Math.random() * 100;
+function draw() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = fontSize + 'px JetBrains Mono';
+  for (let i = 0; i < drops.length; i++) {
+    const char = chars.charAt(Math.floor(Math.random() * chars.length));
+    if (Math.random() > 0.97) {
+      ctx.fillStyle = 'rgba(255, 0, 255, 0.9)';
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = '#FF00FF';
+    } else if (Math.random() > 0.95) {
+      ctx.fillStyle = 'rgba(255, 105, 180, 0.8)';
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = '#FF69B4';
+    } else {
+      ctx.fillStyle = 'rgba(157, 0, 255, 0.5)';
+      ctx.shadowBlur = 5;
+      ctx.shadowColor = '#9D00FF';
+    }
+    ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+    ctx.shadowBlur = 0;
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  }
 }
-
+setInterval(draw, 33);
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  columns = Math.floor(canvas.width / fontSize);
+  while (drops.length < columns) drops.push(1 + Math.random() * 100);
+  drops.length = columns;
+});
 </script>
-
 </body>
-
 </html>
